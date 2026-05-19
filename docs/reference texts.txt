@@ -1,0 +1,367 @@
+IEC MIGRATION LLM PROJECT — REFERENCE ROADMAP
+=============================================
+
+GOAL:
+Build foundational knowledge for developing an AI-assisted IEC 61131-3 → IEC 61499 migration system using:
+- parsing
+- ASTs
+- semantic analysis
+- LLM orchestration
+- verification
+- transformation pipelines
+
+IMPORTANT:
+Follow this order strictly.
+Do NOT jump immediately into advanced LLM papers or fine-tuning.
+
+
+======================================================================
+STAGE 1 — COMPILER & PARSER FOUNDATIONS (HIGHEST PRIORITY)
+======================================================================
+
+WHY:
+Your project is fundamentally a compiler/transformation system.
+Before AI, you must understand:
+- parsing
+- ASTs
+- semantic representations
+- IRs
+- interpreters
+
+PRIMARY RESOURCE:
+-----------------
+Crafting Interpreters — Bob Nystrom
+https://craftinginterpreters.com/
+
+MOST IMPORTANT CHAPTERS:
+------------------------
+1. Introduction
+2. A Map of the Territory
+3. The Lox Language
+4. Scanning
+5. Representing Code
+6. Parsing Expressions
+7. Statements and State
+8. Control Flow
+
+KEY CONCEPTS TO LEARN:
+----------------------
+- Tokens
+- Lexing
+- Parsing
+- Grammar rules
+- ASTs (Abstract Syntax Trees)
+- Syntax vs Semantics
+- Recursive descent parsing
+- Intermediate Representations (IRs)
+
+PROJECT CONNECTION:
+-------------------
+This directly helps build:
+- IEC Structured Text parser
+- AST generation
+- semantic extraction pipeline
+- transformation architecture
+
+
+======================================================================
+STAGE 2 — IEC 61131-3 & PLC FOUNDATIONS
+======================================================================
+
+WHY:
+You cannot transform industrial code without understanding:
+- PLC execution
+- scan cycles
+- timers
+- function blocks
+- industrial logic semantics
+
+FOCUS AREAS:
+------------
+1. Structured Text (ST)
+2. Function Block Diagram (FBD)
+3. Ladder Diagram (LD)
+4. Sequential Function Charts (SFC)
+5. PLC Scan Cycles
+6. Timers (TON, TOF, TP)
+7. Safety Interlocks
+8. State-based industrial logic
+
+PRIMARY RESOURCE:
+-----------------
+OpenPLC Documentation
+https://openplcproject.github.io/
+
+SECONDARY RESOURCE:
+-------------------
+PLCopen
+https://plcopen.org/
+
+IMPORTANT TOPICS:
+-----------------
+- PLC scan cycle
+- cyclic execution
+- timers
+- counters
+- function blocks
+- industrial sequencing
+- process control logic
+
+PROJECT CONNECTION:
+-------------------
+This helps:
+- semantic understanding
+- timer migration
+- execution preservation
+- industrial correctness
+
+
+======================================================================
+STAGE 3 — IEC 61499 & DISTRIBUTED AUTOMATION
+======================================================================
+
+WHY:
+You must deeply understand the TARGET architecture before designing transformations.
+
+FOCUS AREAS:
+------------
+1. Event-driven execution
+2. Distributed control systems
+3. Function blocks
+4. Composite FBs
+5. ECCs (Execution Control Charts)
+6. Event interfaces
+7. Data/event separation
+
+PRIMARY RESOURCE:
+-----------------
+Eclipse 4diac Documentation
+https://www.eclipse.org/4diac/documentation/
+
+IMPORTANT TOPICS:
+-----------------
+- IEC 61499 architecture
+- event-driven systems
+- distributed FB execution
+- ECC behavior
+- service interface FBs
+- composite FBs
+- deployment models
+
+MOST IMPORTANT QUESTION:
+------------------------
+WHY does IEC 61499 exist?
+
+PROJECT CONNECTION:
+-------------------
+This helps:
+- target architecture generation
+- distributed transformation design
+- event-driven migration logic
+
+
+======================================================================
+STAGE 4 — PROGRAM ANALYSIS & REPRESENTATIONS
+======================================================================
+
+WHY:
+Your project needs semantic understanding and transformation analysis.
+
+IMPORTANT CONCEPTS:
+-------------------
+1. Control Flow Graphs (CFGs)
+2. Data Flow Analysis
+3. Dependency Graphs
+4. State Machines
+5. Symbolic Execution
+6. Static Analysis
+
+RECOMMENDED RESOURCE:
+---------------------
+Stanford CS143 Compiler Notes
+https://web.stanford.edu/class/cs143/
+
+FOCUS ON:
+---------
+- semantic analysis
+- control flow
+- graph representations
+- static program reasoning
+
+PROJECT CONNECTION:
+-------------------
+This helps:
+- semantic extraction
+- dependency mapping
+- transformation correctness
+- industrial process modeling
+
+
+======================================================================
+STAGE 5 — FORMAL VERIFICATION & SAFETY
+======================================================================
+
+WHY:
+Industrial automation requires correctness guarantees.
+LLMs alone are NOT sufficient.
+
+FOCUS AREAS:
+------------
+1. Model Checking
+2. State Verification
+3. Safety Properties
+4. Temporal Logic
+5. Equivalence Checking
+
+BEGINNER RESOURCE:
+------------------
+UPPAAL Tutorials
+https://uppaal.org/resources/tutorials/
+
+IMPORTANT CONCEPTS:
+-------------------
+- deadlocks
+- liveness
+- reachability
+- timing verification
+- state equivalence
+- safety constraints
+
+EXAMPLES:
+---------
+- "Motor must stop within 100ms after emergency signal"
+- "Valve A and Valve B must never open simultaneously"
+
+PROJECT CONNECTION:
+-------------------
+This helps:
+- correctness validation
+- timing preservation
+- industrial safety verification
+
+
+======================================================================
+STAGE 6 — LLM & TRANSFORMER FOUNDATIONS
+======================================================================
+
+WHY:
+ONLY after understanding parsing and semantics should you focus heavily on LLM systems.
+
+PRIMARY RESOURCE:
+-----------------
+Hugging Face NLP Course
+https://huggingface.co/learn/nlp-course/
+
+MOST IMPORTANT SECTIONS:
+------------------------
+1. Transformers
+2. Tokenization
+3. Embeddings
+4. Text Generation
+5. Fine-Tuning Basics
+6. Retrieval-Augmented Generation (RAG)
+
+KEY CONCEPTS:
+-------------
+- tokens
+- embeddings
+- attention
+- transformers
+- semantic similarity
+- context windows
+- structured generation
+- prompt engineering
+- RAG pipelines
+
+PROJECT CONNECTION:
+-------------------
+This helps:
+- semantic interpretation
+- transformation generation
+- prompt orchestration
+- industrial code understanding
+
+
+======================================================================
+STAGE 7 — IMPORTANT RESEARCH PAPERS
+======================================================================
+
+READ LATER — NOT IMMEDIATELY
+
+1. Attention Is All You Need
+https://arxiv.org/abs/1706.03762
+
+WHY:
+Foundation of transformer architecture.
+
+FOCUS ON:
+---------
+- self-attention
+- sequence modeling
+- contextual relationships
+
+
+2. Retrieval-Augmented Generation (RAG)
+https://arxiv.org/abs/2005.11401
+
+WHY:
+Very important for industrial documentation + standards retrieval.
+
+FOCUS ON:
+---------
+- retrieval pipelines
+- knowledge augmentation
+- contextual generation
+
+
+======================================================================
+MOST IMPORTANT DEVELOPMENT PRINCIPLE
+======================================================================
+
+DO NOT THINK:
+--------------
+"Train a giant AI model"
+
+THINK:
+------
+"Build a reliable industrial transformation pipeline"
+
+The actual architecture is:
+
+PLC Code
+   ↓
+Parser
+   ↓
+AST
+   ↓
+Intermediate Representation
+   ↓
+Semantic Analysis
+   ↓
+Rules + LLM
+   ↓
+IEC 61499 Generation
+   ↓
+Verification
+   ↓
+Simulation
+   ↓
+Engineer Review
+
+
+======================================================================
+LEARNING PRIORITY ORDER (VERY IMPORTANT)
+======================================================================
+
+1. Parsing + ASTs
+2. PLC execution semantics
+3. Intermediate Representations
+4. IEC 61499 architecture
+5. Verification concepts
+6. LLM orchestration
+7. Fine-tuning
+
+IMPORTANT:
+-----------
+Fine-tuning is NOT the starting point.
+Architecture and representations matter far more initially.
