@@ -22,8 +22,6 @@ class NumberNode:
     """Represents a numeric literal, such as 100, 1, or 12.5."""
 
     def __init__(self, value):
-        # IEC 61131-3 has many numeric types. For this teaching parser, we keep
-        # it simple: whole numbers become int, decimal numbers become float.
         self.value = value
 
     def __repr__(self):
@@ -31,16 +29,7 @@ class NumberNode:
 
 
 class BinaryExpressionNode:
-    """Represents two expressions joined by an operator.
-
-    Examples:
-        Counter + 1
-        Temp > 100
-        Counter + 1 > Limit
-
-    The left and right sides can be simple values or more expression nodes.
-    That recursive shape is what lets the AST represent large expressions.
-    """
+    """Represents two expressions joined by an operator."""
 
     def __init__(self, left, operator, right):
         self.left = left
@@ -118,27 +107,3 @@ class ProgramNode:
 
     def __repr__(self):
         return f"ProgramNode(body={self.body!r})"
-
-
-# Example Structured Text:
-#
-# IF StartButton THEN
-#     Motor := TRUE;
-# END_IF;
-#
-# The same logic represented as beginner-friendly AST nodes:
-example_ast = IfStatementNode(
-    condition=VariableNode("StartButton"),
-    then_body=BlockNode(
-        [
-            AssignmentNode(
-                target=VariableNode("Motor"),
-                value=BooleanNode(True),
-            )
-        ]
-    ),
-)
-
-
-if __name__ == "__main__":
-    print(example_ast)
