@@ -121,8 +121,8 @@ def main():
     """Run a small example and print the structured parsed output."""
 
     sample_code = """
-    IF StartButton THEN
-        Motor := TRUE;
+    IF EmergencyStop THEN
+        Motor := FALSE;
     END_IF;
     """
 
