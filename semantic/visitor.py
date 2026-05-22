@@ -144,6 +144,50 @@ class SemanticTraversalVisitor(ASTVisitor):
 
         self.record_line(f"NumberNode: numeric value {node.value!r}")
 
+    def visit_TimeLiteralNode(self, node):
+        """Visit an IEC time literal."""
+
+        self.record_line(f"TimeLiteralNode: time value {node.value!r}")
+
+    def visit_FunctionBlockCallNode(self, node):
+        """Visit a function block invocation and its named arguments."""
+
+        self.record_line(f"FunctionBlockCallNode: call {node.name!r}")
+        self.depth += 1
+
+        for argument_name, argument_value in node.arguments:
+            self.visit_child(f"Argument {argument_name}:", argument_value)
+
+        self.depth -= 1
+
+    def visit_CaseStatementNode(self, node):
+        """Visit a CASE statement and all of its branches."""
+
+        self.record_line("CaseStatementNode: state or mode selection")
+        self.depth += 1
+        self.visit_child("Selector:", node.selector)
+        self.record_line("Branches:")
+        self.depth += 1
+
+        for index, branch in enumerate(node.branches, start=1):
+            self.record_line(f"Branch {index}")
+            self.depth += 1
+            self.visit(branch)
+            self.depth -= 1
+
+        self.depth -= 1
+
+        if node.else_body is not None:
+            self.visit_child("ELSE body:", node.else_body)
+
+        self.depth -= 1
+
+    def visit_CaseBranchNode(self, node):
+        """Visit one CASE branch."""
+
+        self.visit_child("Match value:", node.match_value)
+        self.visit_child("Branch body:", node.body)
+
 
 # Backward-compatible name for older code that imported PrintingSemanticVisitor.
 # The class no longer prints; it records traversal events for main.py to present.

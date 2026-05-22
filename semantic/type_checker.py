@@ -12,6 +12,7 @@ except ModuleNotFoundError:
 
 TYPE_BOOL = "BOOL"
 TYPE_NUMBER = "NUMBER"
+TYPE_TIME = "TIME"
 TYPE_UNKNOWN = "UNKNOWN"
 
 
@@ -71,6 +72,26 @@ class TypeChecker(ASTVisitor):
 
         return None
 
+    def visit_CaseStatementNode(self, node):
+        """Check selector, branches, and optional ELSE body."""
+
+        self.visit(node.selector)
+
+        for branch in node.branches:
+            self.visit(branch)
+
+        if node.else_body is not None:
+            self.visit(node.else_body)
+
+        return None
+
+    def visit_CaseBranchNode(self, node):
+        """Check one CASE branch."""
+
+        self.visit(node.match_value)
+        self.visit(node.body)
+        return None
+
     def visit_IfStatementNode(self, node):
         """An IF condition must be boolean, then its body is checked."""
 
@@ -105,6 +126,28 @@ class TypeChecker(ASTVisitor):
                 f"Cannot assign {value_type} value to {existing_target_type} "
                 f"variable {target_name!r}"
             )
+
+        return None
+
+    def visit_FunctionBlockCallNode(self, node):
+        """Check function block call argument expressions."""
+
+        for argument_name, argument_value in node.arguments:
+            argument_type = self.visit(argument_value)
+
+            if argument_name in ("IN", "CU", "CD", "R", "RESET", "LOAD"):
+                if argument_type not in (TYPE_BOOL, TYPE_UNKNOWN):
+                    self.error(
+                        f"Function block argument {argument_name!r} should be BOOL, "
+                        f"but found {argument_type}"
+                    )
+
+            if argument_name in ("PT", "PV"):
+                if argument_type not in (TYPE_TIME, TYPE_NUMBER, TYPE_UNKNOWN):
+                    self.error(
+                        f"Function block argument {argument_name!r} should be TIME "
+                        f"or NUMBER, but found {argument_type}"
+                    )
 
         return None
 
@@ -215,6 +258,11 @@ class TypeChecker(ASTVisitor):
 
         return TYPE_NUMBER
 
+    def visit_TimeLiteralNode(self, node):
+        """IEC time literals have TIME type."""
+
+        return TYPE_TIME
+
     def has_unknown_operand(self, left_type, right_type):
         """Return True when an expression cannot be fully checked yet."""
 
@@ -233,4 +281,49 @@ def build_demo_symbol_table():
     symbols.insert("StartButton", TYPE_BOOL)
     symbols.insert("Temp", TYPE_NUMBER)
     symbols.insert("Warning", TYPE_BOOL)
+    symbols.insert("AutoMode", TYPE_BOOL)
+    symbols.insert("ManualMode", TYPE_BOOL)
+    symbols.insert("EmergencyStop", TYPE_BOOL)
+    symbols.insert("FaultActive", TYPE_BOOL)
+    symbols.insert("FaultReset", TYPE_BOOL)
+    symbols.insert("DoorClosed", TYPE_BOOL)
+    symbols.insert("GuardClosed", TYPE_BOOL)
+    symbols.insert("TankLevel", TYPE_NUMBER)
+    symbols.insert("HighLevel", TYPE_NUMBER)
+    symbols.insert("LowLevel", TYPE_NUMBER)
+    symbols.insert("Pressure", TYPE_NUMBER)
+    symbols.insert("PressureHighLimit", TYPE_NUMBER)
+    symbols.insert("Temperature", TYPE_NUMBER)
+    symbols.insert("TempHighLimit", TYPE_NUMBER)
+    symbols.insert("Pump", TYPE_BOOL)
+    symbols.insert("InletValve", TYPE_BOOL)
+    symbols.insert("OutletValve", TYPE_BOOL)
+    symbols.insert("Mixer", TYPE_BOOL)
+    symbols.insert("Heater", TYPE_BOOL)
+    symbols.insert("CoolingValve", TYPE_BOOL)
+    symbols.insert("Conveyor", TYPE_BOOL)
+    symbols.insert("Clamp", TYPE_BOOL)
+    symbols.insert("Cutter", TYPE_BOOL)
+    symbols.insert("StartupStep", TYPE_NUMBER)
+    symbols.insert("SequenceStep", TYPE_NUMBER)
+    symbols.insert("BatchStep", TYPE_NUMBER)
+    symbols.insert("FaultCode", TYPE_NUMBER)
+    symbols.insert("SystemReady", TYPE_BOOL)
+    symbols.insert("SensorPresent", TYPE_BOOL)
+    symbols.insert("GuardOpen", TYPE_BOOL)
+    symbols.insert("Mode", TYPE_NUMBER)
+    symbols.insert("ProcessEnable", TYPE_BOOL)
+    symbols.insert("StartCommand", TYPE_BOOL)
+    symbols.insert("StopCommand", TYPE_BOOL)
+    symbols.insert("MotorRun", TYPE_BOOL)
+    symbols.insert("MotorContactor", TYPE_BOOL)
+    symbols.insert("OverloadTrip", TYPE_BOOL)
+    symbols.insert("StartTimer.Q", TYPE_BOOL)
+    symbols.insert("StopTimer.Q", TYPE_BOOL)
+    symbols.insert("PurgeTimer.Q", TYPE_BOOL)
+    symbols.insert("FillTimer.Q", TYPE_BOOL)
+    symbols.insert("MixTimer.Q", TYPE_BOOL)
+    symbols.insert("FaultTimer.Q", TYPE_BOOL)
+    symbols.insert("PulseTimer.Q", TYPE_BOOL)
+    symbols.insert("CounterDone", TYPE_BOOL)
     return symbols

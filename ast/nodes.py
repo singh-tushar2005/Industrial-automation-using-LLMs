@@ -28,6 +28,16 @@ class NumberNode:
         return f"NumberNode(value={self.value!r})"
 
 
+class TimeLiteralNode:
+    """Represents an IEC time literal such as T#5s or T#250ms."""
+
+    def __init__(self, value):
+        self.value = value
+
+    def __repr__(self):
+        return f"TimeLiteralNode(value={self.value!r})"
+
+
 class BinaryExpressionNode:
     """Represents two expressions joined by an operator."""
 
@@ -73,6 +83,22 @@ class AssignmentNode:
         return f"AssignmentNode(target={self.target!r}, value={self.value!r})"
 
 
+class FunctionBlockCallNode:
+    """Represents a function block invocation with named arguments."""
+
+    def __init__(self, name, arguments):
+        self.name = name
+        self.arguments = arguments
+
+    def __repr__(self):
+        return (
+            "FunctionBlockCallNode("
+            f"name={self.name!r}, "
+            f"arguments={self.arguments!r}"
+            ")"
+        )
+
+
 class BlockNode:
     """Represents an ordered list of statements inside a block."""
 
@@ -95,6 +121,40 @@ class IfStatementNode:
             "IfStatementNode("
             f"condition={self.condition!r}, "
             f"then_body={self.then_body!r}"
+            ")"
+        )
+
+
+class CaseBranchNode:
+    """Represents one CASE branch and its statement body."""
+
+    def __init__(self, match_value, body):
+        self.match_value = match_value
+        self.body = body
+
+    def __repr__(self):
+        return (
+            "CaseBranchNode("
+            f"match_value={self.match_value!r}, "
+            f"body={self.body!r}"
+            ")"
+        )
+
+
+class CaseStatementNode:
+    """Represents a CASE statement with optional ELSE body."""
+
+    def __init__(self, selector, branches, else_body=None):
+        self.selector = selector
+        self.branches = branches
+        self.else_body = else_body
+
+    def __repr__(self):
+        return (
+            "CaseStatementNode("
+            f"selector={self.selector!r}, "
+            f"branches={self.branches!r}, "
+            f"else_body={self.else_body!r}"
             ")"
         )
 

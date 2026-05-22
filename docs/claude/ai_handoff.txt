@@ -1,0 +1,262 @@
+Industrial Automation using LLMs
+AI Handoff Document
+
+CURRENT PROJECT STATE
+
+The project has successfully evolved beyond:
+
+basic parsing
+educational AST examples
+
+The system now includes:
+
+parser
+AST
+visitor traversal
+symbol table
+type checking
+industrial semantic classification
+semantic relationship extraction
+
+The architecture is becoming transformation-oriented.
+
+CURRENT PIPELINE
+
+datasets
+↓
+parser
+↓
+AST
+↓
+semantic traversal
+↓
+type checker
+↓
+industrial semantic classification
+↓
+relationship extraction
+
+CURRENT SEMANTIC DIRECTION
+
+The project is now transitioning from:
+
+isolated semantic tags
+
+toward:
+
+industrial behavioral relationship modeling
+
+This is preparation for:
+
+semantic graphs
+industrial IR
+IEC61499 transformation
+CURRENT IMPORTANT FILES
+
+AST:
+
+ast/nodes.py
+
+Contains:
+
+AST node definitions
+structured syntax representations
+
+AST does NOT parse code itself.
+
+Parser creates AST node objects.
+
+PARSER:
+
+parser/st_parser.py
+
+Uses:
+
+pyparsing
+
+Current capabilities:
+
+IF statements
+logical expressions
+arithmetic expressions
+assignments
+
+SEMANTIC SYSTEMS:
+
+semantic/visitor.py
+semantic/symbol_table.py
+semantic/type_checker.py
+semantic/classifier.py
+semantic/relationships.py
+semantic/relationship_extractor.py
+IMPORTANT ARCHITECTURAL CONSTRAINTS
+
+DO NOT:
+
+duplicate visitor traversal logic
+tightly couple semantic layers
+mix orchestration with semantic logic
+place presentation logic inside semantic systems
+
+main.py remains:
+
+orchestration layer
+reporting layer
+
+Semantic systems should:
+
+return data
+remain modular
+RELATIONSHIP EXTRACTION PHILOSOPHY
+
+Relationship extraction is:
+
+a higher semantic abstraction layer
+behavioral modeling infrastructure
+
+It should:
+
+reuse visitor traversal
+reuse semantic classification context
+prepare for graph generation
+
+It should NOT:
+
+replace parser
+replace type checker
+directly generate IEC61499
+IMPORTANT SEMANTIC CONCEPTS
+
+AST represents:
+
+syntax structure
+
+NOT:
+
+industrial meaning
+
+Semantic Classification represents:
+
+industrial semantic tags
+
+Examples:
+
+SAFETY_INTERLOCK
+PROCESS_ENABLE_CONDITION
+
+Semantic Relationships represent:
+
+interactions/dependencies
+
+Examples:
+
+SafetyOK enables Motor
+PressureHigh disables Pump
+
+Future Semantic Graphs:
+
+organize relationships
+model industrial topology
+represent behavioral networks
+
+Planned future technology:
+
+networkx
+
+Future IR:
+
+formalizes semantic understanding
+supports IEC61499 transformation
+
+Important:
+IR is NOT another AST.
+
+IR is:
+
+transformation-oriented semantics
+CURRENT OUTPUT DESIGN
+
+main.py currently displays:
+
+industrial semantic classifications
+semantic relationships
+industrial interpretation summaries
+
+The system intentionally hides:
+
+raw AST dumps
+parser internals
+visitor traversal logs
+
+unless debugging is needed.
+
+CURRENT DATASET DIRECTION
+
+Datasets are evolving toward:
+
+realistic industrial control systems
+
+Current dataset goals:
+
+timers
+sequencing
+fault handling
+process control
+actuator coordination
+emergency stop logic
+interlocks
+startup/shutdown logic
+IMPORTANT DEVELOPMENT PHILOSOPHY
+
+The project intentionally evolves in stages:
+
+syntax parsing
+↓
+semantic correctness
+↓
+industrial semantic understanding
+↓
+relationship modeling
+↓
+semantic graphs
+↓
+industrial IR
+↓
+IEC61499 transformation
+
+Do NOT skip abstraction layers prematurely.
+
+CURRENT IMMEDIATE GOALS
+stabilize relationship extraction
+improve industrial datasets
+prepare semantic graph infrastructure
+strengthen industrial semantic modeling
+maintain modular semantic architecture
+IMPORTANT TECHNICAL DIRECTION
+
+Current implementation remains:
+
+symbolic
+rule-based
+compiler-oriented
+
+Machine learning / LLM transformation logic has NOT yet been introduced into the core transformation pipeline.
+
+The current phase focuses on:
+
+semantic infrastructure
+industrial semantic abstraction
+transformation-oriented metadata generation
+MOST IMPORTANT PRINCIPLE
+
+The project should increasingly resemble:
+
+industrial compiler infrastructure
+semantic transformation tooling
+industrial behavior analysis systems
+
+NOT:
+
+toy parsers
+isolated syntax exercises
+simplistic AST demos

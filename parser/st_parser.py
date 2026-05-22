@@ -4,16 +4,21 @@ from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 
 from pyparsing import (
+    Combine,
     Forward,
     Keyword,
     OneOrMore,
     OpAssoc,
+    Optional,
     ParseException,
     ParserElement,
+    Regex,
     Suppress,
     Word,
+    ZeroOrMore,
     alphanums,
     alphas,
+    delimited_list,
     infix_notation,
     one_of,
     pyparsing_common,
@@ -36,11 +41,15 @@ AST_NODES_SPEC.loader.exec_module(AST_NODES_MODULE)
 VariableNode = AST_NODES_MODULE.VariableNode
 BooleanNode = AST_NODES_MODULE.BooleanNode
 NumberNode = AST_NODES_MODULE.NumberNode
+TimeLiteralNode = AST_NODES_MODULE.TimeLiteralNode
 BinaryExpressionNode = AST_NODES_MODULE.BinaryExpressionNode
 LogicalExpressionNode = AST_NODES_MODULE.LogicalExpressionNode
 AssignmentNode = AST_NODES_MODULE.AssignmentNode
+FunctionBlockCallNode = AST_NODES_MODULE.FunctionBlockCallNode
 BlockNode = AST_NODES_MODULE.BlockNode
 IfStatementNode = AST_NODES_MODULE.IfStatementNode
+CaseBranchNode = AST_NODES_MODULE.CaseBranchNode
+CaseStatementNode = AST_NODES_MODULE.CaseStatementNode
 ProgramNode = AST_NODES_MODULE.ProgramNode
 
 
@@ -73,6 +82,21 @@ def make_number_node(tokens):
     """Convert an integer or decimal literal into a NumberNode."""
 
     return NumberNode(tokens[0])
+
+
+def token_text(token):
+    """Return a plain string from a pyparsing token or ParseResults object."""
+
+    if isinstance(token, str):
+        return token
+
+    return str(token[0])
+
+
+def make_time_literal_node(tokens):
+    """Convert an IEC time literal into a TimeLiteralNode."""
+
+    return TimeLiteralNode(tokens[0])
 
 
 def _make_left_associative_binary_node(tokens, node_factory):
@@ -120,6 +144,18 @@ def make_assignment_node(tokens):
     return AssignmentNode(tokens["target"], tokens["value"])
 
 
+def make_function_block_argument(tokens):
+    """Convert one named function block argument into a tuple."""
+
+    return (token_text(tokens["name"]), tokens["value"])
+
+
+def make_function_block_call_node(tokens):
+    """Convert invocation syntax into a FunctionBlockCallNode."""
+
+    return FunctionBlockCallNode(token_text(tokens["name"]), list(tokens.get("arguments", [])))
+
+
 def make_block_node(tokens):
     """Wrap a sequence of parsed statements in a BlockNode."""
 
@@ -130,6 +166,22 @@ def make_if_statement_node(tokens):
     """Convert IF syntax into an IfStatementNode."""
 
     return IfStatementNode(tokens["condition"], tokens["then_body"])
+
+
+def make_case_branch_node(tokens):
+    """Convert one CASE branch into a CaseBranchNode."""
+
+    return CaseBranchNode(tokens["match_value"], tokens["body"])
+
+
+def make_case_statement_node(tokens):
+    """Convert CASE syntax into a CaseStatementNode."""
+
+    return CaseStatementNode(
+        tokens["selector"],
+        list(tokens.get("branches", [])),
+        tokens.get("else_body"),
+    )
 
 
 def make_program_node(tokens):
@@ -149,9 +201,15 @@ def build_st_parser():
     AND = Keyword("AND")
     OR = Keyword("OR")
     NOT = Keyword("NOT")
+    CASE = Keyword("CASE")
+    OF = Keyword("OF")
+    ELSE = Keyword("ELSE")
+    END_CASE = Keyword("END_CASE")
 
     assignment_operator = Suppress(":=")
     semicolon = Suppress(";")
+    colon = Suppress(":")
+    comma = Suppress(",")
 
     comparison_operator = one_of("> >= < <= = <>")
 
@@ -159,8 +217,9 @@ def build_st_parser():
     expression = Forward()
     statement = Forward()
 
-    reserved_words = IF | THEN | END_IF | TRUE | FALSE | AND | OR | NOT
-    identifier_text = (~reserved_words + Word(alphas + "_", alphanums + "_")).set_name(
+    reserved_words = IF | THEN | END_IF | TRUE | FALSE | AND | OR | NOT | CASE | OF | ELSE | END_CASE
+    identifier_part = Word(alphas + "_", alphanums + "_")
+    identifier_text = (~reserved_words + Combine(identifier_part + ZeroOrMore("." + identifier_part))).set_name(
         "identifier"
     )
     identifier = identifier_text.copy().set_parse_action(make_variable_node)
@@ -171,8 +230,11 @@ def build_st_parser():
     number = pyparsing_common.number.copy().set_name("number")
     number = number.set_parse_action(make_number_node)
 
+    time_literal = Regex(r"T#\d+(?:ms|s|m|h|d)").set_name("time literal")
+    time_literal = time_literal.set_parse_action(make_time_literal_node)
+
     parenthesized_expression = Suppress("(") + expression + Suppress(")")
-    atom = number | boolean_value | identifier | parenthesized_expression
+    atom = time_literal | number | boolean_value | identifier | parenthesized_expression
 
     # Operator order defines expression precedence from highest to lowest.
     expression <<= infix_notation(
@@ -195,6 +257,20 @@ def build_st_parser():
     )
     assignment_statement.set_parse_action(make_assignment_node)
 
+    function_block_argument = (
+        identifier_text("name") + assignment_operator + expression("value")
+    )
+    function_block_argument.set_parse_action(make_function_block_argument)
+
+    function_block_call = (
+        identifier_text("name")
+        + Suppress("(")
+        + Optional(delimited_list(function_block_argument, delim=",")("arguments"))
+        + Suppress(")")
+        + semicolon
+    )
+    function_block_call.set_parse_action(make_function_block_call_node)
+
     block = OneOrMore(statement).set_parse_action(make_block_node)
 
     if_statement = (
@@ -207,7 +283,25 @@ def build_st_parser():
     )
     if_statement.set_parse_action(make_if_statement_node)
 
-    statement <<= if_statement | assignment_statement
+    case_branch = (
+        expression("match_value")
+        + colon
+        + block("body")
+    )
+    case_branch.set_parse_action(make_case_branch_node)
+
+    case_statement = (
+        Suppress(CASE)
+        + expression("selector")
+        + Suppress(OF)
+        + OneOrMore(case_branch)("branches")
+        + Optional(Suppress(ELSE) + block("else_body"))
+        + Suppress(END_CASE)
+        + semicolon
+    )
+    case_statement.set_parse_action(make_case_statement_node)
+
+    statement <<= case_statement | if_statement | function_block_call | assignment_statement
 
     program = block.copy()
     program.add_parse_action(make_program_node)
@@ -259,7 +353,7 @@ def find_dataset_files(dataset_dir=DATASETS_DIR):
     if not dataset_path.exists():
         return []
 
-    return sorted(dataset_path.glob("*.st"))
+    return sorted(dataset_path.rglob("*.st"))
 
 
 def parse_dataset_files(file_paths):

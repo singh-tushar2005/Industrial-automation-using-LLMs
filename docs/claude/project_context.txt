@@ -1,0 +1,318 @@
+Industrial Automation using LLMs
+Project Context Document
+
+PROJECT OVERVIEW
+
+This project focuses on building a semantic transformation pipeline for migrating legacy industrial automation systems from IEC 61131-3 to IEC 61499.
+
+The long-term goal is to create a transformation-oriented industrial semantic analysis platform capable of:
+
+parsing IEC61131-3 Structured Text
+generating AST representations
+performing semantic analysis
+understanding industrial control behavior
+extracting semantic relationships
+generating semantic graphs
+producing transformation-oriented IR
+eventually enabling IEC61499 generation
+
+The project intentionally evolves in layered compiler-style stages.
+
+CURRENT TECHNOLOGY STACK
+
+Environment:
+
+Linux (Ubuntu-based)
+VS Code editor
+CLI-first workflow
+bash shell
+Git + GitHub
+
+Python Environment:
+
+Astral uv
+uv venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+
+AI Tooling:
+
+codex-cli
+Claude Code
+CURRENT ARCHITECTURE
+
+datasets (.st files)
+↓
+parser
+↓
+AST generation
+↓
+semantic traversal
+↓
+symbol table
+↓
+type checking
+↓
+industrial semantic classification
+↓
+semantic relationship extraction
+↓
+future semantic graph generation
+↓
+future industrial IR generation
+↓
+future IEC61499 transformation
+
+CURRENT FOLDER STRUCTURE
+
+Industrial-automation-using-LLMs/
+
+├── ast/
+├── parser/
+├── semantic/
+├── datasets/
+├── docs/
+├── tests/
+├── prompts/
+├── examples/
+├── main.py
+├── requirements.txt
+
+AST LAYER
+
+The AST layer defines structured program representations.
+
+Important:
+
+AST does NOT parse code itself
+parser creates AST objects
+AST remains parser-independent
+
+Example nodes:
+
+ProgramNode
+BlockNode
+IfStatementNode
+AssignmentNode
+BinaryExpressionNode
+LogicalExpressionNode
+VariableNode
+BooleanNode
+NumberNode
+PARSER LAYER
+
+The parser:
+
+parses IEC61131-3 Structured Text
+uses pyparsing
+recognizes grammar structures
+constructs AST node objects
+
+Current capabilities:
+
+IF statements
+assignments
+logical expressions
+arithmetic expressions
+comparison expressions
+
+Planned:
+
+CASE
+loops
+FB calls
+timers
+sequencing logic
+SEMANTIC LAYER
+
+VISITOR
+
+Provides reusable recursive AST traversal infrastructure.
+
+Important:
+
+visitor is traversal infrastructure
+semantic systems reuse traversal logic
+visitor is NOT business logic
+
+SYMBOL TABLE
+
+Acts as semantic memory.
+
+Stores:
+
+variable names
+semantic types
+future semantic metadata
+
+Example:
+Motor → BOOL
+Temp → NUMBER
+
+TYPE CHECKER
+
+Performs semantic correctness validation.
+
+Responsibilities:
+
+assignment compatibility
+expression validation
+type legality
+
+The type checker:
+
+reuses visitor traversal
+queries symbol table
+validates semantic correctness
+INDUSTRIAL SEMANTIC CLASSIFICATION
+
+The classifier is a higher semantic abstraction layer.
+
+Purpose:
+
+interpret industrial behavior
+classify industrial semantics
+generate transformation-oriented metadata
+
+Current semantic tags:
+
+SAFETY_INTERLOCK
+PROCESS_ENABLE_CONDITION
+ACTUATOR_COORDINATION
+FAULT_PROTECTION_SEQUENCE
+TIMER_DEPENDENT_CONTROL
+
+The classifier:
+
+does NOT replace parser/type checker
+reuses visitor traversal
+operates on semantic meaning
+SEMANTIC RELATIONSHIP EXTRACTION
+
+The project is currently evolving toward semantic relationship extraction.
+
+Purpose:
+
+model industrial behavioral dependencies
+detect semantic interactions
+prepare for semantic graph generation
+
+Examples:
+
+SafetyOK enables Motor
+PressureHigh disables Pump
+StartButton triggers Conveyor
+
+Current files:
+
+semantic/relationships.py
+semantic/relationship_extractor.py
+FUTURE SEMANTIC GRAPHS
+
+Planned evolution:
+
+relationships
+↓
+semantic graph
+↓
+industrial topology modeling
+
+Planned technology:
+
+networkx
+
+Future graph responsibilities:
+
+dependency analysis
+process topology
+event relationships
+industrial interaction modeling
+FUTURE IR GENERATION
+
+The project will eventually generate:
+
+transformation-oriented industrial IR
+
+Important:
+
+IR is NOT AST
+AST represents syntax
+IR represents transformation semantics
+
+IR will later support:
+
+IEC61499 generation
+FB mapping
+event network generation
+distributed execution modeling
+DESIGN PHILOSOPHY
+
+The architecture intentionally follows:
+
+compiler engineering principles
+layered semantic abstraction
+modular architecture
+separation of responsibilities
+transformation-oriented design
+
+The project intentionally avoids:
+
+tightly coupled systems
+monolithic logic
+premature machine learning
+
+Current phases remain:
+
+symbolic
+rule-based
+semantic-analysis-oriented
+CURRENT DEVELOPMENT FOCUS
+
+Current milestone:
+
+semantic relationship extraction
+industrial dependency semantics
+preparation for semantic graph generation
+
+Not yet implemented:
+
+graph topology
+industrial IR
+IEC61499 generation
+LLM-based transformation
+IMPORTANT ARCHITECTURAL PRINCIPLES
+Parser depends on AST
+AST remains parser-independent
+Visitor traversal should be reused
+Semantic layers should remain modular
+Logic and presentation remain separated
+main.py acts as orchestration layer
+Semantic systems return data rather than print directly
+CURRENT OUTPUT PHILOSOPHY
+
+main.py now behaves more like:
+
+industrial semantic analysis report
+transformation-oriented semantic pipeline
+
+Default output focuses on:
+
+industrial semantic classifications
+semantic relationships
+industrial behavior interpretation
+
+Low-level infrastructure output is hidden by default.
+
+LONG-TERM GOAL
+
+Transform the project from:
+
+syntax understanding
+
+toward:
+
+industrial process semantic understanding
+
+and eventually:
+
+industrial semantic transformation infrastructure
