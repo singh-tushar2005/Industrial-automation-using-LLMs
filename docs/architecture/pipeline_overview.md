@@ -131,17 +131,17 @@ The pipeline is designed around explicit data transformations.
 │ Text Source │─────▶│ Syntax Parse │─────▶│ AST Object     │
 │ .st file    │      │ pyparsing    │      │ ProgramNode    │
 └─────────────┘      └──────────────┘      └───────┬────────┘
-                                                    │
-                                                    ▼
+                                                   │
+                                                   ▼
 ┌─────────────────────┐      ┌──────────────────────────────┐
-│ Semantic Diagnostics │◀────│ Semantic Analysis             │
-│ errors / warnings    │      │ traversal + symbols + types   │
+│ Semantic Diagnostics│◀──── │ Semantic Analysis            │
+│ errors / warnings   │      │ traversal + symbols + types  │
 └──────────┬──────────┘      └──────────────────────────────┘
            │
            ▼
 ┌─────────────────────┐      ┌──────────────────────────────┐
-│ Future IR           │─────▶│ Future IEC 61499 Architecture │
-│ normalized semantics │      │ FBs + events + data links     │
+│ Future IR           │─────▶│ Future IEC 61499 Architecture│
+│ normalized semantics│      │ FBs + events + data links    │
 └─────────────────────┘      └──────────────────────────────┘
 ```
 

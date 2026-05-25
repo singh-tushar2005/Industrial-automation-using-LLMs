@@ -8,6 +8,7 @@ from pyparsing import ParseException
 
 from parser.st_parser import DATASETS_DIR, find_dataset_files, parse_st_file
 from semantic.classifier import IndustrialSemanticClassifier
+from semantic.graph_builder import SemanticGraphBuilder
 from semantic.relationship_extractor import RelationshipExtractor
 from semantic.type_checker import TypeChecker, build_demo_symbol_table
 from semantic.visitor import SemanticTraversalVisitor
@@ -64,6 +65,13 @@ def run_relationship_extraction(ast, classification_report, type_report):
 
     extractor = RelationshipExtractor(classification_report, type_report)
     return extractor.extract(ast)
+
+
+def run_graph_generation(relationship_report):
+    """Run semantic graph generation and return a connected topology."""
+
+    builder = SemanticGraphBuilder()
+    return builder.build(relationship_report)
 
 
 def print_traversal_results(traversal_results):
@@ -191,6 +199,29 @@ def print_interpretation_summary(report):
         print(f"  - {summary}")
 
 
+def print_graph_summary(graph):
+    """Print semantic graph topology summary."""
+
+    summary = graph.summary()
+
+    print(f"  Nodes: {summary['node_count']}")
+    print(f"  Edges: {summary['edge_count']}")
+
+    print("\n  Node Types:")
+    if summary["node_kinds"]:
+        for kind, count in summary["node_kinds"].items():
+            print(f"    - {kind}: {count}")
+    else:
+        print("    <no nodes>")
+
+    print("\n  Dependencies:")
+    if summary["dependencies"]:
+        for dependency in summary["dependencies"]:
+            print(f"    - {dependency}")
+    else:
+        print("    <no dependencies>")
+
+
 def analyze_st_file(file_path):
     """Run all analysis stages and return structured results."""
 
@@ -211,6 +242,7 @@ def analyze_st_file(file_path):
         classification_report,
         type_check_report,
     )
+    semantic_graph = run_graph_generation(relationship_report)
 
     return {
         "file_path": file_path,
@@ -220,6 +252,7 @@ def analyze_st_file(file_path):
         "type_check": type_check_report,
         "classification": classification_report,
         "relationships": relationship_report,
+        "graph": semantic_graph,
     }
 
 
@@ -244,6 +277,9 @@ def print_high_level_report(result):
 
     print_subsection("Industrial Interpretation")
     print_interpretation_summary(result["relationships"])
+
+    print_subsection("Semantic Graph Summary")
+    print_graph_summary(result["graph"])
 
     if result["type_check"]["program_is_valid"]:
         print("\nAnalysis result: OK")
@@ -279,6 +315,9 @@ def print_debug_report(result):
 
     print_subsection("Semantic Relationships")
     print_relationship_report(result["relationships"])
+
+    print_subsection("Semantic Graph")
+    print_graph_summary(result["graph"])
 
     if result["type_check"]["program_is_valid"]:
         print("\nPipeline result: OK")
