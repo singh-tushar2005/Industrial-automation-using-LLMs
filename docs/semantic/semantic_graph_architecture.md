@@ -44,10 +44,14 @@ semantic graph builder
     ↓
 semantic graph topology
     ↓
+graph visualizer
+    ↓
+visual output (PNG / SVG)
+    ↓
 future: graph reasoning / IR generation / IEC 61499 transformation
 ```
 
-The graph layer sits downstream of all semantic inference. It consumes structured relationship data and produces a queryable topology.
+The graph layer sits downstream of all semantic inference. It consumes structured relationship data and produces a queryable topology. The visualizer is the final presentation layer: it renders topology into human-readable diagrams without modifying graph structure.
 
 ---
 
@@ -240,13 +244,85 @@ Because the graph is passive and serializable (`to_dict`), future IR generators 
 
 ---
 
-## 10. Responsibility Separation
+## 10. Graph Visualization Architecture
+
+The visualization layer (`semantic/graph_visualizer.py`) renders SemanticGraph topology into industrial dependency diagrams using Graphviz.
+
+### 10.1 Design Principle
+
+The visualizer is **strictly a rendering layer**. It does not:
+- perform semantic inference
+- modify graph topology
+- extract new relationships
+- rebuild graph logic
+
+It only:
+- consumes an existing SemanticGraph
+- maps node kinds to visual shapes and colors
+- maps edge relations to visual colors and labels
+- generates PNG and SVG output files
+
+### 10.2 Visual Encoding
+
+**Node shapes by kind:**
+
+| Kind | Graphviz Shape | Visual Meaning |
+|------|----------------|----------------|
+| signal | ellipse | control signal, permissive, input |
+| actuator | box | physical output, motor, pump, valve |
+| timer | hexagon | time-dependent function block |
+| alarm | diamond | fault indication, warning state |
+| process_variable | cylinder | measured value, sensor reading |
+| counter | doubleoctagon | stateful counting element |
+| mode | box (rounded) | operational mode, state selector |
+| unknown | ellipse | unclassified entity |
+
+**Edge colors by relation:**
+
+| Relation | Color | Visual Meaning |
+|----------|-------|----------------|
+| enables | green | permissive or safety-gating behavior |
+| disables | red | protective shutdown or fault response |
+| triggers | blue | event-like activation (timers, alarms) |
+| activates | purple | timer-done or sequence activation |
+| sequences | orange | stateful ordering or step progression |
+| depends_on | gray | generic dependency edge |
+
+### 10.3 Subsystem Clusters
+
+The visualizer groups nodes into cluster subgraphs when node names match subsystem heuristics:
+
+- **Safety Subsystem**: Safety, Guard, Door, EStop, Emergency, Interlock
+- **Process Subsystem**: Pressure, Temp, Temperature, Level, Flow, Speed, Limit
+- **Actuator Subsystem**: Motor, Pump, Valve, Heater, Mixer, Conveyor, Clamp, Cutter
+- **Timer Subsystem**: TON, TOF, TP, Timer
+
+Clusters use distinct background colors and rounded borders to visually separate behavioral regions.
+
+### 10.4 Output
+
+Rendered files are stored in `outputs/graphs/`:
+
+```text
+outputs/graphs/
+    tank_control_graph.png
+    tank_control_graph.svg
+    emergency_shutdown_graph.png
+    emergency_shutdown_graph.svg
+```
+
+Each file includes a title with node count and edge count.
+
+---
+
+## 11. Responsibility Separation
 
 | Layer | Responsible For | Not Responsible For |
 |-------|-----------------|---------------------|
 | RelationshipExtractor | Semantic inference, AST traversal, deriving industrial meaning from conditions and assignments | Building graph topology, managing adjacency, creating graph traversal systems |
-| SemanticGraph (semantic_graph.py) | Storing nodes, edges, adjacency mappings; supporting graph queries | Semantic extraction, AST traversal, industrial inference |
+| SemanticGraph (semantic_graph.py) | Storing nodes, edges, adjacency mappings; supporting graph queries | Semantic extraction, AST traversal, industrial inference, visualization rendering |
 | SemanticGraphBuilder (graph_builder.py) | Converting relationships to graph structures, node kind inference, assembling connected topology | AST traversal, relationship inference, re-implementing extraction logic |
+| SemanticGraphVisualizer (graph_visualizer.py) | Rendering graph topology into visual diagrams (PNG/SVG) | Semantic inference, graph modification, relationship extraction |
 
 The dependency direction is:
 
@@ -254,6 +330,8 @@ The dependency direction is:
 graph_builder.py
         ↓
 semantic_graph.py
+        ↓
+graph_visualizer.py
 ```
 
-`semantic_graph.py` does not depend on `graph_builder.py`. It remains a reusable, independent data structure layer.
+`semantic_graph.py` does not depend on `graph_builder.py` or `graph_visualizer.py`. It remains a reusable, independent data structure layer. The visualizer depends only on the graph data structure, not on the builder, extractor, or parser.

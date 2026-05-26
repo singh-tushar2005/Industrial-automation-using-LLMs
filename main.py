@@ -9,6 +9,7 @@ from pyparsing import ParseException
 from parser.st_parser import DATASETS_DIR, find_dataset_files, parse_st_file
 from semantic.classifier import IndustrialSemanticClassifier
 from semantic.graph_builder import SemanticGraphBuilder
+from semantic.graph_visualizer import SemanticGraphVisualizer
 from semantic.relationship_extractor import RelationshipExtractor
 from semantic.type_checker import TypeChecker, build_demo_symbol_table
 from semantic.visitor import SemanticTraversalVisitor
@@ -72,6 +73,13 @@ def run_graph_generation(relationship_report):
 
     builder = SemanticGraphBuilder()
     return builder.build(relationship_report)
+
+
+def run_graph_visualization(graph, output_name):
+    """Run semantic graph visualization and return output file paths."""
+
+    visualizer = SemanticGraphVisualizer()
+    return visualizer.render(graph, output_name)
 
 
 def print_traversal_results(traversal_results):
@@ -222,7 +230,18 @@ def print_graph_summary(graph):
         print("    <no dependencies>")
 
 
-def analyze_st_file(file_path):
+def print_visualization_paths(paths):
+    """Print paths to generated graph visualization files."""
+
+    if not paths:
+        print("  <no visualizations generated>")
+        return
+
+    for path in paths:
+        print(f"  - {path}")
+
+
+def analyze_st_file(file_path, visualize=False):
     """Run all analysis stages and return structured results."""
 
     try:
@@ -244,6 +263,11 @@ def analyze_st_file(file_path):
     )
     semantic_graph = run_graph_generation(relationship_report)
 
+    visualization_paths = []
+    if visualize:
+        output_name = Path(file_path).stem + "_graph"
+        visualization_paths = run_graph_visualization(semantic_graph, output_name)
+
     return {
         "file_path": file_path,
         "parse_ok": True,
@@ -253,6 +277,7 @@ def analyze_st_file(file_path):
         "classification": classification_report,
         "relationships": relationship_report,
         "graph": semantic_graph,
+        "visualization_paths": visualization_paths,
     }
 
 
@@ -280,6 +305,10 @@ def print_high_level_report(result):
 
     print_subsection("Semantic Graph Summary")
     print_graph_summary(result["graph"])
+
+    if result.get("visualization_paths"):
+        print_subsection("Graph Visualization")
+        print_visualization_paths(result["visualization_paths"])
 
     if result["type_check"]["program_is_valid"]:
         print("\nAnalysis result: OK")
@@ -327,25 +356,32 @@ def print_debug_report(result):
     return result["type_check"]["program_is_valid"]
 
 
-def process_st_file(file_path, debug=False):
+def process_st_file(file_path, debug=False, visualize=False):
     """Run the complete analysis pipeline for one file."""
 
-    result = analyze_st_file(file_path)
+    result = analyze_st_file(file_path, visualize=visualize)
 
     if debug:
-        return print_debug_report(result)
+        print_debug_report(result)
+    else:
+        print_high_level_report(result)
 
-    return print_high_level_report(result)
+    return result
 
 
-def run_pipeline(dataset_files, debug=False):
+def run_pipeline(dataset_files, debug=False, visualize=False):
     """Run every Structured Text file through the centralized pipeline."""
 
     passed_count = 0
+    all_visualization_paths = []
 
     for file_path in dataset_files:
-        if process_st_file(file_path, debug=debug):
+        result = process_st_file(file_path, debug=debug, visualize=visualize)
+
+        if result.get("type_check", {}).get("program_is_valid", False):
             passed_count += 1
+
+        all_visualization_paths.extend(result.get("visualization_paths", []))
 
     total_count = len(dataset_files)
 
@@ -353,6 +389,11 @@ def run_pipeline(dataset_files, debug=False):
     print(f"Files processed: {total_count}")
     print(f"Files passed:    {passed_count}")
     print(f"Files failed:    {total_count - passed_count}")
+
+    if all_visualization_paths:
+        print("\nSemantic graph visualizations generated:")
+        for path in all_visualization_paths:
+            print(f"  - {path}")
 
 
 def build_argument_parser():
@@ -365,6 +406,11 @@ def build_argument_parser():
         "--debug",
         action="store_true",
         help="Show internal AST, traversal, symbol, and type-checking details.",
+    )
+    argument_parser.add_argument(
+        "--visualize",
+        action="store_true",
+        help="Generate Graphviz PNG and SVG visualizations for each semantic graph.",
     )
     return argument_parser
 
@@ -379,7 +425,7 @@ def main():
         print(f"No .st files found in {Path(DATASETS_DIR)}.")
         return
 
-    run_pipeline(dataset_files, debug=arguments.debug)
+    run_pipeline(dataset_files, debug=arguments.debug, visualize=arguments.visualize)
 
 
 if __name__ == "__main__":
