@@ -8,6 +8,7 @@ from pyparsing import ParseException
 
 from parser.st_parser import DATASETS_DIR, find_dataset_files, parse_st_file
 from semantic.classifier import IndustrialSemanticClassifier
+from semantic.dependency_reasoner import DependencyReasoner
 from semantic.graph_builder import SemanticGraphBuilder
 from semantic.graph_visualizer import SemanticGraphVisualizer
 from semantic.relationship_extractor import RelationshipExtractor
@@ -33,10 +34,13 @@ def print_subsection(title):
     print("-" * len(title))
 
 
-def load_dataset_files():
-    """Return all Structured Text dataset files."""
+def load_dataset_files(dataset_dir=None):
+    """Return all Structured Text dataset files under *dataset_dir*.
 
-    return find_dataset_files(DATASETS_DIR)
+    Defaults to the built-in datasets directory when no path is supplied.
+    """
+
+    return find_dataset_files(dataset_dir or DATASETS_DIR)
 
 
 def run_semantic_traversal(ast):
@@ -80,6 +84,13 @@ def run_graph_visualization(graph, output_name):
 
     visualizer = SemanticGraphVisualizer()
     return visualizer.render(graph, output_name)
+
+
+def run_dependency_reasoning(graph):
+    """Run industrial dependency reasoning over the semantic graph."""
+
+    reasoner = DependencyReasoner(graph)
+    return reasoner.get_reasoning_report()
 
 
 def print_traversal_results(traversal_results):
@@ -241,7 +252,39 @@ def print_visualization_paths(paths):
         print(f"  - {path}")
 
 
-def analyze_st_file(file_path, visualize=False):
+def print_reasoning_report(report):
+    """Print industrial dependency reasoning summary."""
+
+    if not report:
+        print("  <no reasoning data available>")
+        return
+
+    if report["safety_chains"]:
+        print("  Safety Chains:")
+        for chain in report["safety_chains"][:5]:
+            print(f"    - {chain['summary']} [{chain['influence_type']}, depth={chain['depth']}]")
+        if report["safety_chain_count"] > 5:
+            print(f"    ... and {report['safety_chain_count'] - 5} more")
+
+    if report["timer_chains"]:
+        print("\n  Timer Chains:")
+        for chain in report["timer_chains"][:5]:
+            print(f"    - {chain['summary']} [{chain['influence_type']}, depth={chain['depth']}]")
+        if report["timer_chain_count"] > 5:
+            print(f"    ... and {report['timer_chain_count'] - 5} more")
+
+    if report["critical_paths"]:
+        print("\n  Critical Paths:")
+        for chain in report["critical_paths"][:5]:
+            print(f"    - {chain['summary']} [depth={chain['depth']}]")
+        if report["critical_path_count"] > 5:
+            print(f"    ... and {report['critical_path_count'] - 5} more")
+
+    if report["high_impact_nodes"]:
+        print(f"\n  High-Impact Nodes: {', '.join(report['high_impact_nodes'])}")
+
+
+def analyze_st_file(file_path, visualize=False, reason=False):
     """Run all analysis stages and return structured results."""
 
     try:
@@ -268,6 +311,10 @@ def analyze_st_file(file_path, visualize=False):
         output_name = Path(file_path).stem + "_graph"
         visualization_paths = run_graph_visualization(semantic_graph, output_name)
 
+    reasoning_report = None
+    if reason:
+        reasoning_report = run_dependency_reasoning(semantic_graph)
+
     return {
         "file_path": file_path,
         "parse_ok": True,
@@ -278,6 +325,7 @@ def analyze_st_file(file_path, visualize=False):
         "relationships": relationship_report,
         "graph": semantic_graph,
         "visualization_paths": visualization_paths,
+        "reasoning": reasoning_report,
     }
 
 
@@ -309,6 +357,10 @@ def print_high_level_report(result):
     if result.get("visualization_paths"):
         print_subsection("Graph Visualization")
         print_visualization_paths(result["visualization_paths"])
+
+    if result.get("reasoning"):
+        print_subsection("Industrial Dependency Reasoning")
+        print_reasoning_report(result["reasoning"])
 
     if result["type_check"]["program_is_valid"]:
         print("\nAnalysis result: OK")
@@ -356,10 +408,10 @@ def print_debug_report(result):
     return result["type_check"]["program_is_valid"]
 
 
-def process_st_file(file_path, debug=False, visualize=False):
+def process_st_file(file_path, debug=False, visualize=False, reason=False):
     """Run the complete analysis pipeline for one file."""
 
-    result = analyze_st_file(file_path, visualize=visualize)
+    result = analyze_st_file(file_path, visualize=visualize, reason=reason)
 
     if debug:
         print_debug_report(result)
@@ -369,14 +421,14 @@ def process_st_file(file_path, debug=False, visualize=False):
     return result
 
 
-def run_pipeline(dataset_files, debug=False, visualize=False):
+def run_pipeline(dataset_files, debug=False, visualize=False, reason=False):
     """Run every Structured Text file through the centralized pipeline."""
 
     passed_count = 0
     all_visualization_paths = []
 
     for file_path in dataset_files:
-        result = process_st_file(file_path, debug=debug, visualize=visualize)
+        result = process_st_file(file_path, debug=debug, visualize=visualize, reason=reason)
 
         if result.get("type_check", {}).get("program_is_valid", False):
             passed_count += 1
@@ -412,6 +464,17 @@ def build_argument_parser():
         action="store_true",
         help="Generate Graphviz PNG and SVG visualizations for each semantic graph.",
     )
+    argument_parser.add_argument(
+        "--reason",
+        action="store_true",
+        help="Run industrial dependency reasoning over each semantic graph.",
+    )
+    argument_parser.add_argument(
+        "--datasets-dir",
+        type=Path,
+        default=DATASETS_DIR,
+        help="Path to a directory containing .st dataset files (default: datasets/).",
+    )
     return argument_parser
 
 
@@ -419,13 +482,18 @@ def main():
     """Project entrypoint used by `uv run python main.py`."""
 
     arguments = build_argument_parser().parse_args()
-    dataset_files = load_dataset_files()
+    dataset_files = load_dataset_files(arguments.datasets_dir)
 
     if not dataset_files:
-        print(f"No .st files found in {Path(DATASETS_DIR)}.")
+        print(f"No .st files found in {Path(arguments.datasets_dir)}.")
         return
 
-    run_pipeline(dataset_files, debug=arguments.debug, visualize=arguments.visualize)
+    run_pipeline(
+        dataset_files,
+        debug=arguments.debug,
+        visualize=arguments.visualize,
+        reason=arguments.reason,
+    )
 
 
 if __name__ == "__main__":

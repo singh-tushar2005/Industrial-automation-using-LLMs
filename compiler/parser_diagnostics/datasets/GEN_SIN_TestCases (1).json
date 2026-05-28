@@ -1,0 +1,701 @@
+{
+  "meta": {
+    "dataset": "GEN_SIN_TestCases (1).st",
+    "file_path": "/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases (1).st",
+    "generated_at": "2026-05-28T10:20:57.153945+00:00",
+    "diagnostics_version": "2.2.0"
+  },
+  "overall_status": "partial_success",
+  "parse_status": "success",
+  "ast_status": "full_support",
+  "visitor_status": "partial_support",
+  "scores": {
+    "parser_compatibility": 98,
+    "ast_compatibility": 100,
+    "visitor_compatibility": 100,
+    "control_grammar_support": 100,
+    "computational_grammar_support": 100,
+    "runtime_grammar_support": 100
+  },
+  "supported_constructs": [
+    "IF",
+    "CASE_OF",
+    "assignment",
+    "boolean_logic",
+    "arithmetic_expression",
+    "comparison_expression",
+    "FUNCTION_BLOCK",
+    "VAR",
+    "VAR_OUTPUT",
+    "FOR_LOOP",
+    "FB_invocation",
+    "time_literal",
+    "numeric_literal",
+    "boolean_literal",
+    "array_index",
+    "array_declaration",
+    "memory_mapping",
+    "AT"
+  ],
+  "unsupported_constructs": [
+    "timer_TON"
+  ],
+  "detected_constructs": {
+    "IF": {
+      "detected": true,
+      "line_numbers": [
+        16,
+        22,
+        25,
+        31,
+        34,
+        55,
+        61,
+        64,
+        70,
+        73,
+        94,
+        100,
+        103,
+        109,
+        112,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        144
+      ]
+    },
+    "ELSIF": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "ELSE": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "CASE_OF": {
+      "detected": true,
+      "line_numbers": [
+        14,
+        53,
+        92
+      ]
+    },
+    "assignment": {
+      "detected": true,
+      "line_numbers": [
+        12,
+        17,
+        18,
+        20,
+        25,
+        26,
+        27,
+        29,
+        34,
+        36,
+        51,
+        56,
+        57,
+        59,
+        64,
+        65,
+        66,
+        68,
+        73,
+        75,
+        90,
+        95,
+        96,
+        98,
+        103,
+        104,
+        105,
+        107,
+        112,
+        114,
+        121,
+        124,
+        125,
+        128,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        142,
+        143,
+        144
+      ]
+    },
+    "boolean_logic": {
+      "detected": true,
+      "line_numbers": [
+        25,
+        34,
+        64,
+        73,
+        103,
+        112,
+        135,
+        137,
+        139
+      ]
+    },
+    "arithmetic_expression": {
+      "detected": true,
+      "line_numbers": [
+        12,
+        18,
+        23,
+        24,
+        27,
+        32,
+        33,
+        51,
+        57,
+        62,
+        63,
+        66,
+        71,
+        72,
+        90,
+        96,
+        101,
+        102,
+        105,
+        110,
+        111,
+        135,
+        137,
+        139,
+        144
+      ]
+    },
+    "comparison_expression": {
+      "detected": true,
+      "line_numbers": [
+        12,
+        17,
+        18,
+        20,
+        23,
+        24,
+        25,
+        26,
+        27,
+        29,
+        32,
+        33,
+        34,
+        36,
+        51,
+        56,
+        57,
+        59,
+        62,
+        63,
+        64,
+        65,
+        66,
+        68,
+        71,
+        72,
+        73,
+        75,
+        90,
+        95,
+        96,
+        98,
+        101,
+        102,
+        103,
+        104,
+        105,
+        107,
+        110,
+        111,
+        112,
+        114,
+        121,
+        124,
+        125,
+        128,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        142,
+        143,
+        144
+      ]
+    },
+    "FUNCTION": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FUNCTION_BLOCK": {
+      "detected": true,
+      "line_numbers": [
+        1,
+        40,
+        79
+      ]
+    },
+    "VAR": {
+      "detected": true,
+      "line_numbers": [
+        6,
+        45,
+        84,
+        120,
+        123,
+        127
+      ]
+    },
+    "VAR_INPUT": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "VAR_OUTPUT": {
+      "detected": true,
+      "line_numbers": [
+        2,
+        41,
+        80
+      ]
+    },
+    "VAR_IN_OUT": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FOR_LOOP": {
+      "detected": true,
+      "line_numbers": [
+        143
+      ]
+    },
+    "WHILE_LOOP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "REPEAT_LOOP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "EXIT": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "RETURN": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "timer_TON": {
+      "detected": true,
+      "line_numbers": [
+        9,
+        48,
+        87
+      ]
+    },
+    "timer_TOF": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "timer_TP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTU": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTD": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTUD": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FB_invocation": {
+      "detected": true,
+      "line_numbers": [
+        12,
+        16,
+        17,
+        20,
+        22,
+        23,
+        24,
+        25,
+        26,
+        29,
+        31,
+        32,
+        33,
+        34,
+        51,
+        55,
+        56,
+        59,
+        61,
+        62,
+        63,
+        64,
+        65,
+        68,
+        70,
+        71,
+        72,
+        73,
+        90,
+        94,
+        95,
+        98,
+        100,
+        101,
+        102,
+        103,
+        104,
+        107,
+        109,
+        110,
+        111,
+        112,
+        135,
+        137,
+        139
+      ]
+    },
+    "time_literal": {
+      "detected": true,
+      "line_numbers": [
+        12,
+        17,
+        20,
+        26,
+        29,
+        51,
+        56,
+        59,
+        65,
+        68,
+        90,
+        95,
+        98,
+        104,
+        107
+      ]
+    },
+    "typed_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "numeric_literal": {
+      "detected": true,
+      "line_numbers": [
+        15,
+        17,
+        18,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27,
+        30,
+        32,
+        33,
+        34,
+        54,
+        56,
+        57,
+        60,
+        62,
+        63,
+        64,
+        65,
+        66,
+        69,
+        71,
+        72,
+        73,
+        93,
+        95,
+        96,
+        99,
+        101,
+        102,
+        103,
+        104,
+        105,
+        108,
+        110,
+        111,
+        112,
+        121,
+        124,
+        125,
+        128,
+        129,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        142,
+        143,
+        144
+      ]
+    },
+    "boolean_literal": {
+      "detected": true,
+      "line_numbers": [
+        12,
+        20,
+        23,
+        25,
+        29,
+        32,
+        34,
+        36,
+        51,
+        59,
+        62,
+        64,
+        68,
+        71,
+        73,
+        75,
+        90,
+        98,
+        101,
+        103,
+        107,
+        110,
+        112,
+        114,
+        121,
+        136,
+        138,
+        140,
+        144
+      ]
+    },
+    "hex_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "string_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "state_machine": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "multiline_boolean": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "array_index": {
+      "detected": true,
+      "line_numbers": [
+        129,
+        136,
+        138,
+        140,
+        144
+      ]
+    },
+    "array_declaration": {
+      "detected": true,
+      "line_numbers": [
+        129
+      ]
+    },
+    "CONFIGURATION": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "RESOURCE": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "TASK": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "PROGRAM_binding": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "memory_mapping": {
+      "detected": true,
+      "line_numbers": [
+        121,
+        124,
+        125
+      ]
+    },
+    "WITH": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "ON": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "AT": {
+      "detected": true,
+      "line_numbers": [
+        121,
+        124,
+        125
+      ]
+    }
+  },
+  "missing_ast_nodes": [],
+  "missing_visitor_methods": [
+    "visit_str"
+  ],
+  "parser_failures": [],
+  "ast_nodes_present": [
+    "ArrayIndexNode",
+    "AssignmentNode",
+    "BinaryExpressionNode",
+    "BlockNode",
+    "BooleanNode",
+    "CaseBranchNode",
+    "CaseStatementNode",
+    "CompilationUnitNode",
+    "ForLoopNode",
+    "FunctionBlockCallNode",
+    "IfStatementNode",
+    "InvocationArgumentNode",
+    "LogicalExpressionNode",
+    "MemoryMappingNode",
+    "NumberNode",
+    "ProgramNode",
+    "TimeLiteralNode",
+    "VarBlockNode",
+    "VariableDeclarationNode",
+    "VariableNode"
+  ],
+  "visitor_methods_present": [
+    "visit_ArrayIndexNode",
+    "visit_ArrayTypeNode",
+    "visit_AssignmentNode",
+    "visit_BinaryExpressionNode",
+    "visit_BlockNode",
+    "visit_BooleanNode",
+    "visit_CaseBranchNode",
+    "visit_CaseStatementNode",
+    "visit_CompilationUnitNode",
+    "visit_ConfigurationNode",
+    "visit_ExitNode",
+    "visit_ForLoopNode",
+    "visit_FunctionBlockCallNode",
+    "visit_FunctionBlockInvocationNode",
+    "visit_FunctionInvocationNode",
+    "visit_IfStatementNode",
+    "visit_InvocationArgumentNode",
+    "visit_LogicalExpressionNode",
+    "visit_MemoryMappingNode",
+    "visit_NumberNode",
+    "visit_ProgramBindingNode",
+    "visit_ProgramNode",
+    "visit_RepeatLoopNode",
+    "visit_ResourceNode",
+    "visit_ReturnNode",
+    "visit_StringLiteralNode",
+    "visit_TaskNode",
+    "visit_TimeLiteralNode",
+    "visit_TypedLiteralNode",
+    "visit_VarBlockNode",
+    "visit_VariableDeclarationNode",
+    "visit_VariableNode",
+    "visit_WhileLoopNode"
+  ],
+  "visitor_traversal_event_count": 716,
+  "issues": [
+    {
+      "category": "grammar",
+      "severity": "ERROR",
+      "message": "Unsupported construct: timer_TON"
+    },
+    {
+      "category": "visitor",
+      "severity": "WARNING",
+      "message": "Missing visitor method: visit_str"
+    }
+  ],
+  "domain_support": {
+    "control_nodes": [
+      "AssignmentNode",
+      "CaseStatementNode",
+      "ForLoopNode",
+      "FunctionBlockCallNode",
+      "IfStatementNode"
+    ],
+    "computational_nodes": [
+      "ArrayIndexNode",
+      "BinaryExpressionNode",
+      "BooleanNode",
+      "LogicalExpressionNode",
+      "NumberNode",
+      "TimeLiteralNode"
+    ],
+    "runtime_nodes": [
+      "CompilationUnitNode",
+      "MemoryMappingNode",
+      "VarBlockNode",
+      "VariableDeclarationNode"
+    ]
+  },
+  "corpus_structure": {
+    "total_lines": 147,
+    "program_count": 1,
+    "function_block_count": 3,
+    "function_count": 0,
+    "configuration_count": 0,
+    "assert_expect_count": 0,
+    "has_metadata_header": false,
+    "has_dialect_keywords": false,
+    "has_c_style_comments": false,
+    "has_pythonic_indent": true,
+    "is_near_empty": false,
+    "multiple_compilation_units": true
+  },
+  "parse_failure_details": {
+    "category": "",
+    "error_context": {},
+    "error_line_text": "",
+    "nearby_lines": {
+      "previous_lines": [],
+      "next_lines": []
+    },
+    "expected_tokens": "",
+    "found_token": "",
+    "file_offset": null,
+    "parsed_prefix_percentage": 0.0,
+    "parsed_line_percentage": 0.0
+  },
+  "progression": {
+    "parser_previous": 98,
+    "parser_delta": 0,
+    "ast_previous": 100,
+    "ast_delta": 0,
+    "visitor_previous": 100,
+    "visitor_delta": 0
+  }
+}

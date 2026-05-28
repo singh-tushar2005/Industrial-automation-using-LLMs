@@ -68,6 +68,9 @@ class RelationshipExtractor(ASTVisitor):
     def visit_ProgramNode(self, node):
         self.visit(node.body)
 
+    def visit_CompilationUnitNode(self, node):
+        self.visit(node.body)
+
     def visit_BlockNode(self, node):
         for statement in node.statements:
             self.visit(statement)
@@ -77,6 +80,14 @@ class RelationshipExtractor(ASTVisitor):
         self.condition_stack.append(context)
         self.visit(node.condition)
         self.visit(node.then_body)
+
+        for elsif_condition, elsif_body in node.elsif_branches:
+            self.visit(elsif_condition)
+            self.visit(elsif_body)
+
+        if node.else_body is not None:
+            self.visit(node.else_body)
+
         self.condition_stack.pop()
 
     def visit_CaseStatementNode(self, node):
@@ -136,7 +147,7 @@ class RelationshipExtractor(ASTVisitor):
         fb_name = node.name
         fb_upper = fb_name.upper()
         argument_map = {
-            name: self.describe_expression(value) for name, value in node.arguments
+            argument.name: self.describe_expression(argument.value) for argument in node.arguments
         }
 
         if "TIMER" in fb_upper or fb_upper.startswith(("TON", "TOF", "TP")):
@@ -176,8 +187,47 @@ class RelationshipExtractor(ASTVisitor):
                 },
             )
 
-        for _, argument_value in node.arguments:
-            self.visit(argument_value)
+        for argument in node.arguments:
+            self.visit(argument.value)
+
+    def visit_FunctionInvocationNode(self, node):
+        for argument in node.arguments:
+            self.visit(argument.value)
+
+    def visit_InvocationArgumentNode(self, node):
+        self.visit(node.value)
+
+    def visit_ForLoopNode(self, node):
+        self.visit(node.start_expr)
+        self.visit(node.end_expr)
+        if node.step_expr is not None:
+            self.visit(node.step_expr)
+        self.visit(node.body)
+
+    def visit_WhileLoopNode(self, node):
+        self.visit(node.condition)
+        self.visit(node.body)
+
+    def visit_RepeatLoopNode(self, node):
+        self.visit(node.body)
+        self.visit(node.condition)
+
+    def visit_ExitNode(self, node):
+        return None
+
+    def visit_ReturnNode(self, node):
+        if node.value is not None:
+            self.visit(node.value)
+
+    def visit_TypedLiteralNode(self, node):
+        return None
+
+    def visit_ArrayIndexNode(self, node):
+        self.visit(node.array)
+        self.visit(node.index)
+
+    def visit_ArrayTypeNode(self, node):
+        return None
 
     def visit_BinaryExpressionNode(self, node):
         self.visit(node.left)

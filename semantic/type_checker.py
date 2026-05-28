@@ -64,6 +64,22 @@ class TypeChecker(ASTVisitor):
         self.visit(node.body)
         return None
 
+    def visit_CompilationUnitNode(self, node):
+        """A compilation unit's type is not a value; check its body."""
+
+        self.visit(node.body)
+        return None
+
+    def visit_VarBlockNode(self, node):
+        """Variable declaration blocks have no executable type."""
+
+        return None
+
+    def visit_VariableDeclarationNode(self, node):
+        """Variable declarations have no executable type."""
+
+        return None
+
     def visit_BlockNode(self, node):
         """Check every statement in order."""
 
@@ -104,6 +120,19 @@ class TypeChecker(ASTVisitor):
             )
 
         self.visit(node.then_body)
+
+        for elsif_condition, elsif_body in node.elsif_branches:
+            elsif_condition_type = self.visit(elsif_condition)
+            if elsif_condition_type not in (TYPE_BOOL, TYPE_UNKNOWN):
+                self.error(
+                    "ELSIF condition must be BOOL, "
+                    f"but found {elsif_condition_type} in {elsif_condition!r}"
+                )
+            self.visit(elsif_body)
+
+        if node.else_body is not None:
+            self.visit(node.else_body)
+
         return None
 
     def visit_AssignmentNode(self, node):
@@ -132,7 +161,9 @@ class TypeChecker(ASTVisitor):
     def visit_FunctionBlockCallNode(self, node):
         """Check function block call argument expressions."""
 
-        for argument_name, argument_value in node.arguments:
+        for argument in node.arguments:
+            argument_name = argument.name
+            argument_value = argument.value
             argument_type = self.visit(argument_value)
 
             if argument_name in ("IN", "CU", "CD", "R", "RESET", "LOAD"):
@@ -262,6 +293,95 @@ class TypeChecker(ASTVisitor):
         """IEC time literals have TIME type."""
 
         return TYPE_TIME
+
+    def visit_TypedLiteralNode(self, node):
+        """Typed literals map to their corresponding type."""
+
+        type_map = {
+            "BOOL": TYPE_BOOL,
+            "BYTE": TYPE_NUMBER,
+            "WORD": TYPE_NUMBER,
+            "DWORD": TYPE_NUMBER,
+            "INT": TYPE_NUMBER,
+            "DINT": TYPE_NUMBER,
+            "UINT": TYPE_NUMBER,
+            "UDINT": TYPE_NUMBER,
+            "REAL": TYPE_NUMBER,
+            "TIME": TYPE_TIME,
+            "STRING": "STRING",
+        }
+        return type_map.get(node.type_name.upper(), TYPE_UNKNOWN)
+
+    def visit_ArrayIndexNode(self, node):
+        """Array indexing returns the element type, which is unknown here."""
+
+        self.visit(node.array)
+        self.visit(node.index)
+        return TYPE_UNKNOWN
+
+    def visit_FunctionInvocationNode(self, node):
+        """Function invocations return an unknown type without a signature table."""
+
+        for argument in node.arguments:
+            self.visit(argument.value)
+        return TYPE_UNKNOWN
+
+    def visit_InvocationArgumentNode(self, node):
+        """Invocation arguments have no standalone type."""
+
+        self.visit(node.value)
+        return None
+
+    def visit_ForLoopNode(self, node):
+        """Check FOR loop body."""
+
+        self.visit(node.start_expr)
+        self.visit(node.end_expr)
+        if node.step_expr is not None:
+            self.visit(node.step_expr)
+        self.visit(node.body)
+        return None
+
+    def visit_WhileLoopNode(self, node):
+        """Check WHILE loop condition and body."""
+
+        condition_type = self.visit(node.condition)
+        if condition_type not in (TYPE_BOOL, TYPE_UNKNOWN):
+            self.error(
+                "WHILE condition must be BOOL, "
+                f"but found {condition_type} in {node.condition!r}"
+            )
+        self.visit(node.body)
+        return None
+
+    def visit_RepeatLoopNode(self, node):
+        """Check REPEAT loop condition and body."""
+
+        condition_type = self.visit(node.condition)
+        if condition_type not in (TYPE_BOOL, TYPE_UNKNOWN):
+            self.error(
+                "REPEAT UNTIL condition must be BOOL, "
+                f"but found {condition_type} in {node.condition!r}"
+            )
+        self.visit(node.body)
+        return None
+
+    def visit_ExitNode(self, node):
+        """EXIT has no type."""
+
+        return None
+
+    def visit_ReturnNode(self, node):
+        """RETURN has no type; check value if present."""
+
+        if node.value is not None:
+            self.visit(node.value)
+        return None
+
+    def visit_ArrayTypeNode(self, node):
+        """Array type declarations have no executable type."""
+
+        return None
 
     def has_unknown_operand(self, left_type, right_type):
         """Return True when an expression cannot be fully checked yet."""

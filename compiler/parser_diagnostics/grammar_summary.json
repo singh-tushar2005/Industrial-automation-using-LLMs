@@ -1,0 +1,846 @@
+{
+  "meta": {
+    "generated_at": "2026-05-28T10:21:03.116495+00:00",
+    "total_datasets": 57,
+    "diagnostics_version": "2.0.0"
+  },
+  "dataset_summaries": [
+    {
+      "dataset": "CRC_GEN.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "DEC_TO_HEX.st",
+      "overall_status": "failed",
+      "scores": {
+        "parser_compatibility": 25,
+        "ast_compatibility": 0,
+        "visitor_compatibility": 0,
+        "control_grammar_support": 0,
+        "computational_grammar_support": 0,
+        "runtime_grammar_support": 0
+      },
+      "issue_count": 1
+    },
+    {
+      "dataset": "FLOW_METER.st",
+      "overall_status": "success",
+      "scores": {
+        "parser_compatibility": 100,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 0
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "overall_status": "success",
+      "scores": {
+        "parser_compatibility": 100,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 0
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 96,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "GEN_SIN.st",
+      "overall_status": "success",
+      "scores": {
+        "parser_compatibility": 100,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 0
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 1
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "overall_status": "success",
+      "scores": {
+        "parser_compatibility": 100,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 0
+    },
+    {
+      "dataset": "MATRIX.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 100,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 1
+    },
+    {
+      "dataset": "SEQUENCE_8.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 1
+    },
+    {
+      "dataset": "TOOL_CHANGER.st",
+      "overall_status": "success",
+      "scores": {
+        "parser_compatibility": 100,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 0
+    },
+    {
+      "dataset": "TRAFFIC_CTRL.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 96,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 95,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 95,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 95,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "sampletext_4.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 95,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 1
+    },
+    {
+      "dataset": "CRC_GEN_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "CRC_GEN_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "DEC_TO_HEX_FullTest.st",
+      "overall_status": "failed",
+      "scores": {
+        "parser_compatibility": 25,
+        "ast_compatibility": 0,
+        "visitor_compatibility": 0,
+        "control_grammar_support": 0,
+        "computational_grammar_support": 0,
+        "runtime_grammar_support": 0
+      },
+      "issue_count": 1
+    },
+    {
+      "dataset": "FLOW_METER_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "FLOW_METER_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "FT_PIDWL_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "FT_PIDWL_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "GEN_BIT_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 97,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 4
+    },
+    {
+      "dataset": "GEN_SIN_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "GEN_SIN_FullTest (2).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "GEN_SIN_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "LAMBERT_W_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "LAMBERT_W_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "MATRIX_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "MATRIX_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "SEQUENCE_8_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "SEQUENCE_8_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "TOOL_CHANGER_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "TOOL_CHANGER_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 3
+    },
+    {
+      "dataset": "TRAFFIC_CTRL_FullTest (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 97,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 4
+    },
+    {
+      "dataset": "TRAFFIC_CTRL_FullTest.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 97,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 4
+    },
+    {
+      "dataset": "CRC_GEN_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "CRC_GEN_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "DEC_TO_HEX_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "FLOW_METER_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "FLOW_METER_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "FT_PIDWL_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "FT_PIDWL_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "GEN_BIT_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "GEN_SIN_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "GEN_SIN_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "LAMBERT_W_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "LAMBERT_W_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "MATRIX_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "MATRIX_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "SEQUENCE_8_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "SEQUENCE_8_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "TOOL_CHANGER_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "TOOL_CHANGER_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "TRAFFIC_CTRL_TestCases (1).st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    },
+    {
+      "dataset": "TRAFFIC_CTRL_TestCases.st",
+      "overall_status": "partial_success",
+      "scores": {
+        "parser_compatibility": 98,
+        "ast_compatibility": 100,
+        "visitor_compatibility": 100,
+        "control_grammar_support": 100,
+        "computational_grammar_support": 100,
+        "runtime_grammar_support": 100
+      },
+      "issue_count": 2
+    }
+  ],
+  "maturity": {
+    "success": 5,
+    "partial_success": 50,
+    "failed": 2
+  },
+  "construct_frequencies": {
+    "IF": 56,
+    "ELSE": 27,
+    "assignment": 57,
+    "boolean_logic": 56,
+    "arithmetic_expression": 56,
+    "comparison_expression": 57,
+    "FUNCTION_BLOCK": 53,
+    "VAR": 56,
+    "VAR_INPUT": 34,
+    "VAR_OUTPUT": 53,
+    "VAR_IN_OUT": 24,
+    "FOR_LOOP": 48,
+    "WHILE_LOOP": 3,
+    "FB_invocation": 56,
+    "typed_literal": 28,
+    "numeric_literal": 56,
+    "hex_literal": 25,
+    "multiline_boolean": 29,
+    "array_index": 44,
+    "array_declaration": 44,
+    "WITH": 22,
+    "AT": 42,
+    "RETURN": 8,
+    "boolean_literal": 54,
+    "string_literal": 5,
+    "ELSIF": 27,
+    "time_literal": 44,
+    "ON": 24,
+    "state_machine": 8,
+    "FUNCTION": 23,
+    "EXIT": 6,
+    "CASE_OF": 46,
+    "timer_TON": 42,
+    "CONFIGURATION": 21,
+    "RESOURCE": 21,
+    "TASK": 21,
+    "PROGRAM_binding": 21,
+    "memory_mapping": 41
+  },
+  "unsupported_construct_frequencies": {
+    "multiline_boolean": 29,
+    "state_machine": 8,
+    "timer_TON": 42
+  },
+  "ast_node_frequencies": {
+    "ArrayIndexNode": 42,
+    "AssignmentNode": 55,
+    "BinaryExpressionNode": 53,
+    "BlockNode": 55,
+    "CompilationUnitNode": 55,
+    "ForLoopNode": 44,
+    "FunctionInvocationNode": 29,
+    "IfStatementNode": 54,
+    "InvocationArgumentNode": 50,
+    "LogicalExpressionNode": 53,
+    "NumberNode": 54,
+    "ProgramNode": 55,
+    "TypedLiteralNode": 27,
+    "VarBlockNode": 55,
+    "VariableDeclarationNode": 54,
+    "VariableNode": 55,
+    "WhileLoopNode": 3,
+    "BooleanNode": 52,
+    "FunctionBlockCallNode": 43,
+    "TimeLiteralNode": 43,
+    "ExitNode": 6,
+    "ReturnNode": 6,
+    "CaseBranchNode": 45,
+    "CaseStatementNode": 45,
+    "ConfigurationNode": 20,
+    "MemoryMappingNode": 40,
+    "ProgramBindingNode": 20,
+    "ResourceNode": 20,
+    "TaskNode": 20,
+    "StringLiteralNode": 3
+  },
+  "missing_visitor_method_frequencies": {
+    "visit_str": 42
+  },
+  "severity_counts": {
+    "ERROR": 77,
+    "WARNING": 42,
+    "CRITICAL": 2
+  },
+  "parser_average_score": 95.3,
+  "ast_average_score": 96.5,
+  "visitor_average_score": 96.5,
+  "control_grammar_average": 96.5,
+  "computational_grammar_average": 96.5,
+  "runtime_grammar_average": 96.5
+}

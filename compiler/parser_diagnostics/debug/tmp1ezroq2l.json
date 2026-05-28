@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "dataset": "tmp1ezroq2l.st",
+    "generated_at": "2026-05-28T07:14:15.874290+00:00"
+  },
+  "ast_root_types": [
+    "BlockNode",
+    "ConfigurationNode",
+    "InvocationArgumentNode",
+    "NumberNode",
+    "ProgramBindingNode"
+  ],
+  "unsupported_ast_nodes": [],
+  "visitor_traversal_status": "full_support",
+  "visitor_traversal_errors": [],
+  "visitor_missing_methods": [],
+  "visitor_event_count": 21,
+  "scoring_decisions": {
+    "parser_status": "success",
+    "ast_nodes_total": 9,
+    "ast_nodes_supported": 9,
+    "ast_coverage_ratio": 1.0
+  }
+}

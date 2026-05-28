@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "dataset": "CRC_GEN_FullTest (1).st",
+    "generated_at": "2026-05-28T10:20:20.763236+00:00"
+  },
+  "ast_root_type": "ProgramNode",
+  "top_level_types": [
+    "CompilationUnitNode",
+    "CompilationUnitNode",
+    "CompilationUnitNode",
+    "CompilationUnitNode",
+    "CompilationUnitNode"
+  ],
+  "semantic_node_count": 27,
+  "control_nodes": [
+    "AssignmentNode",
+    "CaseStatementNode",
+    "ForLoopNode",
+    "FunctionBlockCallNode",
+    "IfStatementNode",
+    "WhileLoopNode"
+  ],
+  "computational_nodes": [
+    "ArrayIndexNode",
+    "BinaryExpressionNode",
+    "BooleanNode",
+    "FunctionInvocationNode",
+    "LogicalExpressionNode",
+    "NumberNode",
+    "TimeLiteralNode",
+    "TypedLiteralNode"
+  ],
+  "runtime_nodes": [
+    "CompilationUnitNode",
+    "ConfigurationNode",
+    "MemoryMappingNode",
+    "ProgramBindingNode",
+    "ResourceNode",
+    "TaskNode",
+    "VarBlockNode",
+    "VariableDeclarationNode"
+  ],
+  "unsupported_ast_nodes": [],
+  "visitor_traversal_status": "partial_support",
+  "visitor_traversal_errors": [],
+  "visitor_missing_methods": [
+    "visit_str"
+  ],
+  "visitor_event_count": 1920,
+  "parse_failure_details": {
+    "category": "",
+    "error_context": {},
+    "error_line_text": "",
+    "nearby_lines": {
+      "previous_lines": [],
+      "next_lines": []
+    },
+    "expected_tokens": "",
+    "found_token": "",
+    "file_offset": null,
+    "parsed_prefix_percentage": 0.0,
+    "parsed_line_percentage": 0.0
+  },
+  "corpus_structure": {
+    "total_lines": 547,
+    "program_count": 2,
+    "function_block_count": 6,
+    "function_count": 11,
+    "configuration_count": 1,
+    "assert_expect_count": 0,
+    "has_metadata_header": true,
+    "has_dialect_keywords": false,
+    "has_c_style_comments": false,
+    "has_pythonic_indent": true,
+    "is_near_empty": false,
+    "multiple_compilation_units": true
+  },
+  "scoring_decisions": {
+    "parser_status": "success",
+    "ast_nodes_total": 27,
+    "ast_nodes_supported": 27,
+    "ast_coverage_ratio": 1.0,
+    "domain_scores": {
+      "control": 100,
+      "computational": 100,
+      "runtime": 100
+    }
+  }
+}

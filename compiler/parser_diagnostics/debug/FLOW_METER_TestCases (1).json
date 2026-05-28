@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "dataset": "FLOW_METER_TestCases (1).st",
+    "generated_at": "2026-05-28T10:20:55.047143+00:00"
+  },
+  "ast_root_type": "ProgramNode",
+  "top_level_types": [
+    "CompilationUnitNode",
+    "CompilationUnitNode",
+    "CompilationUnitNode",
+    "CompilationUnitNode",
+    "CompilationUnitNode"
+  ],
+  "semantic_node_count": 20,
+  "control_nodes": [
+    "AssignmentNode",
+    "CaseStatementNode",
+    "ForLoopNode",
+    "FunctionBlockCallNode",
+    "IfStatementNode"
+  ],
+  "computational_nodes": [
+    "ArrayIndexNode",
+    "BinaryExpressionNode",
+    "BooleanNode",
+    "LogicalExpressionNode",
+    "NumberNode",
+    "TimeLiteralNode"
+  ],
+  "runtime_nodes": [
+    "CompilationUnitNode",
+    "MemoryMappingNode",
+    "VarBlockNode",
+    "VariableDeclarationNode"
+  ],
+  "unsupported_ast_nodes": [],
+  "visitor_traversal_status": "partial_support",
+  "visitor_traversal_errors": [],
+  "visitor_missing_methods": [
+    "visit_str"
+  ],
+  "visitor_event_count": 941,
+  "parse_failure_details": {
+    "category": "",
+    "error_context": {},
+    "error_line_text": "",
+    "nearby_lines": {
+      "previous_lines": [],
+      "next_lines": []
+    },
+    "expected_tokens": "",
+    "found_token": "",
+    "file_offset": null,
+    "parsed_prefix_percentage": 0.0,
+    "parsed_line_percentage": 0.0
+  },
+  "corpus_structure": {
+    "total_lines": 213,
+    "program_count": 1,
+    "function_block_count": 6,
+    "function_count": 0,
+    "configuration_count": 0,
+    "assert_expect_count": 0,
+    "has_metadata_header": false,
+    "has_dialect_keywords": false,
+    "has_c_style_comments": false,
+    "has_pythonic_indent": true,
+    "is_near_empty": false,
+    "multiple_compilation_units": true
+  },
+  "scoring_decisions": {
+    "parser_status": "success",
+    "ast_nodes_total": 20,
+    "ast_nodes_supported": 20,
+    "ast_coverage_ratio": 1.0,
+    "domain_scores": {
+      "control": 100,
+      "computational": 100,
+      "runtime": 100
+    }
+  }
+}

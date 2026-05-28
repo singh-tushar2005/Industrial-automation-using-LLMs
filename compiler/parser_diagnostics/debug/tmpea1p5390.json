@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "dataset": "tmpea1p5390.st",
+    "generated_at": "2026-05-28T09:53:28.946579+00:00"
+  },
+  "ast_root_type": "None",
+  "top_level_types": [],
+  "semantic_node_count": 0,
+  "control_nodes": [],
+  "computational_nodes": [],
+  "runtime_nodes": [],
+  "unsupported_ast_nodes": [],
+  "visitor_traversal_status": "no_ast",
+  "visitor_traversal_errors": [],
+  "visitor_missing_methods": [],
+  "visitor_event_count": 0,
+  "parse_failure_details": {
+    "category": "unsupported_test_harness",
+    "error_context": {
+      "line_number": 11,
+      "column": 1,
+      "file_offset": 122,
+      "failing_element": "end of text"
+    },
+    "error_line_text": "ASSERT(x = 1);",
+    "nearby_lines": {
+      "previous_lines": [
+        "  y := 2;",
+        "END_PROGRAM",
+        ""
+      ],
+      "next_lines": []
+    },
+    "expected_tokens": "Expected end of text",
+    "found_token": "'ASSERT'",
+    "file_offset": 122,
+    "parsed_prefix_percentage": 89.1,
+    "parsed_line_percentage": 91.7
+  },
+  "corpus_structure": {
+    "total_lines": 11,
+    "program_count": 2,
+    "function_block_count": 0,
+    "function_count": 0,
+    "configuration_count": 0,
+    "assert_expect_count": 2,
+    "has_metadata_header": true,
+    "has_dialect_keywords": false,
+    "has_c_style_comments": false,
+    "has_pythonic_indent": false,
+    "is_near_empty": false,
+    "multiple_compilation_units": true
+  },
+  "scoring_decisions": {
+    "parser_status": "failed",
+    "ast_nodes_total": 0,
+    "ast_nodes_supported": 0,
+    "ast_coverage_ratio": 0.0,
+    "domain_scores": {
+      "control": 0,
+      "computational": 0,
+      "runtime": 0
+    }
+  }
+}

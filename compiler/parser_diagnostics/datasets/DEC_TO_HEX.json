@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "dataset": "DEC_TO_HEX.st",
+    "file_path": "/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/Implementation_datasets/DEC_TO_HEX.st",
+    "generated_at": "2026-05-28T10:20:14.301911+00:00",
+    "diagnostics_version": "2.2.0"
+  },
+  "overall_status": "failed",
+  "parse_status": "failed",
+  "ast_status": "no_ast",
+  "visitor_status": "no_ast",
+  "scores": {
+    "parser_compatibility": 25,
+    "ast_compatibility": 0,
+    "visitor_compatibility": 0,
+    "control_grammar_support": 0,
+    "computational_grammar_support": 0,
+    "runtime_grammar_support": 0
+  },
+  "supported_constructs": [
+    "IF",
+    "assignment",
+    "boolean_logic",
+    "arithmetic_expression",
+    "comparison_expression",
+    "FUNCTION_BLOCK",
+    "VAR",
+    "VAR_INPUT",
+    "VAR_OUTPUT",
+    "FOR_LOOP",
+    "RETURN",
+    "FB_invocation",
+    "numeric_literal",
+    "boolean_literal",
+    "string_literal",
+    "array_index",
+    "array_declaration"
+  ],
+  "unsupported_constructs": [],
+  "detected_constructs": {
+    "IF": {
+      "detected": true,
+      "line_numbers": [
+        20,
+        37
+      ]
+    },
+    "ELSIF": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "ELSE": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "CASE_OF": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "assignment": {
+      "detected": true,
+      "line_numbers": [
+        10,
+        13,
+        18,
+        21,
+        25,
+        27,
+        29,
+        30,
+        31,
+        34,
+        35,
+        38,
+        39
+      ]
+    },
+    "boolean_logic": {
+      "detected": true,
+      "line_numbers": [
+        37
+      ]
+    },
+    "arithmetic_expression": {
+      "detected": true,
+      "line_numbers": [
+        30,
+        31,
+        37
+      ]
+    },
+    "comparison_expression": {
+      "detected": true,
+      "line_numbers": [
+        10,
+        13,
+        18,
+        20,
+        21,
+        25,
+        27,
+        29,
+        30,
+        31,
+        34,
+        35,
+        37,
+        38,
+        39
+      ]
+    },
+    "FUNCTION": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FUNCTION_BLOCK": {
+      "detected": true,
+      "line_numbers": [
+        1
+      ]
+    },
+    "VAR": {
+      "detected": true,
+      "line_numbers": [
+        8
+      ]
+    },
+    "VAR_INPUT": {
+      "detected": true,
+      "line_numbers": [
+        2
+      ]
+    },
+    "VAR_OUTPUT": {
+      "detected": true,
+      "line_numbers": [
+        5
+      ]
+    },
+    "VAR_IN_OUT": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FOR_LOOP": {
+      "detected": true,
+      "line_numbers": [
+        27,
+        30
+      ]
+    },
+    "WHILE_LOOP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "REPEAT_LOOP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "EXIT": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "RETURN": {
+      "detected": true,
+      "line_numbers": [
+        22
+      ]
+    },
+    "timer_TON": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "timer_TOF": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "timer_TP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTU": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTD": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTUD": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FB_invocation": {
+      "detected": true,
+      "line_numbers": [
+        34,
+        37,
+        39
+      ]
+    },
+    "time_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "typed_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "numeric_literal": {
+      "detected": true,
+      "line_numbers": [
+        10,
+        20,
+        21,
+        27,
+        29,
+        30,
+        31,
+        34,
+        37
+      ]
+    },
+    "boolean_literal": {
+      "detected": true,
+      "line_numbers": [
+        13,
+        25,
+        38
+      ]
+    },
+    "hex_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "string_literal": {
+      "detected": true,
+      "line_numbers": [
+        10,
+        18,
+        21,
+        37
+      ]
+    },
+    "state_machine": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "multiline_boolean": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "array_index": {
+      "detected": true,
+      "line_numbers": [
+        10,
+        35
+      ]
+    },
+    "array_declaration": {
+      "detected": true,
+      "line_numbers": [
+        10
+      ]
+    },
+    "CONFIGURATION": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "RESOURCE": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "TASK": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "PROGRAM_binding": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "memory_mapping": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "WITH": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "ON": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "AT": {
+      "detected": false,
+      "line_numbers": []
+    }
+  },
+  "missing_ast_nodes": [],
+  "missing_visitor_methods": [],
+  "parser_failures": [
+    {
+      "line": 8,
+      "column": 3,
+      "reason": "Expected Keyword 'END_FUNCTION_BLOCK', found 'VAR'  (at char 122), (line:8, col:3)",
+      "severity": "CRITICAL",
+      "category": "invalid_statement_sequence",
+      "expected": "Expected Keyword 'END_FUNCTION_BLOCK'",
+      "found": "'VAR'",
+      "file_offset": 122,
+      "parsed_prefix_pct": 11.6,
+      "parsed_line_pct": 18.6,
+      "error_line_text": "  VAR",
+      "nearby_lines": {
+        "previous_lines": [
+          "  VAR_OUTPUT",
+          "    HexString : STRING;",
+          "  END_VAR"
+        ],
+        "next_lines": [
+          "    i : INT;",
+          "    hexDigits : ARRAY [0..15] OF STRING := ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];",
+          "    digitIndex : INT;"
+        ]
+      }
+    }
+  ],
+  "ast_nodes_present": [],
+  "visitor_methods_present": [],
+  "visitor_traversal_event_count": 0,
+  "issues": [
+    {
+      "category": "parser",
+      "severity": "CRITICAL",
+      "message": "Expected Keyword 'END_FUNCTION_BLOCK', found 'VAR'  (at char 122), (line:8, col:3)"
+    }
+  ],
+  "domain_support": {
+    "control_nodes": [],
+    "computational_nodes": [],
+    "runtime_nodes": []
+  },
+  "corpus_structure": {
+    "total_lines": 43,
+    "program_count": 0,
+    "function_block_count": 1,
+    "function_count": 0,
+    "configuration_count": 0,
+    "assert_expect_count": 0,
+    "has_metadata_header": false,
+    "has_dialect_keywords": false,
+    "has_c_style_comments": false,
+    "has_pythonic_indent": true,
+    "is_near_empty": false,
+    "multiple_compilation_units": false
+  },
+  "parse_failure_details": {
+    "category": "invalid_statement_sequence",
+    "error_context": {
+      "line_number": 8,
+      "column": 3,
+      "file_offset": 122,
+      "failing_element": "'END_FUNCTION_BLOCK'"
+    },
+    "error_line_text": "  VAR",
+    "nearby_lines": {
+      "previous_lines": [
+        "  VAR_OUTPUT",
+        "    HexString : STRING;",
+        "  END_VAR"
+      ],
+      "next_lines": [
+        "    i : INT;",
+        "    hexDigits : ARRAY [0..15] OF STRING := ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];",
+        "    digitIndex : INT;"
+      ]
+    },
+    "expected_tokens": "Expected Keyword 'END_FUNCTION_BLOCK'",
+    "found_token": "'VAR'",
+    "file_offset": 122,
+    "parsed_prefix_percentage": 11.6,
+    "parsed_line_percentage": 18.6
+  },
+  "progression": {
+    "parser_previous": 25,
+    "parser_delta": 0,
+    "ast_previous": 0,
+    "ast_delta": 0,
+    "visitor_previous": 0,
+    "visitor_delta": 0
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "meta": {
+    "dataset": "TOOL_CHANGER.st",
+    "file_path": "/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/Implementation_datasets/TOOL_CHANGER.st",
+    "generated_at": "2026-05-28T10:20:17.488334+00:00",
+    "diagnostics_version": "2.2.0"
+  },
+  "overall_status": "success",
+  "parse_status": "success",
+  "ast_status": "full_support",
+  "visitor_status": "full_support",
+  "scores": {
+    "parser_compatibility": 100,
+    "ast_compatibility": 100,
+    "visitor_compatibility": 100,
+    "control_grammar_support": 100,
+    "computational_grammar_support": 100,
+    "runtime_grammar_support": 100
+  },
+  "supported_constructs": [
+    "IF",
+    "ELSE",
+    "CASE_OF",
+    "assignment",
+    "arithmetic_expression",
+    "comparison_expression",
+    "FUNCTION_BLOCK",
+    "VAR",
+    "VAR_INPUT",
+    "VAR_OUTPUT",
+    "FOR_LOOP",
+    "numeric_literal",
+    "boolean_literal"
+  ],
+  "unsupported_constructs": [],
+  "detected_constructs": {
+    "IF": {
+      "detected": true,
+      "line_numbers": [
+        4,
+        18,
+        21,
+        22,
+        32
+      ]
+    },
+    "ELSIF": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "ELSE": {
+      "detected": true,
+      "line_numbers": [
+        25
+      ]
+    },
+    "CASE_OF": {
+      "detected": true,
+      "line_numbers": [
+        19
+      ]
+    },
+    "assignment": {
+      "detected": true,
+      "line_numbers": [
+        23,
+        24,
+        26,
+        27,
+        33,
+        34,
+        35,
+        40,
+        41
+      ]
+    },
+    "boolean_logic": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "arithmetic_expression": {
+      "detected": true,
+      "line_numbers": [
+        4,
+        5,
+        6,
+        10,
+        11,
+        15,
+        21,
+        31,
+        39
+      ]
+    },
+    "comparison_expression": {
+      "detected": true,
+      "line_numbers": [
+        15,
+        22,
+        23,
+        24,
+        26,
+        27,
+        32,
+        33,
+        34,
+        35,
+        40,
+        41
+      ]
+    },
+    "FUNCTION": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FUNCTION_BLOCK": {
+      "detected": true,
+      "line_numbers": [
+        1
+      ]
+    },
+    "VAR": {
+      "detected": true,
+      "line_numbers": [
+        14
+      ]
+    },
+    "VAR_INPUT": {
+      "detected": true,
+      "line_numbers": [
+        3
+      ]
+    },
+    "VAR_OUTPUT": {
+      "detected": true,
+      "line_numbers": [
+        9
+      ]
+    },
+    "VAR_IN_OUT": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FOR_LOOP": {
+      "detected": true,
+      "line_numbers": [
+        31,
+        39
+      ]
+    },
+    "WHILE_LOOP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "REPEAT_LOOP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "EXIT": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "RETURN": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "timer_TON": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "timer_TOF": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "timer_TP": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTU": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTD": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "counter_CTUD": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "FB_invocation": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "time_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "typed_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "numeric_literal": {
+      "detected": true,
+      "line_numbers": [
+        15,
+        20,
+        24,
+        27,
+        30,
+        35,
+        38,
+        41
+      ]
+    },
+    "boolean_literal": {
+      "detected": true,
+      "line_numbers": [
+        4,
+        23,
+        26,
+        33,
+        34,
+        40
+      ]
+    },
+    "hex_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "string_literal": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "state_machine": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "multiline_boolean": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "array_index": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "array_declaration": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "CONFIGURATION": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "RESOURCE": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "TASK": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "PROGRAM_binding": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "memory_mapping": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "WITH": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "ON": {
+      "detected": false,
+      "line_numbers": []
+    },
+    "AT": {
+      "detected": false,
+      "line_numbers": []
+    }
+  },
+  "missing_ast_nodes": [],
+  "missing_visitor_methods": [],
+  "parser_failures": [],
+  "ast_nodes_present": [
+    "AssignmentNode",
+    "BinaryExpressionNode",
+    "BlockNode",
+    "BooleanNode",
+    "CaseBranchNode",
+    "CaseStatementNode",
+    "CompilationUnitNode",
+    "IfStatementNode",
+    "NumberNode",
+    "ProgramNode",
+    "VarBlockNode",
+    "VariableDeclarationNode",
+    "VariableNode"
+  ],
+  "visitor_methods_present": [
+    "visit_ArrayIndexNode",
+    "visit_ArrayTypeNode",
+    "visit_AssignmentNode",
+    "visit_BinaryExpressionNode",
+    "visit_BlockNode",
+    "visit_BooleanNode",
+    "visit_CaseBranchNode",
+    "visit_CaseStatementNode",
+    "visit_CompilationUnitNode",
+    "visit_ConfigurationNode",
+    "visit_ExitNode",
+    "visit_ForLoopNode",
+    "visit_FunctionBlockCallNode",
+    "visit_FunctionBlockInvocationNode",
+    "visit_FunctionInvocationNode",
+    "visit_IfStatementNode",
+    "visit_InvocationArgumentNode",
+    "visit_LogicalExpressionNode",
+    "visit_MemoryMappingNode",
+    "visit_NumberNode",
+    "visit_ProgramBindingNode",
+    "visit_ProgramNode",
+    "visit_RepeatLoopNode",
+    "visit_ResourceNode",
+    "visit_ReturnNode",
+    "visit_StringLiteralNode",
+    "visit_TaskNode",
+    "visit_TimeLiteralNode",
+    "visit_TypedLiteralNode",
+    "visit_VarBlockNode",
+    "visit_VariableDeclarationNode",
+    "visit_VariableNode",
+    "visit_WhileLoopNode"
+  ],
+  "visitor_traversal_event_count": 127,
+  "issues": [],
+  "domain_support": {
+    "control_nodes": [
+      "AssignmentNode",
+      "CaseStatementNode",
+      "IfStatementNode"
+    ],
+    "computational_nodes": [
+      "BinaryExpressionNode",
+      "BooleanNode",
+      "NumberNode"
+    ],
+    "runtime_nodes": [
+      "CompilationUnitNode",
+      "VarBlockNode",
+      "VariableDeclarationNode"
+    ]
+  },
+  "corpus_structure": {
+    "total_lines": 45,
+    "program_count": 0,
+    "function_block_count": 1,
+    "function_count": 0,
+    "configuration_count": 0,
+    "assert_expect_count": 0,
+    "has_metadata_header": true,
+    "has_dialect_keywords": false,
+    "has_c_style_comments": false,
+    "has_pythonic_indent": true,
+    "is_near_empty": false,
+    "multiple_compilation_units": false
+  },
+  "parse_failure_details": {
+    "category": "",
+    "error_context": {},
+    "error_line_text": "",
+    "nearby_lines": {
+      "previous_lines": [],
+      "next_lines": []
+    },
+    "expected_tokens": "",
+    "found_token": "",
+    "file_offset": null,
+    "parsed_prefix_percentage": 0.0,
+    "parsed_line_percentage": 0.0
+  },
+  "progression": {
+    "parser_previous": 100,
+    "parser_delta": 0,
+    "ast_previous": 100,
+    "ast_delta": 0,
+    "visitor_previous": 100,
+    "visitor_delta": 0
+  }
+}
