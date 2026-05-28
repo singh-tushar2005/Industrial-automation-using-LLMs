@@ -1,7 +1,7 @@
 {
   "meta": {
     "dataset": "INCLUDE.st",
-    "generated_at": "2026-05-28T10:20:15.886661+00:00"
+    "generated_at": "2026-05-28T10:32:40.328294+00:00"
   },
   "ast_root_type": "ProgramNode",
   "top_level_types": [
@@ -46,8 +46,8 @@
     "expected_tokens": "",
     "found_token": "",
     "file_offset": null,
-    "parsed_prefix_percentage": 0.0,
-    "parsed_line_percentage": 0.0
+    "parsed_prefix_percentage": 100.0,
+    "parsed_line_percentage": 100.0
   },
   "corpus_structure": {
     "total_lines": 338,

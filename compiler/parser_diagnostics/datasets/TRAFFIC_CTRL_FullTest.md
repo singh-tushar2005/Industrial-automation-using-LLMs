@@ -1,7 +1,7 @@
 # Industrial Compiler Diagnostics: TRAFFIC_CTRL_FullTest.st
 
 - **File:** `/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest.st`
-- **Generated:** 2026-05-28T10:20:52.542766+00:00
+- **Generated:** 2026-05-28T10:33:17.316868+00:00
 - **Overall Status:** partial_success
 
 ## Compatibility Scores
@@ -42,9 +42,8 @@
 
 ## Visitor Status
 
-- **Status:** partial_support
-- **Traversal events:** 2195
-- **Missing methods:** visit_str
+- **Status:** full_support
+- **Traversal events:** 2190
 
 ## Construct Support
 
@@ -91,4 +90,3 @@
 - **[ERROR]** Unsupported construct: timer_TON
 - **[ERROR]** Unsupported construct: state_machine
 - **[ERROR]** Unsupported construct: multiline_boolean
-- **[WARNING]** Missing visitor method: visit_str

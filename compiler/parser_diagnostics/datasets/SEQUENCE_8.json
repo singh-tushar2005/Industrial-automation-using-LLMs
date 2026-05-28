@@ -2,7 +2,7 @@
   "meta": {
     "dataset": "SEQUENCE_8.st",
     "file_path": "/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/Implementation_datasets/SEQUENCE_8.st",
-    "generated_at": "2026-05-28T10:20:17.432755+00:00",
+    "generated_at": "2026-05-28T10:32:41.883195+00:00",
     "diagnostics_version": "2.2.0"
   },
   "overall_status": "partial_success",
@@ -807,8 +807,8 @@
     "expected_tokens": "",
     "found_token": "",
     "file_offset": null,
-    "parsed_prefix_percentage": 0.0,
-    "parsed_line_percentage": 0.0
+    "parsed_prefix_percentage": 100.0,
+    "parsed_line_percentage": 100.0
   },
   "progression": {
     "parser_previous": 98,

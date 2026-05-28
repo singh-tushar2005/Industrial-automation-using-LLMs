@@ -1,7 +1,7 @@
 {
   "meta": {
     "dataset": "TRAFFIC_CTRL_FullTest.st",
-    "generated_at": "2026-05-28T10:20:52.542766+00:00"
+    "generated_at": "2026-05-28T10:33:17.316868+00:00"
   },
   "ast_root_type": "ProgramNode",
   "top_level_types": [
@@ -40,12 +40,10 @@
     "VariableDeclarationNode"
   ],
   "unsupported_ast_nodes": [],
-  "visitor_traversal_status": "partial_support",
+  "visitor_traversal_status": "full_support",
   "visitor_traversal_errors": [],
-  "visitor_missing_methods": [
-    "visit_str"
-  ],
-  "visitor_event_count": 2195,
+  "visitor_missing_methods": [],
+  "visitor_event_count": 2190,
   "parse_failure_details": {
     "category": "",
     "error_context": {},
@@ -57,8 +55,8 @@
     "expected_tokens": "",
     "found_token": "",
     "file_offset": null,
-    "parsed_prefix_percentage": 0.0,
-    "parsed_line_percentage": 0.0
+    "parsed_prefix_percentage": 100.0,
+    "parsed_line_percentage": 100.0
   },
   "corpus_structure": {
     "total_lines": 622,

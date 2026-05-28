@@ -1,7 +1,7 @@
 # Industrial Compiler Diagnostics: SEQUENCE_8_FullTest (1).st
 
 - **File:** `/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest (1).st`
-- **Generated:** 2026-05-28T10:20:44.804627+00:00
+- **Generated:** 2026-05-28T10:33:09.470249+00:00
 - **Overall Status:** partial_success
 
 ## Compatibility Scores
@@ -42,9 +42,8 @@
 
 ## Visitor Status
 
-- **Status:** partial_support
-- **Traversal events:** 2915
-- **Missing methods:** visit_str
+- **Status:** full_support
+- **Traversal events:** 2912
 
 ## Construct Support
 
@@ -90,4 +89,3 @@
 
 - **[ERROR]** Unsupported construct: timer_TON
 - **[ERROR]** Unsupported construct: multiline_boolean
-- **[WARNING]** Missing visitor method: visit_str

@@ -1,7 +1,7 @@
 # Industrial Compiler Diagnostics: GEN_SIN_TestCases.st
 
 - **File:** `/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases.st`
-- **Generated:** 2026-05-28T10:20:57.648772+00:00
+- **Generated:** 2026-05-28T10:33:22.368990+00:00
 - **Overall Status:** partial_success
 
 ## Compatibility Scores
@@ -40,9 +40,8 @@
 
 ## Visitor Status
 
-- **Status:** partial_support
-- **Traversal events:** 824
-- **Missing methods:** visit_str
+- **Status:** full_support
+- **Traversal events:** 818
 
 ## Construct Support
 
@@ -72,4 +71,3 @@
 ## Issues
 
 - **[ERROR]** Unsupported construct: timer_TON
-- **[WARNING]** Missing visitor method: visit_str

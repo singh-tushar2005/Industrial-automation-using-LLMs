@@ -2,13 +2,13 @@
   "meta": {
     "dataset": "FLOW_METER_FullTest.st",
     "file_path": "/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest.st",
-    "generated_at": "2026-05-28T10:20:26.429165+00:00",
+    "generated_at": "2026-05-28T10:32:50.932245+00:00",
     "diagnostics_version": "2.2.0"
   },
   "overall_status": "partial_success",
   "parse_status": "success",
   "ast_status": "full_support",
-  "visitor_status": "partial_support",
+  "visitor_status": "full_support",
   "scores": {
     "parser_compatibility": 98,
     "ast_compatibility": 100,
@@ -1124,9 +1124,7 @@
     }
   },
   "missing_ast_nodes": [],
-  "missing_visitor_methods": [
-    "visit_str"
-  ],
+  "missing_visitor_methods": [],
   "parser_failures": [],
   "ast_nodes_present": [
     "ArrayIndexNode",
@@ -1191,7 +1189,7 @@
     "visit_VariableNode",
     "visit_WhileLoopNode"
   ],
-  "visitor_traversal_event_count": 2126,
+  "visitor_traversal_event_count": 2120,
   "issues": [
     {
       "category": "grammar",
@@ -1202,11 +1200,6 @@
       "category": "grammar",
       "severity": "ERROR",
       "message": "Unsupported construct: multiline_boolean"
-    },
-    {
-      "category": "visitor",
-      "severity": "WARNING",
-      "message": "Missing visitor method: visit_str"
     }
   ],
   "domain_support": {
@@ -1263,8 +1256,8 @@
     "expected_tokens": "",
     "found_token": "",
     "file_offset": null,
-    "parsed_prefix_percentage": 0.0,
-    "parsed_line_percentage": 0.0
+    "parsed_prefix_percentage": 100.0,
+    "parsed_line_percentage": 100.0
   },
   "progression": {
     "parser_previous": 98,

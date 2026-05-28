@@ -1,7 +1,7 @@
 # Industrial Compiler Diagnostics: CRC_GEN.st
 
 - **File:** `/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/Implementation_datasets/CRC_GEN.st`
-- **Generated:** 2026-05-28T10:20:14.281754+00:00
+- **Generated:** 2026-05-28T10:32:38.723066+00:00
 - **Overall Status:** partial_success
 
 ## Compatibility Scores
@@ -38,9 +38,8 @@
 
 ## Visitor Status
 
-- **Status:** partial_support
-- **Traversal events:** 391
-- **Missing methods:** visit_str
+- **Status:** full_support
+- **Traversal events:** 387
 
 ## Construct Support
 
@@ -73,4 +72,3 @@
 ## Issues
 
 - **[ERROR]** Unsupported construct: multiline_boolean
-- **[WARNING]** Missing visitor method: visit_str

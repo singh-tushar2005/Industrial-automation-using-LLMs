@@ -2,7 +2,7 @@
   "meta": {
     "dataset": "FLOW_METER.st",
     "file_path": "/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/Implementation_datasets/FLOW_METER.st",
-    "generated_at": "2026-05-28T10:20:14.510370+00:00",
+    "generated_at": "2026-05-28T10:32:38.954669+00:00",
     "diagnostics_version": "2.2.0"
   },
   "overall_status": "success",
@@ -441,8 +441,8 @@
     "expected_tokens": "",
     "found_token": "",
     "file_offset": null,
-    "parsed_prefix_percentage": 0.0,
-    "parsed_line_percentage": 0.0
+    "parsed_prefix_percentage": 100.0,
+    "parsed_line_percentage": 100.0
   },
   "progression": {
     "parser_previous": 100,

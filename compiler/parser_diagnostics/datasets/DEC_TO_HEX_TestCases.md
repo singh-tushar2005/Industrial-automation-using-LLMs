@@ -1,7 +1,7 @@
 # Industrial Compiler Diagnostics: DEC_TO_HEX_TestCases.st
 
 - **File:** `/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/test_case/DEC_TO_HEX_TestCases.st`
-- **Generated:** 2026-05-28T10:20:54.525695+00:00
+- **Generated:** 2026-05-28T10:33:19.277322+00:00
 - **Overall Status:** partial_success
 
 ## Compatibility Scores
@@ -40,9 +40,8 @@
 
 ## Visitor Status
 
-- **Status:** partial_support
-- **Traversal events:** 2561
-- **Missing methods:** visit_str
+- **Status:** full_support
+- **Traversal events:** 2542
 
 ## Construct Support
 
@@ -73,4 +72,3 @@
 ## Issues
 
 - **[ERROR]** Unsupported construct: timer_TON
-- **[WARNING]** Missing visitor method: visit_str

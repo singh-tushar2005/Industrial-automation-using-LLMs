@@ -9,6 +9,9 @@ class ASTVisitor:
         if node is None:
             return None
 
+        if isinstance(node, (str, int, float, bool)):
+            return node
+
         node_type_name = node.__class__.__name__
         method_name = f"visit_{node_type_name}"
         visitor_method = getattr(self, method_name, self.generic_visit)

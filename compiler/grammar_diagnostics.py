@@ -813,6 +813,8 @@ def attempt_parse(file_path):
         source_code = load_st_file(file_path)
         ast = parse_st_program(source_code)
         diagnostics["parse_status"] = "success"
+        diagnostics["parsed_prefix_percentage"] = 100.0
+        diagnostics["parsed_line_percentage"] = 100.0
     except Exception as exc:
         diagnostics["parse_status"] = "failed"
         diagnostics["parse_error"] = str(exc)

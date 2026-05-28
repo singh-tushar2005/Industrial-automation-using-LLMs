@@ -1,7 +1,7 @@
 # Industrial Compiler Diagnostics: FT_PIDWL_FullTest.st
 
 - **File:** `/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/Full_test/FT_PIDWL_FullTest.st`
-- **Generated:** 2026-05-28T10:20:29.148909+00:00
+- **Generated:** 2026-05-28T10:32:53.656131+00:00
 - **Overall Status:** partial_success
 
 ## Compatibility Scores
@@ -42,9 +42,8 @@
 
 ## Visitor Status
 
-- **Status:** partial_support
-- **Traversal events:** 1902
-- **Missing methods:** visit_str
+- **Status:** full_support
+- **Traversal events:** 1897
 
 ## Construct Support
 
@@ -89,4 +88,3 @@
 
 - **[ERROR]** Unsupported construct: timer_TON
 - **[ERROR]** Unsupported construct: multiline_boolean
-- **[WARNING]** Missing visitor method: visit_str

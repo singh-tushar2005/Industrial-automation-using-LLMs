@@ -1,7 +1,7 @@
 # Industrial Compiler Diagnostics: CRC_GEN_TestCases (1).st
 
 - **File:** `/home/res/Research/230957084/Industrial_Automation/Industrial-automation-using-LLMs/datasets/Industrial_data/test_harness/test_case/CRC_GEN_TestCases (1).st`
-- **Generated:** 2026-05-28T10:20:52.826579+00:00
+- **Generated:** 2026-05-28T10:33:17.597905+00:00
 - **Overall Status:** partial_success
 
 ## Compatibility Scores
@@ -40,9 +40,8 @@
 
 ## Visitor Status
 
-- **Status:** partial_support
-- **Traversal events:** 489
-- **Missing methods:** visit_str
+- **Status:** full_support
+- **Traversal events:** 486
 
 ## Construct Support
 
@@ -72,4 +71,3 @@
 ## Issues
 
 - **[ERROR]** Unsupported construct: timer_TON
-- **[WARNING]** Missing visitor method: visit_str

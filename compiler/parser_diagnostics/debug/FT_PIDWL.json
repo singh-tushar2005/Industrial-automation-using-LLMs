@@ -1,7 +1,7 @@
 {
   "meta": {
     "dataset": "FT_PIDWL.st",
-    "generated_at": "2026-05-28T10:20:14.616359+00:00"
+    "generated_at": "2026-05-28T10:32:39.059025+00:00"
   },
   "ast_root_type": "ProgramNode",
   "top_level_types": [
@@ -39,8 +39,8 @@
     "expected_tokens": "",
     "found_token": "",
     "file_offset": null,
-    "parsed_prefix_percentage": 0.0,
-    "parsed_line_percentage": 0.0
+    "parsed_prefix_percentage": 100.0,
+    "parsed_line_percentage": 100.0
   },
   "corpus_structure": {
     "total_lines": 54,

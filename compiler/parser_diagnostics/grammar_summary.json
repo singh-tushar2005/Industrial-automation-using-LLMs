@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-28T10:21:03.116495+00:00",
+    "generated_at": "2026-05-28T10:33:27.795541+00:00",
     "total_datasets": 57,
     "diagnostics_version": "2.0.0"
   },
@@ -16,7 +16,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "DEC_TO_HEX.st",
@@ -111,7 +111,7 @@
     },
     {
       "dataset": "MATRIX.st",
-      "overall_status": "partial_success",
+      "overall_status": "success",
       "scores": {
         "parser_compatibility": 100,
         "ast_compatibility": 100,
@@ -120,7 +120,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 1
+      "issue_count": 0
     },
     {
       "dataset": "SEQUENCE_8.st",
@@ -224,7 +224,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "CRC_GEN_FullTest.st",
@@ -237,7 +237,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "DEC_TO_HEX_FullTest.st",
@@ -263,7 +263,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "FLOW_METER_FullTest.st",
@@ -276,7 +276,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "FT_PIDWL_FullTest (1).st",
@@ -289,7 +289,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "FT_PIDWL_FullTest.st",
@@ -302,7 +302,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "GEN_BIT_FullTest.st",
@@ -315,7 +315,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 4
+      "issue_count": 3
     },
     {
       "dataset": "GEN_SIN_FullTest (1).st",
@@ -328,7 +328,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "GEN_SIN_FullTest (2).st",
@@ -341,7 +341,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "GEN_SIN_FullTest.st",
@@ -354,7 +354,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "LAMBERT_W_FullTest (1).st",
@@ -367,7 +367,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "LAMBERT_W_FullTest.st",
@@ -380,7 +380,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "MATRIX_FullTest (1).st",
@@ -393,7 +393,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "MATRIX_FullTest.st",
@@ -406,7 +406,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "SEQUENCE_8_FullTest (1).st",
@@ -419,7 +419,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "SEQUENCE_8_FullTest.st",
@@ -432,7 +432,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "TOOL_CHANGER_FullTest (1).st",
@@ -445,7 +445,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "TOOL_CHANGER_FullTest.st",
@@ -458,7 +458,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 3
+      "issue_count": 2
     },
     {
       "dataset": "TRAFFIC_CTRL_FullTest (1).st",
@@ -471,7 +471,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 4
+      "issue_count": 3
     },
     {
       "dataset": "TRAFFIC_CTRL_FullTest.st",
@@ -484,7 +484,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 4
+      "issue_count": 3
     },
     {
       "dataset": "CRC_GEN_TestCases (1).st",
@@ -497,7 +497,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "CRC_GEN_TestCases.st",
@@ -510,7 +510,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "DEC_TO_HEX_TestCases.st",
@@ -523,7 +523,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "FLOW_METER_TestCases (1).st",
@@ -536,7 +536,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "FLOW_METER_TestCases.st",
@@ -549,7 +549,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "FT_PIDWL_TestCases (1).st",
@@ -562,7 +562,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "FT_PIDWL_TestCases.st",
@@ -575,7 +575,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "GEN_BIT_TestCases.st",
@@ -588,7 +588,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "GEN_SIN_TestCases (1).st",
@@ -601,7 +601,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "GEN_SIN_TestCases.st",
@@ -614,7 +614,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "LAMBERT_W_TestCases (1).st",
@@ -627,7 +627,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "LAMBERT_W_TestCases.st",
@@ -640,7 +640,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "MATRIX_TestCases (1).st",
@@ -653,7 +653,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "MATRIX_TestCases.st",
@@ -666,7 +666,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "SEQUENCE_8_TestCases (1).st",
@@ -679,7 +679,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "SEQUENCE_8_TestCases.st",
@@ -692,7 +692,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "TOOL_CHANGER_TestCases (1).st",
@@ -705,7 +705,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "TOOL_CHANGER_TestCases.st",
@@ -718,7 +718,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "TRAFFIC_CTRL_TestCases (1).st",
@@ -731,7 +731,7 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     },
     {
       "dataset": "TRAFFIC_CTRL_TestCases.st",
@@ -744,12 +744,12 @@
         "computational_grammar_support": 100,
         "runtime_grammar_support": 100
       },
-      "issue_count": 2
+      "issue_count": 1
     }
   ],
   "maturity": {
-    "success": 5,
-    "partial_success": 50,
+    "success": 6,
+    "partial_success": 49,
     "failed": 2
   },
   "construct_frequencies": {
@@ -829,12 +829,9 @@
     "TaskNode": 20,
     "StringLiteralNode": 3
   },
-  "missing_visitor_method_frequencies": {
-    "visit_str": 42
-  },
+  "missing_visitor_method_frequencies": {},
   "severity_counts": {
     "ERROR": 77,
-    "WARNING": 42,
     "CRITICAL": 2
   },
   "parser_average_score": 95.3,
