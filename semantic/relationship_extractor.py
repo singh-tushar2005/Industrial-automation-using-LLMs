@@ -249,6 +249,38 @@ class RelationshipExtractor(ASTVisitor):
     def visit_TimeLiteralNode(self, node):
         return None
 
+    def visit_ConfigurationNode(self, node):
+        self.visit(node.body)
+
+    def visit_ResourceNode(self, node):
+        self.visit(node.body)
+
+    def visit_TaskNode(self, node):
+        for argument in node.arguments:
+            if hasattr(argument, "value"):
+                self.visit(argument)
+            elif isinstance(argument, (tuple, list)) and len(argument) == 2:
+                self.visit(argument[1])
+
+    def visit_ProgramBindingNode(self, node):
+        return None
+
+    def visit_MemoryMappingNode(self, node):
+        return None
+
+    def visit_StringLiteralNode(self, node):
+        return None
+
+    def visit_VarBlockNode(self, node):
+        for declaration in node.declarations:
+            self.visit(declaration)
+
+    def visit_VariableDeclarationNode(self, node):
+        if node.default_value is not None:
+            self.visit(node.default_value)
+        if node.at_mapping is not None:
+            self.visit(node.at_mapping)
+
     # ------------------------------------------------------------------
     # Relationship rules
     # ------------------------------------------------------------------
