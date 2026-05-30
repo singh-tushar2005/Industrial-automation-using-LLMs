@@ -20,6 +20,14 @@ NODE_KINDS = {
     "counter",
     "mode",
     "unknown",
+    "configuration",
+    "resource",
+    "task",
+    "program",
+    "state",
+    "function_block",
+    "function",
+    "sensor",
 }
 
 EDGE_RELATIONS = {
@@ -29,6 +37,12 @@ EDGE_RELATIONS = {
     "activates",
     "sequences",
     "depends_on",
+    "contains",
+    "schedules",
+    "uses",
+    "transitions_to",
+    "controls",
+    "feeds",
 }
 
 

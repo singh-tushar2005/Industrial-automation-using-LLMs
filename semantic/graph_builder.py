@@ -63,18 +63,18 @@ class SemanticGraphBuilder:
             if not source_id or not target_id:
                 continue
 
-            source_kind = self.infer_node_kind(source_id)
-            target_kind = self.infer_node_kind(target_id)
+            source_kind = metadata.get("source_kind") or self.infer_node_kind(source_id)
+            target_kind = metadata.get("target_kind") or self.infer_node_kind(target_id)
 
             source_node = SemanticGraphNode(
                 node_id=source_id,
                 node_kind=source_kind,
-                metadata={"inferred_kind": True},
+                metadata={"inferred_kind": metadata.get("source_kind") is None},
             )
             target_node = SemanticGraphNode(
                 node_id=target_id,
                 node_kind=target_kind,
-                metadata={"inferred_kind": True},
+                metadata={"inferred_kind": metadata.get("target_kind") is None},
             )
 
             self.graph.add_node(source_node)
@@ -102,6 +102,27 @@ class SemanticGraphBuilder:
         classification and defaults to "unknown" when no pattern matches.
         """
 
+        if self.is_configuration(name):
+            return "configuration"
+
+        if self.is_resource(name):
+            return "resource"
+
+        if self.is_task(name):
+            return "task"
+
+        if self.is_program(name):
+            return "program"
+
+        if self.is_state(name):
+            return "state"
+
+        if self.is_function_block(name):
+            return "function_block"
+
+        if self.is_function(name):
+            return "function"
+
         if self.is_timer(name):
             return "timer"
 
@@ -110,6 +131,9 @@ class SemanticGraphBuilder:
 
         if self.is_alarm(name):
             return "alarm"
+
+        if self.is_sensor(name):
+            return "sensor"
 
         if self.is_actuator(name):
             return "actuator"
@@ -248,3 +272,44 @@ class SemanticGraphBuilder:
                 "Q",
             )
         )
+
+    def is_sensor(self, name):
+        """Return True if the name matches known sensor patterns."""
+
+        return any(
+            term in name
+            for term in (
+                "Sensor",
+                "Switch",
+                "Proximity",
+                "Encoder",
+                "Transducer",
+                "Detector",
+                "Probe",
+                "Photo",
+                "Inductive",
+                "Capacitive",
+            )
+        )
+
+    def is_configuration(self, name):
+        return name.startswith("Config")
+
+    def is_resource(self, name):
+        return name.startswith("Res") or name.startswith("PLC")
+
+    def is_task(self, name):
+        return name.startswith("task") or "Task" in name
+
+    def is_program(self, name):
+        return name.startswith("Prog") or name.endswith("Program") or name.startswith("Main")
+
+    def is_state(self, name):
+        return name in ("State", "LightState", "Step", "StartupStep", "BatchStep", "Mode")
+
+    def is_function_block(self, name):
+        fb_upper = name.upper()
+        return fb_upper.startswith(("FB_", "TON", "TOF", "TP", "CTU", "CTD", "CTUD", "FT_", "PID")) or name.endswith("Block")
+
+    def is_function(self, name):
+        return name.upper().startswith(("F_", "FC_", "SHR", "SHL", "ROL", "ROR", "NOT", "AND", "OR", "XOR")) or name in ("FLOOR", "MODR", "SIGN_R", "BIT_OF_DWORD", "REVERSE", "REFLECT", "BIT_LOAD_B", "_BYTE_TO_INT", "T_PLC_MS", "T_PLC_US")

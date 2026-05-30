@@ -19,6 +19,16 @@ PROCESS_ENABLE_CONDITION = "PROCESS_ENABLE_CONDITION"
 PROCESS_SEQUENCING = "PROCESS_SEQUENCING"
 INDUSTRIAL_FAULT_RECOVERY = "INDUSTRIAL_FAULT_RECOVERY"
 
+STATE_MACHINE = "STATE_MACHINE"
+TASK_SCHEDULING = "TASK_SCHEDULING"
+PROGRAM_DEPLOYMENT = "PROGRAM_DEPLOYMENT"
+RESOURCE_BINDING = "RESOURCE_BINDING"
+RUNTIME_CONFIGURATION = "RUNTIME_CONFIGURATION"
+PROCESS_CONTROL = "PROCESS_CONTROL"
+PROCESS_MONITORING = "PROCESS_MONITORING"
+FB_COORDINATION = "FB_COORDINATION"
+MULTI_ACTUATOR_SEQUENCE = "MULTI_ACTUATOR_SEQUENCE"
+
 
 class IndustrialSemanticClassifier(ASTVisitor):
     """Visitor pass that classifies industrial control behavior."""
@@ -29,6 +39,15 @@ class IndustrialSemanticClassifier(ASTVisitor):
         self.condition_stack = []
         self.case_stack = []
         self.assignment_buffer = []
+        self.current_unit = None
+        self.current_configuration = None
+        self.current_resource = None
+        self.fb_calls_in_body = []
+        self.actuator_assignments_in_body = []
+        self.state_machine_selector = None
+        self.output_variables = set()
+        self.bool_output_variables = set()
+        self.memory_mapped_outputs = set()
 
     def classify(self, ast):
         """Run classification and return structured semantic metadata."""
@@ -71,17 +90,88 @@ class IndustrialSemanticClassifier(ASTVisitor):
         self.visit(node.body)
 
     def visit_CompilationUnitNode(self, node):
+        old_unit = self.current_unit
+        self.current_unit = node
+        self.fb_calls_in_body = []
+        self.actuator_assignments_in_body = []
+
+        if node.kind == "PROGRAM":
+            self.add_finding(
+                PROGRAM_DEPLOYMENT,
+                "PROGRAM compilation unit represents a deployable control application.",
+                node.name,
+                node,
+                confidence="high",
+                hints=["map PROGRAM to IEC 61499 application or device deployment unit"],
+            )
+        elif node.kind == "FUNCTION_BLOCK":
+            if self.has_control_patterns(node):
+                self.add_finding(
+                    PROCESS_CONTROL,
+                    "FUNCTION_BLOCK contains control logic (state machine, PID, or actuator sequencing).",
+                    node.name,
+                    node,
+                    confidence="high",
+                    hints=["preserve as reusable control function block in transformation IR"],
+                )
+            if self.has_monitoring_patterns(node):
+                self.add_finding(
+                    PROCESS_MONITORING,
+                    "FUNCTION_BLOCK contains monitoring or diagnostic outputs without direct actuator control.",
+                    node.name,
+                    node,
+                    confidence="medium",
+                    hints=["model monitoring outputs as status data points"],
+                )
+        elif node.kind == "FUNCTION" and node.return_type:
+            self.add_finding(
+                PROCESS_MONITORING,
+                "FUNCTION returns a computed value; likely used for monitoring or diagnostic conversion.",
+                node.name,
+                node,
+                confidence="medium",
+                hints=["preserve as pure computation function in transformation IR"],
+            )
+
+        for var_block in node.var_blocks or []:
+            self.visit(var_block)
+
         self.visit(node.body)
+
+        if len(self.fb_calls_in_body) > 1:
+            fb_names = ", ".join(sorted({fb.name for fb in self.fb_calls_in_body}))
+            self.add_finding(
+                FB_COORDINATION,
+                "Multiple function block instances are coordinated within the same unit.",
+                fb_names,
+                node,
+                confidence="high",
+                hints=["model FB interactions as event/data connections"],
+            )
+
+        if len(self.actuator_assignments_in_body) >= 2:
+            targets = ", ".join(item["target"] for item in self.actuator_assignments_in_body)
+            self.add_finding(
+                MULTI_ACTUATOR_SEQUENCE,
+                "Multiple actuators are commanded in sequence within the same unit.",
+                targets,
+                node,
+                confidence="high",
+                hints=["group sequential actuator outputs into coordinated IEC 61499 sequence"],
+            )
+
+        self.current_unit = old_unit
 
     def visit_BlockNode(self, node):
         assignments_before = len(self.assignment_buffer)
+        actuator_before = len(self.actuator_assignments_in_body)
 
         for statement in node.statements:
             self.visit(statement)
 
         new_assignments = self.assignment_buffer[assignments_before:]
         actuator_assignments = [
-            item for item in new_assignments if self.is_actuator_name(item["target"])
+            item for item in new_assignments if self.is_actuator_target(item["target"])
         ]
 
         if len(actuator_assignments) >= 2:
@@ -93,6 +183,18 @@ class IndustrialSemanticClassifier(ASTVisitor):
                 node,
                 confidence="high",
                 hints=["group related actuator outputs into coordinated IEC 61499 control logic"],
+            )
+
+        if self.case_stack and len(self.actuator_assignments_in_body) - actuator_before >= 2:
+            new_actuator = self.actuator_assignments_in_body[actuator_before:]
+            targets = ", ".join(item["target"] for item in new_actuator)
+            self.add_finding(
+                MULTI_ACTUATOR_SEQUENCE,
+                "Multiple actuators are commanded in sequence within a CASE branch.",
+                targets,
+                node,
+                confidence="high",
+                hints=["map sequential actuator branch to IEC 61499 state action block"],
             )
 
     def visit_IfStatementNode(self, node):
@@ -148,14 +250,29 @@ class IndustrialSemanticClassifier(ASTVisitor):
         )
 
         self.case_stack.append(node)
+        self.state_machine_selector = selector_text
         self.visit(node.selector)
 
+        is_state_machine = False
         for branch in node.branches:
             self.visit(branch)
+            if self.body_assigns_to_selector(branch.body, selector_text):
+                is_state_machine = True
+
+        if is_state_machine:
+            self.add_finding(
+                STATE_MACHINE,
+                "CASE statement branches assign to the selector variable, representing a finite state machine.",
+                selector_text,
+                node,
+                confidence="high",
+                hints=["map CASE branches to IEC 61499 states with explicit transitions"],
+            )
 
         if node.else_body is not None:
             self.visit(node.else_body)
 
+        self.state_machine_selector = None
         self.case_stack.pop()
 
     def visit_CaseBranchNode(self, node):
@@ -168,6 +285,10 @@ class IndustrialSemanticClassifier(ASTVisitor):
 
         self.assignment_buffer.append({"target": target, "value": value})
         self.classify_assignment(target, value, node)
+
+        if self.is_actuator_target(target):
+            self.actuator_assignments_in_body.append({"target": target, "value": value, "node": node})
+
         self.visit(node.target)
         self.visit(node.value)
 
@@ -177,6 +298,8 @@ class IndustrialSemanticClassifier(ASTVisitor):
             argument.name: self.describe_expression(argument.value)
             for argument in node.arguments
         }
+
+        self.fb_calls_in_body.append(node)
 
         if (
             fb_name.startswith(("TON", "TOF", "TP"))
@@ -200,6 +323,16 @@ class IndustrialSemanticClassifier(ASTVisitor):
                 node,
                 confidence="high",
                 hints=["preserve count state and done output in the transformation IR"],
+            )
+
+        if fb_name in ("FT_PID", "FT_PI", "FT_PIWL", "PID", "PI", "PD"):
+            self.add_finding(
+                PROCESS_CONTROL,
+                "PID function block introduces closed-loop process control.",
+                f"{node.name}({argument_map})",
+                node,
+                confidence="high",
+                hints=["preserve PID parameters and control output in transformation IR"],
             )
 
         for argument in node.arguments:
@@ -281,12 +414,40 @@ class IndustrialSemanticClassifier(ASTVisitor):
         return None
 
     def visit_ConfigurationNode(self, node):
+        self.current_configuration = node
+        self.add_finding(
+            RUNTIME_CONFIGURATION,
+            "CONFIGURATION declaration defines the runtime topology of the control system.",
+            node.name,
+            node,
+            confidence="high",
+            hints=["map CONFIGURATION to IEC 61499 device or system configuration"],
+        )
         self.visit(node.body)
+        self.current_configuration = None
 
     def visit_ResourceNode(self, node):
+        self.current_resource = node
+        self.add_finding(
+            RESOURCE_BINDING,
+            "RESOURCE declaration binds hardware target to the control application.",
+            f"{node.name} ON {node.on}",
+            node,
+            confidence="high",
+            hints=["map RESOURCE to IEC 61499 device or hardware resource"],
+        )
         self.visit(node.body)
+        self.current_resource = None
 
     def visit_TaskNode(self, node):
+        self.add_finding(
+            TASK_SCHEDULING,
+            "TASK declaration defines execution scheduling with interval and priority.",
+            node.name,
+            node,
+            confidence="high",
+            hints=["map TASK to IEC 61499 task or event-driven execution unit"],
+        )
         for argument in node.arguments:
             if hasattr(argument, "value"):
                 self.visit(argument)
@@ -294,7 +455,14 @@ class IndustrialSemanticClassifier(ASTVisitor):
                 self.visit(argument[1])
 
     def visit_ProgramBindingNode(self, node):
-        return None
+        self.add_finding(
+            PROGRAM_DEPLOYMENT,
+            "PROGRAM binding deploys a program instance to a task within a resource.",
+            f"{node.instance_name} WITH {node.task_name} : {node.program_type}",
+            node,
+            confidence="high",
+            hints=["map PROGRAM binding to IEC 61499 application instance or FB network"],
+        )
 
     def visit_MemoryMappingNode(self, node):
         return None
@@ -303,14 +471,25 @@ class IndustrialSemanticClassifier(ASTVisitor):
         return None
 
     def visit_VarBlockNode(self, node):
+        if node.kind in ("VAR_OUTPUT", "VAR_IN_OUT"):
+            for declaration in node.declarations:
+                for name in declaration.names:
+                    self.output_variables.add(name)
+                if self._is_bool_type(declaration.var_type):
+                    for name in declaration.names:
+                        self.bool_output_variables.add(name)
         for declaration in node.declarations:
             self.visit(declaration)
 
     def visit_VariableDeclarationNode(self, node):
+        if node.at_mapping is not None:
+            address = node.at_mapping.address
+            if address.startswith("%Q"):
+                for name in node.names:
+                    self.memory_mapped_outputs.add(name)
+            self.visit(node.at_mapping)
         if node.default_value is not None:
             self.visit(node.default_value)
-        if node.at_mapping is not None:
-            self.visit(node.at_mapping)
 
     # ------------------------------------------------------------------
     # Classification rules
@@ -371,7 +550,7 @@ class IndustrialSemanticClassifier(ASTVisitor):
                 hints=["represent alarm state as explicit output behavior"],
             )
 
-        if self.is_actuator_name(target):
+        if self.is_actuator_target(target):
             self.add_finding(
                 ACTUATOR_COORDINATION,
                 "Assignment commands an actuator or field output.",
@@ -490,5 +669,124 @@ class IndustrialSemanticClassifier(ASTVisitor):
                 "Clamp",
                 "Cutter",
                 "Contactor",
+                "Cylinder",
+                "Fan",
+                "Blower",
+                "Compressor",
+                "Solenoid",
             )
         )
+
+    def is_actuator_target(self, target):
+        if target in self.memory_mapped_outputs:
+            return True
+        if target in self.bool_output_variables:
+            return True
+        return self.is_actuator_name(target)
+
+    def is_output_variable(self, name):
+        return name in self.output_variables or name in self.memory_mapped_outputs or name in self.bool_output_variables
+
+    def _is_bool_type(self, var_type):
+        if isinstance(var_type, str):
+            return var_type == "BOOL"
+        if hasattr(var_type, "element_type"):
+            return var_type.element_type == "BOOL"
+        return False
+
+    def has_control_patterns(self, node):
+        return self._node_has_control_patterns(node.body)
+
+    def _node_has_control_patterns(self, node):
+        if node is None:
+            return False
+        node_type = node.__class__.__name__
+        if node_type == "CaseStatementNode":
+            return True
+        if node_type == "IfStatementNode":
+            if self.is_limit_condition(node.condition):
+                return True
+            if self.contains_safety_term(self.describe_expression(node.condition)):
+                return True
+        if node_type == "FunctionBlockCallNode":
+            fb_upper = node.name.upper()
+            if fb_upper.startswith(("TON", "TOF", "TP", "CTU", "CTD", "CTUD")):
+                return True
+            if fb_upper in ("FT_PID", "FT_PI", "FT_PIWL", "PID", "PI", "PD"):
+                return True
+        if node_type == "AssignmentNode":
+            target = self.describe_expression(node.target)
+            if self.is_actuator_target(target):
+                return True
+        if node_type == "BlockNode":
+            for stmt in node.statements:
+                if self._node_has_control_patterns(stmt):
+                    return True
+        for attr in ("body", "then_body", "else_body", "statements", "branches", "elsif_branches"):
+            child = getattr(node, attr, None)
+            if child is None:
+                continue
+            if isinstance(child, list):
+                for item in child:
+                    if self._node_has_control_patterns(item):
+                        return True
+            elif self._node_has_control_patterns(child):
+                return True
+        return False
+
+    def has_monitoring_patterns(self, node):
+        if node.kind != "FUNCTION_BLOCK":
+            return False
+        has_output_status = False
+        for var_block in node.var_blocks or []:
+            if var_block.kind in ("VAR_OUTPUT", "VAR_IN_OUT"):
+                for decl in var_block.declarations:
+                    if any("Status" in n or "Diagnostic" in n or "Monitor" in n for n in decl.names):
+                        has_output_status = True
+        if not has_output_status:
+            return False
+        return not self._node_has_actuator_assignment(node.body)
+
+    def _node_has_actuator_assignment(self, node):
+        if node is None:
+            return False
+        node_type = node.__class__.__name__
+        if node_type == "AssignmentNode":
+            target = self.describe_expression(node.target)
+            if self.is_actuator_name(target):
+                return True
+        for attr in ("body", "then_body", "else_body", "statements", "branches", "elsif_branches"):
+            child = getattr(node, attr, None)
+            if child is None:
+                continue
+            if isinstance(child, list):
+                for item in child:
+                    if self._node_has_actuator_assignment(item):
+                        return True
+            elif self._node_has_actuator_assignment(child):
+                return True
+        return False
+
+    def body_assigns_to_selector(self, body, selector_text):
+        if body is None:
+            return False
+        node_type = body.__class__.__name__
+        if node_type == "AssignmentNode":
+            target = self.describe_expression(body.target)
+            if target == selector_text:
+                return True
+        if node_type == "BlockNode":
+            for stmt in body.statements:
+                if self.body_assigns_to_selector(stmt, selector_text):
+                    return True
+        for attr in ("body", "then_body", "else_body", "statements", "branches", "elsif_branches"):
+            child = getattr(body, attr, None)
+            if child is None:
+                continue
+            if isinstance(child, list):
+                for item in child:
+                    if self.body_assigns_to_selector(item, selector_text):
+                        return True
+            elif self.body_assigns_to_selector(child, selector_text):
+                return True
+        return False

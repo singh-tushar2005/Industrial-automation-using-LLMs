@@ -138,7 +138,10 @@ class TypeChecker(ASTVisitor):
     def visit_AssignmentNode(self, node):
         """Check that the assigned value matches the target variable type."""
 
-        target_name = node.target.name
+        if node.target.__class__.__name__ == "ArrayIndexNode":
+            target_name = node.target.array
+        else:
+            target_name = node.target.name
         value_type = self.visit(node.value)
         existing_target_type = self.symbol_table.lookup(target_name)
 
@@ -382,6 +385,43 @@ class TypeChecker(ASTVisitor):
         """Array type declarations have no executable type."""
 
         return None
+
+    def visit_ConfigurationNode(self, node):
+        """Configuration declarations have no executable type; check body."""
+
+        self.visit(node.body)
+        return None
+
+    def visit_ResourceNode(self, node):
+        """Resource declarations have no executable type; check body."""
+
+        self.visit(node.body)
+        return None
+
+    def visit_TaskNode(self, node):
+        """Task declarations have no executable type; check arguments."""
+
+        for argument in node.arguments:
+            if hasattr(argument, "value"):
+                self.visit(argument)
+            elif isinstance(argument, (tuple, list)) and len(argument) == 2:
+                self.visit(argument[1])
+        return None
+
+    def visit_ProgramBindingNode(self, node):
+        """Program bindings have no executable type."""
+
+        return None
+
+    def visit_MemoryMappingNode(self, node):
+        """Memory mappings have no executable type."""
+
+        return None
+
+    def visit_StringLiteralNode(self, node):
+        """String literals have no known type in the current type system."""
+
+        return TYPE_UNKNOWN
 
     def has_unknown_operand(self, left_type, right_type):
         """Return True when an expression cannot be fully checked yet."""
