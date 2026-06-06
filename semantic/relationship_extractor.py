@@ -1,5 +1,7 @@
 """Visitor-based extraction of industrial semantic relationships."""
 
+import re
+
 try:
     from semantic.relationships import Relationship
     from semantic.visitor import ASTVisitor
@@ -33,12 +35,22 @@ class RelationshipExtractor(ASTVisitor):
         self.output_variables = set()
         self.bool_output_variables = set()
         self.memory_mapped_outputs = set()
+        self._condition_role_examples = []  # DIAGNOSTIC: Phase A condition roles
+        self._filtered_r1_signals = []      # DIAGNOSTIC: R1 filtering
 
     def extract(self, ast):
         """Run relationship extraction and return structured results."""
 
         self.visit(ast)
         return self.get_results()
+
+    def get_condition_role_examples(self):
+        """Return collected condition role classification examples."""
+        return self._condition_role_examples
+
+    def get_filtered_r1_signals(self):
+        """Return signals filtered by the R1 edge-worthiness check."""
+        return self._filtered_r1_signals
 
     def get_results(self):
         """Return relationship data and summary counts."""
@@ -105,6 +117,14 @@ class RelationshipExtractor(ASTVisitor):
             self.visit(statement)
 
     def visit_IfStatementNode(self, node):
+        # DIAGNOSTIC: Phase A condition role classification
+        roles = self.classify_condition_roles(node.condition)
+        self._condition_role_examples.append({
+            "condition_text": self.describe_expression(node.condition),
+            "roles": roles,
+            "unit_name": self.current_unit_name,
+        })
+
         context = self.condition_context(node.condition)
         self.condition_stack.append(context)
         self.visit(node.condition)
@@ -452,6 +472,15 @@ class RelationshipExtractor(ASTVisitor):
         for signal in context["signals"]:
             if self.is_literal_value(signal):
                 continue
+            # STEP 1: R1 filtering — edge-worthy vs context-only
+            if not self.is_edge_worthy(signal, context):
+                self._filtered_r1_signals.append({
+                    "signal": signal,
+                    "condition": context["text"],
+                    "target": target,
+                    "target_kind": target_kind,
+                })
+                continue
             relation = self.relation_for_signal(signal, target, value, context)
             source = self.source_for_signal(signal, context)
             source_kind = self.infer_signal_kind(signal, context)
@@ -504,48 +533,106 @@ class RelationshipExtractor(ASTVisitor):
                 )
 
     def relation_for_signal(self, signal, target, value, context):
+        # Phase 2: Existing extractor rules (compute candidate)
+        candidate = "depends_on"
         if self.is_safety_signal(signal):
-            return "enables"
-
-        if self.is_start_signal(signal):
+            candidate = "enables"
+        elif self.is_start_signal(signal):
             if self.is_meaningful_trigger_target(target):
-                return "triggers"
+                candidate = "triggers"
+            elif self.is_actuator_target(target):
+                candidate = "controls"
+            else:
+                candidate = "depends_on"
+        elif self.is_emergency_or_fault_signal(signal):
             if self.is_actuator_target(target):
-                return "controls"
-            return "depends_on"
-
-        if self.is_emergency_or_fault_signal(signal):
-            if self.is_actuator_target(target):
-                return "disables"
+                candidate = "disables"
+            elif self.is_meaningful_trigger_target(target):
+                candidate = "triggers"
+            else:
+                candidate = "depends_on"
+        elif context["kind"] == "process_limit":
             if self.is_meaningful_trigger_target(target):
-                return "triggers"
-            return "depends_on"
-
-        if context["kind"] == "process_limit":
-            if self.is_meaningful_trigger_target(target):
-                return "triggers"
-            return "disables"
-
-        if context["kind"] == "timer":
-            return "activates"
-
-        if self.is_enable_signal(signal):
-            return "enables"
-
-        if self.is_actuator_target(target):
+                candidate = "triggers"
+            else:
+                candidate = "disables"
+        elif context["kind"] == "timer":
+            candidate = "activates"
+        elif self.is_enable_signal(signal):
+            candidate = "enables"
+        elif self.is_actuator_target(target):
             if self.is_meaningful_control_source(signal):
-                return "controls"
-            return "depends_on"
-
-        if self.is_timer_target(target):
+                candidate = "controls"
+            else:
+                candidate = "depends_on"
+        elif self.is_timer_target(target):
             if self.is_meaningful_control_source(signal):
-                return "triggers"
-            return "depends_on"
+                candidate = "triggers"
+            else:
+                candidate = "depends_on"
+        elif self.is_function_block_target(target):
+            candidate = "feeds"
 
-        if self.is_function_block_target(target):
-            return "feeds"
+        # Phase 3: Semantic role-based conversion
+        source_kind = self.infer_signal_kind(signal, context)
+        target_kind = self.infer_target_kind(target)
 
-        return "depends_on"
+        if source_kind == "sensor" and target_kind == "state":
+            candidate = "triggers"
+        if source_kind == "sensor" and target_kind == "actuator":
+            candidate = "controls"
+        if source_kind == "register" and target_kind == "state":
+            candidate = "enables"
+        if source_kind == "register" and target_kind == "actuator":
+            candidate = "controls"
+        if source_kind == "state" and target_kind == "actuator":
+            candidate = "sequences"
+        if source_kind == "mode" and target_kind == "actuator":
+            candidate = "controls"
+        if source_kind == "reset_signal" and target_kind == "state":
+            candidate = "disables"
+        if source_kind == "reset_signal" and target_kind == "counter":
+            candidate = "disables"
+        if source_kind == "trigger_signal" and target_kind == "state":
+            candidate = "triggers"
+        if source_kind == "trigger_signal" and target_kind == "actuator":
+            candidate = "activates"
+        if source_kind == "history" and target_kind == "state":
+            candidate = "triggers"
+
+        # Phase 1: Classifier-aware overrides (only for depends_on or when more specific)
+        if self.classification_report:
+            for finding in self.classification_report.get("findings", []):
+                if finding.get("confidence") not in ("high", "medium"):
+                    continue
+                tag = finding.get("tag", "")
+                evidence = finding.get("evidence", "")
+
+                # Condition-level findings (highly specific, always override)
+                if context["text"] == evidence:
+                    if tag == "SAFETY_INTERLOCK":
+                        candidate = "enables"
+                    if tag in ("EMERGENCY_SHUTDOWN", "FAULT_PROTECTION_SEQUENCE"):
+                        candidate = "disables"
+                    if tag == "PROCESS_ENABLE_CONDITION":
+                        candidate = "enables"
+                    if tag == "TIMER_DEPENDENT_CONTROL":
+                        candidate = "activates"
+
+                # State machine → transitions_to
+                if tag == "STATE_MACHINE" and context["kind"] == "state_change":
+                    candidate = "transitions_to"
+
+                # MULTI_ACTUATOR_SEQUENCE and PROCESS_CONTROL only override generic depends_on
+                if candidate == "depends_on":
+                    if tag == "MULTI_ACTUATOR_SEQUENCE":
+                        if target in [t.strip() for t in evidence.split(",")]:
+                            candidate = "sequences"
+                    if tag == "PROCESS_CONTROL" and self.current_unit_name == evidence:
+                        if self.is_actuator_target(target):
+                            candidate = "controls"
+
+        return candidate
 
     def condition_context(self, condition):
         text = self.describe_expression(condition)
@@ -778,7 +865,7 @@ class RelationshipExtractor(ASTVisitor):
                 "Clamp", "Cutter", "Contactor", "Cylinder", "Fan",
                 "Blower", "Compressor", "Solenoid",
             )
-        )
+        ) or bool(re.match(r"^(Ho\d+|Ro\d+|Zo\d+|Yo\d+|Q\d+)$", name))
 
     def is_actuator_target(self, target):
         if target in self.memory_mapped_outputs:
@@ -885,9 +972,37 @@ class RelationshipExtractor(ASTVisitor):
             return "process_variable"
         if self.is_signal(target):
             return "signal"
+        if target.startswith("Xi"):
+            return "sensor"
+        if target.startswith("Ri"):
+            return "register"
+        if target.startswith("Si"):
+            return "signal"
+        if target == "_step":
+            return "state"
+        if target == "run":
+            return "mode"
+        if target == "rst":
+            return "reset_signal"
+        if target == "edge":
+            return "trigger_signal"
         return "unknown"
 
     def infer_signal_kind(self, signal, context):
+        if signal.startswith("Xi"):
+            return "sensor"
+        if signal.startswith("Ri"):
+            return "register"
+        if signal.startswith("Si"):
+            return "signal"
+        if signal == "_step":
+            return "state"
+        if signal == "run":
+            return "mode"
+        if signal == "rst":
+            return "reset_signal"
+        if signal == "edge":
+            return "trigger_signal"
         if self.is_safety_signal(signal):
             return "signal"
         if self.is_control_signal(signal):
@@ -925,3 +1040,212 @@ class RelationshipExtractor(ASTVisitor):
                 if result is not None:
                     return result
         return None
+
+    # ------------------------------------------------------------------
+    # Phase A — Condition Role Classification
+    # ------------------------------------------------------------------
+
+    def classify_condition_roles(self, condition):
+        """Classify every variable in a condition into CONTROL, PERMISSIVE, or CONTEXT.
+
+        CONTROL:
+            - state variables (_step, State, ToolChangeState)
+            - timer done signals (Timer.Q)
+            - trigger signals (edge)
+
+        PERMISSIVE:
+            - mode variables (run)
+            - sensors (Xi*, in*)
+            - control signals (Si*)
+
+        CONTEXT:
+            - history variables (last, previous)
+            - timer arithmetic variables
+            - comparison-only variables (right side of comparison)
+
+        Returns:
+            {
+                "control": [...],
+                "permissive": [...],
+                "context": [...]
+            }
+        """
+        vars_info = self._extract_all_variables_with_positions(condition)
+        control = []
+        permissive = []
+        context = []
+
+        for info in vars_info:
+            name = info["name"]
+            role = self._classify_single_role(name, info["path"])
+            if role == "control":
+                control.append(name)
+            elif role == "permissive":
+                permissive.append(name)
+            else:
+                context.append(name)
+
+        # Deduplicate preserving order
+        control = list(dict.fromkeys(control))
+        permissive = list(dict.fromkeys(permissive))
+        context = list(dict.fromkeys(context))
+
+        return {"control": control, "permissive": permissive, "context": context}
+
+    def _extract_all_variables_with_positions(self, node, path=None):
+        """Recursively extract all VariableNode names with their AST path."""
+        if path is None:
+            path = []
+
+        node_type = node.__class__.__name__
+
+        if node_type == "VariableNode":
+            return [{"name": node.name, "path": path.copy()}]
+
+        if node_type == "BinaryExpressionNode":
+            results = []
+            left_path = path + [("binop", node.operator, "left")]
+            right_path = path + [("binop", node.operator, "right")]
+            results.extend(self._extract_all_variables_with_positions(node.left, left_path))
+            results.extend(self._extract_all_variables_with_positions(node.right, right_path))
+            return results
+
+        if node_type == "LogicalExpressionNode":
+            results = []
+            for i, operand in enumerate(node.operands):
+                operand_path = path + [("logic", node.operator, i)]
+                results.extend(self._extract_all_variables_with_positions(operand, operand_path))
+            return results
+
+        # Recurse into other common child attributes
+        results = []
+        for attr in ("left", "right", "operands", "operand", "value", "target",
+                     "condition", "then_body", "else_body", "body", "statements",
+                     "branches", "arguments"):
+            child = getattr(node, attr, None)
+            if child is None:
+                continue
+            if isinstance(child, list):
+                for item in child:
+                    results.extend(self._extract_all_variables_with_positions(item, path))
+            else:
+                results.extend(self._extract_all_variables_with_positions(child, path))
+        return results
+
+    def _classify_single_role(self, name, path):
+        """Return 'control', 'permissive', or 'context' for a single variable."""
+        # CONTEXT: history variables
+        if self.is_history(name):
+            return "context"
+
+        # CONTEXT: timer arithmetic variables
+        arithmetic_ops = ("+", "-", "*", "/")
+        is_in_arithmetic = any(p[0] == "binop" and p[1] in arithmetic_ops for p in path)
+        if is_in_arithmetic:
+            return "context"
+
+        # CONTEXT: comparison-only variables (right side of comparison)
+        comparison_ops = ("=", "<>", "<", ">", "<=", ">=")
+        is_in_comparison_rhs = any(
+            p[0] == "binop" and p[1] in comparison_ops and p[2] == "right" for p in path
+        )
+        if is_in_comparison_rhs:
+            return "context"
+
+        # CONTROL: state variables
+        if self.is_state_variable(name):
+            return "control"
+
+        # CONTROL: timer done signals
+        if self.is_timer_signal(name):
+            return "control"
+
+        # CONTROL: trigger signals
+        if self.is_trigger_signal(name):
+            return "control"
+
+        # PERMISSIVE: mode variables
+        if self.is_mode_variable(name):
+            return "permissive"
+
+        # PERMISSIVE: sensors
+        if self.is_sensor(name) or name.startswith("Xi") or name.startswith("in"):
+            return "permissive"
+
+        # PERMISSIVE: control signals
+        if self.is_control_signal(name) or name.startswith("Si"):
+            return "permissive"
+
+        # Default: PERMISSIVE
+        return "permissive"
+
+    def is_history(self, name):
+        """Return True if the name matches history/memory retention patterns."""
+        return (
+            name == "last"
+            or name.endswith("_last")
+            or name.startswith("previous")
+            or name.startswith("old")
+        )
+
+    def is_state_variable(self, name):
+        """Return True if the name is a state-machine selector variable."""
+        return name in (
+            "_step", "State", "LightState", "ToolChangeState",
+            "StartupStep", "BatchStep",
+        ) or name.endswith("State")
+
+    def is_trigger_signal(self, name):
+        """Return True if the name is a one-shot trigger signal."""
+        return name == "edge" or name.lower() in ("start", "trigger")
+
+    def is_mode_variable(self, name):
+        """Return True if the name is a mode or execution guard variable."""
+        return name == "run" or name in ("auto", "manual", "Auto", "Manual") or name.endswith("Mode")
+
+    def is_edge_worthy(self, signal, context):
+        """Return True if the signal should generate a relationship (EDGE_WORTHY).
+
+        EDGE_WORTHY:
+            - state variables
+            - sensors
+            - trigger signals
+            - reset signals
+            - timer done signals
+            - counters
+
+        CONTEXT_ONLY (implicit fallback):
+            - history variables
+            - arithmetic operands
+            - comparison-only variables
+            - timing variables used only in expressions
+            - local bookkeeping variables
+        """
+        if self.is_literal_value(signal):
+            return False
+
+        # State variables
+        if self.is_state_variable(signal):
+            return True
+
+        # Sensors
+        if self.is_sensor(signal) or signal.startswith("Xi") or signal.startswith("in"):
+            return True
+
+        # Trigger signals
+        if self.is_trigger_signal(signal):
+            return True
+
+        # Reset signals
+        if signal.lower() == "rst" or self.infer_signal_kind(signal, context) == "reset_signal":
+            return True
+
+        # Timer done signals
+        if ".Q" in signal and any(term in signal for term in ("Timer", "TON", "TOF", "TP")):
+            return True
+
+        # Counters
+        if self.is_counter(signal):
+            return True
+
+        return False

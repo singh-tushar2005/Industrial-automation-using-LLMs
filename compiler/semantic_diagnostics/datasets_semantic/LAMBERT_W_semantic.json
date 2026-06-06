@@ -1,0 +1,35 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/LAMBERT_W.st",
+  "classification": {
+    "total_nodes": 3,
+    "classified_nodes": 1,
+    "unknown_nodes": 2,
+    "coverage_percent": 33.3
+  },
+  "node_kinds": {
+    "unknown": 2,
+    "signal": 1
+  },
+  "relationships": {
+    "total": 3,
+    "by_type": {
+      "depends_on": 3
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 66.7
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "OUT": 1,
+    "w": 1
+  }
+}

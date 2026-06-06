@@ -1,0 +1,35 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/CRC_GEN.st",
+  "classification": {
+    "total_nodes": 4,
+    "classified_nodes": 2,
+    "unknown_nodes": 2,
+    "coverage_percent": 50.0
+  },
+  "node_kinds": {
+    "signal": 2,
+    "unknown": 2
+  },
+  "relationships": {
+    "total": 3,
+    "by_type": {
+      "depends_on": 3
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 50.0
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "_*": 1,
+    "DX": 1
+  }
+}

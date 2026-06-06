@@ -1,0 +1,54 @@
+{
+  "dataset": "test_harness",
+  "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest (1).st",
+  "classification": {
+    "total_nodes": 49,
+    "classified_nodes": 44,
+    "unknown_nodes": 5,
+    "coverage_percent": 89.8
+  },
+  "node_kinds": {
+    "signal": 12,
+    "actuator": 10,
+    "state": 6,
+    "unknown": 5,
+    "function": 4,
+    "history": 4,
+    "timer": 2,
+    "mode": 1,
+    "configuration": 1,
+    "resource": 1,
+    "task": 1,
+    "program": 1,
+    "function_block": 1
+  },
+  "relationships": {
+    "total": 92,
+    "by_type": {
+      "depends_on": 34,
+      "sequences": 21,
+      "activates": 20,
+      "controls": 6,
+      "triggers": 4,
+      "transitions_to": 4,
+      "contains": 2,
+      "uses": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 10.2
+  },
+  "reasoning": {
+    "control_paths": 325,
+    "state_machines": 6,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "Pedestrian*": 3,
+    "out": 1,
+    "i": 1
+  }
+}

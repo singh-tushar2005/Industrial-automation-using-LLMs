@@ -1,0 +1,53 @@
+{
+  "dataset": "test_harness",
+  "file": "datasets/Industrial_data/test_harness/Full_test/MATRIX_FullTest (1).st",
+  "classification": {
+    "total_nodes": 37,
+    "classified_nodes": 34,
+    "unknown_nodes": 3,
+    "coverage_percent": 91.9
+  },
+  "node_kinds": {
+    "signal": 11,
+    "function": 4,
+    "history": 4,
+    "state": 4,
+    "unknown": 3,
+    "actuator": 3,
+    "timer": 2,
+    "mode": 1,
+    "configuration": 1,
+    "resource": 1,
+    "task": 1,
+    "program": 1,
+    "function_block": 1
+  },
+  "relationships": {
+    "total": 42,
+    "by_type": {
+      "depends_on": 28,
+      "controls": 4,
+      "sequences": 4,
+      "activates": 2,
+      "contains": 2,
+      "triggers": 1,
+      "uses": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 8.1
+  },
+  "reasoning": {
+    "control_paths": 6,
+    "state_machines": 4,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "out": 1,
+    "i": 1,
+    "code": 1
+  }
+}

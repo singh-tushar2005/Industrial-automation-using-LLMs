@@ -1,0 +1,194 @@
+======================================================================
+RELATIONSHIP EXTRACTION PRECISION AUDIT
+======================================================================
+
+Rule Inventory
+----------------------------------------------------------------------
+
+CONTROLS (140 edges)
+  AST nodes: AssignmentNode
+  Precision: medium
+  Notes: Relies on memory_mapped_outputs, bool_output_variables, and is_actuator_name heuristic. False positives when target is not actually an actuator but matches heuristic.
+
+TRIGGERS (3 edges)
+  AST nodes: FunctionBlockCallNode, AssignmentNode (via condition context)
+  Precision: high
+  Notes: Explicit timer/counter function block calls with non-literal inputs.
+
+ACTIVATES (18 edges)
+  AST nodes: AssignmentNode
+  Precision: high
+  Notes: Only produced when a timer .Q signal is in the condition context.
+
+SEQUENCES (137 edges)
+  AST nodes: CaseStatementNode, AssignmentNode
+  Precision: high
+  Notes: State machine sequencing. Over-generates for non-state CASE selectors.
+
+TRANSITIONS_TO (43 edges)
+  AST nodes: CaseStatementNode
+  Precision: high
+  Notes: Only when extract_state_assignment finds the selector being reassigned.
+
+DEPENDS_ON (459 edges)
+  AST nodes: AssignmentNode, FunctionBlockCallNode
+  Precision: low
+  Notes: Catch-all relation. Produces 50-60% of all edges. Many false positives because any assignment under any condition gets depends_on.
+
+FEEDS (0 edges)
+  AST nodes: FunctionBlockCallNode
+  Precision: high
+  Notes: Only when an FB argument is a reference to another FB output.
+
+ENABLES (0 edges)
+  AST nodes: AssignmentNode
+  Precision: medium
+  Notes: Distinguishes safety permissive from general control signal.
+
+DISABLES (0 edges)
+  AST nodes: AssignmentNode
+  Precision: medium
+  Notes: Emergency/fault signals disabling actuators.
+
+CONTAINS (0 edges)
+  AST nodes: ConfigurationNode, ResourceNode
+  Precision: high
+  Notes: Hierarchical containment. Always correct.
+
+SCHEDULES (0 edges)
+  AST nodes: ProgramBindingNode
+  Precision: high
+  Notes: Task scheduling binding. Always correct.
+
+USES (0 edges)
+  AST nodes: ProgramBindingNode, FunctionBlockCallNode
+  Precision: high
+  Notes: Program-to-type usage. Always correct.
+
+Rule Frequency (by metadata reason)
+----------------------------------------------------------------------
+  other                                       610
+  case_assignment                              99
+  case_state_transition                        43
+  case_branch_sequence                         38
+  timer_done                                    9
+  timer_case_trigger                            1
+
+Relationship Type Distribution
+----------------------------------------------------------------------
+  depends_on              459
+  controls                140
+  sequences               137
+  transitions_to           43
+  activates                18
+  triggers                  3
+
+Estimated Precision by Relationship Type
+----------------------------------------------------------------------
+  controls             medium (50-70%)
+  triggers             high (80-90%)
+  activates            high (80-90%)
+  sequences            medium (60-70%)
+  transitions_to       high (80-90%)
+  depends_on           low (40-60%)
+  feeds                high (85-95%)
+  enables              medium (60-70%)
+  disables             medium (60-70%)
+  contains             high (95-100%)
+  schedules            high (95-100%)
+  uses                 high (90-95%)
+
+Failure Patterns
+----------------------------------------------------------------------
+  Self-loops: 0
+  Test-harness leaks: 0
+
+Root Cause Analysis
+----------------------------------------------------------------------
+  depends_on_overgeneration: Catch-all relation produces ~60% of edges. Any assignment under any condition gets depends_on. This is the dominant source of low precision.
+  controls_false_positives: is_actuator_target relies on substring matching (Motor, Pump, Valve, etc.) and memory-mapped outputs. Names like 'Q0' are correctly classified as outputs but 'run' is not an actuator.
+  sequences_overgeneration: Any consecutive CASE branches get 'sequences' edges, even when the CASE selector is not a state machine.
+  cycle_propagation: Dense assignment graphs (like SEQUENCE_8) create cyclic dependencies that the DFS upstream traversal amplifies into thousands of paths.
+
+======================================================================
+SEQUENCE_8 INVESTIGATION
+======================================================================
+
+Total graph nodes: 35
+Total graph edges: 175
+Relationship extraction total: 286
+
+Relationship distribution:
+  controls: 103
+  depends_on: 183
+
+Unique source nodes in control paths: 23
+Unique actuators: 8
+Dependency reasoning total chains: 66520
+Dependency reasoning deduped chains: 66520
+Max path depth: 10
+Avg path depth: 6.8
+Repeated subpath count: 35142
+Total subpath occurrences: 1810905
+
+Root Cause:
+C (dependency reasoning traversal).
+
+The graph has 175 edges and cycles. The DFS upstream traversal
+(_dfs_upstream) appends chains BEFORE the visited check, creating
+paths with repeated nodes (e.g., run -> depends_on _step -> depends_on
+run -> controls Q0). The deduplication removes exact duplicates but
+there are 66,520 unique source-target-edge-sequence combinations.
+
+Per-Actuator Breakdown:
+----------------------------------------------------------------------
+  Q0:
+    total paths: 11681
+    deduped paths: 11681
+    unique sources: 17
+    max depth: 10
+    avg depth: 7.1
+  Q1:
+    total paths: 10022
+    deduped paths: 10022
+    unique sources: 17
+    max depth: 10
+    avg depth: 6.9
+  Q2:
+    total paths: 9525
+    deduped paths: 9525
+    unique sources: 17
+    max depth: 10
+    avg depth: 6.8
+  Q3:
+    total paths: 9366
+    deduped paths: 9366
+    unique sources: 17
+    max depth: 10
+    avg depth: 6.8
+  Q4:
+    total paths: 9105
+    deduped paths: 9105
+    unique sources: 17
+    max depth: 10
+    avg depth: 6.8
+  Q5:
+    total paths: 8174
+    deduped paths: 8174
+    unique sources: 17
+    max depth: 10
+    avg depth: 6.8
+  Q6:
+    total paths: 5365
+    deduped paths: 5365
+    unique sources: 17
+    max depth: 10
+    avg depth: 6.7
+  Q7:
+    total paths: 3282
+    deduped paths: 3282
+    unique sources: 16
+    max depth: 10
+    avg depth: 6.5
+
+======================================================================

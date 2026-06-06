@@ -1,0 +1,33 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/safety_systems/safety_interlock_start.st",
+  "classification": {
+    "total_nodes": 7,
+    "classified_nodes": 7,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "signal": 5,
+    "actuator": 2
+  },
+  "relationships": {
+    "total": 6,
+    "by_type": {
+      "enables": 4,
+      "depends_on": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 10,
+    "state_machines": 0,
+    "safety_impact": 3,
+    "failure_propagation": 1
+  },
+  "unknown_patterns": {}
+}

@@ -1,0 +1,32 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/comparison_if.st",
+  "classification": {
+    "total_nodes": 3,
+    "classified_nodes": 3,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "process_variable": 2,
+    "alarm": 1
+  },
+  "relationships": {
+    "total": 2,
+    "by_type": {
+      "triggers": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 1
+  },
+  "unknown_patterns": {}
+}

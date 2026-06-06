@@ -1,0 +1,36 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/intermediate/nested_interlock_alarm.st",
+  "classification": {
+    "total_nodes": 6,
+    "classified_nodes": 6,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "signal": 2,
+    "process_variable": 2,
+    "alarm": 1,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 8,
+    "by_type": {
+      "enables": 4,
+      "triggers": 2,
+      "disables": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 2,
+    "state_machines": 0,
+    "safety_impact": 2,
+    "failure_propagation": 1
+  },
+  "unknown_patterns": {}
+}

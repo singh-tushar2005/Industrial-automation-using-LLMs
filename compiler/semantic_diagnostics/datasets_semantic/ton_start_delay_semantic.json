@@ -1,0 +1,35 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/timers/ton_start_delay.st",
+  "classification": {
+    "total_nodes": 4,
+    "classified_nodes": 4,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "timer": 2,
+    "signal": 1,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 3,
+    "by_type": {
+      "triggers": 1,
+      "controls": 1,
+      "activates": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 2,
+    "state_machines": 0,
+    "safety_impact": 1,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

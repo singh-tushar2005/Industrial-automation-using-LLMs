@@ -1,0 +1,287 @@
+{
+  "datasets/Industrial_data/Implementation_datasets/CRC_GEN.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 5
+  },
+  "datasets/Industrial_data/Implementation_datasets/DEC_TO_HEX.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 0
+  },
+  "datasets/Industrial_data/Implementation_datasets/FLOW_METER.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 4
+  },
+  "datasets/Industrial_data/Implementation_datasets/FT_PIDWL.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 3
+  },
+  "datasets/Industrial_data/Implementation_datasets/GEN_BIT.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 8
+  },
+  "datasets/Industrial_data/Implementation_datasets/GEN_SIN.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 4
+  },
+  "datasets/Industrial_data/Implementation_datasets/INCLUDE.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 12
+  },
+  "datasets/Industrial_data/Implementation_datasets/LAMBERT_W.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 2
+  },
+  "datasets/Industrial_data/Implementation_datasets/MATRIX.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 3
+  },
+  "datasets/Industrial_data/Implementation_datasets/SEQUENCE_8.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 19
+  },
+  "datasets/Industrial_data/Implementation_datasets/TOOL_CHANGER.st": {
+    "original_case_count": 1,
+    "ast_case_count": 1,
+    "ast_if_count": 3
+  },
+  "datasets/Industrial_data/Implementation_datasets/TRAFFIC_CTRL.st": {
+    "original_case_count": 1,
+    "ast_case_count": 1,
+    "ast_if_count": 10
+  },
+  "datasets/Industrial_data/Implementation_datasets/robotic_sequence.st": {
+    "original_case_count": 1,
+    "ast_case_count": 1,
+    "ast_if_count": 16
+  },
+  "datasets/Industrial_data/Implementation_datasets/sampletext_2.st": {
+    "original_case_count": 1,
+    "ast_case_count": 1,
+    "ast_if_count": 16
+  },
+  "datasets/Industrial_data/Implementation_datasets/sampletext_3.st": {
+    "original_case_count": 1,
+    "ast_case_count": 1,
+    "ast_if_count": 16
+  },
+  "datasets/Industrial_data/Implementation_datasets/sampletext_4.st": {
+    "original_case_count": 0,
+    "ast_case_count": 0,
+    "ast_if_count": 0
+  },
+  "datasets/Industrial_data/test_harness/Full_test/CRC_GEN_FullTest (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 32
+  },
+  "datasets/Industrial_data/test_harness/Full_test/CRC_GEN_FullTest.st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 33
+  },
+  "datasets/Industrial_data/test_harness/Full_test/DEC_TO_HEX_FullTest.st": {
+    "original_case_count": 18,
+    "ast_case_count": 0,
+    "ast_if_count": 0
+  },
+  "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest (1).st": {
+    "original_case_count": 6,
+    "ast_case_count": 6,
+    "ast_if_count": 47
+  },
+  "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest.st": {
+    "original_case_count": 5,
+    "ast_case_count": 5,
+    "ast_if_count": 42
+  },
+  "datasets/Industrial_data/test_harness/Full_test/FT_PIDWL_FullTest (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 32
+  },
+  "datasets/Industrial_data/test_harness/Full_test/FT_PIDWL_FullTest.st": {
+    "original_case_count": 4,
+    "ast_case_count": 4,
+    "ast_if_count": 36
+  },
+  "datasets/Industrial_data/test_harness/Full_test/GEN_BIT_FullTest.st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 36
+  },
+  "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest (1).st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 38
+  },
+  "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest (2).st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 38
+  },
+  "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest.st": {
+    "original_case_count": 5,
+    "ast_case_count": 5,
+    "ast_if_count": 42
+  },
+  "datasets/Industrial_data/test_harness/Full_test/LAMBERT_W_FullTest (1).st": {
+    "original_case_count": 15,
+    "ast_case_count": 15,
+    "ast_if_count": 90
+  },
+  "datasets/Industrial_data/test_harness/Full_test/LAMBERT_W_FullTest.st": {
+    "original_case_count": 10,
+    "ast_case_count": 10,
+    "ast_if_count": 65
+  },
+  "datasets/Industrial_data/test_harness/Full_test/MATRIX_FullTest (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 30
+  },
+  "datasets/Industrial_data/test_harness/Full_test/MATRIX_FullTest.st": {
+    "original_case_count": 4,
+    "ast_case_count": 4,
+    "ast_if_count": 36
+  },
+  "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 42
+  },
+  "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest.st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 42
+  },
+  "datasets/Industrial_data/test_harness/Full_test/TOOL_CHANGER_FullTest (1).st": {
+    "original_case_count": 4,
+    "ast_case_count": 4,
+    "ast_if_count": 43
+  },
+  "datasets/Industrial_data/test_harness/Full_test/TOOL_CHANGER_FullTest.st": {
+    "original_case_count": 6,
+    "ast_case_count": 6,
+    "ast_if_count": 41
+  },
+  "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest (1).st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 37
+  },
+  "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest.st": {
+    "original_case_count": 5,
+    "ast_case_count": 5,
+    "ast_if_count": 43
+  },
+  "datasets/Industrial_data/test_harness/test_case/CRC_GEN_TestCases (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 15
+  },
+  "datasets/Industrial_data/test_harness/test_case/CRC_GEN_TestCases.st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 16
+  },
+  "datasets/Industrial_data/test_harness/test_case/DEC_TO_HEX_TestCases.st": {
+    "original_case_count": 18,
+    "ast_case_count": 18,
+    "ast_if_count": 91
+  },
+  "datasets/Industrial_data/test_harness/test_case/FLOW_METER_TestCases (1).st": {
+    "original_case_count": 6,
+    "ast_case_count": 6,
+    "ast_if_count": 31
+  },
+  "datasets/Industrial_data/test_harness/test_case/FLOW_METER_TestCases.st": {
+    "original_case_count": 5,
+    "ast_case_count": 5,
+    "ast_if_count": 26
+  },
+  "datasets/Industrial_data/test_harness/test_case/FT_PIDWL_TestCases (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 17
+  },
+  "datasets/Industrial_data/test_harness/test_case/FT_PIDWL_TestCases.st": {
+    "original_case_count": 4,
+    "ast_case_count": 4,
+    "ast_if_count": 21
+  },
+  "datasets/Industrial_data/test_harness/test_case/GEN_BIT_TestCases.st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 16
+  },
+  "datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases (1).st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 22
+  },
+  "datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases.st": {
+    "original_case_count": 5,
+    "ast_case_count": 5,
+    "ast_if_count": 26
+  },
+  "datasets/Industrial_data/test_harness/test_case/LAMBERT_W_TestCases (1).st": {
+    "original_case_count": 15,
+    "ast_case_count": 15,
+    "ast_if_count": 76
+  },
+  "datasets/Industrial_data/test_harness/test_case/LAMBERT_W_TestCases.st": {
+    "original_case_count": 10,
+    "ast_case_count": 10,
+    "ast_if_count": 51
+  },
+  "datasets/Industrial_data/test_harness/test_case/MATRIX_TestCases (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 15
+  },
+  "datasets/Industrial_data/test_harness/test_case/MATRIX_TestCases.st": {
+    "original_case_count": 4,
+    "ast_case_count": 4,
+    "ast_if_count": 21
+  },
+  "datasets/Industrial_data/test_harness/test_case/SEQUENCE_8_TestCases (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 11
+  },
+  "datasets/Industrial_data/test_harness/test_case/SEQUENCE_8_TestCases.st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 11
+  },
+  "datasets/Industrial_data/test_harness/test_case/TOOL_CHANGER_TestCases (1).st": {
+    "original_case_count": 3,
+    "ast_case_count": 3,
+    "ast_if_count": 28
+  },
+  "datasets/Industrial_data/test_harness/test_case/TOOL_CHANGER_TestCases.st": {
+    "original_case_count": 5,
+    "ast_case_count": 5,
+    "ast_if_count": 26
+  },
+  "datasets/Industrial_data/test_harness/test_case/TRAFFIC_CTRL_TestCases (1).st": {
+    "original_case_count": 2,
+    "ast_case_count": 2,
+    "ast_if_count": 15
+  },
+  "datasets/Industrial_data/test_harness/test_case/TRAFFIC_CTRL_TestCases.st": {
+    "original_case_count": 4,
+    "ast_case_count": 4,
+    "ast_if_count": 21
+  }
+}

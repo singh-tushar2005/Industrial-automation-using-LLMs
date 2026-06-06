@@ -1,0 +1,36 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/TOOL_CHANGER.st",
+  "classification": {
+    "total_nodes": 8,
+    "classified_nodes": 8,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "state": 4,
+    "signal": 2,
+    "actuator": 2
+  },
+  "relationships": {
+    "total": 21,
+    "by_type": {
+      "controls": 7,
+      "sequences": 6,
+      "depends_on": 5,
+      "transitions_to": 3
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 4,
+    "state_machines": 4,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

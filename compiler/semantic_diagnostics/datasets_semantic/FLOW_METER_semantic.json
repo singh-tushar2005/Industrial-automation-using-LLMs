@@ -1,0 +1,38 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/FLOW_METER.st",
+  "classification": {
+    "total_nodes": 15,
+    "classified_nodes": 9,
+    "unknown_nodes": 6,
+    "coverage_percent": 60.0
+  },
+  "node_kinds": {
+    "signal": 7,
+    "unknown": 6,
+    "history": 2
+  },
+  "relationships": {
+    "total": 22,
+    "by_type": {
+      "depends_on": 22
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 40.0
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "other": 3,
+    "tl": 1,
+    "int1.*": 1,
+    "tmp": 1
+  }
+}

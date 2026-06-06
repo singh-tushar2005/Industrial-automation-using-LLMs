@@ -1,0 +1,36 @@
+{
+  "dataset": "test_harness",
+  "file": "datasets/Industrial_data/test_harness/test_case/MATRIX_TestCases.st",
+  "classification": {
+    "total_nodes": 7,
+    "classified_nodes": 7,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "state": 3,
+    "timer": 2,
+    "mode": 1,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 6,
+    "by_type": {
+      "sequences": 3,
+      "activates": 2,
+      "triggers": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 1,
+    "state_machines": 3,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

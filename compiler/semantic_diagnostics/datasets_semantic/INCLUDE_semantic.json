@@ -1,0 +1,39 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/INCLUDE.st",
+  "classification": {
+    "total_nodes": 21,
+    "classified_nodes": 19,
+    "unknown_nodes": 2,
+    "coverage_percent": 90.5
+  },
+  "node_kinds": {
+    "signal": 10,
+    "function": 4,
+    "history": 4,
+    "unknown": 2,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 29,
+    "by_type": {
+      "depends_on": 27,
+      "controls": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 9.5
+  },
+  "reasoning": {
+    "control_paths": 2,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "out": 1,
+    "i": 1
+  }
+}

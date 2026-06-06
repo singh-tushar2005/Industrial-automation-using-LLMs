@@ -1,0 +1,56 @@
+{
+  "dataset": "test_harness",
+  "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest.st",
+  "classification": {
+    "total_nodes": 44,
+    "classified_nodes": 37,
+    "unknown_nodes": 7,
+    "coverage_percent": 84.1
+  },
+  "node_kinds": {
+    "signal": 14,
+    "unknown": 7,
+    "history": 6,
+    "function": 4,
+    "state": 3,
+    "actuator": 2,
+    "timer": 2,
+    "mode": 1,
+    "configuration": 1,
+    "resource": 1,
+    "task": 1,
+    "program": 1,
+    "function_block": 1
+  },
+  "relationships": {
+    "total": 60,
+    "by_type": {
+      "depends_on": 49,
+      "sequences": 3,
+      "controls": 2,
+      "activates": 2,
+      "contains": 2,
+      "triggers": 1,
+      "uses": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 15.9
+  },
+  "reasoning": {
+    "control_paths": 9,
+    "state_machines": 3,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "other": 2,
+    "out": 1,
+    "i": 1,
+    "tl": 1,
+    "int1.*": 1,
+    "tmp": 1
+  }
+}

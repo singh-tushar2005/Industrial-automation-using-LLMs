@@ -1,0 +1,772 @@
+{
+  "rules": {
+    "R1": "emit_condition_relationships -> relation_for_signal",
+    "R2": "emit_condition_relationships -> process_limit",
+    "R3": "emit_condition_relationships -> timer",
+    "R4": "visit_AssignmentNode -> case_stack",
+    "R5": "visit_CaseStatementNode -> branch_sequence",
+    "R6": "visit_CaseStatementNode -> state_transition",
+    "R7": "visit_FunctionBlockCallNode -> timer_trigger",
+    "R8": "visit_FunctionBlockCallNode -> timer_preset",
+    "R9": "visit_FunctionBlockCallNode -> timer_state_transition",
+    "R10": "visit_FunctionBlockCallNode -> counter_trigger",
+    "R11": "visit_FunctionBlockCallNode -> program_uses_fb",
+    "R12": "visit_FunctionBlockCallNode -> fb_feeds_fb",
+    "R13": "visit_ResourceNode -> contains",
+    "R14": "visit_TaskNode -> contains",
+    "R15": "visit_ProgramBindingNode -> schedules",
+    "R16": "visit_ProgramBindingNode -> uses"
+  },
+  "aggregates": {
+    "R1": {
+      "count": 3874,
+      "relations": {
+        "depends_on": 1931,
+        "controls": 1384,
+        "disables": 3,
+        "triggers": 9,
+        "activates": 499,
+        "sequences": 48
+      },
+      "dataset_count": 54,
+      "examples": [
+        {
+          "rule_id": "R1",
+          "rule_name": "emit_condition_relationships -> relation_for_signal",
+          "source": "REV_IN",
+          "source_kind": "signal",
+          "target": "_CRC_GEN",
+          "target_kind": "unknown",
+          "relation": "depends_on",
+          "metadata": {
+            "condition": "REV_IN",
+            "assignment": "_CRC_GEN := FunctionInvocationNode(name='SHL', arguments=[InvocationArgumentNode(name='', value=VariableNode(name='_CRC_GEN')), InvocationArgumentNode(name='', value=NumberNode(value='8'))]) OR FunctionInvocationNode(name='BYTE_TO_DWORD', arguments=[InvocationArgumentNode(name='', value=FunctionInvocationNode(name='REVERSE', arguments=[InvocationArgumentNode(name='', value=ArrayIndexNode(array='PT', index=VariableNode(name='pos')))]))])",
+            "node_type": "AssignmentNode",
+            "classification_tags": [
+              "PROCESS_SEQUENCING"
+            ]
+          }
+        },
+        {
+          "rule_id": "R1",
+          "rule_name": "emit_condition_relationships -> relation_for_signal",
+          "source": "REV_IN",
+          "source_kind": "signal",
+          "target": "DX",
+          "target_kind": "unknown",
+          "relation": "depends_on",
+          "metadata": {
+            "condition": "REV_IN",
+            "assignment": "DX := FunctionInvocationNode(name='REVERSE', arguments=[InvocationArgumentNode(name='', value=ArrayIndexNode(array='PT', index=VariableNode(name='pos')))])",
+            "node_type": "AssignmentNode",
+            "classification_tags": [
+              "PROCESS_SEQUENCING"
+            ]
+          }
+        },
+        {
+          "rule_id": "R1",
+          "rule_name": "emit_condition_relationships -> relation_for_signal",
+          "source": "_CRC_GEN",
+          "source_kind": "signal",
+          "target": "_CRC_GEN",
+          "target_kind": "unknown",
+          "relation": "depends_on",
+          "metadata": {
+            "condition": "_CRC_GEN AND TypedLiteralNode(type_name='DWORD', value='16#8000_0000') > TypedLiteralNode(type_name='DWORD', value='0')",
+            "assignment": "_CRC_GEN := FunctionInvocationNode(name='SHL', arguments=[InvocationArgumentNode(name='', value=VariableNode(name='_CRC_GEN')), InvocationArgumentNode(name='', value=NumberNode(value='1'))]) OR FunctionInvocationNode(name='BOOL_TO_DWORD', arguments=[InvocationArgumentNode(name='', value=BinaryExpressionNode(left=LogicalExpressionNode(operator='AND', operands=[VariableNode(name='DX'), TypedLiteralNode(type_name='BYTE', value='16#80')]), operator='>', right=TypedLiteralNode(type_name='BYTE', value='0')))]) XOR PN",
+            "node_type": "AssignmentNode",
+            "classification_tags": [
+              "PROCESS_SEQUENCING"
+            ]
+          }
+        },
+        {
+          "rule_id": "R1",
+          "rule_name": "emit_condition_relationships -> relation_for_signal",
+          "source": "_CRC_GEN",
+          "source_kind": "signal",
+          "target": "_CRC_GEN",
+          "target_kind": "unknown",
+          "relation": "depends_on",
+          "metadata": {
+            "condition": "_CRC_GEN AND TypedLiteralNode(type_name='DWORD', value='16#8000_0000') > TypedLiteralNode(type_name='DWORD', value='0')",
+            "assignment": "_CRC_GEN := FunctionInvocationNode(name='SHL', arguments=[InvocationArgumentNode(name='', value=VariableNode(name='_CRC_GEN')), InvocationArgumentNode(name='', value=NumberNode(value='1'))]) OR FunctionInvocationNode(name='BOOL_TO_DWORD', arguments=[InvocationArgumentNode(name='', value=BinaryExpressionNode(left=LogicalExpressionNode(operator='AND', operands=[VariableNode(name='DX'), TypedLiteralNode(type_name='BYTE', value='16#80')]), operator='>', right=TypedLiteralNode(type_name='BYTE', value='0')))]) XOR PN",
+            "node_type": "AssignmentNode",
+            "classification_tags": [
+              "PROCESS_SEQUENCING"
+            ]
+          }
+        },
+        {
+          "rule_id": "R1",
+          "rule_name": "emit_condition_relationships -> relation_for_signal",
+          "source": "REV_OUT",
+          "source_kind": "signal",
+          "target": "_CRC_GEN",
+          "target_kind": "unknown",
+          "relation": "depends_on",
+          "metadata": {
+            "condition": "REV_OUT",
+            "assignment": "_CRC_GEN := FunctionInvocationNode(name='REFLECT', arguments=[InvocationArgumentNode(name='', value=VariableNode(name='_CRC_GEN')), InvocationArgumentNode(name='', value=FunctionInvocationNode(name='UINT_TO_INT', arguments=[InvocationArgumentNode(name='', value=VariableNode(name='PL'))]))])",
+            "node_type": "AssignmentNode",
+            "classification_tags": [
+              "PROCESS_SEQUENCING"
+            ]
+          }
+        }
+      ]
+    },
+    "R6": {
+      "count": 57,
+      "relations": {
+        "transitions_to": 57
+      },
+      "dataset_count": 9,
+      "examples": [
+        {
+          "rule_id": "R6",
+          "rule_name": "visit_CaseStatementNode -> state_transition",
+          "source": "0",
+          "source_kind": "state",
+          "target": "1",
+          "target_kind": "state",
+          "relation": "transitions_to",
+          "metadata": {
+            "selector": "ToolChangeState",
+            "reason": "CASE branch assigns next state to selector"
+          }
+        },
+        {
+          "rule_id": "R6",
+          "rule_name": "visit_CaseStatementNode -> state_transition",
+          "source": "1",
+          "source_kind": "state",
+          "target": "2",
+          "target_kind": "state",
+          "relation": "transitions_to",
+          "metadata": {
+            "selector": "ToolChangeState",
+            "reason": "CASE branch assigns next state to selector"
+          }
+        },
+        {
+          "rule_id": "R6",
+          "rule_name": "visit_CaseStatementNode -> state_transition",
+          "source": "2",
+          "source_kind": "state",
+          "target": "0",
+          "target_kind": "state",
+          "relation": "transitions_to",
+          "metadata": {
+            "selector": "ToolChangeState",
+            "reason": "CASE branch assigns next state to selector"
+          }
+        },
+        {
+          "rule_id": "R6",
+          "rule_name": "visit_CaseStatementNode -> state_transition",
+          "source": "0",
+          "source_kind": "state",
+          "target": "1",
+          "target_kind": "state",
+          "relation": "transitions_to",
+          "metadata": {
+            "selector": "LightState",
+            "reason": "CASE branch assigns next state to selector"
+          }
+        },
+        {
+          "rule_id": "R6",
+          "rule_name": "visit_CaseStatementNode -> state_transition",
+          "source": "1",
+          "source_kind": "state",
+          "target": "2",
+          "target_kind": "state",
+          "relation": "transitions_to",
+          "metadata": {
+            "selector": "LightState",
+            "reason": "CASE branch assigns next state to selector"
+          }
+        }
+      ]
+    },
+    "R4": {
+      "count": 1125,
+      "relations": {
+        "sequences": 1125
+      },
+      "dataset_count": 45,
+      "examples": [
+        {
+          "rule_id": "R4",
+          "rule_name": "visit_AssignmentNode -> case_stack",
+          "source": "ToolChangeState",
+          "source_kind": "state",
+          "target": "RotateCarousel",
+          "target_kind": "actuator",
+          "relation": "sequences",
+          "metadata": {
+            "assignment": "RotateCarousel := TRUE",
+            "reason": "CASE-selected state controls assignment"
+          }
+        },
+        {
+          "rule_id": "R4",
+          "rule_name": "visit_AssignmentNode -> case_stack",
+          "source": "ToolChangeState",
+          "source_kind": "state",
+          "target": "ToolChangeState",
+          "target_kind": "mode",
+          "relation": "sequences",
+          "metadata": {
+            "assignment": "ToolChangeState := 1",
+            "reason": "CASE-selected state controls assignment"
+          }
+        },
+        {
+          "rule_id": "R4",
+          "rule_name": "visit_AssignmentNode -> case_stack",
+          "source": "ToolChangeState",
+          "source_kind": "state",
+          "target": "LockTool",
+          "target_kind": "actuator",
+          "relation": "sequences",
+          "metadata": {
+            "assignment": "LockTool := TRUE",
+            "reason": "CASE-selected state controls assignment"
+          }
+        },
+        {
+          "rule_id": "R4",
+          "rule_name": "visit_AssignmentNode -> case_stack",
+          "source": "ToolChangeState",
+          "source_kind": "state",
+          "target": "ToolChangeState",
+          "target_kind": "mode",
+          "relation": "sequences",
+          "metadata": {
+            "assignment": "ToolChangeState := 2",
+            "reason": "CASE-selected state controls assignment"
+          }
+        },
+        {
+          "rule_id": "R4",
+          "rule_name": "visit_AssignmentNode -> case_stack",
+          "source": "ToolChangeState",
+          "source_kind": "state",
+          "target": "RotateCarousel",
+          "target_kind": "actuator",
+          "relation": "sequences",
+          "metadata": {
+            "assignment": "RotateCarousel := FALSE",
+            "reason": "CASE-selected state controls assignment"
+          }
+        }
+      ]
+    },
+    "R5": {
+      "count": 272,
+      "relations": {
+        "sequences": 272
+      },
+      "dataset_count": 45,
+      "examples": [
+        {
+          "rule_id": "R5",
+          "rule_name": "visit_CaseStatementNode -> branch_sequence",
+          "source": "0",
+          "source_kind": "state",
+          "target": "1",
+          "target_kind": "state",
+          "relation": "sequences",
+          "metadata": {
+            "selector": "ToolChangeState",
+            "reason": "CASE branch order represents stateful sequencing"
+          }
+        },
+        {
+          "rule_id": "R5",
+          "rule_name": "visit_CaseStatementNode -> branch_sequence",
+          "source": "1",
+          "source_kind": "state",
+          "target": "2",
+          "target_kind": "state",
+          "relation": "sequences",
+          "metadata": {
+            "selector": "ToolChangeState",
+            "reason": "CASE branch order represents stateful sequencing"
+          }
+        },
+        {
+          "rule_id": "R5",
+          "rule_name": "visit_CaseStatementNode -> branch_sequence",
+          "source": "0",
+          "source_kind": "state",
+          "target": "1",
+          "target_kind": "state",
+          "relation": "sequences",
+          "metadata": {
+            "selector": "LightState",
+            "reason": "CASE branch order represents stateful sequencing"
+          }
+        },
+        {
+          "rule_id": "R5",
+          "rule_name": "visit_CaseStatementNode -> branch_sequence",
+          "source": "1",
+          "source_kind": "state",
+          "target": "2",
+          "target_kind": "state",
+          "relation": "sequences",
+          "metadata": {
+            "selector": "LightState",
+            "reason": "CASE branch order represents stateful sequencing"
+          }
+        },
+        {
+          "rule_id": "R5",
+          "rule_name": "visit_CaseStatementNode -> branch_sequence",
+          "source": "2",
+          "source_kind": "state",
+          "target": "3",
+          "target_kind": "state",
+          "relation": "sequences",
+          "metadata": {
+            "selector": "LightState",
+            "reason": "CASE branch order represents stateful sequencing"
+          }
+        }
+      ]
+    },
+    "R9": {
+      "count": 248,
+      "relations": {
+        "triggers": 248
+      },
+      "dataset_count": 41,
+      "examples": [
+        {
+          "rule_id": "R9",
+          "rule_name": "visit_FunctionBlockCallNode -> timer_state_transition",
+          "source": "Timer",
+          "source_kind": "timer",
+          "target": "LightState",
+          "target_kind": "state",
+          "relation": "triggers",
+          "metadata": {
+            "kind": "timer_state_transition",
+            "reason": "timer done inside CASE branch triggers state transition"
+          }
+        },
+        {
+          "rule_id": "R9",
+          "rule_name": "visit_FunctionBlockCallNode -> timer_state_transition",
+          "source": "Timer",
+          "source_kind": "timer",
+          "target": "LightState",
+          "target_kind": "state",
+          "relation": "triggers",
+          "metadata": {
+            "kind": "timer_state_transition",
+            "reason": "timer done inside CASE branch triggers state transition"
+          }
+        },
+        {
+          "rule_id": "R9",
+          "rule_name": "visit_FunctionBlockCallNode -> timer_state_transition",
+          "source": "Timer",
+          "source_kind": "timer",
+          "target": "LightState",
+          "target_kind": "state",
+          "relation": "triggers",
+          "metadata": {
+            "kind": "timer_state_transition",
+            "reason": "timer done inside CASE branch triggers state transition"
+          }
+        },
+        {
+          "rule_id": "R9",
+          "rule_name": "visit_FunctionBlockCallNode -> timer_state_transition",
+          "source": "Timer",
+          "source_kind": "timer",
+          "target": "LightState",
+          "target_kind": "state",
+          "relation": "triggers",
+          "metadata": {
+            "kind": "timer_state_transition",
+            "reason": "timer done inside CASE branch triggers state transition"
+          }
+        },
+        {
+          "rule_id": "R9",
+          "rule_name": "visit_FunctionBlockCallNode -> timer_state_transition",
+          "source": "Timer",
+          "source_kind": "timer",
+          "target": "LightState",
+          "target_kind": "state",
+          "relation": "triggers",
+          "metadata": {
+            "kind": "timer_state_transition",
+            "reason": "timer done inside CASE branch triggers state transition"
+          }
+        }
+      ]
+    },
+    "R3": {
+      "count": 475,
+      "relations": {
+        "activates": 475
+      },
+      "dataset_count": 41,
+      "examples": [
+        {
+          "rule_id": "R3",
+          "rule_name": "emit_condition_relationships -> timer",
+          "source": "Timer.Q",
+          "source_kind": "timer",
+          "target": "LightState",
+          "target_kind": "mode",
+          "relation": "activates",
+          "metadata": {
+            "condition": "Timer.Q",
+            "assignment": "LightState := 1",
+            "reason": "timer done condition activates controlled behavior"
+          }
+        },
+        {
+          "rule_id": "R3",
+          "rule_name": "emit_condition_relationships -> timer",
+          "source": "Timer.Q",
+          "source_kind": "timer",
+          "target": "LightState",
+          "target_kind": "mode",
+          "relation": "activates",
+          "metadata": {
+            "condition": "Timer.Q",
+            "assignment": "LightState := 2",
+            "reason": "timer done condition activates controlled behavior"
+          }
+        },
+        {
+          "rule_id": "R3",
+          "rule_name": "emit_condition_relationships -> timer",
+          "source": "Timer.Q",
+          "source_kind": "timer",
+          "target": "PedestrianRequest1",
+          "target_kind": "unknown",
+          "relation": "activates",
+          "metadata": {
+            "condition": "Timer.Q",
+            "assignment": "PedestrianRequest1 := FALSE",
+            "reason": "timer done condition activates controlled behavior"
+          }
+        },
+        {
+          "rule_id": "R3",
+          "rule_name": "emit_condition_relationships -> timer",
+          "source": "Timer.Q",
+          "source_kind": "timer",
+          "target": "PedestrianRequest2",
+          "target_kind": "unknown",
+          "relation": "activates",
+          "metadata": {
+            "condition": "Timer.Q",
+            "assignment": "PedestrianRequest2 := FALSE",
+            "reason": "timer done condition activates controlled behavior"
+          }
+        },
+        {
+          "rule_id": "R3",
+          "rule_name": "emit_condition_relationships -> timer",
+          "source": "Timer.Q",
+          "source_kind": "timer",
+          "target": "PedestrianLight1",
+          "target_kind": "actuator",
+          "relation": "activates",
+          "metadata": {
+            "condition": "Timer.Q",
+            "assignment": "PedestrianLight1 := FALSE",
+            "reason": "timer done condition activates controlled behavior"
+          }
+        }
+      ]
+    },
+    "R11": {
+      "count": 185,
+      "relations": {
+        "uses": 185
+      },
+      "dataset_count": 40,
+      "examples": [
+        {
+          "rule_id": "R11",
+          "rule_name": "visit_FunctionBlockCallNode -> program_uses_fb",
+          "source": "TestRunnerProgram",
+          "source_kind": "program",
+          "target": "Test_0",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program calls function block instance"
+          }
+        },
+        {
+          "rule_id": "R11",
+          "rule_name": "visit_FunctionBlockCallNode -> program_uses_fb",
+          "source": "TestRunnerProgram",
+          "source_kind": "program",
+          "target": "Test_1",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program calls function block instance"
+          }
+        },
+        {
+          "rule_id": "R11",
+          "rule_name": "visit_FunctionBlockCallNode -> program_uses_fb",
+          "source": "TestRunnerProgram",
+          "source_kind": "program",
+          "target": "Test_0",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program calls function block instance"
+          }
+        },
+        {
+          "rule_id": "R11",
+          "rule_name": "visit_FunctionBlockCallNode -> program_uses_fb",
+          "source": "TestRunnerProgram",
+          "source_kind": "program",
+          "target": "Test_1",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program calls function block instance"
+          }
+        },
+        {
+          "rule_id": "R11",
+          "rule_name": "visit_FunctionBlockCallNode -> program_uses_fb",
+          "source": "TestRunnerProgram",
+          "source_kind": "program",
+          "target": "Test_2",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program calls function block instance"
+          }
+        }
+      ]
+    },
+    "R13": {
+      "count": 20,
+      "relations": {
+        "contains": 20
+      },
+      "dataset_count": 20,
+      "examples": [
+        {
+          "rule_id": "R13",
+          "rule_name": "visit_ResourceNode -> contains",
+          "source": "Config0",
+          "source_kind": "configuration",
+          "target": "Res0",
+          "target_kind": "resource",
+          "relation": "contains",
+          "metadata": {
+            "reason": "configuration contains resource"
+          }
+        },
+        {
+          "rule_id": "R13",
+          "rule_name": "visit_ResourceNode -> contains",
+          "source": "Config0",
+          "source_kind": "configuration",
+          "target": "Res0",
+          "target_kind": "resource",
+          "relation": "contains",
+          "metadata": {
+            "reason": "configuration contains resource"
+          }
+        },
+        {
+          "rule_id": "R13",
+          "rule_name": "visit_ResourceNode -> contains",
+          "source": "Config0",
+          "source_kind": "configuration",
+          "target": "Res0",
+          "target_kind": "resource",
+          "relation": "contains",
+          "metadata": {
+            "reason": "configuration contains resource"
+          }
+        },
+        {
+          "rule_id": "R13",
+          "rule_name": "visit_ResourceNode -> contains",
+          "source": "Config0",
+          "source_kind": "configuration",
+          "target": "Res0",
+          "target_kind": "resource",
+          "relation": "contains",
+          "metadata": {
+            "reason": "configuration contains resource"
+          }
+        },
+        {
+          "rule_id": "R13",
+          "rule_name": "visit_ResourceNode -> contains",
+          "source": "Config0",
+          "source_kind": "configuration",
+          "target": "Res0",
+          "target_kind": "resource",
+          "relation": "contains",
+          "metadata": {
+            "reason": "configuration contains resource"
+          }
+        }
+      ]
+    },
+    "R14": {
+      "count": 20,
+      "relations": {
+        "contains": 20
+      },
+      "dataset_count": 20,
+      "examples": [
+        {
+          "rule_id": "R14",
+          "rule_name": "visit_TaskNode -> contains",
+          "source": "Res0",
+          "source_kind": "resource",
+          "target": "task0",
+          "target_kind": "task",
+          "relation": "contains",
+          "metadata": {
+            "reason": "resource contains task"
+          }
+        },
+        {
+          "rule_id": "R14",
+          "rule_name": "visit_TaskNode -> contains",
+          "source": "Res0",
+          "source_kind": "resource",
+          "target": "task0",
+          "target_kind": "task",
+          "relation": "contains",
+          "metadata": {
+            "reason": "resource contains task"
+          }
+        },
+        {
+          "rule_id": "R14",
+          "rule_name": "visit_TaskNode -> contains",
+          "source": "Res0",
+          "source_kind": "resource",
+          "target": "task0",
+          "target_kind": "task",
+          "relation": "contains",
+          "metadata": {
+            "reason": "resource contains task"
+          }
+        },
+        {
+          "rule_id": "R14",
+          "rule_name": "visit_TaskNode -> contains",
+          "source": "Res0",
+          "source_kind": "resource",
+          "target": "task0",
+          "target_kind": "task",
+          "relation": "contains",
+          "metadata": {
+            "reason": "resource contains task"
+          }
+        },
+        {
+          "rule_id": "R14",
+          "rule_name": "visit_TaskNode -> contains",
+          "source": "Res0",
+          "source_kind": "resource",
+          "target": "task0",
+          "target_kind": "task",
+          "relation": "contains",
+          "metadata": {
+            "reason": "resource contains task"
+          }
+        }
+      ]
+    },
+    "R16": {
+      "count": 20,
+      "relations": {
+        "uses": 20
+      },
+      "dataset_count": 20,
+      "examples": [
+        {
+          "rule_id": "R16",
+          "rule_name": "visit_ProgramBindingNode -> uses",
+          "source": "instance0",
+          "source_kind": "program",
+          "target": "TestRunnerProgram",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program instance uses program type"
+          }
+        },
+        {
+          "rule_id": "R16",
+          "rule_name": "visit_ProgramBindingNode -> uses",
+          "source": "instance0",
+          "source_kind": "program",
+          "target": "TestRunnerProgram",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program instance uses program type"
+          }
+        },
+        {
+          "rule_id": "R16",
+          "rule_name": "visit_ProgramBindingNode -> uses",
+          "source": "instance0",
+          "source_kind": "program",
+          "target": "TestRunnerProgram",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program instance uses program type"
+          }
+        },
+        {
+          "rule_id": "R16",
+          "rule_name": "visit_ProgramBindingNode -> uses",
+          "source": "instance0",
+          "source_kind": "program",
+          "target": "TestRunnerProgram",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program instance uses program type"
+          }
+        },
+        {
+          "rule_id": "R16",
+          "rule_name": "visit_ProgramBindingNode -> uses",
+          "source": "instance0",
+          "source_kind": "program",
+          "target": "TestRunnerProgram",
+          "target_kind": "function_block",
+          "relation": "uses",
+          "metadata": {
+            "reason": "program instance uses program type"
+          }
+        }
+      ]
+    }
+  }
+}

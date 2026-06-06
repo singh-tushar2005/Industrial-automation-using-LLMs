@@ -1,0 +1,27 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/sampletext_4.st",
+  "classification": {
+    "total_nodes": 0,
+    "classified_nodes": 0,
+    "unknown_nodes": 0,
+    "coverage_percent": 0.0
+  },
+  "node_kinds": {},
+  "relationships": {
+    "total": 0,
+    "by_type": {}
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

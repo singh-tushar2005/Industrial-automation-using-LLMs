@@ -1,0 +1,43 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/sequencing/batch_process_steps.st",
+  "classification": {
+    "total_nodes": 12,
+    "classified_nodes": 12,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "state": 4,
+    "actuator": 3,
+    "timer": 2,
+    "mode": 1,
+    "signal": 1,
+    "process_variable": 1
+  },
+  "relationships": {
+    "total": 21,
+    "by_type": {
+      "sequences": 7,
+      "disables": 4,
+      "activates": 4,
+      "enables": 2,
+      "transitions_to": 1,
+      "controls": 1,
+      "depends_on": 1,
+      "triggers": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 10,
+    "state_machines": 4,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

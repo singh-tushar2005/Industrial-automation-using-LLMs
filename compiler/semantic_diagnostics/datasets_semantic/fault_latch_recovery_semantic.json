@@ -1,0 +1,35 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/fault_handling/fault_latch_recovery.st",
+  "classification": {
+    "total_nodes": 6,
+    "classified_nodes": 6,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "signal": 3,
+    "actuator": 2,
+    "alarm": 1
+  },
+  "relationships": {
+    "total": 7,
+    "by_type": {
+      "triggers": 3,
+      "disables": 2,
+      "enables": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 4,
+    "state_machines": 0,
+    "safety_impact": 3,
+    "failure_propagation": 3
+  },
+  "unknown_patterns": {}
+}

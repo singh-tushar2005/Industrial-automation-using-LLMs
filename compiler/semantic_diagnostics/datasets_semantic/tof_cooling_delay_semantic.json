@@ -1,0 +1,34 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/timers/tof_cooling_delay.st",
+  "classification": {
+    "total_nodes": 4,
+    "classified_nodes": 4,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "timer": 2,
+    "signal": 1,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 5,
+    "by_type": {
+      "activates": 4,
+      "triggers": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 1,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

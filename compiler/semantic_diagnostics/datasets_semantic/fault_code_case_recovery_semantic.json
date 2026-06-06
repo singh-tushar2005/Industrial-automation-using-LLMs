@@ -1,0 +1,33 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/fault_handling/fault_code_case_recovery.st",
+  "classification": {
+    "total_nodes": 10,
+    "classified_nodes": 10,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "actuator": 5,
+    "state": 4,
+    "alarm": 1
+  },
+  "relationships": {
+    "total": 9,
+    "by_type": {
+      "sequences": 9
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 4,
+    "safety_impact": 1,
+    "failure_propagation": 2
+  },
+  "unknown_patterns": {}
+}

@@ -1,0 +1,39 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/SEQUENCE_8.st",
+  "classification": {
+    "total_nodes": 35,
+    "classified_nodes": 32,
+    "unknown_nodes": 3,
+    "coverage_percent": 91.4
+  },
+  "node_kinds": {
+    "signal": 23,
+    "actuator": 8,
+    "unknown": 3,
+    "history": 1
+  },
+  "relationships": {
+    "total": 286,
+    "by_type": {
+      "depends_on": 183,
+      "controls": 103
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 8.6
+  },
+  "reasoning": {
+    "control_paths": 66520,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "status": 1,
+    "_*": 1,
+    "run": 1
+  }
+}

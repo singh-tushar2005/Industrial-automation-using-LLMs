@@ -1,0 +1,36 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/intermediate/manual_auto_mode.st",
+  "classification": {
+    "total_nodes": 9,
+    "classified_nodes": 9,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "state": 3,
+    "mode": 2,
+    "actuator": 2,
+    "signal": 2
+  },
+  "relationships": {
+    "total": 11,
+    "by_type": {
+      "enables": 5,
+      "sequences": 5,
+      "controls": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 6,
+    "state_machines": 3,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

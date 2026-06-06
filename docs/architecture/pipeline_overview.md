@@ -57,7 +57,7 @@ compiler platform rather than a one-off script.
 │                                                   │ AST object graph          │
 │                                                   ▼                            │
 │        Semantic Domain               ┌──────────────────────────┐            │
-│        ───────────────               │ Semantic Traversal       │            │
+│        ───────────────               │ Semantic Traversal        │            │
 │                                      │ semantic.visitor         │            │
 │                                      │ SemanticTraversalVisitor │            │
 │                                      └────────────┬─────────────┘            │

@@ -1,0 +1,35 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/safety_systems/emergency_shutdown.st",
+  "classification": {
+    "total_nodes": 6,
+    "classified_nodes": 6,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "actuator": 3,
+    "signal": 2,
+    "alarm": 1
+  },
+  "relationships": {
+    "total": 8,
+    "by_type": {
+      "enables": 4,
+      "disables": 3,
+      "triggers": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 3,
+    "state_machines": 0,
+    "safety_impact": 2,
+    "failure_propagation": 1
+  },
+  "unknown_patterns": {}
+}

@@ -1,0 +1,117 @@
+======================================================================
+SEMANTIC DIAGNOSTICS SUMMARY
+======================================================================
+
+Files total:     83
+Files parsed:    81
+Files failed:    2
+
+Overall classification coverage: 92.7%
+Overall unknown ratio:           7.3%
+Total nodes:                     1437
+Total classified:                1332
+Total unknown:                   105
+
+Node Kind Distribution
+----------------------------------------
+  signal                  387
+  state                   208
+  actuator                207
+  unknown                 105
+  history                  97
+  timer                    96
+  function                 84
+  mode                     53
+  register                 32
+  sensor                   24
+  configuration            20
+  resource                 20
+  task                     20
+  program                  20
+  function_block           20
+  process_variable         20
+  alarm                    13
+  counter                  11
+
+Top 10 Unknown-Node Patterns
+----------------------------------------
+  out                      21
+  i                        21
+  other                     9
+  Pedestrian*               9
+  _*                        6
+  tx                        4
+  temp                      4
+  DX                        3
+  tl                        3
+  int1.*                    3
+
+Top 10 Relationship Types
+----------------------------------------
+  depends_on             1523
+  controls                457
+  sequences               357
+  activates               153
+  triggers                 84
+  transitions_to           60
+  enables                  43
+  contains                 40
+  disables                 39
+  uses                     20
+
+Reasoning Coverage
+----------------------------------------
+  Files with control paths:      72
+  Files with state machines:     50
+  Files with safety analysis:    15
+  Files with failure analysis:   14
+
+Top 10 Datasets by Unknown Ratio
+----------------------------------------
+  LAMBERT_W.st                     66.7%
+  CRC_GEN.st                       50.0%
+  FLOW_METER.st                    40.0%
+  GEN_SIN.st                       40.0%
+  MATRIX.st                        33.3%
+  FT_PIDWL.st                      25.0%
+  GEN_BIT.st                       21.4%
+  FLOW_METER_FullTest (1).st       15.9%
+  FLOW_METER_FullTest.st           15.9%
+  TRAFFIC_CTRL.st                  15.0%
+
+Top 10 Datasets by Control-Path Count
+----------------------------------------
+  SEQUENCE_8_FullTest (1).st      66523
+  SEQUENCE_8_FullTest.st          66523
+  SEQUENCE_8.st                   66520
+  TRAFFIC_CTRL_FullTest (1).st      325
+  TRAFFIC_CTRL_FullTest.st          325
+  TRAFFIC_CTRL.st                   322
+  GEN_BIT_FullTest.st               115
+  GEN_BIT.st                        112
+  packaging_cell_sequence.st         13
+  startup_shutdown_sequence.st       13
+
+Top 10 Datasets by Graph Size
+----------------------------------------
+  SEQUENCE_8_FullTest (1).st         66
+  SEQUENCE_8_FullTest.st             66
+  TRAFFIC_CTRL_FullTest (1).st       49
+  TRAFFIC_CTRL_FullTest.st           49
+  robotic_sequence.st                47
+  sampletext_2.st                    47
+  sampletext_3.st                    47
+  GEN_BIT_FullTest.st                46
+  FLOW_METER_FullTest (1).st         44
+  FLOW_METER_FullTest.st             44
+
+Datasets with Zero Semantic Relationships
+----------------------------------------
+  sampletext_4.st                (implementation)
+
+Parse Failures
+----------------------------------------
+  DEC_TO_HEX.st                  Expected Keyword 'END_FUNCTION_BLOCK', found 'VAR'
+  DEC_TO_HEX_FullTest.st         Expected end of text, found 'FUNCTION'  (at char 6
+
+======================================================================

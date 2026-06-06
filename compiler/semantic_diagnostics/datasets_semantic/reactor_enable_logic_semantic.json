@@ -1,0 +1,34 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/process_control/reactor_enable_logic.st",
+  "classification": {
+    "total_nodes": 7,
+    "classified_nodes": 7,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "signal": 4,
+    "actuator": 2,
+    "mode": 1
+  },
+  "relationships": {
+    "total": 6,
+    "by_type": {
+      "enables": 4,
+      "depends_on": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 10,
+    "state_machines": 0,
+    "safety_impact": 1,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

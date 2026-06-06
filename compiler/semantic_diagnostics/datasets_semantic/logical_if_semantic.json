@@ -1,0 +1,35 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/logical_if.st",
+  "classification": {
+    "total_nodes": 4,
+    "classified_nodes": 4,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "signal": 2,
+    "actuator": 1,
+    "alarm": 1
+  },
+  "relationships": {
+    "total": 4,
+    "by_type": {
+      "enables": 2,
+      "controls": 1,
+      "triggers": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 2,
+    "state_machines": 0,
+    "safety_impact": 1,
+    "failure_propagation": 1
+  },
+  "unknown_patterns": {}
+}

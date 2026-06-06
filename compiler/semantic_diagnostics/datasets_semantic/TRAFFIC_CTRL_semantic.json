@@ -1,0 +1,42 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/TRAFFIC_CTRL.st",
+  "classification": {
+    "total_nodes": 20,
+    "classified_nodes": 17,
+    "unknown_nodes": 3,
+    "coverage_percent": 85.0
+  },
+  "node_kinds": {
+    "actuator": 8,
+    "state": 5,
+    "unknown": 3,
+    "signal": 2,
+    "timer": 2
+  },
+  "relationships": {
+    "total": 53,
+    "by_type": {
+      "activates": 18,
+      "sequences": 17,
+      "depends_on": 7,
+      "transitions_to": 4,
+      "controls": 4,
+      "triggers": 3
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 15.0
+  },
+  "reasoning": {
+    "control_paths": 322,
+    "state_machines": 5,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "Pedestrian*": 3
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/industrial/compressor_station_control.st",
+  "classification": {
+    "total_nodes": 11,
+    "classified_nodes": 11,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "signal": 3,
+    "timer": 2,
+    "actuator": 2,
+    "process_variable": 2,
+    "mode": 1,
+    "alarm": 1
+  },
+  "relationships": {
+    "total": 17,
+    "by_type": {
+      "disables": 6,
+      "enables": 4,
+      "triggers": 3,
+      "controls": 2,
+      "activates": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 8,
+    "state_machines": 0,
+    "safety_impact": 2,
+    "failure_propagation": 1
+  },
+  "unknown_patterns": {}
+}

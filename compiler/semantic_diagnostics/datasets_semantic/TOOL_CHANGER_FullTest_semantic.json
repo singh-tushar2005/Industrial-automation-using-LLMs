@@ -1,0 +1,53 @@
+{
+  "dataset": "test_harness",
+  "file": "datasets/Industrial_data/test_harness/Full_test/TOOL_CHANGER_FullTest.st",
+  "classification": {
+    "total_nodes": 39,
+    "classified_nodes": 37,
+    "unknown_nodes": 2,
+    "coverage_percent": 94.9
+  },
+  "node_kinds": {
+    "signal": 12,
+    "state": 5,
+    "function": 4,
+    "history": 4,
+    "actuator": 4,
+    "unknown": 2,
+    "timer": 2,
+    "mode": 1,
+    "configuration": 1,
+    "resource": 1,
+    "task": 1,
+    "program": 1,
+    "function_block": 1
+  },
+  "relationships": {
+    "total": 59,
+    "by_type": {
+      "depends_on": 32,
+      "controls": 9,
+      "sequences": 9,
+      "transitions_to": 3,
+      "activates": 2,
+      "contains": 2,
+      "triggers": 1,
+      "uses": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 5.1
+  },
+  "reasoning": {
+    "control_paths": 7,
+    "state_machines": 5,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "out": 1,
+    "i": 1
+  }
+}

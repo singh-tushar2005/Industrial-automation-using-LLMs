@@ -1,0 +1,36 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/GEN_SIN.st",
+  "classification": {
+    "total_nodes": 5,
+    "classified_nodes": 3,
+    "unknown_nodes": 2,
+    "coverage_percent": 60.0
+  },
+  "node_kinds": {
+    "signal": 2,
+    "unknown": 2,
+    "history": 1
+  },
+  "relationships": {
+    "total": 4,
+    "by_type": {
+      "depends_on": 4
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 40.0
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "tx": 1,
+    "temp": 1
+  }
+}

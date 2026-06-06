@@ -1,0 +1,592 @@
+{
+  "rule_inventory": {
+    "controls": {
+      "sources": [
+        "AssignmentNode with condition context where is_actuator_target(target) and is_meaningful_control_source(signal)",
+        "AssignmentNode with is_start_signal where is_actuator_target(target)",
+        "AssignmentNode with is_emergency_or_fault_signal where is_actuator_target(target)"
+      ],
+      "ast_nodes": [
+        "AssignmentNode"
+      ],
+      "precision": "medium",
+      "notes": "Relies on memory_mapped_outputs, bool_output_variables, and is_actuator_name heuristic. False positives when target is not actually an actuator but matches heuristic."
+    },
+    "triggers": {
+      "sources": [
+        "FunctionBlockCallNode for TON/TOF/TP when input_signal is not literal",
+        "FunctionBlockCallNode for CTU/CTD/CTUD when count_input is not literal",
+        "Process limit condition when is_meaningful_trigger_target(target)",
+        "Timer done condition inside CASE branch"
+      ],
+      "ast_nodes": [
+        "FunctionBlockCallNode",
+        "AssignmentNode (via condition context)"
+      ],
+      "precision": "high",
+      "notes": "Explicit timer/counter function block calls with non-literal inputs."
+    },
+    "activates": {
+      "sources": [
+        "AssignmentNode with timer done condition context (context['kind'] == 'timer')"
+      ],
+      "ast_nodes": [
+        "AssignmentNode"
+      ],
+      "precision": "high",
+      "notes": "Only produced when a timer .Q signal is in the condition context."
+    },
+    "sequences": {
+      "sources": [
+        "CaseStatementNode: consecutive branch values",
+        "AssignmentNode inside CASE: case_selector -> sequences -> target"
+      ],
+      "ast_nodes": [
+        "CaseStatementNode",
+        "AssignmentNode"
+      ],
+      "precision": "high",
+      "notes": "State machine sequencing. Over-generates for non-state CASE selectors."
+    },
+    "transitions_to": {
+      "sources": [
+        "CaseStatementNode: branch body assigns to selector variable"
+      ],
+      "ast_nodes": [
+        "CaseStatementNode"
+      ],
+      "precision": "high",
+      "notes": "Only when extract_state_assignment finds the selector being reassigned."
+    },
+    "depends_on": {
+      "sources": [
+        "Default relation for all non-specialized assignments",
+        "FunctionBlockCallNode: preset_time -> depends_on -> timer",
+        "All condition context signals that don't match specialized relations"
+      ],
+      "ast_nodes": [
+        "AssignmentNode",
+        "FunctionBlockCallNode"
+      ],
+      "precision": "low",
+      "notes": "Catch-all relation. Produces 50-60% of all edges. Many false positives because any assignment under any condition gets depends_on."
+    },
+    "feeds": {
+      "sources": [
+        "FunctionBlockCallNode: argument value references another FB via '.'"
+      ],
+      "ast_nodes": [
+        "FunctionBlockCallNode"
+      ],
+      "precision": "high",
+      "notes": "Only when an FB argument is a reference to another FB output."
+    },
+    "enables": {
+      "sources": [
+        "AssignmentNode with is_safety_signal in condition context",
+        "AssignmentNode with is_enable_signal in condition context"
+      ],
+      "ast_nodes": [
+        "AssignmentNode"
+      ],
+      "precision": "medium",
+      "notes": "Distinguishes safety permissive from general control signal."
+    },
+    "disables": {
+      "sources": [
+        "AssignmentNode with is_emergency_or_fault_signal where is_actuator_target(target)",
+        "Process limit condition where not is_meaningful_trigger_target(target)"
+      ],
+      "ast_nodes": [
+        "AssignmentNode"
+      ],
+      "precision": "medium",
+      "notes": "Emergency/fault signals disabling actuators."
+    },
+    "contains": {
+      "sources": [
+        "ConfigurationNode -> ResourceNode",
+        "ResourceNode -> TaskNode"
+      ],
+      "ast_nodes": [
+        "ConfigurationNode",
+        "ResourceNode"
+      ],
+      "precision": "high",
+      "notes": "Hierarchical containment. Always correct."
+    },
+    "schedules": {
+      "sources": [
+        "ProgramBindingNode: task_name -> schedules -> instance_name"
+      ],
+      "ast_nodes": [
+        "ProgramBindingNode"
+      ],
+      "precision": "high",
+      "notes": "Task scheduling binding. Always correct."
+    },
+    "uses": {
+      "sources": [
+        "ProgramBindingNode: instance_name -> uses -> program_type",
+        "FunctionBlockCallNode: current_program -> uses -> fb_name"
+      ],
+      "ast_nodes": [
+        "ProgramBindingNode",
+        "FunctionBlockCallNode"
+      ],
+      "precision": "high",
+      "notes": "Program-to-type usage. Always correct."
+    }
+  },
+  "rule_frequency": {
+    "other": 610,
+    "case_state_transition": 43,
+    "case_assignment": 99,
+    "case_branch_sequence": 38,
+    "timer_case_trigger": 1,
+    "timer_done": 9
+  },
+  "relationship_type_frequency": {
+    "depends_on": 459,
+    "controls": 140,
+    "sequences": 137,
+    "transitions_to": 43,
+    "activates": 18,
+    "triggers": 3
+  },
+  "failure_patterns": {
+    "self_loops": 0,
+    "test_harness_leaks": 0,
+    "details": []
+  },
+  "estimated_precision_by_type": {
+    "controls": "medium (50-70%)",
+    "triggers": "high (80-90%)",
+    "activates": "high (80-90%)",
+    "sequences": "medium (60-70%)",
+    "transitions_to": "high (80-90%)",
+    "depends_on": "low (40-60%)",
+    "feeds": "high (85-95%)",
+    "enables": "medium (60-70%)",
+    "disables": "medium (60-70%)",
+    "contains": "high (95-100%)",
+    "schedules": "high (95-100%)",
+    "uses": "high (90-95%)"
+  },
+  "root_cause_analysis": {
+    "depends_on_overgeneration": "Catch-all relation produces ~60% of edges. Any assignment under any condition gets depends_on. This is the dominant source of low precision.",
+    "controls_false_positives": "is_actuator_target relies on substring matching (Motor, Pump, Valve, etc.) and memory-mapped outputs. Names like 'Q0' are correctly classified as outputs but 'run' is not an actuator.",
+    "sequences_overgeneration": "Any consecutive CASE branches get 'sequences' edges, even when the CASE selector is not a state machine.",
+    "cycle_propagation": "Dense assignment graphs (like SEQUENCE_8) create cyclic dependencies that the DFS upstream traversal amplifies into thousands of paths."
+  },
+  "sequence_8_investigation": {
+    "actuators": [
+      "Q0",
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ],
+    "total_graph_nodes": 35,
+    "total_graph_edges": 175,
+    "relationship_extraction_total": 286,
+    "relationship_distribution": {
+      "controls": 103,
+      "depends_on": 183
+    },
+    "unique_sources_in_control_paths": [
+      "Tx",
+      "_step",
+      "edge",
+      "in0",
+      "in1",
+      "in2",
+      "in3",
+      "in4",
+      "in5",
+      "in6",
+      "in7",
+      "q0",
+      "q1",
+      "q2",
+      "q3",
+      "q4",
+      "q5",
+      "q6",
+      "q7",
+      "rst",
+      "run",
+      "start",
+      "tx"
+    ],
+    "unique_source_count": 23,
+    "unique_actuator_count": 8,
+    "dependency_reasoning_total_chains": 66520,
+    "dependency_reasoning_deduped_chains": 66520,
+    "max_depth": 10,
+    "avg_depth": 6.831584485868912,
+    "repeated_subpath_count": 35142,
+    "total_subpath_occurrences": 1810905,
+    "per_actuator_detail": {
+      "Q0": {
+        "total_paths": 11681,
+        "deduped_paths": 11681,
+        "unique_sources": 17,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in0",
+          "in1",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 7.104528721856005
+      },
+      "Q1": {
+        "total_paths": 10022,
+        "deduped_paths": 10022,
+        "unique_sources": 17,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in1",
+          "in2",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 6.8617042506485735
+      },
+      "Q2": {
+        "total_paths": 9525,
+        "deduped_paths": 9525,
+        "unique_sources": 17,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in2",
+          "in3",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 6.795380577427822
+      },
+      "Q3": {
+        "total_paths": 9366,
+        "deduped_paths": 9366,
+        "unique_sources": 17,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in3",
+          "in4",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 6.789451206491565
+      },
+      "Q4": {
+        "total_paths": 9105,
+        "deduped_paths": 9105,
+        "unique_sources": 17,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in4",
+          "in5",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 6.793629873695772
+      },
+      "Q5": {
+        "total_paths": 8174,
+        "deduped_paths": 8174,
+        "unique_sources": 17,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in5",
+          "in6",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 6.781991680939565
+      },
+      "Q6": {
+        "total_paths": 5365,
+        "deduped_paths": 5365,
+        "unique_sources": 17,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in6",
+          "in7",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 6.6762348555452
+      },
+      "Q7": {
+        "total_paths": 3282,
+        "deduped_paths": 3282,
+        "unique_sources": 16,
+        "sources": [
+          "Tx",
+          "_step",
+          "edge",
+          "in7",
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "q7",
+          "rst",
+          "run",
+          "start",
+          "tx"
+        ],
+        "max_depth": 10,
+        "avg_depth": 6.476234003656307
+      }
+    },
+    "root_cause": "C (dependency reasoning traversal). The graph has 175 edges and cycles. The DFS upstream traversal (_dfs_upstream) appends chains BEFORE the visited check, creating paths with repeated nodes (e.g., run -> depends_on _step -> depends_on run -> controls Q0). The deduplication removes exact duplicates but there are 66,520 unique source-target-edge-sequence combinations.",
+    "evidence": {
+      "relationship_extraction_total": 286,
+      "graph_edges": 175,
+      "graph_nodes": 35,
+      "dependency_reasoning_total_chains": 66520,
+      "dependency_reasoning_deduped_chains": 66520,
+      "repeated_subpath_count": 35142,
+      "total_subpath_occurrences": 1810905
+    }
+  },
+  "per_file_summary": {
+    "CRC_GEN.st": {
+      "graph_nodes": 4,
+      "graph_edges": 3,
+      "relationship_count": 3,
+      "relation_counts": {
+        "depends_on": 3
+      }
+    },
+    "FLOW_METER.st": {
+      "graph_nodes": 15,
+      "graph_edges": 22,
+      "relationship_count": 22,
+      "relation_counts": {
+        "depends_on": 22
+      }
+    },
+    "FT_PIDWL.st": {
+      "graph_nodes": 4,
+      "graph_edges": 2,
+      "relationship_count": 3,
+      "relation_counts": {
+        "controls": 2,
+        "depends_on": 1
+      }
+    },
+    "GEN_BIT.st": {
+      "graph_nodes": 14,
+      "graph_edges": 44,
+      "relationship_count": 76,
+      "relation_counts": {
+        "controls": 20,
+        "depends_on": 56
+      }
+    },
+    "GEN_SIN.st": {
+      "graph_nodes": 5,
+      "graph_edges": 4,
+      "relationship_count": 4,
+      "relation_counts": {
+        "depends_on": 4
+      }
+    },
+    "INCLUDE.st": {
+      "graph_nodes": 21,
+      "graph_edges": 24,
+      "relationship_count": 29,
+      "relation_counts": {
+        "controls": 2,
+        "depends_on": 27
+      }
+    },
+    "LAMBERT_W.st": {
+      "graph_nodes": 3,
+      "graph_edges": 2,
+      "relationship_count": 3,
+      "relation_counts": {
+        "depends_on": 3
+      }
+    },
+    "MATRIX.st": {
+      "graph_nodes": 3,
+      "graph_edges": 3,
+      "relationship_count": 3,
+      "relation_counts": {
+        "controls": 2,
+        "depends_on": 1
+      }
+    },
+    "SEQUENCE_8.st": {
+      "graph_nodes": 35,
+      "graph_edges": 175,
+      "relationship_count": 286,
+      "relation_counts": {
+        "controls": 103,
+        "depends_on": 183
+      }
+    },
+    "TOOL_CHANGER.st": {
+      "graph_nodes": 8,
+      "graph_edges": 13,
+      "relationship_count": 21,
+      "relation_counts": {
+        "controls": 7,
+        "depends_on": 5,
+        "sequences": 6,
+        "transitions_to": 3
+      }
+    },
+    "TRAFFIC_CTRL.st": {
+      "graph_nodes": 20,
+      "graph_edges": 38,
+      "relationship_count": 53,
+      "relation_counts": {
+        "activates": 18,
+        "controls": 4,
+        "depends_on": 7,
+        "sequences": 17,
+        "transitions_to": 4,
+        "triggers": 3
+      }
+    },
+    "robotic_sequence.st": {
+      "graph_nodes": 47,
+      "graph_edges": 73,
+      "relationship_count": 99,
+      "relation_counts": {
+        "depends_on": 49,
+        "sequences": 38,
+        "transitions_to": 12
+      }
+    },
+    "sampletext_2.st": {
+      "graph_nodes": 47,
+      "graph_edges": 73,
+      "relationship_count": 99,
+      "relation_counts": {
+        "depends_on": 49,
+        "sequences": 38,
+        "transitions_to": 12
+      }
+    },
+    "sampletext_3.st": {
+      "graph_nodes": 47,
+      "graph_edges": 73,
+      "relationship_count": 99,
+      "relation_counts": {
+        "depends_on": 49,
+        "sequences": 38,
+        "transitions_to": 12
+      }
+    },
+    "sampletext_4.st": {
+      "graph_nodes": 0,
+      "graph_edges": 0,
+      "relationship_count": 0,
+      "relation_counts": {}
+    }
+  }
+}

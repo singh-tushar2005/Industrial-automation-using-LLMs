@@ -1,0 +1,33 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/simple/basic_motor_start.st",
+  "classification": {
+    "total_nodes": 3,
+    "classified_nodes": 3,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "signal": 2,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 2,
+    "by_type": {
+      "controls": 1,
+      "enables": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 2,
+    "state_machines": 0,
+    "safety_impact": 1,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

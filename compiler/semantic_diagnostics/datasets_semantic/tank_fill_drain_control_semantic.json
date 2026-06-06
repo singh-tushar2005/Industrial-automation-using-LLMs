@@ -1,0 +1,36 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/tank_control/tank_fill_drain_control.st",
+  "classification": {
+    "total_nodes": 5,
+    "classified_nodes": 5,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "actuator": 2,
+    "signal": 1,
+    "mode": 1,
+    "process_variable": 1
+  },
+  "relationships": {
+    "total": 8,
+    "by_type": {
+      "disables": 4,
+      "controls": 2,
+      "enables": 2
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 4,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

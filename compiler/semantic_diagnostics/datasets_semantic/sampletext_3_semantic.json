@@ -1,0 +1,39 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/sampletext_3.st",
+  "classification": {
+    "total_nodes": 47,
+    "classified_nodes": 47,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "state": 12,
+    "actuator": 11,
+    "sensor": 8,
+    "register": 8,
+    "signal": 4,
+    "counter": 3,
+    "mode": 1
+  },
+  "relationships": {
+    "total": 99,
+    "by_type": {
+      "depends_on": 49,
+      "sequences": 38,
+      "transitions_to": 12
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 0,
+    "state_machines": 12,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

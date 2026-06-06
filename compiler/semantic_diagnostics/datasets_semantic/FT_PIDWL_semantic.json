@@ -1,0 +1,36 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/FT_PIDWL.st",
+  "classification": {
+    "total_nodes": 4,
+    "classified_nodes": 3,
+    "unknown_nodes": 1,
+    "coverage_percent": 75.0
+  },
+  "node_kinds": {
+    "signal": 2,
+    "unknown": 1,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 3,
+    "by_type": {
+      "controls": 2,
+      "depends_on": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 25.0
+  },
+  "reasoning": {
+    "control_paths": 1,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "piwl.*": 1
+  }
+}

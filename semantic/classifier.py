@@ -1,5 +1,7 @@
 """Industrial semantic classifier built on the existing AST visitor system."""
 
+import re
+
 try:
     from semantic.visitor import ASTVisitor
 except ModuleNotFoundError:
@@ -675,7 +677,7 @@ class IndustrialSemanticClassifier(ASTVisitor):
                 "Compressor",
                 "Solenoid",
             )
-        )
+        ) or bool(re.match(r"^(Ho\d+|Ro\d+|Zo\d+|Yo\d+|Q\d+)$", name))
 
     def is_actuator_target(self, target):
         if target in self.memory_mapped_outputs:

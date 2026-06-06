@@ -10,14 +10,18 @@ relies on the RelationshipExtractor to produce relationship edges and
 only handles graph assembly, node normalization, and node-kind inference.
 """
 
+import re
+
 try:
     from semantic.semantic_graph import (
+        NODE_KINDS,
         SemanticGraph,
         SemanticGraphEdge,
         SemanticGraphNode,
     )
 except ModuleNotFoundError:
     from semantic_graph import (
+        NODE_KINDS,
         SemanticGraph,
         SemanticGraphEdge,
         SemanticGraphNode,
@@ -63,8 +67,12 @@ class SemanticGraphBuilder:
             if not source_id or not target_id:
                 continue
 
-            source_kind = metadata.get("source_kind") or self.infer_node_kind(source_id)
-            target_kind = metadata.get("target_kind") or self.infer_node_kind(target_id)
+            source_kind = self._resolve_node_kind(
+                metadata.get("source_kind"), source_id
+            )
+            target_kind = self._resolve_node_kind(
+                metadata.get("target_kind"), target_id
+            )
 
             source_node = SemanticGraphNode(
                 node_id=source_id,
@@ -89,6 +97,15 @@ class SemanticGraphBuilder:
             self.graph.add_edge(edge)
 
         return self.graph
+
+    def _resolve_node_kind(self, metadata_kind, node_id):
+        """Return a valid node kind, falling back to naming inference when needed.
+
+        Naming rules apply only when semantic metadata is absent or invalid.
+        """
+        if metadata_kind and metadata_kind in NODE_KINDS and metadata_kind != "unknown":
+            return metadata_kind
+        return self.infer_node_kind(node_id)
 
     # ------------------------------------------------------------------
     # Node kind inference
@@ -132,6 +149,12 @@ class SemanticGraphBuilder:
         if self.is_alarm(name):
             return "alarm"
 
+        if self.is_history(name):
+            return "history"
+
+        if self.is_register(name):
+            return "register"
+
         if self.is_sensor(name):
             return "sensor"
 
@@ -148,6 +171,23 @@ class SemanticGraphBuilder:
             return "signal"
 
         return "unknown"
+
+    def is_register(self, name):
+        """Return True if the name matches PLC register/relay patterns."""
+
+        return bool(
+            re.match(r"^(Ri\d+|r\d+|R\d+|Zi\d+|Z\d+)$", name)
+        )
+
+    def is_history(self, name):
+        """Return True if the name matches history/memory retention patterns."""
+
+        return (
+            name == "last"
+            or name.endswith("_last")
+            or name.startswith("previous")
+            or name.startswith("old")
+        )
 
     def is_actuator(self, name):
         """Return True if the name matches known actuator patterns."""
@@ -170,7 +210,7 @@ class SemanticGraphBuilder:
                 "Compressor",
                 "Solenoid",
             )
-        )
+        ) or bool(re.match(r"^(Ho\d+|Ro\d+|Zo\d+|Yo\d+|Q\d+)$", name))
 
     def is_timer(self, name):
         """Return True if the name matches known timer patterns."""
@@ -229,7 +269,7 @@ class SemanticGraphBuilder:
                 "CTUD",
                 "Counter",
             )
-        )
+        ) or bool(re.match(r".*(_Cnt|_Count)$", name)) or name.startswith("Counter")
 
     def is_mode(self, name):
         """Return True if the name matches known mode or state patterns."""
@@ -271,7 +311,7 @@ class SemanticGraphBuilder:
                 "Done",
                 "Q",
             )
-        )
+        ) or bool(re.match(r"^Si\d+$", name))
 
     def is_sensor(self, name):
         """Return True if the name matches known sensor patterns."""
@@ -290,7 +330,7 @@ class SemanticGraphBuilder:
                 "Inductive",
                 "Capacitive",
             )
-        )
+        ) or bool(re.match(r"^(Xi\d+|X\d+)$", name))
 
     def is_configuration(self, name):
         return name.startswith("Config")

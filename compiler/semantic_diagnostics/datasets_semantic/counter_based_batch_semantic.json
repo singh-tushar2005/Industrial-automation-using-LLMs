@@ -1,0 +1,36 @@
+{
+  "dataset": "educational",
+  "file": "datasets/educational/sequencing/counter_based_batch.st",
+  "classification": {
+    "total_nodes": 6,
+    "classified_nodes": 6,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "counter": 2,
+    "actuator": 2,
+    "signal": 1,
+    "mode": 1
+  },
+  "relationships": {
+    "total": 4,
+    "by_type": {
+      "controls": 2,
+      "triggers": 1,
+      "depends_on": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 2,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}

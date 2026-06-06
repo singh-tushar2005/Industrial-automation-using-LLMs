@@ -1,0 +1,3479 @@
+{
+  "files_total": 83,
+  "files_parsed": 81,
+  "files_failed": 2,
+  "parse_failures": [
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/DEC_TO_HEX.st",
+      "error": "Expected Keyword 'END_FUNCTION_BLOCK', found 'VAR'  (at char 122), (line:8, col:3)"
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/DEC_TO_HEX_FullTest.st",
+      "error": "Expected end of text, found 'FUNCTION'  (at char 6740), (line:340, col:1)"
+    }
+  ],
+  "classification_coverage": 92.7,
+  "unknown_ratio": 7.3,
+  "total_nodes": 1437,
+  "total_classified": 1332,
+  "total_unknown": 105,
+  "node_kind_distribution": {
+    "signal": 387,
+    "state": 208,
+    "actuator": 207,
+    "unknown": 105,
+    "history": 97,
+    "timer": 96,
+    "function": 84,
+    "mode": 53,
+    "register": 32,
+    "sensor": 24,
+    "configuration": 20,
+    "resource": 20,
+    "task": 20,
+    "program": 20,
+    "function_block": 20,
+    "process_variable": 20,
+    "alarm": 13,
+    "counter": 11
+  },
+  "relationship_distribution": {
+    "depends_on": 1523,
+    "controls": 457,
+    "sequences": 357,
+    "activates": 153,
+    "triggers": 84,
+    "transitions_to": 60,
+    "enables": 43,
+    "contains": 40,
+    "disables": 39,
+    "uses": 20
+  },
+  "reasoning_coverage": {
+    "files_with_control_paths": 72,
+    "files_with_state_machines": 50,
+    "files_with_safety_analysis": 15,
+    "files_with_failure_analysis": 14
+  },
+  "top_unknown_patterns": {
+    "out": 21,
+    "i": 21,
+    "other": 9,
+    "Pedestrian*": 9,
+    "_*": 6,
+    "tx": 4,
+    "temp": 4,
+    "DX": 3,
+    "tl": 3,
+    "int1.*": 3,
+    "tmp": 3,
+    "piwl.*": 3,
+    "OUT": 3,
+    "w": 3,
+    "code": 3,
+    "status": 3,
+    "run": 2,
+    "cnt": 2
+  },
+  "top_datasets_unknown_ratio": [
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/LAMBERT_W.st",
+      "unknown_ratio": 66.7
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/CRC_GEN.st",
+      "unknown_ratio": 50.0
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/FLOW_METER.st",
+      "unknown_ratio": 40.0
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/GEN_SIN.st",
+      "unknown_ratio": 40.0
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/MATRIX.st",
+      "unknown_ratio": 33.3
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/FT_PIDWL.st",
+      "unknown_ratio": 25.0
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/GEN_BIT.st",
+      "unknown_ratio": 21.4
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest (1).st",
+      "unknown_ratio": 15.9
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest.st",
+      "unknown_ratio": 15.9
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/TRAFFIC_CTRL.st",
+      "unknown_ratio": 15.0
+    }
+  ],
+  "top_datasets_control_paths": [
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest (1).st",
+      "control_paths": 66523
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest.st",
+      "control_paths": 66523
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/SEQUENCE_8.st",
+      "control_paths": 66520
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest (1).st",
+      "control_paths": 325
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest.st",
+      "control_paths": 325
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/TRAFFIC_CTRL.st",
+      "control_paths": 322
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_BIT_FullTest.st",
+      "control_paths": 115
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/GEN_BIT.st",
+      "control_paths": 112
+    },
+    {
+      "file": "datasets/educational/industrial/packaging_cell_sequence.st",
+      "control_paths": 13
+    },
+    {
+      "file": "datasets/educational/sequencing/startup_shutdown_sequence.st",
+      "control_paths": 13
+    }
+  ],
+  "top_datasets_graph_size": [
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest (1).st",
+      "total_nodes": 66
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest.st",
+      "total_nodes": 66
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest (1).st",
+      "total_nodes": 49
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest.st",
+      "total_nodes": 49
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/robotic_sequence.st",
+      "total_nodes": 47
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_2.st",
+      "total_nodes": 47
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_3.st",
+      "total_nodes": 47
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_BIT_FullTest.st",
+      "total_nodes": 46
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest (1).st",
+      "total_nodes": 44
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest.st",
+      "total_nodes": 44
+    }
+  ],
+  "datasets_with_zero_relationships": [
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_4.st",
+      "dataset": "implementation"
+    }
+  ],
+  "per_file_reports": [
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/CRC_GEN.st",
+      "classification": {
+        "total_nodes": 4,
+        "classified_nodes": 2,
+        "unknown_nodes": 2,
+        "coverage_percent": 50.0
+      },
+      "node_kinds": {
+        "signal": 2,
+        "unknown": 2
+      },
+      "relationships": {
+        "total": 3,
+        "by_type": {
+          "depends_on": 3
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 50.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "_*": 1,
+        "DX": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/FLOW_METER.st",
+      "classification": {
+        "total_nodes": 15,
+        "classified_nodes": 9,
+        "unknown_nodes": 6,
+        "coverage_percent": 60.0
+      },
+      "node_kinds": {
+        "signal": 7,
+        "unknown": 6,
+        "history": 2
+      },
+      "relationships": {
+        "total": 22,
+        "by_type": {
+          "depends_on": 22
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 40.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "other": 3,
+        "tl": 1,
+        "int1.*": 1,
+        "tmp": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/FT_PIDWL.st",
+      "classification": {
+        "total_nodes": 4,
+        "classified_nodes": 3,
+        "unknown_nodes": 1,
+        "coverage_percent": 75.0
+      },
+      "node_kinds": {
+        "signal": 2,
+        "unknown": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 3,
+        "by_type": {
+          "controls": 2,
+          "depends_on": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 25.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "piwl.*": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/GEN_BIT.st",
+      "classification": {
+        "total_nodes": 14,
+        "classified_nodes": 11,
+        "unknown_nodes": 3,
+        "coverage_percent": 78.6
+      },
+      "node_kinds": {
+        "register": 4,
+        "actuator": 4,
+        "signal": 3,
+        "unknown": 3
+      },
+      "relationships": {
+        "total": 76,
+        "by_type": {
+          "depends_on": 56,
+          "controls": 20
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 21.4
+      },
+      "reasoning": {
+        "control_paths": 112,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "run": 1,
+        "cnt": 1,
+        "other": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/GEN_SIN.st",
+      "classification": {
+        "total_nodes": 5,
+        "classified_nodes": 3,
+        "unknown_nodes": 2,
+        "coverage_percent": 60.0
+      },
+      "node_kinds": {
+        "signal": 2,
+        "unknown": 2,
+        "history": 1
+      },
+      "relationships": {
+        "total": 4,
+        "by_type": {
+          "depends_on": 4
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 40.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "tx": 1,
+        "temp": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/INCLUDE.st",
+      "classification": {
+        "total_nodes": 21,
+        "classified_nodes": 19,
+        "unknown_nodes": 2,
+        "coverage_percent": 90.5
+      },
+      "node_kinds": {
+        "signal": 10,
+        "function": 4,
+        "history": 4,
+        "unknown": 2,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 29,
+        "by_type": {
+          "depends_on": 27,
+          "controls": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 9.5
+      },
+      "reasoning": {
+        "control_paths": 2,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/LAMBERT_W.st",
+      "classification": {
+        "total_nodes": 3,
+        "classified_nodes": 1,
+        "unknown_nodes": 2,
+        "coverage_percent": 33.3
+      },
+      "node_kinds": {
+        "unknown": 2,
+        "signal": 1
+      },
+      "relationships": {
+        "total": 3,
+        "by_type": {
+          "depends_on": 3
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 66.7
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "OUT": 1,
+        "w": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/MATRIX.st",
+      "classification": {
+        "total_nodes": 3,
+        "classified_nodes": 2,
+        "unknown_nodes": 1,
+        "coverage_percent": 66.7
+      },
+      "node_kinds": {
+        "signal": 1,
+        "unknown": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 3,
+        "by_type": {
+          "controls": 2,
+          "depends_on": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 33.3
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "code": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/SEQUENCE_8.st",
+      "classification": {
+        "total_nodes": 35,
+        "classified_nodes": 32,
+        "unknown_nodes": 3,
+        "coverage_percent": 91.4
+      },
+      "node_kinds": {
+        "signal": 23,
+        "actuator": 8,
+        "unknown": 3,
+        "history": 1
+      },
+      "relationships": {
+        "total": 286,
+        "by_type": {
+          "depends_on": 183,
+          "controls": 103
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 8.6
+      },
+      "reasoning": {
+        "control_paths": 66520,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "status": 1,
+        "_*": 1,
+        "run": 1
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/TOOL_CHANGER.st",
+      "classification": {
+        "total_nodes": 8,
+        "classified_nodes": 8,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 4,
+        "signal": 2,
+        "actuator": 2
+      },
+      "relationships": {
+        "total": 21,
+        "by_type": {
+          "controls": 7,
+          "sequences": 6,
+          "depends_on": 5,
+          "transitions_to": 3
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 4,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/TRAFFIC_CTRL.st",
+      "classification": {
+        "total_nodes": 20,
+        "classified_nodes": 17,
+        "unknown_nodes": 3,
+        "coverage_percent": 85.0
+      },
+      "node_kinds": {
+        "actuator": 8,
+        "state": 5,
+        "unknown": 3,
+        "signal": 2,
+        "timer": 2
+      },
+      "relationships": {
+        "total": 53,
+        "by_type": {
+          "activates": 18,
+          "sequences": 17,
+          "depends_on": 7,
+          "transitions_to": 4,
+          "controls": 4,
+          "triggers": 3
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 15.0
+      },
+      "reasoning": {
+        "control_paths": 322,
+        "state_machines": 5,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "Pedestrian*": 3
+      }
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/robotic_sequence.st",
+      "classification": {
+        "total_nodes": 47,
+        "classified_nodes": 47,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 12,
+        "actuator": 11,
+        "sensor": 8,
+        "register": 8,
+        "signal": 4,
+        "counter": 3,
+        "mode": 1
+      },
+      "relationships": {
+        "total": 99,
+        "by_type": {
+          "depends_on": 49,
+          "sequences": 38,
+          "transitions_to": 12
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 12,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_2.st",
+      "classification": {
+        "total_nodes": 47,
+        "classified_nodes": 47,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 12,
+        "actuator": 11,
+        "sensor": 8,
+        "register": 8,
+        "signal": 4,
+        "counter": 3,
+        "mode": 1
+      },
+      "relationships": {
+        "total": 99,
+        "by_type": {
+          "depends_on": 49,
+          "sequences": 38,
+          "transitions_to": 12
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 12,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_3.st",
+      "classification": {
+        "total_nodes": 47,
+        "classified_nodes": 47,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 12,
+        "actuator": 11,
+        "sensor": 8,
+        "register": 8,
+        "signal": 4,
+        "counter": 3,
+        "mode": 1
+      },
+      "relationships": {
+        "total": 99,
+        "by_type": {
+          "depends_on": 49,
+          "sequences": 38,
+          "transitions_to": 12
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 12,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "implementation",
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_4.st",
+      "classification": {
+        "total_nodes": 0,
+        "classified_nodes": 0,
+        "unknown_nodes": 0,
+        "coverage_percent": 0.0
+      },
+      "node_kinds": {},
+      "relationships": {
+        "total": 0,
+        "by_type": {}
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/CRC_GEN_FullTest (1).st",
+      "classification": {
+        "total_nodes": 38,
+        "classified_nodes": 34,
+        "unknown_nodes": 4,
+        "coverage_percent": 89.5
+      },
+      "node_kinds": {
+        "signal": 12,
+        "function": 4,
+        "history": 4,
+        "unknown": 4,
+        "state": 4,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 42,
+        "by_type": {
+          "depends_on": 30,
+          "sequences": 4,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 10.5
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "_*": 1,
+        "DX": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/CRC_GEN_FullTest.st",
+      "classification": {
+        "total_nodes": 37,
+        "classified_nodes": 33,
+        "unknown_nodes": 4,
+        "coverage_percent": 89.2
+      },
+      "node_kinds": {
+        "signal": 12,
+        "function": 4,
+        "history": 4,
+        "unknown": 4,
+        "state": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 41,
+        "by_type": {
+          "depends_on": 30,
+          "sequences": 3,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 10.8
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "_*": 1,
+        "DX": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest (1).st",
+      "classification": {
+        "total_nodes": 44,
+        "classified_nodes": 37,
+        "unknown_nodes": 7,
+        "coverage_percent": 84.1
+      },
+      "node_kinds": {
+        "signal": 14,
+        "unknown": 7,
+        "history": 6,
+        "function": 4,
+        "state": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 60,
+        "by_type": {
+          "depends_on": 49,
+          "sequences": 3,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 15.9
+      },
+      "reasoning": {
+        "control_paths": 9,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "other": 2,
+        "out": 1,
+        "i": 1,
+        "tl": 1,
+        "int1.*": 1,
+        "tmp": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest.st",
+      "classification": {
+        "total_nodes": 44,
+        "classified_nodes": 37,
+        "unknown_nodes": 7,
+        "coverage_percent": 84.1
+      },
+      "node_kinds": {
+        "signal": 14,
+        "unknown": 7,
+        "history": 6,
+        "function": 4,
+        "state": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 60,
+        "by_type": {
+          "depends_on": 49,
+          "sequences": 3,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 15.9
+      },
+      "reasoning": {
+        "control_paths": 9,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "other": 2,
+        "out": 1,
+        "i": 1,
+        "tl": 1,
+        "int1.*": 1,
+        "tmp": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/FT_PIDWL_FullTest (1).st",
+      "classification": {
+        "total_nodes": 37,
+        "classified_nodes": 34,
+        "unknown_nodes": 3,
+        "coverage_percent": 91.9
+      },
+      "node_kinds": {
+        "signal": 11,
+        "state": 5,
+        "function": 4,
+        "history": 4,
+        "unknown": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 43,
+        "by_type": {
+          "depends_on": 28,
+          "sequences": 5,
+          "controls": 4,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 8.1
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 5,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "piwl.*": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/FT_PIDWL_FullTest.st",
+      "classification": {
+        "total_nodes": 35,
+        "classified_nodes": 32,
+        "unknown_nodes": 3,
+        "coverage_percent": 91.4
+      },
+      "node_kinds": {
+        "signal": 11,
+        "function": 4,
+        "history": 4,
+        "unknown": 3,
+        "state": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 41,
+        "by_type": {
+          "depends_on": 28,
+          "controls": 4,
+          "sequences": 3,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 8.6
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "piwl.*": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_BIT_FullTest.st",
+      "classification": {
+        "total_nodes": 46,
+        "classified_nodes": 42,
+        "unknown_nodes": 4,
+        "coverage_percent": 91.3
+      },
+      "node_kinds": {
+        "signal": 13,
+        "actuator": 6,
+        "function": 4,
+        "history": 4,
+        "unknown": 4,
+        "register": 4,
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 114,
+        "by_type": {
+          "depends_on": 83,
+          "controls": 22,
+          "sequences": 3,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 8.7
+      },
+      "reasoning": {
+        "control_paths": 115,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "cnt": 1,
+        "other": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest (1).st",
+      "classification": {
+        "total_nodes": 38,
+        "classified_nodes": 34,
+        "unknown_nodes": 4,
+        "coverage_percent": 89.5
+      },
+      "node_kinds": {
+        "signal": 11,
+        "history": 5,
+        "function": 4,
+        "unknown": 4,
+        "state": 4,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 43,
+        "by_type": {
+          "depends_on": 31,
+          "sequences": 4,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 10.5
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "tx": 1,
+        "temp": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest (2).st",
+      "classification": {
+        "total_nodes": 38,
+        "classified_nodes": 34,
+        "unknown_nodes": 4,
+        "coverage_percent": 89.5
+      },
+      "node_kinds": {
+        "signal": 11,
+        "history": 5,
+        "function": 4,
+        "unknown": 4,
+        "state": 4,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 43,
+        "by_type": {
+          "depends_on": 31,
+          "sequences": 4,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 10.5
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "tx": 1,
+        "temp": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest.st",
+      "classification": {
+        "total_nodes": 37,
+        "classified_nodes": 33,
+        "unknown_nodes": 4,
+        "coverage_percent": 89.2
+      },
+      "node_kinds": {
+        "signal": 11,
+        "history": 5,
+        "function": 4,
+        "unknown": 4,
+        "state": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 42,
+        "by_type": {
+          "depends_on": 31,
+          "sequences": 3,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 10.8
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "tx": 1,
+        "temp": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/LAMBERT_W_FullTest (1).st",
+      "classification": {
+        "total_nodes": 36,
+        "classified_nodes": 32,
+        "unknown_nodes": 4,
+        "coverage_percent": 88.9
+      },
+      "node_kinds": {
+        "signal": 11,
+        "function": 4,
+        "history": 4,
+        "unknown": 4,
+        "state": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 41,
+        "by_type": {
+          "depends_on": 30,
+          "sequences": 3,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 11.1
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "OUT": 1,
+        "w": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/LAMBERT_W_FullTest.st",
+      "classification": {
+        "total_nodes": 36,
+        "classified_nodes": 32,
+        "unknown_nodes": 4,
+        "coverage_percent": 88.9
+      },
+      "node_kinds": {
+        "signal": 11,
+        "function": 4,
+        "history": 4,
+        "unknown": 4,
+        "state": 3,
+        "actuator": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 41,
+        "by_type": {
+          "depends_on": 30,
+          "sequences": 3,
+          "controls": 2,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 11.1
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "OUT": 1,
+        "w": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/MATRIX_FullTest (1).st",
+      "classification": {
+        "total_nodes": 37,
+        "classified_nodes": 34,
+        "unknown_nodes": 3,
+        "coverage_percent": 91.9
+      },
+      "node_kinds": {
+        "signal": 11,
+        "function": 4,
+        "history": 4,
+        "state": 4,
+        "unknown": 3,
+        "actuator": 3,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 42,
+        "by_type": {
+          "depends_on": 28,
+          "controls": 4,
+          "sequences": 4,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 8.1
+      },
+      "reasoning": {
+        "control_paths": 6,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "code": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/MATRIX_FullTest.st",
+      "classification": {
+        "total_nodes": 36,
+        "classified_nodes": 33,
+        "unknown_nodes": 3,
+        "coverage_percent": 91.7
+      },
+      "node_kinds": {
+        "signal": 11,
+        "function": 4,
+        "history": 4,
+        "unknown": 3,
+        "actuator": 3,
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 41,
+        "by_type": {
+          "depends_on": 28,
+          "controls": 4,
+          "sequences": 3,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 8.3
+      },
+      "reasoning": {
+        "control_paths": 6,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "code": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest (1).st",
+      "classification": {
+        "total_nodes": 66,
+        "classified_nodes": 62,
+        "unknown_nodes": 4,
+        "coverage_percent": 93.9
+      },
+      "node_kinds": {
+        "signal": 32,
+        "actuator": 10,
+        "history": 5,
+        "function": 4,
+        "unknown": 4,
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 324,
+        "by_type": {
+          "depends_on": 210,
+          "controls": 105,
+          "sequences": 3,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 6.1
+      },
+      "reasoning": {
+        "control_paths": 66523,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "status": 1,
+        "_*": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest.st",
+      "classification": {
+        "total_nodes": 66,
+        "classified_nodes": 62,
+        "unknown_nodes": 4,
+        "coverage_percent": 93.9
+      },
+      "node_kinds": {
+        "signal": 32,
+        "actuator": 10,
+        "history": 5,
+        "function": 4,
+        "unknown": 4,
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 324,
+        "by_type": {
+          "depends_on": 210,
+          "controls": 105,
+          "sequences": 3,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 6.1
+      },
+      "reasoning": {
+        "control_paths": 66523,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1,
+        "status": 1,
+        "_*": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/TOOL_CHANGER_FullTest (1).st",
+      "classification": {
+        "total_nodes": 40,
+        "classified_nodes": 38,
+        "unknown_nodes": 2,
+        "coverage_percent": 95.0
+      },
+      "node_kinds": {
+        "signal": 12,
+        "state": 6,
+        "function": 4,
+        "history": 4,
+        "actuator": 4,
+        "unknown": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 61,
+        "by_type": {
+          "depends_on": 32,
+          "sequences": 11,
+          "controls": 9,
+          "transitions_to": 3,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 5.0
+      },
+      "reasoning": {
+        "control_paths": 7,
+        "state_machines": 6,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/TOOL_CHANGER_FullTest.st",
+      "classification": {
+        "total_nodes": 39,
+        "classified_nodes": 37,
+        "unknown_nodes": 2,
+        "coverage_percent": 94.9
+      },
+      "node_kinds": {
+        "signal": 12,
+        "state": 5,
+        "function": 4,
+        "history": 4,
+        "actuator": 4,
+        "unknown": 2,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 59,
+        "by_type": {
+          "depends_on": 32,
+          "controls": 9,
+          "sequences": 9,
+          "transitions_to": 3,
+          "activates": 2,
+          "contains": 2,
+          "triggers": 1,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 5.1
+      },
+      "reasoning": {
+        "control_paths": 7,
+        "state_machines": 5,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "out": 1,
+        "i": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest (1).st",
+      "classification": {
+        "total_nodes": 49,
+        "classified_nodes": 44,
+        "unknown_nodes": 5,
+        "coverage_percent": 89.8
+      },
+      "node_kinds": {
+        "signal": 12,
+        "actuator": 10,
+        "state": 6,
+        "unknown": 5,
+        "function": 4,
+        "history": 4,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 92,
+        "by_type": {
+          "depends_on": 34,
+          "sequences": 21,
+          "activates": 20,
+          "controls": 6,
+          "triggers": 4,
+          "transitions_to": 4,
+          "contains": 2,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 10.2
+      },
+      "reasoning": {
+        "control_paths": 325,
+        "state_machines": 6,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "Pedestrian*": 3,
+        "out": 1,
+        "i": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest.st",
+      "classification": {
+        "total_nodes": 49,
+        "classified_nodes": 44,
+        "unknown_nodes": 5,
+        "coverage_percent": 89.8
+      },
+      "node_kinds": {
+        "signal": 12,
+        "actuator": 10,
+        "state": 6,
+        "unknown": 5,
+        "function": 4,
+        "history": 4,
+        "timer": 2,
+        "mode": 1,
+        "configuration": 1,
+        "resource": 1,
+        "task": 1,
+        "program": 1,
+        "function_block": 1
+      },
+      "relationships": {
+        "total": 91,
+        "by_type": {
+          "depends_on": 34,
+          "sequences": 20,
+          "activates": 20,
+          "controls": 6,
+          "triggers": 4,
+          "transitions_to": 4,
+          "contains": 2,
+          "uses": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 10.2
+      },
+      "reasoning": {
+        "control_paths": 325,
+        "state_machines": 6,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {
+        "Pedestrian*": 3,
+        "out": 1,
+        "i": 1
+      }
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/CRC_GEN_TestCases (1).st",
+      "classification": {
+        "total_nodes": 8,
+        "classified_nodes": 8,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 4,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 7,
+        "by_type": {
+          "sequences": 4,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/CRC_GEN_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/DEC_TO_HEX_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/FLOW_METER_TestCases (1).st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/FLOW_METER_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/FT_PIDWL_TestCases (1).st",
+      "classification": {
+        "total_nodes": 9,
+        "classified_nodes": 9,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 5,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 8,
+        "by_type": {
+          "sequences": 5,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 5,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/FT_PIDWL_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/GEN_BIT_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases (1).st",
+      "classification": {
+        "total_nodes": 8,
+        "classified_nodes": 8,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 4,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 7,
+        "by_type": {
+          "sequences": 4,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/LAMBERT_W_TestCases (1).st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/LAMBERT_W_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/MATRIX_TestCases (1).st",
+      "classification": {
+        "total_nodes": 8,
+        "classified_nodes": 8,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 4,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 7,
+        "by_type": {
+          "sequences": 4,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/MATRIX_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/SEQUENCE_8_TestCases (1).st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/SEQUENCE_8_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/TOOL_CHANGER_TestCases (1).st",
+      "classification": {
+        "total_nodes": 9,
+        "classified_nodes": 9,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 5,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 8,
+        "by_type": {
+          "sequences": 5,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 5,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/TOOL_CHANGER_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/TRAFFIC_CTRL_TestCases (1).st",
+      "classification": {
+        "total_nodes": 8,
+        "classified_nodes": 8,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 4,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 7,
+        "by_type": {
+          "sequences": 4,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "test_harness",
+      "file": "datasets/Industrial_data/test_harness/test_case/TRAFFIC_CTRL_TestCases.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "timer": 2,
+        "mode": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "sequences": 3,
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/arithmetic_comparison_if.st",
+      "classification": {
+        "total_nodes": 3,
+        "classified_nodes": 3,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "process_variable": 2,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 2,
+        "by_type": {
+          "triggers": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/comparison_if.st",
+      "classification": {
+        "total_nodes": 3,
+        "classified_nodes": 3,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "process_variable": 2,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 2,
+        "by_type": {
+          "triggers": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/fault_handling/fault_code_case_recovery.st",
+      "classification": {
+        "total_nodes": 10,
+        "classified_nodes": 10,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "actuator": 5,
+        "state": 4,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 9,
+        "by_type": {
+          "sequences": 9
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 4,
+        "safety_impact": 1,
+        "failure_propagation": 2
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/fault_handling/fault_latch_recovery.st",
+      "classification": {
+        "total_nodes": 6,
+        "classified_nodes": 6,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 3,
+        "actuator": 2,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 7,
+        "by_type": {
+          "triggers": 3,
+          "disables": 2,
+          "enables": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 4,
+        "state_machines": 0,
+        "safety_impact": 3,
+        "failure_propagation": 3
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/industrial/compressor_station_control.st",
+      "classification": {
+        "total_nodes": 11,
+        "classified_nodes": 11,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 3,
+        "timer": 2,
+        "actuator": 2,
+        "process_variable": 2,
+        "mode": 1,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 17,
+        "by_type": {
+          "disables": 6,
+          "enables": 4,
+          "triggers": 3,
+          "controls": 2,
+          "activates": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 8,
+        "state_machines": 0,
+        "safety_impact": 2,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/industrial/packaging_cell_sequence.st",
+      "classification": {
+        "total_nodes": 10,
+        "classified_nodes": 10,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 4,
+        "actuator": 3,
+        "timer": 2,
+        "signal": 1
+      },
+      "relationships": {
+        "total": 14,
+        "by_type": {
+          "sequences": 8,
+          "controls": 2,
+          "triggers": 2,
+          "activates": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 13,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/intermediate/manual_auto_mode.st",
+      "classification": {
+        "total_nodes": 9,
+        "classified_nodes": 9,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "mode": 2,
+        "actuator": 2,
+        "signal": 2
+      },
+      "relationships": {
+        "total": 11,
+        "by_type": {
+          "enables": 5,
+          "sequences": 5,
+          "controls": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 6,
+        "state_machines": 3,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/intermediate/nested_interlock_alarm.st",
+      "classification": {
+        "total_nodes": 6,
+        "classified_nodes": 6,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 2,
+        "process_variable": 2,
+        "alarm": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 8,
+        "by_type": {
+          "enables": 4,
+          "triggers": 2,
+          "disables": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 2,
+        "state_machines": 0,
+        "safety_impact": 2,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/logical_if.st",
+      "classification": {
+        "total_nodes": 4,
+        "classified_nodes": 4,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 2,
+        "actuator": 1,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 4,
+        "by_type": {
+          "enables": 2,
+          "controls": 1,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 2,
+        "state_machines": 0,
+        "safety_impact": 1,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/motor_control/motor_overload_protection.st",
+      "classification": {
+        "total_nodes": 6,
+        "classified_nodes": 6,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 4,
+        "actuator": 1,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 7,
+        "by_type": {
+          "disables": 3,
+          "triggers": 2,
+          "controls": 1,
+          "enables": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 2,
+        "state_machines": 0,
+        "safety_impact": 2,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/motor_control/pump_dual_mode_control.st",
+      "classification": {
+        "total_nodes": 8,
+        "classified_nodes": 8,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 4,
+        "mode": 2,
+        "actuator": 2
+      },
+      "relationships": {
+        "total": 13,
+        "by_type": {
+          "controls": 7,
+          "enables": 6
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 10,
+        "state_machines": 0,
+        "safety_impact": 1,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/nested_if.st",
+      "classification": {
+        "total_nodes": 4,
+        "classified_nodes": 4,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "process_variable": 2,
+        "signal": 1,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 3,
+        "by_type": {
+          "triggers": 2,
+          "enables": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 1,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/process_control/reactor_enable_logic.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 4,
+        "actuator": 2,
+        "mode": 1
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "enables": 4,
+          "depends_on": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 10,
+        "state_machines": 0,
+        "safety_impact": 1,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/process_control/temperature_pressure_protection.st",
+      "classification": {
+        "total_nodes": 9,
+        "classified_nodes": 9,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "process_variable": 4,
+        "actuator": 4,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 12,
+        "by_type": {
+          "disables": 8,
+          "triggers": 4
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/safety_systems/emergency_shutdown.st",
+      "classification": {
+        "total_nodes": 6,
+        "classified_nodes": 6,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "actuator": 3,
+        "signal": 2,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 8,
+        "by_type": {
+          "enables": 4,
+          "disables": 3,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 3,
+        "state_machines": 0,
+        "safety_impact": 2,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/safety_systems/safety_interlock_start.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 5,
+        "actuator": 2
+      },
+      "relationships": {
+        "total": 6,
+        "by_type": {
+          "enables": 4,
+          "depends_on": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 10,
+        "state_machines": 0,
+        "safety_impact": 3,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/sequencing/batch_process_steps.st",
+      "classification": {
+        "total_nodes": 12,
+        "classified_nodes": 12,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 4,
+        "actuator": 3,
+        "timer": 2,
+        "mode": 1,
+        "signal": 1,
+        "process_variable": 1
+      },
+      "relationships": {
+        "total": 21,
+        "by_type": {
+          "sequences": 7,
+          "disables": 4,
+          "activates": 4,
+          "enables": 2,
+          "transitions_to": 1,
+          "controls": 1,
+          "depends_on": 1,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 10,
+        "state_machines": 4,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/sequencing/counter_based_batch.st",
+      "classification": {
+        "total_nodes": 6,
+        "classified_nodes": 6,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "counter": 2,
+        "actuator": 2,
+        "signal": 1,
+        "mode": 1
+      },
+      "relationships": {
+        "total": 4,
+        "by_type": {
+          "controls": 2,
+          "triggers": 1,
+          "depends_on": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 2,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/sequencing/startup_shutdown_sequence.st",
+      "classification": {
+        "total_nodes": 11,
+        "classified_nodes": 11,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "state": 3,
+        "actuator": 3,
+        "signal": 2,
+        "timer": 2,
+        "mode": 1
+      },
+      "relationships": {
+        "total": 17,
+        "by_type": {
+          "sequences": 8,
+          "activates": 4,
+          "transitions_to": 2,
+          "triggers": 2,
+          "enables": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 13,
+        "state_machines": 3,
+        "safety_impact": 1,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/simple/basic_alarm_threshold.st",
+      "classification": {
+        "total_nodes": 3,
+        "classified_nodes": 3,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "process_variable": 2,
+        "alarm": 1
+      },
+      "relationships": {
+        "total": 2,
+        "by_type": {
+          "triggers": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/simple/basic_motor_start.st",
+      "classification": {
+        "total_nodes": 3,
+        "classified_nodes": 3,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "signal": 2,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 2,
+        "by_type": {
+          "controls": 1,
+          "enables": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 2,
+        "state_machines": 0,
+        "safety_impact": 1,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/tank_control/tank_fill_drain_control.st",
+      "classification": {
+        "total_nodes": 5,
+        "classified_nodes": 5,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "actuator": 2,
+        "signal": 1,
+        "mode": 1,
+        "process_variable": 1
+      },
+      "relationships": {
+        "total": 8,
+        "by_type": {
+          "disables": 4,
+          "controls": 2,
+          "enables": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 4,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/tank_control/tank_overfill_safety.st",
+      "classification": {
+        "total_nodes": 7,
+        "classified_nodes": 7,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "actuator": 3,
+        "process_variable": 2,
+        "alarm": 1,
+        "signal": 1
+      },
+      "relationships": {
+        "total": 9,
+        "by_type": {
+          "disables": 7,
+          "triggers": 2
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 0,
+        "state_machines": 0,
+        "safety_impact": 1,
+        "failure_propagation": 1
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/timers/tof_cooling_delay.st",
+      "classification": {
+        "total_nodes": 4,
+        "classified_nodes": 4,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "timer": 2,
+        "signal": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 5,
+        "by_type": {
+          "activates": 4,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/timers/ton_start_delay.st",
+      "classification": {
+        "total_nodes": 4,
+        "classified_nodes": 4,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "timer": 2,
+        "signal": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 3,
+        "by_type": {
+          "triggers": 1,
+          "controls": 1,
+          "activates": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 2,
+        "state_machines": 0,
+        "safety_impact": 1,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    },
+    {
+      "dataset": "educational",
+      "file": "datasets/educational/timers/tp_pulse_output.st",
+      "classification": {
+        "total_nodes": 4,
+        "classified_nodes": 4,
+        "unknown_nodes": 0,
+        "coverage_percent": 100.0
+      },
+      "node_kinds": {
+        "timer": 2,
+        "signal": 1,
+        "actuator": 1
+      },
+      "relationships": {
+        "total": 3,
+        "by_type": {
+          "activates": 2,
+          "triggers": 1
+        }
+      },
+      "graph_quality": {
+        "self_loops": 0,
+        "isolated_nodes": 0,
+        "unknown_ratio": 0.0
+      },
+      "reasoning": {
+        "control_paths": 1,
+        "state_machines": 0,
+        "safety_impact": 0,
+        "failure_propagation": 0
+      },
+      "unknown_patterns": {}
+    }
+  ]
+}

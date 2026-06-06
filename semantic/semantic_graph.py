@@ -28,6 +28,10 @@ NODE_KINDS = {
     "function_block",
     "function",
     "sensor",
+    "register",
+    "history",
+    "reset_signal",
+    "trigger_signal",
 }
 
 EDGE_RELATIONS = {

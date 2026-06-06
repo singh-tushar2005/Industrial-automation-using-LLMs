@@ -1,0 +1,39 @@
+{
+  "dataset": "implementation",
+  "file": "datasets/Industrial_data/Implementation_datasets/GEN_BIT.st",
+  "classification": {
+    "total_nodes": 14,
+    "classified_nodes": 11,
+    "unknown_nodes": 3,
+    "coverage_percent": 78.6
+  },
+  "node_kinds": {
+    "register": 4,
+    "actuator": 4,
+    "signal": 3,
+    "unknown": 3
+  },
+  "relationships": {
+    "total": 76,
+    "by_type": {
+      "depends_on": 56,
+      "controls": 20
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 21.4
+  },
+  "reasoning": {
+    "control_paths": 112,
+    "state_machines": 0,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {
+    "run": 1,
+    "cnt": 1,
+    "other": 1
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "dataset": "test_harness",
+  "file": "datasets/Industrial_data/test_harness/test_case/TOOL_CHANGER_TestCases (1).st",
+  "classification": {
+    "total_nodes": 9,
+    "classified_nodes": 9,
+    "unknown_nodes": 0,
+    "coverage_percent": 100.0
+  },
+  "node_kinds": {
+    "state": 5,
+    "timer": 2,
+    "mode": 1,
+    "actuator": 1
+  },
+  "relationships": {
+    "total": 8,
+    "by_type": {
+      "sequences": 5,
+      "activates": 2,
+      "triggers": 1
+    }
+  },
+  "graph_quality": {
+    "self_loops": 0,
+    "isolated_nodes": 0,
+    "unknown_ratio": 0.0
+  },
+  "reasoning": {
+    "control_paths": 1,
+    "state_machines": 5,
+    "safety_impact": 0,
+    "failure_propagation": 0
+  },
+  "unknown_patterns": {}
+}
