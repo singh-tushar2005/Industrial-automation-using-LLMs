@@ -26,7 +26,7 @@ class SemanticContext:
     findings, tags, and finding_count are accessible via dict-style keys.
     """
 
-    def __init__(self, findings, tags, type_report=None):
+    def __init__(self, findings, tags, type_report=None, evidence_summary=None):
         self._classifications = {
             "findings": list(findings),
             "tags": list(tags),
@@ -35,7 +35,9 @@ class SemanticContext:
         self.findings = list(findings)
         self.tags = set(tags)
         self.type_report = type_report or {}
+        self.evidence_summary = evidence_summary
         self._compute_flags()
+        self._compute_intent()
 
     def _compute_flags(self):
         """Derive boolean intent flags from classification tags."""
@@ -60,6 +62,34 @@ class SemanticContext:
         )
         self.signal_processing_detected = False
 
+    def _compute_intent(self):
+        """Derive dominant intent and confidence from evidence summary."""
+        self.dominant_intent = None
+        self.intent_confidence = 0.0
+        if self.evidence_summary:
+            self.dominant_intent = self.evidence_summary.get("dominant_evidence")
+            self.intent_confidence = self.evidence_summary.get("average_confidence", 0.0)
+        # Fallback to tag-based intent if no evidence
+        if self.dominant_intent is None:
+            if self.state_machine_detected:
+                self.dominant_intent = "STATE_MACHINE"
+                self.intent_confidence = 0.7
+            elif self.process_sequencing_detected:
+                self.dominant_intent = "PROCESS_SEQUENCING"
+                self.intent_confidence = 0.6
+            elif self.measurement_system_detected:
+                self.dominant_intent = "MEASUREMENT_SYSTEM"
+                self.intent_confidence = 0.5
+            elif self.data_processing_detected:
+                self.dominant_intent = "DATA_PROCESSING"
+                self.intent_confidence = 0.5
+            else:
+                self.dominant_intent = "GENERIC"
+                self.intent_confidence = 0.3
+        # Update internal dict for backward compatibility
+        self._classifications["dominant_intent"] = self.dominant_intent
+        self._classifications["intent_confidence"] = self.intent_confidence
+
     # ------------------------------------------------------------------
     # Dict compatibility
     # ------------------------------------------------------------------
@@ -74,7 +104,7 @@ class SemanticContext:
         return key in self._classifications
 
     def to_dict(self):
-        return {
+        result = {
             "findings": self.findings,
             "tags": sorted(self.tags),
             "finding_count": len(self.findings),
@@ -84,4 +114,9 @@ class SemanticContext:
             "measurement_system_detected": self.measurement_system_detected,
             "data_processing_detected": self.data_processing_detected,
             "signal_processing_detected": self.signal_processing_detected,
+            "dominant_intent": self.dominant_intent,
+            "intent_confidence": self.intent_confidence,
         }
+        if self.evidence_summary:
+            result["evidence_summary"] = self.evidence_summary
+        return result

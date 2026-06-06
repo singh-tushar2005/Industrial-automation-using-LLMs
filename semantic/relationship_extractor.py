@@ -21,11 +21,13 @@ class RelationshipExtractor(ASTVisitor):
     relationship edges that are compatible with future graph construction.
     """
 
-    def __init__(self, classification_report=None, type_report=None, context=None, test_detector=None):
+    def __init__(self, classification_report=None, type_report=None, context=None, test_detector=None, semantic_evidence=None, operations=None):
         self.classification_report = classification_report or {}
         self.type_report = type_report or {}
         self.context = context
         self.test_detector = test_detector or TestDetector()
+        self.semantic_evidence = semantic_evidence
+        self.operations = operations or []
         self.relationships = []
         self.condition_stack = []
         self.case_stack = []
@@ -41,12 +43,19 @@ class RelationshipExtractor(ASTVisitor):
         self.memory_mapped_outputs = set()
         self._condition_role_examples = []  # DIAGNOSTIC: Phase A condition roles
         self._filtered_r1_signals = []      # DIAGNOSTIC: R1 filtering
+        # Build evidence index for O(1) lookup
+        self._evidence_by_type = {}
+        if self.semantic_evidence:
+            for item in self.semantic_evidence.items:
+                self._evidence_by_type.setdefault(item.evidence_type, []).append(item)
 
     def extract(self, ast):
         """Run relationship extraction and return structured results."""
 
         self.test_detector.detect(ast)
         self.visit(ast)
+        self._add_evidence_relationships()
+        self._add_operation_relationships()
         return self.get_results()
 
     def get_condition_role_examples(self):
@@ -1302,3 +1311,106 @@ class RelationshipExtractor(ASTVisitor):
             return True
 
         return False
+
+    # ------------------------------------------------------------------
+    # Evidence-driven relationship generation
+    # ------------------------------------------------------------------
+
+    def _add_evidence_relationships(self):
+        """Add relationships derived from SemanticEvidence."""
+        if not self.semantic_evidence:
+            return
+
+        # State transitions: connect state variables to their next states
+        for item in self._evidence_by_type.get("state_transition", []):
+            target = item.extracted_entities.get("target", "")
+            value = item.extracted_entities.get("value", "")
+            if target and value:
+                self.add_relationship(
+                    target, "transitions_to", value,
+                    {"source": "EVIDENCE_RULE", "evidence_type": "state_transition", "confidence": item.confidence}
+                )
+
+        # Counter relationships: connect counters to their update sources
+        for item in self._evidence_by_type.get("counter", []):
+            target = item.extracted_entities.get("target", "")
+            if target:
+                self.add_relationship(
+                    target, "depends_on", "count_input",
+                    {"source": "EVIDENCE_RULE", "evidence_type": "counter", "confidence": item.confidence}
+                )
+
+        # Timer relationships: connect timers to their triggers
+        for item in self._evidence_by_type.get("timer", []):
+            fb_name = item.extracted_entities.get("fb_name", "")
+            if fb_name:
+                self.add_relationship(
+                    fb_name, "schedules", "time_event",
+                    {"source": "EVIDENCE_RULE", "evidence_type": "timer", "confidence": item.confidence}
+                )
+
+        # FB coordination: connect multiple FB invocations
+        fb_items = self._evidence_by_type.get("fb_invocation", [])
+        if len(fb_items) >= 2:
+            for i in range(len(fb_items) - 1):
+                fb1 = fb_items[i].extracted_entities.get("fb_name", "")
+                fb2 = fb_items[i + 1].extracted_entities.get("fb_name", "")
+                if fb1 and fb2 and fb1 != fb2:
+                    self.add_relationship(
+                        fb1, "coordinates", fb2,
+                        {"source": "EVIDENCE_RULE", "evidence_type": "fb_invocation", "confidence": "medium"}
+                    )
+
+        # History variables: connect to their source
+        for item in self._evidence_by_type.get("history_variable", []):
+            target = item.extracted_entities.get("target", "")
+            value = item.extracted_entities.get("value", "")
+            if target and value:
+                self.add_relationship(
+                    value, "feeds", target,
+                    {"source": "EVIDENCE_RULE", "evidence_type": "history_variable", "confidence": item.confidence}
+                )
+
+        # Bitwise operations: connect to data source
+        for item in self._evidence_by_type.get("bitwise_operation", []):
+            target = item.extracted_entities.get("target", "")
+            if target:
+                self.add_relationship(
+                    target, "uses", "bitwise_data",
+                    {"source": "EVIDENCE_RULE", "evidence_type": "bitwise_operation", "confidence": item.confidence}
+                )
+
+    def _add_operation_relationships(self):
+        """Add relationships derived from Operations."""
+        if not self.operations:
+            return
+
+        # Extract operations from the operations dict if passed as a report
+        ops = self.operations.get("operations", []) if isinstance(self.operations, dict) else []
+        for op in ops:
+            op_type = op.get("operation_type", "")
+            target = op.get("target") or "<no target>"
+            sources = op.get("sources", [])
+
+            if op_type == "state_transition" and target and sources:
+                for src in sources:
+                    self.add_relationship(
+                        src, "triggers", target,
+                        {"source": "OPERATION_RULE", "operation_type": op_type}
+                    )
+            elif op_type == "counter_update" and target and sources:
+                for src in sources:
+                    self.add_relationship(
+                        src, "increments", target,
+                        {"source": "OPERATION_RULE", "operation_type": op_type}
+                    )
+            elif op_type == "timer_invocation" and target:
+                self.add_relationship(
+                    target, "schedules", "time_event",
+                    {"source": "OPERATION_RULE", "operation_type": op_type}
+                )
+            elif op_type == "fb_invocation" and target:
+                self.add_relationship(
+                    target, "activates", "fb_output",
+                    {"source": "OPERATION_RULE", "operation_type": op_type}
+                )

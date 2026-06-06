@@ -17,6 +17,7 @@ from semantic.semantic_model import SemanticModel
 from semantic.type_checker import TypeChecker, build_demo_symbol_table
 from semantic.visitor import SemanticTraversalVisitor
 from semantic.context.test_detector import TestDetector
+from semantic.semantic_evidence_engine import SemanticEvidenceEngine
 
 
 SECTION_WIDTH = 78
@@ -61,14 +62,21 @@ def run_type_checking(ast):
     return checker.get_report()
 
 
-def run_industrial_classification(ast, type_report):
+def run_evidence_collection(ast):
+    """Run the semantic evidence engine and return collected evidence."""
+
+    engine = SemanticEvidenceEngine()
+    return engine.collect(ast)
+
+
+def run_industrial_classification(ast, type_report, semantic_evidence=None):
     """Run industrial semantic classification and return metadata."""
 
-    classifier = IndustrialSemanticClassifier(type_report)
+    classifier = IndustrialSemanticClassifier(type_report, semantic_evidence=semantic_evidence)
     return classifier.classify(ast)
 
 
-def run_relationship_extraction(ast, semantic_context, type_report, test_detector=None):
+def run_relationship_extraction(ast, semantic_context, type_report, test_detector=None, semantic_evidence=None, operations=None):
     """Run semantic relationship extraction and return graph-ready edges."""
 
     extractor = RelationshipExtractor(
@@ -76,14 +84,16 @@ def run_relationship_extraction(ast, semantic_context, type_report, test_detecto
         type_report=type_report,
         context=semantic_context,
         test_detector=test_detector,
+        semantic_evidence=semantic_evidence,
+        operations=operations,
     )
     return extractor.extract(ast)
 
 
-def run_operation_extraction(ast, semantic_context, test_detector=None):
+def run_operation_extraction(ast, semantic_context, test_detector=None, semantic_evidence=None):
     """Run operation extraction and return computational semantics."""
 
-    extractor = OperationExtractor(semantic_context, test_detector=test_detector)
+    extractor = OperationExtractor(semantic_context, test_detector=test_detector, semantic_evidence=semantic_evidence)
     return extractor.extract(ast)
 
 
@@ -289,6 +299,35 @@ def print_relationship_segregation(report):
         print(f"    - {relation}: {count}")
 
 
+def print_evidence_report(evidence_dict):
+    """Print semantic evidence summary."""
+
+    if not evidence_dict:
+        print("  <no evidence collected>")
+        return
+
+    counts = evidence_dict.get("counts", {})
+    print("  Evidence counts:")
+    for etype, count in sorted(counts.items(), key=lambda x: -x[1]):
+        print(f"    - {etype}: {count}")
+
+    print(f"\n  Total evidence items: {evidence_dict.get('total_count', 0)}")
+    print(f"  Average confidence: {evidence_dict.get('average_confidence', 0.0)}")
+
+    summary = evidence_dict.get("evidence_summary")
+    if summary:
+        print(f"  Dominant intent: {summary.get('dominant_evidence', 'N/A')}")
+
+    scope_counts = evidence_dict.get("scope_counts", {})
+    if scope_counts:
+        print("\n  Industrial evidence:")
+        for etype, count in sorted(scope_counts.get("industrial", {}).items(), key=lambda x: -x[1]):
+            print(f"    - {etype}: {count}")
+        print("\n  Test evidence:")
+        for etype, count in sorted(scope_counts.get("test", {}).items(), key=lambda x: -x[1]):
+            print(f"    - {etype}: {count}")
+
+
 def print_operation_report(report):
     """Print extracted computational operations."""
 
@@ -385,20 +424,26 @@ def analyze_st_file(file_path, visualize=False, reason=False):
     test_detector = TestDetector()
     test_detection = test_detector.detect(ast)
 
+    # Phase 1: collect semantic evidence
+    semantic_evidence = run_evidence_collection(ast)
+
     traversal_results = run_semantic_traversal(ast)
     type_check_report = run_type_checking(ast)
-    semantic_context = run_industrial_classification(ast, type_check_report)
+    semantic_context = run_industrial_classification(ast, type_check_report, semantic_evidence=semantic_evidence)
+    operation_report = run_operation_extraction(ast, semantic_context, test_detector, semantic_evidence=semantic_evidence)
     relationship_report = run_relationship_extraction(
         ast,
         semantic_context,
         type_check_report,
         test_detector=test_detector,
+        semantic_evidence=semantic_evidence,
+        operations=operation_report,
     )
-    operation_report = run_operation_extraction(ast, semantic_context, test_detector)
     semantic_model = SemanticModel(
         context=semantic_context,
         relationships=relationship_report,
         operations=operation_report,
+        evidence=semantic_evidence.to_dict(),
     )
     semantic_graph = run_graph_generation(relationship_report)
 
@@ -420,7 +465,7 @@ def analyze_st_file(file_path, visualize=False, reason=False):
         "classification": semantic_context,
         "relationships": relationship_report,
         "operations": operation_report,
-        "semantic_model": semantic_model,
+        "semantic_model": semantic_model.to_dict(),
         "graph": semantic_graph,
         "visualization_paths": visualization_paths,
         "reasoning": reasoning_report,
@@ -440,6 +485,10 @@ def print_high_level_report(result):
 
     print_subsection("Industrial Semantic Classification")
     print_classification_summary(result["classification"])
+
+    if result.get("semantic_model") and result["semantic_model"].get("evidence"):
+        print_subsection("Semantic Evidence")
+        print_evidence_report(result["semantic_model"]["evidence"])
 
     print_subsection("Semantic Relationships")
     print_relationship_report(result["relationships"])

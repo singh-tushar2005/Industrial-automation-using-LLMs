@@ -40,8 +40,9 @@ MULTI_ACTUATOR_SEQUENCE = "MULTI_ACTUATOR_SEQUENCE"
 class IndustrialSemanticClassifier(ASTVisitor):
     """Visitor pass that classifies industrial control behavior."""
 
-    def __init__(self, type_report=None):
+    def __init__(self, type_report=None, semantic_evidence=None):
         self.type_report = type_report or {}
+        self.semantic_evidence = semantic_evidence
         self.findings = []
         self.condition_stack = []
         self.case_stack = []
@@ -65,12 +66,116 @@ class IndustrialSemanticClassifier(ASTVisitor):
     def get_results(self):
         """Return classification metadata for future IR/transformation stages."""
 
+        # Add evidence-based classifications
+        if self.semantic_evidence:
+            self._apply_evidence_classifications()
+
         tags = sorted({finding["tag"] for finding in self.findings})
+        evidence_summary = self.semantic_evidence.get_evidence_summary() if self.semantic_evidence else None
         return SemanticContext(
             findings=list(self.findings),
             tags=tags,
             type_report=self.type_report,
+            evidence_summary=evidence_summary,
         )
+
+    def _apply_evidence_classifications(self):
+        """Add classifications based on semantic evidence."""
+        if not self.semantic_evidence:
+            return
+        counts = self.semantic_evidence.get_counts()
+        if not counts:
+            return
+
+        # STATE_MACHINE: state transitions + timers/actuator outputs
+        state_transitions = counts.get("state_transition", 0)
+        state_vars = counts.get("state_variable", 0)
+        timers = counts.get("timer", 0)
+        if state_transitions >= 1 or state_vars >= 1:
+            conf = "high" if state_transitions >= 3 else "medium"
+            self.add_finding(
+                STATE_MACHINE,
+                "Evidence-based: state transitions detected",
+                f"state_transitions={state_transitions}, state_vars={state_vars}, timers={timers}",
+                None,
+                confidence=conf,
+                hints=["use evidence-driven state machine classification"],
+            )
+
+        # CHECKSUM_GENERATION: bitwise operations + accumulators
+        bitwise = counts.get("bitwise_operation", 0)
+        accumulators = counts.get("accumulator", 0)
+        if bitwise >= 3 and accumulators >= 1:
+            self.add_finding(
+                PROCESS_CONTROL,
+                "Evidence-based: checksum/data processing pattern",
+                f"bitwise={bitwise}, accumulators={accumulators}",
+                None,
+                confidence="high",
+                hints=["preserve as bit-manipulation function block"],
+            )
+
+        # FLOW_MEASUREMENT: measurement calculations + counters + history
+        measurements = counts.get("measurement_calculation", 0)
+        counters = counts.get("counter", 0)
+        history = counts.get("history_variable", 0)
+        if measurements >= 1 or (counters >= 2 and history >= 2):
+            self.add_finding(
+                PROCESS_MONITORING,
+                "Evidence-based: flow measurement or rate calculation",
+                f"measurements={measurements}, counters={counters}, history={history}",
+                None,
+                confidence="high",
+                hints=["model measurement outputs as status data points"],
+            )
+
+        # PROCESS_SEQUENCING: multiple actuators + state machine
+        fb_invocations = counts.get("fb_invocation", 0)
+        timers = counts.get("timer", 0)
+        if fb_invocations >= 2 and (timers >= 2 or state_transitions >= 2):
+            self.add_finding(
+                PROCESS_SEQUENCING,
+                "Evidence-based: multi-step process sequencing",
+                f"fb_invocations={fb_invocations}, timers={timers}, state_transitions={state_transitions}",
+                None,
+                confidence="high",
+                hints=["group sequential actuator outputs into coordinated sequence"],
+            )
+
+        # TIMER_DEPENDENT_CONTROL: timers present
+        if timers >= 1:
+            self.add_finding(
+                TIMER_DEPENDENT_CONTROL,
+                "Evidence-based: timer-dependent control",
+                f"timers={timers}",
+                None,
+                confidence="medium",
+                hints=["model timer Q outputs as event triggers"],
+            )
+
+        # ALARM_CONDITION: comparisons + boolean outputs
+        comparisons = counts.get("comparison", 0)
+        if comparisons >= 2:
+            self.add_finding(
+                ALARM_CONDITION,
+                "Evidence-based: alarm threshold logic",
+                f"comparisons={comparisons}",
+                None,
+                confidence="medium",
+                hints=["model alarm thresholds as limit comparators"],
+            )
+
+        # ACTUATOR_COORDINATION: multiple actuators
+        actuators = counts.get("fb_invocation", 0)
+        if actuators >= 2:
+            self.add_finding(
+                ACTUATOR_COORDINATION,
+                "Evidence-based: actuator coordination",
+                f"actuators={actuators}",
+                None,
+                confidence="medium",
+                hints=["model actuator interactions as event connections"],
+            )
 
     def add_finding(self, tag, description, evidence, node, confidence="medium", hints=None):
         """Record one semantic classification result."""

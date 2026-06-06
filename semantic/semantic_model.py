@@ -12,12 +12,13 @@ except ModuleNotFoundError:
 
 
 class SemanticModel:
-    """Unified semantic model containing context, classifications, relationships, and operations."""
+    """Unified semantic model containing evidence, context, classifications, relationships, and operations."""
 
-    def __init__(self, context=None, relationships=None, operations=None):
+    def __init__(self, context=None, relationships=None, operations=None, evidence=None):
         self.context = context
         self.relationships = relationships or {}
         self.operations = operations or {}
+        self.evidence = evidence or {}
         self.classifications = context.to_dict() if context else {}
 
     def to_dict(self):
@@ -25,4 +26,5 @@ class SemanticModel:
             "context": self.classifications,
             "relationships": self.relationships,
             "operations": self.operations,
+            "evidence": self.evidence,
         }

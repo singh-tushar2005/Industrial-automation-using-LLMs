@@ -10,9 +10,11 @@ from collections import Counter
 try:
     from semantic.operations import Operation
     from semantic.context.test_detector import TestDetector
+    from semantic.semantic_evidence import SemanticEvidence
 except ModuleNotFoundError:
     from operations import Operation
     from context.test_detector import TestDetector
+    from semantic_evidence import SemanticEvidence
 
 
 class OperationExtractor:
@@ -25,20 +27,38 @@ class OperationExtractor:
     - ForLoopNode
     - WhileLoopNode
     - RepeatLoopNode
+
+    Consumes SemanticEvidence and SemanticContext to avoid raw syntax-only decisions.
     """
 
-    def __init__(self, context=None, test_detector=None):
+    def __init__(self, context=None, test_detector=None, semantic_evidence=None):
         self.context = context
         self.operations = []
         self.test_detector = test_detector
+        self.semantic_evidence = semantic_evidence
         if self.test_detector is None:
             self.test_detector = TestDetector()
+        # Build evidence index by node id for O(1) lookup
+        self._evidence_by_node = {}
+        if self.semantic_evidence:
+            for item in self.semantic_evidence.items:
+                if hasattr(item, "ast_node") and item.ast_node is not None:
+                    nid = id(item.ast_node)
+                    self._evidence_by_node.setdefault(nid, []).append(item)
 
     def extract(self, ast):
         """Run extraction and return structured results."""
         self.test_detector.detect(ast)
         self.visit(ast)
         return self.get_results()
+
+    def _evidence_for_node(self, node):
+        """Return all evidence items associated with a node."""
+        return self._evidence_by_node.get(id(node), [])
+
+    def _has_evidence(self, node, evidence_type):
+        """Check if a node has evidence of a specific type."""
+        return any(e.evidence_type == evidence_type for e in self._evidence_for_node(node))
 
     def get_results(self):
         industrial_ops = [op for op in self.operations if op.metadata.get("semantic_scope") == "INDUSTRIAL"]
@@ -233,6 +253,29 @@ class OperationExtractor:
         value = node.value
         value_type = value.__class__.__name__ if value else None
         target_type = node.target.__class__.__name__ if node.target else None
+
+        # EVIDENCE-BASED CLASSIFICATION: prefer evidence over syntax heuristics
+        if self.semantic_evidence:
+            for ev in self._evidence_for_node(node):
+                et = ev.evidence_type
+                if et == "state_transition":
+                    return "state_transition"
+                if et == "counter":
+                    return "counter_update"
+                if et == "history_variable":
+                    return "history_update"
+                if et == "accumulator":
+                    return "accumulator_update"
+                if et == "bitwise_operation":
+                    return "bitwise_update"
+                if et == "array_access":
+                    return "array_read" if ev.extracted_entities.get("kind") == "array_read" else "array_write"
+                if et == "matrix_access":
+                    return "matrix_access"
+                if et == "process_calculation":
+                    return "process_calculation"
+                if et == "measurement_calculation":
+                    return "measurement_calculation"
 
         # Array write (target is array index)
         if target_type == "ArrayIndexNode":
