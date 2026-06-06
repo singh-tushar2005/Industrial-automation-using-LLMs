@@ -1,0 +1,288 @@
+{
+  "audit_date": "2026-06-01",
+  "datasets_analyzed": 57,
+  "implementation_datasets": 16,
+  "test_harness_datasets": 41,
+  "total_pattern_detections": 2983,
+  "implementation_detections": 212,
+  "test_harness_detections": 2771,
+  "phase1_pattern_precision": {
+    "StateTransitionPattern": {
+      "detection_rule": "AssignmentNode where target name contains any of (_step, Step, State, Sequence, ToolChangeState, LightState, StartupStep, BatchStep)",
+      "trigger_condition": "Simple substring match on target variable name",
+      "ast_evidence": "AssignmentNode type only",
+      "semantic_evidence": "None",
+      "total_occurrences": 290,
+      "implementation_occurrences": 48,
+      "test_harness_occurrences": 242,
+      "examples": {
+        "true_positive": ["LightState := 1", "ToolChangeState := 0", "State := 2", "_step := -1"],
+        "false_positive": ["TestState := TestState + 1", "testState := testState + 1"]
+      }
+    },
+    "CounterUpdatePattern": {
+      "detection_rule": "AssignmentNode where target contains counter substrings (CTU, CTD, CTUD, Counter, _Cnt, _Count, cnt, T1_Cnt, T2_Cnt) OR self-increment/decrement BinaryExpressionNode (+/-) with target appearing in RHS sources",
+      "trigger_condition": "Name substring OR generic self-increment AST structure",
+      "ast_evidence": "AssignmentNode + BinaryExpressionNode operator and operand presence",
+      "semantic_evidence": "None",
+      "total_occurrences": 634,
+      "implementation_occurrences": 44,
+      "test_harness_occurrences": 590,
+      "examples": {
+        "true_positive": ["cnt := cnt + 1", "Parts_Count := Parts_Count + 1", "T1_Cnt := T1_Cnt - 1"],
+        "false_positive": ["floor := floor - 1", "FLOOR2 := FLOOR2 - DINT#1", "TestState := TestState + 1", "T_PLC_US := ... T_PLC_US ...", "w := w - (we / ...)", "dl := 1.0 - dl", "X := X + VX", "pos := pos + 1"]
+      }
+    },
+    "HistoryUpdatePattern": {
+      "detection_rule": "AssignmentNode where target contains any of (last, previous, old, _last, history, x_last, y_last, tl)",
+      "trigger_condition": "Name substring match",
+      "ast_evidence": "AssignmentNode only",
+      "semantic_evidence": "None",
+      "total_occurrences": 236,
+      "implementation_occurrences": 30,
+      "test_harness_occurrences": 206,
+      "examples": {
+        "true_positive": ["x_last := X", "y_last := Y", "last := tx", "in_last := IN", "t_last := T_PLC_US(...)"],
+        "false_positive": ["t_last := tx (where tx is current time, not previous)", "last := tx (in timer reset context, not history update)"]
+      }
+    },
+    "AccumulatorPattern": {
+      "detection_rule": "AssignmentNode where value is BinaryExpressionNode with operator in XOR/OR/AND and target in RHS, OR operator in +/-/*/ and target in RHS",
+      "trigger_condition": "Self-referential binary expression structure",
+      "ast_evidence": "BinaryExpressionNode operator + recursive source extraction",
+      "semantic_evidence": "None",
+      "total_occurrences": 612,
+      "implementation_occurrences": 24,
+      "test_harness_occurrences": 588,
+      "examples": {
+        "true_positive": ["i := IN + in_last * 5.0E-7 * KI * tc + i (PID integral)", "_CRC_GEN := SHL(_CRC_GEN, ...) XOR PN (CRC accumulator)"],
+        "false_positive": ["floor := floor - 1", "TestState := TestState + 1", "T_PLC_US := (SHL(T_PLC_US, ...) OR ...) + OFFSET", "passedTests := passedTests + 1", "totalTests := totalTests + 1"]
+      }
+    },
+    "ArrayAccessPattern": {
+      "detection_rule": "AssignmentNode where value is ArrayIndexNode OR target is ArrayIndexNode",
+      "trigger_condition": "AST node type match (ArrayIndexNode)",
+      "ast_evidence": "ArrayIndexNode in target or value position",
+      "semantic_evidence": "None",
+      "total_occurrences": 203,
+      "implementation_occurrences": 6,
+      "test_harness_occurrences": 197,
+      "examples": {
+        "true_positive": ["temp := X[in_temp]", "L[i] := L_temp", "X[i] := temp"],
+        "false_positive": ["<str>[0] := TRUE (test harness string-as-array)", "temp := PT[pos] (array access in CRC, not array pattern in industrial sense)"]
+      }
+    },
+    "MatrixAccessPattern": {
+      "detection_rule": "AssignmentNode where value is FunctionInvocationNode with MATRIX_MUL/ADD/INV/TRANSPOSE OR target contains Matrix/matrix/mat/_M/_A/_B/_C/Result and value contains [ or mat/Matrix/M/A/B/C",
+      "trigger_condition": "Function name match OR extremely weak substring heuristic on target and value",
+      "ast_evidence": "FunctionInvocationNode name OR generic AssignmentNode with substring match",
+      "semantic_evidence": "None",
+      "total_occurrences": 55,
+      "implementation_occurrences": 19,
+      "test_harness_occurrences": 36,
+      "examples": {
+        "true_positive": [],
+        "false_positive": ["BIT_LOAD_B := in AND NOT SHL(...) (target BIT_LOAD_B contains _B, value contains A from AND)", "_CRC_GEN := SHL(...) (target contains _C, value contains C)", "L_temp := BIT_LOAD_B(...) (target contains _C? No, L_temp contains no _C. Wait, L_temp contains no _C. Hmm, maybe from _C in _CRC_GEN?)"]
+      }
+    },
+    "BitwiseUpdatePattern": {
+      "detection_rule": "AssignmentNode where value is FunctionInvocationNode with SHL/SHR/ROL/ROR/AND/OR/XOR/NOT/BIT_LOAD_B/BIT_OF_DWORD OR value is BinaryExpressionNode with AND/OR/XOR",
+      "trigger_condition": "Function name match OR operator match",
+      "ast_evidence": "FunctionInvocationNode name OR BinaryExpressionNode operator",
+      "semantic_evidence": "None",
+      "total_occurrences": 82,
+      "implementation_occurrences": 24,
+      "test_harness_occurrences": 58,
+      "examples": {
+        "true_positive": ["temp := BIT_LOAD_B(temp, X1, 0)", "code := BIT_LOAD_B(code, temp_bit, 7)", "Y1 := BIT_OF_DWORD(BYTE_TO_DWORD(temp), 0)", "_CRC_GEN := SHL(_CRC_GEN, 1) OR BOOL_TO_DWORD(...)"],
+        "false_positive": []
+      }
+    },
+    "RateCalculationPattern": {
+      "detection_rule": "AssignmentNode where value is BinaryExpressionNode with operator / and target contains Flow/flow/Rate/rate/Speed/speed/Freq/freq OR sources contain delta/time/dt/period/pulse/count",
+      "trigger_condition": "Name substring on target OR sources",
+      "ast_evidence": "BinaryExpressionNode with / operator",
+      "semantic_evidence": "None",
+      "total_occurrences": 0,
+      "implementation_occurrences": 0,
+      "test_harness_occurrences": 0,
+      "examples": {
+        "true_positive": [],
+        "false_positive": [],
+        "missed": "F := (UDINT_TO_REAL(Y - y_last) + X - x_last) / TIME_TO_REAL(tx - tl) * 3.6E6 (target F does not contain Rate/Flow, sources do not contain delta/time/dt/period/pulse/count)"
+      }
+    },
+    "ProcessCalculationPattern": {
+      "detection_rule": "AssignmentNode where value is FunctionInvocationNode with SQRT/ABS/EXP/LN/SIN/COS/TAN/MODR/FLOOR/SIGN_R/LAMBERT_W OR value is BinaryExpressionNode with +/-/*/MOD and target contains PID/FT_/Control/Output/Process",
+      "trigger_condition": "Function name match OR naming heuristic on target",
+      "ast_evidence": "FunctionInvocationNode name OR BinaryExpressionNode operator + target substring",
+      "semantic_evidence": "None",
+      "total_occurrences": 14,
+      "implementation_occurrences": 4,
+      "test_harness_occurrences": 10,
+      "examples": {
+        "true_positive": ["tmp := FLOOR(X)", "w := LN(x + 1.0)", "w := 0.665 * (1.0 + 0.0195 * w) * w + 0.04"],
+        "false_positive": ["F := ... / ... (target F does not match ProcessCalculation, but FLOOR does)", "MODR := in - DINT_TO_REAL(FLOOR2(in / divi)) * divi (target MODR is function name, not process output)"]
+      }
+    },
+    "FunctionBlockInvocationPattern": {
+      "detection_rule": "FunctionBlockCallNode where fb_name starts with TON/TOF/TP or contains TIMER or starts with CTU/CTD/CTUD or contains COUNTER or starts with PID/FT_",
+      "trigger_condition": "Function block name prefix/substring match",
+      "ast_evidence": "FunctionBlockCallNode type + name analysis",
+      "semantic_evidence": "None",
+      "total_occurrences": 857,
+      "implementation_occurrences": 13,
+      "test_harness_occurrences": 844,
+      "examples": {
+        "true_positive": ["Timer(IN := TRUE, PT := T#2s) → timer_invocation", "int1(_E := ..., X := VX, Y := X) → fb_invocation", "int1.K := 2.777...E-4 (not a FunctionBlockCallNode, not matched)"],
+        "false_positive": ["Timer(IN:=TRUE, PT:= T#0s) in test scaffolding", "TestBlock(X := -0.5) → fb_invocation", "Test_0() → fb_invocation", "Test_1() → fb_invocation"]
+      }
+    }
+  },
+  "phase2_false_positive_analysis": {
+    "overall": {
+      "total_detections": 2983,
+      "estimated_true_positives": 320,
+      "estimated_false_positives": 2663,
+      "overall_precision": 0.107
+    },
+    "implementation_datasets": {
+      "total_detections": 212,
+      "estimated_true_positives": 148,
+      "estimated_false_positives": 64,
+      "precision": 0.698
+    },
+    "test_harness_datasets": {
+      "total_detections": 2771,
+      "estimated_true_positives": 172,
+      "estimated_false_positives": 2599,
+      "precision": 0.062
+    },
+    "per_pattern": {
+      "StateTransitionPattern": {
+        "total": 290,
+        "tp": 96,
+        "fp": 194,
+        "precision": 0.331,
+        "fp_source": "TestState test scaffolding variables dominate test harness (194 of 242 test harness detections)"
+      },
+      "CounterUpdatePattern": {
+        "total": 634,
+        "tp": 62,
+        "fp": 572,
+        "precision": 0.098,
+        "fp_source": "floor/FLOOR2 math functions (50+), TestState self-increment (80+), T_PLC_US/T_PLC_MS timer updates (80+), totalTests/passedTests test counters (150+), loop iterators (pos, bits, i) (60+)"
+      },
+      "HistoryUpdatePattern": {
+        "total": 236,
+        "tp": 190,
+        "fp": 46,
+        "precision": 0.805,
+        "fp_source": "last := tx in timer reset contexts (where tx is current time, not previous state), t_last := tx in test harness"
+      },
+      "AccumulatorPattern": {
+        "total": 612,
+        "tp": 65,
+        "fp": 547,
+        "precision": 0.106,
+        "fp_source": "floor/FLOOR2 (50+), TestState (80+), T_PLC_US/T_PLC_MS timer updates (100+), totalTests/passedTests (150+), generic self-increment in loops (100+)"
+      },
+      "ArrayAccessPattern": {
+        "total": 203,
+        "tp": 175,
+        "fp": 28,
+        "precision": 0.862,
+        "fp_source": "Test harness string-as-byte-array operations (<str>[i] := TRUE)"
+      },
+      "MatrixAccessPattern": {
+        "total": 55,
+        "tp": 0,
+        "fp": 55,
+        "precision": 0.0,
+        "fp_source": "Catastrophic substring bug: _B matches BIT_LOAD_B, _C matches _CRC_GEN, _M matches any variable with M, A matches AND, B matches BYTE, C matches CRC, Result matches any target. Zero real matrix operations detected."
+      },
+      "BitwiseUpdatePattern": {
+        "total": 82,
+        "tp": 78,
+        "fp": 4,
+        "precision": 0.951,
+        "fp_source": "AND/OR/XOR in boolean expressions that are not bitwise (e.g., _CRC_GEN := ... OR ... in CRC accumulator, which is bitwise but the pattern mislabels it as generic bitwise)"
+      },
+      "RateCalculationPattern": {
+        "total": 0,
+        "tp": 0,
+        "fp": 0,
+        "precision": 0.0,
+        "fp_source": "Dead pattern. Heuristic target names (Flow, Rate, Speed, Freq) and source names (delta, time, dt, period, pulse, count) do not match actual industrial rate calculations (e.g., FLOW_METER uses F as target and tx/tl as time sources)."
+      },
+      "ProcessCalculationPattern": {
+        "total": 14,
+        "tp": 10,
+        "fp": 4,
+        "precision": 0.714,
+        "fp_source": "MODR := ... (MODR is a function return variable, not a process output), FLOOR := REAL_TO_INT(X) (function return variable)"
+      },
+      "FunctionBlockInvocationPattern": {
+        "total": 857,
+        "tp": 52,
+        "fp": 805,
+        "precision": 0.061,
+        "fp_source": "Test scaffolding blocks: TestBlock, Test_0-Test_8, Timer (test timers) account for ~95% of detections"
+      }
+    }
+  },
+  "phase3_semantic_depth_scores": {
+    "StateTransitionPattern": 1,
+    "CounterUpdatePattern": 2,
+    "HistoryUpdatePattern": 1,
+    "AccumulatorPattern": 2,
+    "ArrayAccessPattern": 2,
+    "MatrixAccessPattern": 1,
+    "BitwiseUpdatePattern": 2,
+    "RateCalculationPattern": 1,
+    "ProcessCalculationPattern": 2,
+    "FunctionBlockInvocationPattern": 2,
+    "average_depth": 1.6,
+    "max_depth": 2,
+    "depth_0": 0,
+    "depth_1": 3,
+    "depth_2": 7,
+    "depth_3": 0,
+    "depth_4": 0
+  },
+  "phase4_redundancy_analysis": {
+    "total_patterns": 2983,
+    "duplicate_operations": 2983,
+    "new_semantics": 0,
+    "duplicate_rate": 1.0,
+    "pattern_to_operation_mapping": {
+      "StateTransitionPattern": "state_update",
+      "CounterUpdatePattern": "counter_update",
+      "HistoryUpdatePattern": "history_update",
+      "AccumulatorPattern": "accumulator_update",
+      "ArrayAccessPattern": "array_read / array_write",
+      "MatrixAccessPattern": "matrix_access",
+      "BitwiseUpdatePattern": "bitwise_update",
+      "RateCalculationPattern": "measurement_calculation (unmapped, dead)",
+      "ProcessCalculationPattern": "process_calculation / mathematical_solver",
+      "FunctionBlockInvocationPattern": "timer_invocation / counter_invocation / fb_invocation"
+    },
+    "overlap_analysis": {
+      "CounterUpdatePattern ↔ AccumulatorPattern": "Severe overlap on self-increment arithmetic. Both match floor-1, TestState+1, T_PLC_US+OFFSET, totalTests+1. CounterUpdatePattern should match ONLY explicit counters, AccumulatorPattern should match ONLY accumulators.",
+      "StateTransitionPattern ↔ CounterUpdatePattern": "TestState+1 matches both StateTransitionPattern (target name contains State) and CounterUpdatePattern (self-increment). Triple overlap with AccumulatorPattern.",
+      "FunctionBlockInvocationPattern ↔ OperationExtractor": "100% overlap. FunctionBlockCallNode is already visited by OperationExtractor."
+    }
+  },
+  "phase5_recommendations": {
+    "StateTransitionPattern": "REWRITE",
+    "CounterUpdatePattern": "REWRITE",
+    "HistoryUpdatePattern": "KEEP",
+    "AccumulatorPattern": "REWRITE",
+    "ArrayAccessPattern": "KEEP",
+    "MatrixAccessPattern": "REMOVE",
+    "BitwiseUpdatePattern": "KEEP",
+    "RateCalculationPattern": "REMOVE",
+    "ProcessCalculationPattern": "REWRITE",
+    "FunctionBlockInvocationPattern": "REMOVE"
+  }
+}

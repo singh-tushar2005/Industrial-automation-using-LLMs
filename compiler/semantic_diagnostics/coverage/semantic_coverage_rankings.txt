@@ -1,0 +1,22 @@
+SEMANTIC COVERAGE RANKINGS
+==================================================
+
+Top 20 uncovered semantic categories
+--------------------------------------------------
+  Rank Category                          Count   % of Uncovered
+--------------------------------------------------
+     1 lookup_operation                    466            43.8%
+     2 comparison_operation                135            12.7%
+     3 process_calculation                 108            10.1%
+     4 data_movement                       106            10.0%
+     5 iterative_computation                76             7.1%
+     6 other                                62             5.8%
+     7 history_update                       35             3.3%
+     8 bitwise_operation                    33             3.1%
+     9 arithmetic_assignment                28             2.6%
+    10 array_access                          6             0.6%
+    11 mathematical_solver                   4             0.4%
+    12 function_block_call                   3             0.3%
+    13 timer_update                          3             0.3%
+
+Total uncovered: 1065

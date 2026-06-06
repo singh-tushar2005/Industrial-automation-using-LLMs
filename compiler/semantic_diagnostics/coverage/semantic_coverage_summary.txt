@@ -1,0 +1,28 @@
+SEMANTIC COVERAGE AUDIT SUMMARY
+==================================================
+
+Scope: datasets/Industrial_data/
+Total files found: 57
+Successfully parsed: 55
+Parse failures: 2
+
+Total executable statements: 1602
+Covered by semantic layer: 537
+Uncovered (invisible): 1065
+Global coverage: 33.5%
+
+TOP 20 UNCOVERED CATEGORIES
+--------------------------------------------------
+lookup_operation                  466  (43.8%)
+comparison_operation              135  (12.7%)
+process_calculation               108  (10.1%)
+data_movement                     106  (10.0%)
+iterative_computation              76  (7.1%)
+other                              62  (5.8%)
+history_update                     35  (3.3%)
+bitwise_operation                  33  (3.1%)
+arithmetic_assignment              28  (2.6%)
+array_access                        6  (0.6%)
+mathematical_solver                 4  (0.4%)
+function_block_call                 3  (0.3%)
+timer_update                        3  (0.3%)

@@ -1,0 +1,273 @@
+{
+  "generated": "2026-06-01",
+  "directories": [
+    {
+      "name": "coverage",
+      "description": "Semantic coverage audits, gap reports, before/after metrics",
+      "files": [
+        "coverage_before_after.json",
+        "coverage_expansion_report.md",
+        "coverage_gap_report.json",
+        "industrial_coverage_validation.md",
+        "semantic_coverage_audit.json",
+        "semantic_coverage_rankings.txt",
+        "semantic_coverage_summary.txt"
+      ]
+    },
+    {
+      "name": "classifier",
+      "description": "Industrial vocabulary audits, classifier integration reports, intent reviews",
+      "files": [
+        "industrial_vocabulary_gap_report.md",
+        "integration_phase1_report.md",
+        "semantic_integration_review.md"
+      ]
+    },
+    {
+      "name": "relationships",
+      "description": "Relationship precision audits, rule frequency analyses, R1 refactor designs",
+      "files": [
+        "condition_role_report.md",
+        "control_role_precision_audit.md",
+        "post_filter_precision_audit.md",
+        "r1_filtering_report.md",
+        "r1_refactor_design.md",
+        "relationship_generation_trace.md",
+        "relationship_precision_audit.json",
+        "relationship_precision_summary.txt",
+        "relationship_quality_diagnosis.md",
+        "relationship_rule_frequency.json",
+        "relationship_rule_precision_audit.md"
+      ]
+    },
+    {
+      "name": "operations",
+      "description": "Operation extractor reports, operation type frequencies",
+      "files": [
+        "operation_extractor_report.md",
+        "operation_type_frequencies.json"
+      ]
+    },
+    {
+      "name": "patterns",
+      "description": "Pattern library diagnostic reports, semantic evidence metrics",
+      "files": [
+        "pattern_library_metrics.json",
+        "pattern_library_report.md"
+      ]
+    },
+    {
+      "name": "dependency_reasoning",
+      "description": "Semantic context integration reports, context metrics",
+      "files": [
+        "semantic_context_integration_report.md",
+        "semantic_context_metrics.json"
+      ]
+    },
+    {
+      "name": "corpus",
+      "description": "Per-dataset semantic outputs, corpus-wide diagnostics, case desugaring impact",
+      "files": [
+        "case_desugaring_impact.json",
+        "case_desugaring_impact.md",
+        "semantic_diagnostics.json",
+        "semantic_diagnostics_summary.txt",
+        "*_semantic.json"
+      ]
+    },
+    {
+      "name": "archive",
+      "description": "Older or superseded report versions",
+      "files": []
+    }
+  ],
+  "total_files": 33,
+  "report_index": {
+    "semantic_coverage_audit.json": {
+      "directory": "coverage",
+      "type": "json",
+      "phase": "coverage_expansion",
+      "description": "Per-dataset executable node coverage analysis"
+    },
+    "coverage_expansion_report.md": {
+      "directory": "coverage",
+      "type": "markdown",
+      "phase": "coverage_expansion",
+      "description": "Coverage expansion from 60% to 99.2%"
+    },
+    "coverage_gap_report.json": {
+      "directory": "coverage",
+      "type": "json",
+      "phase": "coverage_expansion",
+      "description": "Per-statement gap analysis"
+    },
+    "coverage_before_after.json": {
+      "directory": "coverage",
+      "type": "json",
+      "phase": "coverage_expansion",
+      "description": "Per-dataset before/after metrics"
+    },
+    "industrial_coverage_validation.md": {
+      "directory": "coverage",
+      "type": "markdown",
+      "phase": "coverage_expansion",
+      "description": "Industrial coverage validation summary"
+    },
+    "semantic_coverage_summary.txt": {
+      "directory": "coverage",
+      "type": "text",
+      "phase": "coverage_expansion",
+      "description": "Coverage summary text"
+    },
+    "semantic_coverage_rankings.txt": {
+      "directory": "coverage",
+      "type": "text",
+      "phase": "coverage_expansion",
+      "description": "Coverage rankings text"
+    },
+    "industrial_vocabulary_gap_report.md": {
+      "directory": "classifier",
+      "type": "markdown",
+      "phase": "vocabulary",
+      "description": "Industrial vocabulary gap audit"
+    },
+    "integration_phase1_report.md": {
+      "directory": "classifier",
+      "type": "markdown",
+      "phase": "integration",
+      "description": "Phase 1 classifier-extractor integration"
+    },
+    "semantic_integration_review.md": {
+      "directory": "classifier",
+      "type": "markdown",
+      "phase": "integration",
+      "description": "Semantic integration review"
+    },
+    "condition_role_report.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "condition_roles",
+      "description": "Condition role classification report"
+    },
+    "control_role_precision_audit.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "condition_roles",
+      "description": "Control role precision audit"
+    },
+    "post_filter_precision_audit.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "r1_filtering",
+      "description": "Post-filter precision audit"
+    },
+    "r1_filtering_report.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "r1_filtering",
+      "description": "R1 filtering validation report"
+    },
+    "r1_refactor_design.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "r1_refactor",
+      "description": "R1 refactor design document"
+    },
+    "relationship_generation_trace.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "trace",
+      "description": "Relationship generation trace"
+    },
+    "relationship_precision_audit.json": {
+      "directory": "relationships",
+      "type": "json",
+      "phase": "precision_audit",
+      "description": "Relationship precision audit data"
+    },
+    "relationship_precision_summary.txt": {
+      "directory": "relationships",
+      "type": "text",
+      "phase": "precision_audit",
+      "description": "Relationship precision summary"
+    },
+    "relationship_quality_diagnosis.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "quality_diagnosis",
+      "description": "Relationship quality diagnosis"
+    },
+    "relationship_rule_frequency.json": {
+      "directory": "relationships",
+      "type": "json",
+      "phase": "rule_analysis",
+      "description": "Relationship rule frequency analysis"
+    },
+    "relationship_rule_precision_audit.md": {
+      "directory": "relationships",
+      "type": "markdown",
+      "phase": "rule_analysis",
+      "description": "Relationship rule precision audit"
+    },
+    "operation_extractor_report.md": {
+      "directory": "operations",
+      "type": "markdown",
+      "phase": "operation_extractor",
+      "description": "Operation extractor implementation report"
+    },
+    "operation_type_frequencies.json": {
+      "directory": "operations",
+      "type": "json",
+      "phase": "operation_extractor",
+      "description": "Operation type frequencies"
+    },
+    "pattern_library_report.md": {
+      "directory": "patterns",
+      "type": "markdown",
+      "phase": "pattern_library",
+      "description": "Pattern library diagnostic report"
+    },
+    "pattern_library_metrics.json": {
+      "directory": "patterns",
+      "type": "json",
+      "phase": "pattern_library",
+      "description": "Pattern library detection metrics"
+    },
+    "semantic_context_integration_report.md": {
+      "directory": "dependency_reasoning",
+      "type": "markdown",
+      "phase": "context_integration",
+      "description": "Semantic context integration report"
+    },
+    "semantic_context_metrics.json": {
+      "directory": "dependency_reasoning",
+      "type": "json",
+      "phase": "context_integration",
+      "description": "Semantic context metrics"
+    },
+    "case_desugaring_impact.json": {
+      "directory": "corpus",
+      "type": "json",
+      "phase": "case_desugaring",
+      "description": "CASE desugaring impact data"
+    },
+    "case_desugaring_impact.md": {
+      "directory": "corpus",
+      "type": "markdown",
+      "phase": "case_desugaring",
+      "description": "CASE desugaring impact analysis"
+    },
+    "semantic_diagnostics.json": {
+      "directory": "corpus",
+      "type": "json",
+      "phase": "initial_audit",
+      "description": "Full corpus diagnostic data"
+    },
+    "semantic_diagnostics_summary.txt": {
+      "directory": "corpus",
+      "type": "text",
+      "phase": "initial_audit",
+      "description": "Semantic diagnostics summary"
+    }
+  }
+}

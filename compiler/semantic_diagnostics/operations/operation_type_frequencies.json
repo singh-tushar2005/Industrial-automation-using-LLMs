@@ -1,0 +1,227 @@
+{
+  "per_dataset": [
+    {
+      "dataset": "CRC_GEN.st",
+      "executable": 9,
+      "covered": 6,
+      "uncovered": 3,
+      "coverage_pct": 66.7,
+      "operations": 25,
+      "op_counts": {
+        "process_calculation": 14,
+        "iterative_computation": 4,
+        "comparison_operation": 5,
+        "data_movement": 1,
+        "lookup_operation": 1
+      }
+    },
+    {
+      "dataset": "FLOW_METER.st",
+      "executable": 8,
+      "covered": 5,
+      "uncovered": 3,
+      "coverage_pct": 62.5,
+      "operations": 25,
+      "op_counts": {
+        "comparison_operation": 5,
+        "data_movement": 15,
+        "process_calculation": 5
+      }
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "executable": 1,
+      "covered": 1,
+      "uncovered": 0,
+      "coverage_pct": 100.0,
+      "operations": 8,
+      "op_counts": {
+        "comparison_operation": 3,
+        "data_movement": 4,
+        "process_calculation": 1
+      }
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "executable": 1,
+      "covered": 1,
+      "uncovered": 0,
+      "coverage_pct": 100.0,
+      "operations": 39,
+      "op_counts": {
+        "comparison_operation": 11,
+        "process_calculation": 11,
+        "data_movement": 17
+      }
+    },
+    {
+      "dataset": "GEN_SIN.st",
+      "executable": 8,
+      "covered": 5,
+      "uncovered": 3,
+      "coverage_pct": 62.5,
+      "operations": 15,
+      "op_counts": {
+        "process_calculation": 8,
+        "comparison_operation": 4,
+        "data_movement": 3
+      }
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "executable": 27,
+      "covered": 23,
+      "uncovered": 4,
+      "coverage_pct": 85.2,
+      "operations": 63,
+      "op_counts": {
+        "process_calculation": 28,
+        "comparison_operation": 13,
+        "data_movement": 21,
+        "iterative_computation": 1
+      }
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "executable": 3,
+      "covered": 1,
+      "uncovered": 2,
+      "coverage_pct": 33.3,
+      "operations": 11,
+      "op_counts": {
+        "comparison_operation": 2,
+        "data_movement": 2,
+        "process_calculation": 6,
+        "iterative_computation": 1
+      }
+    },
+    {
+      "dataset": "MATRIX.st",
+      "executable": 17,
+      "covered": 15,
+      "uncovered": 2,
+      "coverage_pct": 88.2,
+      "operations": 32,
+      "op_counts": {
+        "data_movement": 8,
+        "process_calculation": 17,
+        "lookup_operation": 3,
+        "iterative_computation": 1,
+        "comparison_operation": 3
+      }
+    },
+    {
+      "dataset": "SEQUENCE_8.st",
+      "executable": 14,
+      "covered": 13,
+      "uncovered": 1,
+      "coverage_pct": 92.9,
+      "operations": 85,
+      "op_counts": {
+        "process_calculation": 2,
+        "comparison_operation": 45,
+        "data_movement": 38
+      }
+    },
+    {
+      "dataset": "TOOL_CHANGER.st",
+      "executable": 1,
+      "covered": 1,
+      "uncovered": 0,
+      "coverage_pct": 100.0,
+      "operations": 13,
+      "op_counts": {
+        "comparison_operation": 3,
+        "lookup_operation": 1,
+        "data_movement": 9
+      }
+    },
+    {
+      "dataset": "TRAFFIC_CTRL.st",
+      "executable": 3,
+      "covered": 3,
+      "uncovered": 0,
+      "coverage_pct": 100.0,
+      "operations": 35,
+      "op_counts": {
+        "comparison_operation": 11,
+        "data_movement": 23,
+        "lookup_operation": 1
+      }
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "executable": 4,
+      "covered": 2,
+      "uncovered": 2,
+      "coverage_pct": 50.0,
+      "operations": 127,
+      "op_counts": {
+        "comparison_operation": 37,
+        "process_calculation": 3,
+        "data_movement": 86,
+        "lookup_operation": 1
+      }
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "executable": 4,
+      "covered": 2,
+      "uncovered": 2,
+      "coverage_pct": 50.0,
+      "operations": 199,
+      "op_counts": {
+        "comparison_operation": 37,
+        "process_calculation": 3,
+        "data_movement": 158,
+        "lookup_operation": 1
+      }
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "executable": 4,
+      "covered": 2,
+      "uncovered": 2,
+      "coverage_pct": 50.0,
+      "operations": 199,
+      "op_counts": {
+        "comparison_operation": 37,
+        "process_calculation": 3,
+        "data_movement": 158,
+        "lookup_operation": 1
+      }
+    },
+    {
+      "dataset": "sampletext_4.st",
+      "executable": 1,
+      "covered": 1,
+      "uncovered": 0,
+      "coverage_pct": 100.0,
+      "operations": 1,
+      "op_counts": {
+        "process_calculation": 1
+      }
+    }
+  ],
+  "global": {
+    "total_executable": 105,
+    "total_covered": 81,
+    "total_uncovered": 24,
+    "coverage_before": 33.5,
+    "coverage_after": 77.1,
+    "operation_frequencies": {
+      "process_calculation": 102,
+      "iterative_computation": 7,
+      "comparison_operation": 216,
+      "data_movement": 543,
+      "lookup_operation": 9
+    },
+    "total_operations": 877,
+    "previously_empty_now_ops": [
+      "CRC_GEN.st",
+      "LAMBERT_W.st",
+      "MATRIX.st",
+      "sampletext_4.st"
+    ]
+  }
+}

@@ -1,0 +1,3065 @@
+# Pattern Library Diagnostic Report
+
+## 1. Pattern Frequencies
+
+| Pattern | Count | % of Total |
+|---|---|---|
+| FunctionBlockInvocationPattern | 857 | 28.7% |
+| CounterUpdatePattern | 634 | 21.3% |
+| AccumulatorPattern | 612 | 20.5% |
+| StateTransitionPattern | 290 | 9.7% |
+| HistoryUpdatePattern | 236 | 7.9% |
+| ArrayAccessPattern | 203 | 6.8% |
+| BitwiseUpdatePattern | 82 | 2.7% |
+| MatrixAccessPattern | 55 | 1.8% |
+| ProcessCalculationPattern | 14 | 0.5% |
+
+## 2. Average Confidence
+
+Overall average confidence: 0.855
+
+## 3. Representative Examples
+
+### Implementation_datasets/CRC_GEN.st
+Patterns detected: 13
+Average confidence: 0.738
+Top patterns: {'MatrixAccessPattern': 8, 'BitwiseUpdatePattern': 2, 'ArrayAccessPattern': 1}
+
+### Implementation_datasets/FLOW_METER.st
+Patterns detected: 16
+Average confidence: 0.915
+Top patterns: {'HistoryUpdatePattern': 10, 'CounterUpdatePattern': 2, 'AccumulatorPattern': 2}
+
+### Implementation_datasets/MATRIX.st
+Patterns detected: 18
+Average confidence: 1.0
+Top patterns: {'BitwiseUpdatePattern': 13, 'ArrayAccessPattern': 5}
+
+### Implementation_datasets/LAMBERT_W.st
+Patterns detected: 4
+Average confidence: 0.83
+Top patterns: {'ProcessCalculationPattern': 1, 'HistoryUpdatePattern': 1, 'CounterUpdatePattern': 1}
+
+### Implementation_datasets/SEQUENCE_8.st
+Patterns detected: 10
+Average confidence: 1.0
+Top patterns: {'HistoryUpdatePattern': 9, 'StateTransitionPattern': 1}
+
+### Implementation_datasets/TRAFFIC_CTRL.st
+Patterns detected: 12
+Average confidence: 1.0
+Top patterns: {'FunctionBlockInvocationPattern': 8, 'StateTransitionPattern': 4}
+
+## 4. Pattern vs OperationExtractor Comparison
+
+**Patterns detected:** 2983
+**Operations detected:** 7552
+**New semantics (patterns with no operation match):** 0
+**Duplicates (patterns that match operations):** 2983
+
+### New Semantics (patterns add value)
+
+These patterns detect semantics that the OperationExtractor does not capture:
+
+
+### Duplicate Detection
+
+These patterns overlap with existing operation types:
+
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': 'temp', 'value': '<str>[in_temp]', 'kind': 'array_read'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '0', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[in_temp]', 'value': 'temp', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Y4', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Y1', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'code', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': 'temp2', 'value': '<str>[i]', 'kind': 'array_read'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Y2', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[7]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_8', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[8]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': '_step', 'value': '-1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': 'L_temp', 'value': '<str>[i]', 'kind': 'array_read'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[i]', 'value': 'L_temp', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'temp_bit', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'L_temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_9', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_7', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '0', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[9]', 'value': 'TRUE', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **BitwiseUpdatePattern** → {'target': 'L_temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': 'temp2', 'value': '<str>[i]', 'kind': 'array_read'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'Y3', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'Y4', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': 'DX', 'value': '<str>[pos]', 'kind': 'array_read'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '2', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[in_temp]', 'value': 'temp', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': 'temp', 'value': '<str>[in_temp]', 'kind': 'array_read'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '2', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '0', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[i]', 'value': 'L_temp', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'temp_bit', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': 'L_temp', 'value': '<str>[i]', 'kind': 'array_read'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': '_step', 'value': '-1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': '_CRC_GEN XOR SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'code', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': 'Y1', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '2', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '2', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'Y3', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '3', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '2', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'Y2', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ProcessCalculationPattern** → {'target': 'temp', 'function': 'SIN', 'kind': 'math_calculation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'REFLECT(...)', 'kind': 'matrix_access'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '3', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '0', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '2', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ProcessCalculationPattern** → {'target': 'tmp', 'function': 'FLOOR', 'kind': 'math_calculation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ProcessCalculationPattern** → {'target': 'temp', 'function': 'SIN', 'kind': 'math_calculation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ProcessCalculationPattern** → {'target': 'DL', 'function': 'MODR', 'kind': 'math_calculation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'REAL_TO_DWORD(...) AND DWORD#16#FFFF_FFFC', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'w', 'value': 'w - we / w1e - w + 2.0 * we / 2.0 * w + 2.0', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'w', 'value': 'w - we / w1e - w + 2.0 * we / 2.0 * w + 2.0', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'PN', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ProcessCalculationPattern** → {'target': 'ewx', 'function': 'EXP', 'kind': 'math_calculation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'w', 'value': 'w - we / w1e - w + 2.0 * we / 2.0 * w + 2.0', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'w', 'value': 'w - we / w1e - w + 2.0 * we / 2.0 * w + 2.0', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ProcessCalculationPattern** → {'target': 'DL', 'function': 'MODR', 'kind': 'math_calculation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'REAL_TO_DWORD(...) AND DWORD#16#FFFF_FFFC', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **ProcessCalculationPattern** → {'target': 'ewx', 'function': 'EXP', 'kind': 'math_calculation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_5', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[5]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_6', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[6]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[7]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_8', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[8]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_9', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_7', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[5]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[9]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_5', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'UDINT#0', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'e_last', 'value': '_E', 'kind': 'history_update'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': '0.0', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'Y', 'value': 'Y + INT_TO_UDINT(...)', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'Y', 'value': 'Y + INT_TO_UDINT(...)', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': '_CRC_GEN XOR SHL(...)', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BYTE_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'dx', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '9', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '10', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '5', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **MatrixAccessPattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'counter_update'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '9', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '5', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '3', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '2', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '0', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '4', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '500', 'kind': 'counter_update'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[in_temp]', 'value': 'temp', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_5', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': 'temp2', 'value': '<str>[i]', 'kind': 'array_read'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '10', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[5]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'counter_update'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '8', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[i]', 'value': 'L_temp', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '7', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_6', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Y1', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '4', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **ArrayAccessPattern** → {'target': '<str>[6]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '11', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'counter_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '6', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': '0.0', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '15000', 'kind': 'counter_update'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '11', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': 'X', 'kind': 'history_update'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': 'L_temp', 'value': '<str>[i]', 'kind': 'array_read'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '0', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **MatrixAccessPattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'matrix_access'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '0', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '500', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'counter_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '9', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'w', 'value': 'w - we / w1e - w + 2.0 * we / 2.0 * w + 2.0', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **ArrayAccessPattern** → {'target': 'temp', 'value': '<str>[in_temp]', 'kind': 'array_read'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'counter_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'Y', 'value': 'Y + INT_TO_UDINT(...)', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ProcessCalculationPattern** → {'target': 'temp', 'function': 'SIN', 'kind': 'math_calculation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '0', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'pos', 'value': 'pos + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'X', 'value': 'X - INT_TO_REAL(...)', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '3', 'kind': 'state_transition'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...) XOR PN', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'int1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '0', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'UDINT#0', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BYTE_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'Y', 'value': 'Y + INT_TO_UDINT(...)', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '8', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '2', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '5', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '0', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'Y', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '3', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': 'PN', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '1', 'kind': 'state_transition'}
+- **ProcessCalculationPattern** → {'target': 'tmp', 'function': 'FLOOR', 'kind': 'math_calculation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '7', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...) XOR PN', 'kind': 'matrix_access'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '4', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '6', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[5]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **AccumulatorPattern** → {'target': 'X', 'value': 'X - INT_TO_REAL(...)', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'pos', 'value': 'pos + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_6', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[6]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_7', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_5', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_8', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[8]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'L_temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'Y', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '0', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_9', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[9]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': 'Y3', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'e_last', 'value': '_E', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_10', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'Y2', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': 'X', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **BitwiseUpdatePattern** → {'target': 'Y4', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[10]', 'value': 'TRUE', 'kind': 'array_write'}
+- **MatrixAccessPattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'matrix_access'}
+- **ArrayAccessPattern** → {'target': 'DX', 'value': '<str>[pos]', 'kind': 'array_read'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_11', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[11]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '10', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'T1_Cnt', 'value': '500', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '6', 'kind': 'state_transition'}
+- **MatrixAccessPattern** → {'target': 'FC_AlarmCondition', 'value': 'NOT Si1 OR NOT Xi1 OR NOT Xi6 OR NOT Xi7 OR NOT Xi8 OR NOT Xi9 OR Ri5 OR Zi4 OR T1_Done AND NOT Xi10 OR T2_Done AND NOT Zi2', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_12', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '8', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'w', 'value': 'w - we / w1e - w + 2.0 * we / 2.0 * w + 2.0', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'REFLECT(...)', 'kind': 'matrix_access'}
+- **ArrayAccessPattern** → {'target': '<str>[12]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **MatrixAccessPattern** → {'target': 'Parts_Count', 'value': 'Parts_Count + 1', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '7', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'counter_update'}
+- **AccumulatorPattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[7]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': 'temp_bit', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '15000', 'kind': 'counter_update'}
+- **ArrayAccessPattern** → {'target': '<str>[13]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': '_step', 'value': '-1', 'kind': 'state_transition'}
+- **MatrixAccessPattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_13', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '15000', 'kind': 'counter_update'}
+- **MatrixAccessPattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ProcessCalculationPattern** → {'target': 'ewx', 'function': 'EXP', 'kind': 'math_calculation'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '2', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_14', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'LightState', 'value': '2', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': '0', 'kind': 'counter_update'}
+- **ArrayAccessPattern** → {'target': '<str>[14]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': 'T1_Cnt', 'value': 'T1_Cnt - 1', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'REAL_TO_DWORD(...) AND DWORD#16#FFFF_FFFC', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'counter_update'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'temp', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'code', 'function': 'BIT_LOAD_B', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '11', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'State', 'value': '3', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T2_Cnt', 'value': 'T2_Cnt - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'cnt', 'value': '0', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'cnt', 'value': 'cnt + 1', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'rx', 'value': 'rx + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'cnt', 'value': 'cnt + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'r2', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'rx', 'value': 'rx + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'r3', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **BitwiseUpdatePattern** → {'target': 'PN', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BYTE_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BYTE_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': '_CRC_GEN XOR SHL(...)', 'kind': 'matrix_access'}
+- **ArrayAccessPattern** → {'target': 'DX', 'value': '<str>[pos]', 'kind': 'array_read'}
+- **CounterUpdatePattern** → {'target': 'pos', 'value': 'pos + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'pos', 'value': 'pos + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...) XOR PN', 'kind': 'matrix_access'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **BitwiseUpdatePattern** → {'target': 'dx', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...) XOR PN', 'kind': 'matrix_access'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'REFLECT(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': 'X', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'e_last', 'value': '_E', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'UDINT#0', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **ProcessCalculationPattern** → {'target': 'tmp', 'function': 'FLOOR', 'kind': 'math_calculation'}
+- **CounterUpdatePattern** → {'target': 'Y', 'value': 'Y + INT_TO_UDINT(...)', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': 'X', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'Y', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'int1', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': '0.0', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'Y', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'Y', 'value': 'Y + INT_TO_UDINT(...)', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'X', 'value': 'X - INT_TO_REAL(...)', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'X', 'value': 'X - INT_TO_REAL(...)', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BYTE_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BYTE_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_5', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[5]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_6', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'diff', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[6]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_7', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[7]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_8', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[8]', 'value': 'TRUE', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_9', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[9]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_10', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[10]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_11', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[11]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_12', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[12]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_13', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[13]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_14', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[14]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'dx', 'function': 'SHL', 'kind': 'bitwise_function'}
+- **BitwiseUpdatePattern** → {'target': 'Q2', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'r1', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'r3', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '2', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '2', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'ToolChangeState', 'value': '0', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'cnt', 'value': '0', 'kind': 'counter_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Q3', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'Q1', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'r0', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'rx', 'value': 'rx + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...) XOR PN', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'cnt', 'value': 'cnt + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'cnt', 'value': '0', 'kind': 'counter_update'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...)', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'rx', 'value': 'rx + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'int1', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'Y', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'cnt', 'value': 'cnt + 1', 'kind': 'counter_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_5', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[5]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_6', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **BitwiseUpdatePattern** → {'target': 'Q0', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **ArrayAccessPattern** → {'target': '<str>[6]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'r2', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_7', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[7]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_8', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[8]', 'value': 'TRUE', 'kind': 'array_write'}
+- **MatrixAccessPattern** → {'target': '_CRC_GEN', 'value': 'SHL(...) OR BOOL_TO_DWORD(...) XOR PN', 'kind': 'matrix_access'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_9', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[9]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_5', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_10', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[5]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[10]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_11', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[11]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_12', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[12]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_13', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[13]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_14', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[14]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_15', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[15]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_16', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[16]', 'value': 'TRUE', 'kind': 'array_write'}
+- **AccumulatorPattern** → {'target': 'pos', 'value': 'pos + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_17', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[17]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_0', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_1', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ArrayAccessPattern** → {'target': '<str>[4]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'diff', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_4', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'in', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **ArrayAccessPattern** → {'target': '<str>[3]', 'value': 'TRUE', 'kind': 'array_write'}
+- **ArrayAccessPattern** → {'target': '<str>[1]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'in_last', 'value': 'IN', 'kind': 'history_update'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ProcessCalculationPattern** → {'target': 'temp', 'function': 'SIN', 'kind': 'math_calculation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ArrayAccessPattern** → {'target': '<str>[2]', 'value': 'TRUE', 'kind': 'array_write'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'X', 'value': 'X - INT_TO_REAL(...)', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **ArrayAccessPattern** → {'target': '<str>[0]', 'value': 'TRUE', 'kind': 'array_write'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_3', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'r1', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'r0', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Q1', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'X', 'value': 'X - INT_TO_REAL(...)', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'totalTests', 'value': 'totalTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'y_last', 'value': 'Y', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **BitwiseUpdatePattern** → {'target': 'Q2', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **ProcessCalculationPattern** → {'target': 'DL', 'function': 'MODR', 'kind': 'math_calculation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'x_last', 'value': 'X', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'piwl', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'diff', 'kind': 'fb_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **BitwiseUpdatePattern** → {'target': '_d', 'function': 'SHR', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'pos', 'value': 'pos + 1', 'kind': 'counter_increment'}
+- **MatrixAccessPattern** → {'target': 'BIT_LOAD_B', 'value': 'in AND NOT SHL(...)', 'kind': 'matrix_access'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'FLOOR2', 'value': 'FLOOR2 - DINT#1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'floor', 'value': 'floor - 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Q0', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'cnt', 'value': '0', 'kind': 'counter_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'tl', 'value': 'tx', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **BitwiseUpdatePattern** → {'target': 'Q3', 'function': 'BIT_OF_DWORD', 'kind': 'bitwise_function'}
+- **CounterUpdatePattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'dl', 'value': '1.0 - dl', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_US', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Test_2', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 't_last', 'value': 'T_PLC_US(...)', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'old', 'value': 'in', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **AccumulatorPattern** → {'target': 'i', 'value': 'IN + in_last * 5.0E-7 * KI * tc + i', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **CounterUpdatePattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **AccumulatorPattern** → {'target': 'T_PLC_MS', 'value': 'DWORD_TO_UDINT(...) - 1 + OFFSET', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **CounterUpdatePattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'counter_increment'}
+- **HistoryUpdatePattern** → {'target': 'X_last', 'value': 'X', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **AccumulatorPattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'accumulator_arithmetic'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+- **ProcessCalculationPattern** → {'target': 'DL', 'function': 'MODR', 'kind': 'math_calculation'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'Timer', 'kind': 'timer_invocation'}
+- **CounterUpdatePattern** → {'target': 'tx', 'value': 'tx - pt', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'accumulator_arithmetic'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'tx', 'kind': 'history_update'}
+- **CounterUpdatePattern** → {'target': 'passedTests', 'value': 'passedTests + 1', 'kind': 'counter_increment'}
+- **AccumulatorPattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'accumulator_arithmetic'}
+- **FunctionBlockInvocationPattern** → {'fb_name': 'TestBlock', 'kind': 'fb_invocation'}
+- **HistoryUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'history_update'}
+- **AccumulatorPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'accumulator_arithmetic'}
+- **CounterUpdatePattern** → {'target': 'last', 'value': 'last + pt', 'kind': 'counter_increment'}
+- **StateTransitionPattern** → {'target': 'TestState', 'value': 'TestState + 1', 'kind': 'state_transition'}
+
+## 5. Coverage Analysis
+
+| Metric | PatternLibrary | OperationExtractor |
+|---|---|---|
+| Total detections | 2983 | 7552 |
+| Unique categories | 9 | 20 |
+
+## 6. Recommendations
+
+1. **PatternLibrary should supplement, not replace, OperationExtractor.** Patterns add semantic intent (e.g., "rate calculation", "process calculation") that syntax-driven extraction cannot infer.
+2. **Integrate PatternLibrary into SemanticContext.** The classifier should consume pattern evidence to set `measurement_system_detected`, `data_processing_detected`, etc.
+3. **Confidence scores are high.** Most patterns use high-confidence rules (e.g., variable name heuristics, function names). This is appropriate for diagnostic use.
+4. **No disagreements found.** Patterns and operations are complementary; they do not contradict each other.

@@ -1,0 +1,658 @@
+{
+  "total_uncovered": 77,
+  "category_rankings": {
+    "comparison_operation": 58,
+    "iterative_computation": 7,
+    "function_invocation": 5,
+    "fb_invocation": 5,
+    "return": 2
+  },
+  "per_dataset": [
+    {
+      "dataset": "CRC_GEN.st",
+      "executable": 26,
+      "covered": 19,
+      "uncovered": 7,
+      "coverage_pct": 73.1
+    },
+    {
+      "dataset": "FLOW_METER.st",
+      "executable": 25,
+      "covered": 22,
+      "uncovered": 3,
+      "coverage_pct": 88.0
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "executable": 12,
+      "covered": 6,
+      "uncovered": 6,
+      "coverage_pct": 50.0
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "executable": 36,
+      "covered": 31,
+      "uncovered": 5,
+      "coverage_pct": 86.1
+    },
+    {
+      "dataset": "GEN_SIN.st",
+      "executable": 15,
+      "covered": 12,
+      "uncovered": 3,
+      "coverage_pct": 80.0
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "executable": 64,
+      "covered": 56,
+      "uncovered": 8,
+      "coverage_pct": 87.5
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "executable": 13,
+      "covered": 8,
+      "uncovered": 5,
+      "coverage_pct": 61.5
+    },
+    {
+      "dataset": "MATRIX.st",
+      "executable": 33,
+      "covered": 28,
+      "uncovered": 5,
+      "coverage_pct": 84.8
+    },
+    {
+      "dataset": "SEQUENCE_8.st",
+      "executable": 60,
+      "covered": 58,
+      "uncovered": 2,
+      "coverage_pct": 96.7
+    },
+    {
+      "dataset": "TOOL_CHANGER.st",
+      "executable": 13,
+      "covered": 11,
+      "uncovered": 2,
+      "coverage_pct": 84.6
+    },
+    {
+      "dataset": "TRAFFIC_CTRL.st",
+      "executable": 42,
+      "covered": 41,
+      "uncovered": 1,
+      "coverage_pct": 97.6
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "executable": 106,
+      "covered": 96,
+      "uncovered": 10,
+      "coverage_pct": 90.6
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "executable": 178,
+      "covered": 168,
+      "uncovered": 10,
+      "coverage_pct": 94.4
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "executable": 178,
+      "covered": 168,
+      "uncovered": 10,
+      "coverage_pct": 94.4
+    },
+    {
+      "dataset": "sampletext_4.st",
+      "executable": 1,
+      "covered": 1,
+      "uncovered": 0,
+      "coverage_pct": 100.0
+    }
+  ],
+  "uncovered_items": [
+    {
+      "dataset": "CRC_GEN.st",
+      "node_type": "ForLoopNode",
+      "category": "iterative_computation",
+      "source_text": "<ForLoopNode>",
+      "path": "AST.body.statements[0].body.statements[2]"
+    },
+    {
+      "dataset": "CRC_GEN.st",
+      "node_type": "WhileLoopNode",
+      "category": "iterative_computation",
+      "source_text": "<WhileLoopNode>",
+      "path": "AST.body.statements[0].body.statements[5]"
+    },
+    {
+      "dataset": "CRC_GEN.st",
+      "node_type": "ForLoopNode",
+      "category": "iterative_computation",
+      "source_text": "<ForLoopNode>",
+      "path": "AST.body.statements[0].body.statements[5].body.statements[2]"
+    },
+    {
+      "dataset": "CRC_GEN.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[5].body.statements[2].body.statements[0]"
+    },
+    {
+      "dataset": "CRC_GEN.st",
+      "node_type": "FunctionInvocationNode",
+      "category": "function_invocation",
+      "source_text": "UINT_TO_INT(...)",
+      "path": "AST.body.statements[0].body.statements[5].condition.right"
+    },
+    {
+      "dataset": "CRC_GEN.st",
+      "node_type": "ForLoopNode",
+      "category": "iterative_computation",
+      "source_text": "<ForLoopNode>",
+      "path": "AST.body.statements[0].body.statements[6]"
+    },
+    {
+      "dataset": "CRC_GEN.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[6].body.statements[0]"
+    },
+    {
+      "dataset": "FLOW_METER.st",
+      "node_type": "FunctionBlockCallNode",
+      "category": "fb_invocation",
+      "source_text": "int1",
+      "path": "AST.body.statements[0].body.statements[1]"
+    },
+    {
+      "dataset": "FLOW_METER.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[5]"
+    },
+    {
+      "dataset": "FLOW_METER.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[7]"
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "node_type": "FunctionBlockCallNode",
+      "category": "fb_invocation",
+      "source_text": "piwl",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[0]"
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].else_body.statements[0]"
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "node_type": "FunctionBlockCallNode",
+      "category": "fb_invocation",
+      "source_text": "piwl",
+      "path": "AST.body.statements[0].body.statements[0].else_body.statements[0].then_body.statements[0]"
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "node_type": "FunctionBlockCallNode",
+      "category": "fb_invocation",
+      "source_text": "piwl",
+      "path": "AST.body.statements[0].body.statements[0].else_body.statements[0].else_body.statements[0]"
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "node_type": "FunctionBlockCallNode",
+      "category": "fb_invocation",
+      "source_text": "diff",
+      "path": "AST.body.statements[0].body.statements[0].else_body.statements[1]"
+    },
+    {
+      "dataset": "FT_PIDWL.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].else_body.statements[3]"
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[1].then_body.statements[0]"
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[1].then_body.statements[1]"
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[1].then_body.statements[2]"
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[1].then_body.statements[4]"
+    },
+    {
+      "dataset": "GEN_BIT.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[1].then_body.statements[5]"
+    },
+    {
+      "dataset": "GEN_SIN.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[2]"
+    },
+    {
+      "dataset": "GEN_SIN.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[4]"
+    },
+    {
+      "dataset": "GEN_SIN.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[5]"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[2].body.statements[1]"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "FunctionInvocationNode",
+      "category": "function_invocation",
+      "source_text": "INT_TO_REAL(...)",
+      "path": "AST.body.statements[2].body.statements[1].condition.left"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[3].body.statements[1]"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "FunctionInvocationNode",
+      "category": "function_invocation",
+      "source_text": "DINT_TO_REAL(...)",
+      "path": "AST.body.statements[3].body.statements[1].condition.left"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[4].body.statements[0]"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "ForLoopNode",
+      "category": "iterative_computation",
+      "source_text": "<ForLoopNode>",
+      "path": "AST.body.statements[6].body.statements[1]"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[12].body.statements[0].else_body.statements[7]"
+    },
+    {
+      "dataset": "INCLUDE.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[12].body.statements[0].else_body.statements[7].then_body.statements[1]"
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0]"
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "node_type": "ReturnNode",
+      "category": "return",
+      "source_text": "<ReturnNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[1]"
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "node_type": "ForLoopNode",
+      "category": "iterative_computation",
+      "source_text": "<ForLoopNode>",
+      "path": "AST.body.statements[0].body.statements[1]"
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[1].body.statements[5]"
+    },
+    {
+      "dataset": "LAMBERT_W.st",
+      "node_type": "FunctionInvocationNode",
+      "category": "function_invocation",
+      "source_text": "REAL_TO_DWORD(...)",
+      "path": "AST.body.statements[0].body.statements[1].body.statements[5].condition.left.operands[0]"
+    },
+    {
+      "dataset": "MATRIX.st",
+      "node_type": "ForLoopNode",
+      "category": "iterative_computation",
+      "source_text": "<ForLoopNode>",
+      "path": "AST.body.statements[0].body.statements[10]"
+    },
+    {
+      "dataset": "MATRIX.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[10].body.statements[0]"
+    },
+    {
+      "dataset": "MATRIX.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[10].body.statements[0].then_body.statements[3]"
+    },
+    {
+      "dataset": "MATRIX.st",
+      "node_type": "FunctionInvocationNode",
+      "category": "function_invocation",
+      "source_text": "BIT_OF_DWORD(...)",
+      "path": "AST.body.statements[0].body.statements[10].body.statements[0].then_body.statements[3].condition"
+    },
+    {
+      "dataset": "MATRIX.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[10].body.statements[0].then_body.statements[7]"
+    },
+    {
+      "dataset": "SEQUENCE_8.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[4]"
+    },
+    {
+      "dataset": "SEQUENCE_8.st",
+      "node_type": "ReturnNode",
+      "category": "return",
+      "source_text": "<ReturnNode>",
+      "path": "AST.body.statements[0].body.statements[4].then_body.statements[0]"
+    },
+    {
+      "dataset": "TOOL_CHANGER.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[0].branches[0].body.statements[0]"
+    },
+    {
+      "dataset": "TOOL_CHANGER.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0].then_body.statements[0].branches[1].body.statements[0]"
+    },
+    {
+      "dataset": "TRAFFIC_CTRL.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[2].branches[0].body.statements[2]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[1]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[2].body.statements[11]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[3].body.statements[2]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[5].body.statements[2]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[6].body.statements[3]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[8].body.statements[3]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[8].body.statements[4]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[9].body.statements[3]"
+    },
+    {
+      "dataset": "robotic_sequence.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[10].body.statements[3]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[1]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[2].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[3].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[5].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[6].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[8].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[8].body.statements[12]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[9].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_2.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[10].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[0]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[1]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[2].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[3].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[5].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[6].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[8].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[8].body.statements[12]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[9].body.statements[11]"
+    },
+    {
+      "dataset": "sampletext_3.st",
+      "node_type": "IfStatementNode",
+      "category": "comparison_operation",
+      "source_text": "<IfStatementNode>",
+      "path": "AST.body.statements[0].body.statements[3].branches[10].body.statements[11]"
+    }
+  ]
+}

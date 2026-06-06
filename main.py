@@ -12,8 +12,11 @@ from semantic.dependency_reasoner import DependencyReasoner
 from semantic.graph_builder import SemanticGraphBuilder
 from semantic.graph_visualizer import SemanticGraphVisualizer
 from semantic.relationship_extractor import RelationshipExtractor
+from semantic.operation_extractor import OperationExtractor
+from semantic.semantic_model import SemanticModel
 from semantic.type_checker import TypeChecker, build_demo_symbol_table
 from semantic.visitor import SemanticTraversalVisitor
+from semantic.context.test_detector import TestDetector
 
 
 SECTION_WIDTH = 78
@@ -65,10 +68,22 @@ def run_industrial_classification(ast, type_report):
     return classifier.classify(ast)
 
 
-def run_relationship_extraction(ast, classification_report, type_report):
+def run_relationship_extraction(ast, semantic_context, type_report, test_detector=None):
     """Run semantic relationship extraction and return graph-ready edges."""
 
-    extractor = RelationshipExtractor(classification_report, type_report)
+    extractor = RelationshipExtractor(
+        classification_report=semantic_context,
+        type_report=type_report,
+        context=semantic_context,
+        test_detector=test_detector,
+    )
+    return extractor.extract(ast)
+
+
+def run_operation_extraction(ast, semantic_context, test_detector=None):
+    """Run operation extraction and return computational semantics."""
+
+    extractor = OperationExtractor(semantic_context, test_detector=test_detector)
     return extractor.extract(ast)
 
 
@@ -241,6 +256,76 @@ def print_graph_summary(graph):
         print("    <no dependencies>")
 
 
+def print_test_detection(report):
+    """Print test detection segregation summary."""
+
+    if not report:
+        print("  <no test detection data>")
+        return
+
+    print(f"  Test nodes detected:      {report.get('test_nodes', 0)}")
+    print(f"  Industrial nodes detected: {report.get('industrial_nodes', 0)}")
+
+
+def print_relationship_segregation(report):
+    """Print segregated relationship metrics."""
+
+    print("\n  Combined relationship counts:")
+    for relation, count in report.get("relation_counts", {}).items():
+        print(f"    - {relation}: {count}")
+
+    print("\n  Industrial-only relationship counts:")
+    industrial_counts = report.get("industrial_relation_counts", {})
+    if not industrial_counts:
+        print("    <no industrial relationships>")
+    for relation, count in industrial_counts.items():
+        print(f"    - {relation}: {count}")
+
+    print("\n  Test-only relationship counts:")
+    test_counts = report.get("test_relation_counts", {})
+    if not test_counts:
+        print("    <no test relationships>")
+    for relation, count in test_counts.items():
+        print(f"    - {relation}: {count}")
+
+
+def print_operation_report(report):
+    """Print extracted computational operations."""
+
+    operations = report.get("operations", [])
+    counts = report.get("operation_counts", {})
+
+    if not operations:
+        print("  <no operations extracted>")
+        return
+
+    print("  Combined operation counts:")
+    for op_type, count in sorted(counts.items()):
+        print(f"    - {op_type}: {count}")
+
+    print("\n  Industrial-only operation counts:")
+    industrial_counts = report.get("industrial_operation_counts", {})
+    if not industrial_counts:
+        print("    <no industrial operations>")
+    for op_type, count in sorted(industrial_counts.items()):
+        print(f"    - {op_type}: {count}")
+
+    print("\n  Test-only operation counts:")
+    test_counts = report.get("test_operation_counts", {})
+    if not test_counts:
+        print("    <no test operations>")
+    for op_type, count in sorted(test_counts.items()):
+        print(f"    - {op_type}: {count}")
+
+    print("\n  Operations:")
+    for op in operations[:10]:
+        src_str = ", ".join(op.get("sources", [])) or "<none>"
+        scope = op.get("metadata", {}).get("semantic_scope", "INDUSTRIAL")
+        print(f"    - [{scope}] {op['operation_type']}: {op.get('target') or '<no target>'} <- [{src_str}]")
+    if len(operations) > 10:
+        print(f"    ... and {len(operations) - 10} more")
+
+
 def print_visualization_paths(paths):
     """Print paths to generated graph visualization files."""
 
@@ -296,13 +381,24 @@ def analyze_st_file(file_path, visualize=False, reason=False):
             "parse_error": str(error),
         }
 
+    # Run test detector first to segregate industrial vs test semantics
+    test_detector = TestDetector()
+    test_detection = test_detector.detect(ast)
+
     traversal_results = run_semantic_traversal(ast)
     type_check_report = run_type_checking(ast)
-    classification_report = run_industrial_classification(ast, type_check_report)
+    semantic_context = run_industrial_classification(ast, type_check_report)
     relationship_report = run_relationship_extraction(
         ast,
-        classification_report,
+        semantic_context,
         type_check_report,
+        test_detector=test_detector,
+    )
+    operation_report = run_operation_extraction(ast, semantic_context, test_detector)
+    semantic_model = SemanticModel(
+        context=semantic_context,
+        relationships=relationship_report,
+        operations=operation_report,
     )
     semantic_graph = run_graph_generation(relationship_report)
 
@@ -321,11 +417,14 @@ def analyze_st_file(file_path, visualize=False, reason=False):
         "ast": ast,
         "traversal": traversal_results,
         "type_check": type_check_report,
-        "classification": classification_report,
+        "classification": semantic_context,
         "relationships": relationship_report,
+        "operations": operation_report,
+        "semantic_model": semantic_model,
         "graph": semantic_graph,
         "visualization_paths": visualization_paths,
         "reasoning": reasoning_report,
+        "test_detection": test_detection,
     }
 
 
@@ -344,15 +443,21 @@ def print_high_level_report(result):
 
     print_subsection("Semantic Relationships")
     print_relationship_report(result["relationships"])
-
-    print_subsection("Relationship Summary")
-    print_relationship_summary(result["relationships"])
+    print_relationship_segregation(result["relationships"])
 
     print_subsection("Industrial Interpretation")
     print_interpretation_summary(result["relationships"])
 
     print_subsection("Semantic Graph Summary")
     print_graph_summary(result["graph"])
+
+    if result.get("test_detection"):
+        print_subsection("Test Detection Segregation")
+        print_test_detection(result["test_detection"])
+
+    if result.get("operations"):
+        print_subsection("Operation Summary")
+        print_operation_report(result["operations"])
 
     if result.get("visualization_paths"):
         print_subsection("Graph Visualization")

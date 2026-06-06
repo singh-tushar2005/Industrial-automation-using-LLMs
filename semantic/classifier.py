@@ -7,6 +7,11 @@ try:
 except ModuleNotFoundError:
     from visitor import ASTVisitor
 
+try:
+    from semantic.semantic_context import SemanticContext
+except ModuleNotFoundError:
+    from semantic_context import SemanticContext
+
 
 SAFETY_INTERLOCK = "SAFETY_INTERLOCK"
 CONTROLLED_STARTUP_SEQUENCE = "CONTROLLED_STARTUP_SEQUENCE"
@@ -60,15 +65,12 @@ class IndustrialSemanticClassifier(ASTVisitor):
     def get_results(self):
         """Return classification metadata for future IR/transformation stages."""
 
-        return {
-            "findings": list(self.findings),
-            "finding_count": len(self.findings),
-            "tags": sorted({finding["tag"] for finding in self.findings}),
-            "semantic_model": {
-                "conditions_seen": [self.describe_expression(item) for item in self.condition_stack],
-                "type_report_available": bool(self.type_report),
-            },
-        }
+        tags = sorted({finding["tag"] for finding in self.findings})
+        return SemanticContext(
+            findings=list(self.findings),
+            tags=tags,
+            type_report=self.type_report,
+        )
 
     def add_finding(self, tag, description, evidence, node, confidence="medium", hints=None):
         """Record one semantic classification result."""

@@ -5,9 +5,11 @@ import re
 try:
     from semantic.relationships import Relationship
     from semantic.visitor import ASTVisitor
+    from semantic.context.test_detector import TestDetector
 except ModuleNotFoundError:
     from relationships import Relationship
     from visitor import ASTVisitor
+    from context.test_detector import TestDetector
 
 
 class RelationshipExtractor(ASTVisitor):
@@ -19,9 +21,11 @@ class RelationshipExtractor(ASTVisitor):
     relationship edges that are compatible with future graph construction.
     """
 
-    def __init__(self, classification_report=None, type_report=None):
+    def __init__(self, classification_report=None, type_report=None, context=None, test_detector=None):
         self.classification_report = classification_report or {}
         self.type_report = type_report or {}
+        self.context = context
+        self.test_detector = test_detector or TestDetector()
         self.relationships = []
         self.condition_stack = []
         self.case_stack = []
@@ -41,6 +45,7 @@ class RelationshipExtractor(ASTVisitor):
     def extract(self, ast):
         """Run relationship extraction and return structured results."""
 
+        self.test_detector.detect(ast)
         self.visit(ast)
         return self.get_results()
 
@@ -63,6 +68,18 @@ class RelationshipExtractor(ASTVisitor):
                 relation_counts.get(relationship.relation, 0) + 1
             )
 
+        # Segregate by semantic_scope
+        industrial = [r for r in self.relationships if r.metadata.get("semantic_scope") == "INDUSTRIAL"]
+        test = [r for r in self.relationships if r.metadata.get("semantic_scope") == "TEST"]
+        industrial_data = [r.to_dict() for r in industrial]
+        test_data = [r.to_dict() for r in test]
+        industrial_counts = {}
+        for r in industrial:
+            industrial_counts[r.relation] = industrial_counts.get(r.relation, 0) + 1
+        test_counts = {}
+        for r in test:
+            test_counts[r.relation] = test_counts.get(r.relation, 0) + 1
+
         return {
             "relationships": relationship_data,
             "relationship_count": len(relationship_data),
@@ -70,6 +87,12 @@ class RelationshipExtractor(ASTVisitor):
             "sources": sorted({item["source"] for item in relationship_data}),
             "targets": sorted({item["target"] for item in relationship_data}),
             "interpretation_summary": self.build_interpretation_summary(),
+            "industrial_relationships": industrial_data,
+            "industrial_relationship_count": len(industrial_data),
+            "industrial_relation_counts": dict(sorted(industrial_counts.items())),
+            "test_relationships": test_data,
+            "test_relationship_count": len(test_data),
+            "test_relation_counts": dict(sorted(test_counts.items())),
         }
 
     def add_relationship(self, source, relation, target, metadata=None):
@@ -78,9 +101,13 @@ class RelationshipExtractor(ASTVisitor):
         if source == target:
             return
 
-        # FIX 1: Exclude test-harness entities from semantic relationships
+        # Determine semantic scope: if either end is test-related, mark as TEST
+        semantic_scope = "INDUSTRIAL"
         if self.is_test_harness_entity(source) or self.is_test_harness_entity(target):
-            return
+            semantic_scope = "TEST"
+
+        metadata = metadata or {}
+        metadata["semantic_scope"] = semantic_scope
 
         relationship = Relationship(source, relation, target, metadata)
 
@@ -599,6 +626,32 @@ class RelationshipExtractor(ASTVisitor):
             candidate = "activates"
         if source_kind == "history" and target_kind == "state":
             candidate = "triggers"
+
+        # Phase 4: SemanticContext-aware adjustments
+        if self.context:
+            # State machine context: prioritize sequences/transitions_to, reduce generic controls
+            if self.context.state_machine_detected:
+                if source_kind == "state" and target_kind == "actuator":
+                    candidate = "sequences"
+                if source_kind == "mode" and target_kind == "actuator":
+                    # Mode guards in state machines should not directly control actuators
+                    candidate = "enables"
+                if source_kind == "sensor" and target_kind == "actuator":
+                    # Sensor guards in state machines should trigger transitions, not control actuators
+                    candidate = "triggers"
+
+            # Measurement system context: avoid actuator semantics from arithmetic variables
+            if self.context.measurement_system_detected:
+                if source_kind in ("process_variable", "sensor", "unknown") and target_kind == "actuator":
+                    # Downgrade to depends_on instead of false controls
+                    candidate = "depends_on"
+
+            # Data processing context: suppress control-oriented edges from computational variables
+            if self.context.data_processing_detected:
+                if source_kind == "unknown" and target_kind == "actuator":
+                    candidate = "depends_on"
+                if source_kind == "register" and target_kind == "actuator":
+                    candidate = "depends_on"
 
         # Phase 1: Classifier-aware overrides (only for depends_on or when more specific)
         if self.classification_report:
