@@ -1,0 +1,2388 @@
+{
+  "files_total": 57,
+  "files_parsed": 55,
+  "behavior_distribution": {
+    "MATHEMATICAL_SOLVER": 7,
+    "SEQUENTIAL_MACHINE_CONTROL": 6,
+    "STATE_MACHINE_CONTROL": 6,
+    "COUNTER_PROCESSING": 5,
+    "CHECKSUM_GENERATION": 3,
+    "FLOW_MEASUREMENT": 3,
+    "MATRIX_COMPUTATION": 3
+  },
+  "evidence_distribution": {
+    "bitwise_operation": 782,
+    "accumulator": 711,
+    "array_access": 467,
+    "timer": 433,
+    "fb_invocation": 424,
+    "state_transition": 317,
+    "history_variable": 293,
+    "comparison": 247,
+    "process_calculation": 50,
+    "counter": 33,
+    "measurement_calculation": 3
+  },
+  "operation_distribution": {
+    "data_movement": 875,
+    "comparison_operation": 653,
+    "function_invocation": 557,
+    "bitwise_operation": 469,
+    "history_update": 227,
+    "process_calculation": 226,
+    "accumulator_update": 223,
+    "bitwise_update": 154,
+    "measurement_calculation": 124,
+    "state_transition": 66,
+    "matrix_access": 42,
+    "iterative_computation": 39,
+    "counter_update": 33,
+    "mathematical_solver": 30,
+    "timer_invocation": 24,
+    "fb_invocation": 15,
+    "array_read": 12,
+    "lookup_operation": 9,
+    "return": 6,
+    "array_write": 6
+  },
+  "relationship_distribution": {
+    "depends_on": 536,
+    "sequences": 368,
+    "transitions_to": 181,
+    "feeds": 171,
+    "activates": 167,
+    "uses": 165,
+    "controls": 109,
+    "schedules": 82,
+    "triggers": 64,
+    "contains": 40,
+    "coordinates": 3,
+    "disables": 3
+  },
+  "per_file_results": [
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/CRC_GEN.st",
+      "behaviors": [
+        {
+          "behavior_type": "CHECKSUM_GENERATION",
+          "confidence": "medium",
+          "supporting_evidence": [
+            "bitwise_operation=20",
+            "accumulator=9",
+            "xor_accumulator=yes"
+          ],
+          "supporting_operations": [
+            "bitwise_update=2",
+            "accumulator_update=10"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "CHECKSUM_GENERATION"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 20,
+        "accumulator": 9,
+        "array_access": 5,
+        "comparison": 2
+      },
+      "operation_counts": {
+        "process_calculation": 2,
+        "function_invocation": 12,
+        "bitwise_update": 2,
+        "bitwise_operation": 10,
+        "iterative_computation": 4,
+        "comparison_operation": 5,
+        "accumulator_update": 10,
+        "data_movement": 1,
+        "array_read": 1
+      },
+      "relationship_counts": {
+        "uses": 3
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/DEC_TO_HEX.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {},
+      "operation_counts": {},
+      "relationship_counts": {},
+      "parse_ok": false
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/FLOW_METER.st",
+      "behaviors": [
+        {
+          "behavior_type": "FLOW_MEASUREMENT",
+          "confidence": "high",
+          "supporting_evidence": [
+            "measurement_calculation=1",
+            "history_variable=7",
+            "counter=0"
+          ],
+          "supporting_operations": [
+            "process_calculation=2"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "FLOW_MEASUREMENT"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "history_variable": 7,
+        "fb_invocation": 1,
+        "accumulator": 3,
+        "comparison": 1,
+        "process_calculation": 2,
+        "measurement_calculation": 1
+      },
+      "operation_counts": {
+        "comparison_operation": 5,
+        "data_movement": 8,
+        "history_update": 7,
+        "fb_invocation": 1,
+        "process_calculation": 2,
+        "mathematical_solver": 1,
+        "accumulator_update": 2,
+        "function_invocation": 6,
+        "measurement_calculation": 1
+      },
+      "relationship_counts": {
+        "activates": 1,
+        "depends_on": 9,
+        "feeds": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/FT_PIDWL.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "fb_invocation": 4,
+        "comparison": 2
+      },
+      "operation_counts": {
+        "comparison_operation": 3,
+        "fb_invocation": 4,
+        "data_movement": 4,
+        "process_calculation": 1
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "coordinates": 1,
+        "depends_on": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/GEN_BIT.st",
+      "behaviors": [
+        {
+          "behavior_type": "COUNTER_PROCESSING",
+          "confidence": "high",
+          "supporting_evidence": [
+            "counter=3"
+          ],
+          "supporting_operations": [
+            "counter_update=3",
+            "counter_invocation=0"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "COUNTER_PROCESSING"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 17,
+        "comparison": 3,
+        "counter": 3,
+        "accumulator": 2
+      },
+      "operation_counts": {
+        "comparison_operation": 11,
+        "bitwise_update": 9,
+        "counter_update": 3,
+        "data_movement": 15,
+        "bitwise_operation": 8,
+        "accumulator_update": 1
+      },
+      "relationship_counts": {
+        "controls": 8,
+        "depends_on": 21,
+        "uses": 9
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/GEN_SIN.st",
+      "behaviors": [
+        {
+          "behavior_type": "MATHEMATICAL_SOLVER",
+          "confidence": "medium",
+          "supporting_evidence": [
+            "process_calculation=5"
+          ],
+          "supporting_operations": [
+            "mathematical_solver=3",
+            "iterative_computation=0",
+            "process_calculation=5"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "process_calculation": 5,
+        "comparison": 3,
+        "accumulator": 3,
+        "history_variable": 2
+      },
+      "operation_counts": {
+        "process_calculation": 5,
+        "function_invocation": 5,
+        "mathematical_solver": 3,
+        "comparison_operation": 4,
+        "accumulator_update": 2,
+        "data_movement": 2,
+        "history_update": 2
+      },
+      "relationship_counts": {
+        "depends_on": 2,
+        "feeds": 2
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/INCLUDE.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 6,
+        "accumulator": 9,
+        "history_variable": 10
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 18,
+        "function_invocation": 21,
+        "comparison_operation": 13,
+        "accumulator_update": 8,
+        "data_movement": 13,
+        "measurement_calculation": 5,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8
+      },
+      "relationship_counts": {
+        "depends_on": 11,
+        "feeds": 7,
+        "uses": 4
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/LAMBERT_W.st",
+      "behaviors": [
+        {
+          "behavior_type": "MATHEMATICAL_SOLVER",
+          "confidence": "high",
+          "supporting_evidence": [
+            "process_calculation=8"
+          ],
+          "supporting_operations": [
+            "mathematical_solver=5",
+            "iterative_computation=1",
+            "process_calculation=4"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "comparison": 2,
+        "process_calculation": 8,
+        "accumulator": 2,
+        "history_variable": 1,
+        "bitwise_operation": 1
+      },
+      "operation_counts": {
+        "comparison_operation": 2,
+        "data_movement": 2,
+        "return": 1,
+        "process_calculation": 4,
+        "mathematical_solver": 5,
+        "iterative_computation": 1,
+        "history_update": 1,
+        "function_invocation": 2,
+        "accumulator_update": 1
+      },
+      "relationship_counts": {
+        "feeds": 1,
+        "uses": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/MATRIX.st",
+      "behaviors": [
+        {
+          "behavior_type": "MATRIX_COMPUTATION",
+          "confidence": "medium",
+          "supporting_evidence": [
+            "matrix_access=0",
+            "array_access=14",
+            "bitwise_operation=59"
+          ],
+          "supporting_operations": [
+            "array_read=3",
+            "array_write=2",
+            "bitwise_update=14"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATRIX_COMPUTATION"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "array_access": 14,
+        "bitwise_operation": 59,
+        "comparison": 1,
+        "accumulator": 2
+      },
+      "operation_counts": {
+        "data_movement": 6,
+        "process_calculation": 1,
+        "function_invocation": 10,
+        "array_read": 3,
+        "bitwise_update": 14,
+        "bitwise_operation": 15,
+        "array_write": 2,
+        "iterative_computation": 1,
+        "comparison_operation": 3,
+        "accumulator_update": 2
+      },
+      "relationship_counts": {
+        "uses": 9
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/SEQUENCE_8.st",
+      "behaviors": [
+        {
+          "behavior_type": "SEQUENTIAL_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=10",
+            "timer=0",
+            "counter=0",
+            "history_variable=17"
+          ],
+          "supporting_operations": [
+            "state_transition=1",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "sequences=16",
+            "transitions_to=9"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "history_variable": 17,
+        "state_transition": 10,
+        "bitwise_operation": 1
+      },
+      "operation_counts": {
+        "process_calculation": 1,
+        "function_invocation": 2,
+        "comparison_operation": 45,
+        "history_update": 9,
+        "data_movement": 28,
+        "state_transition": 1,
+        "return": 1,
+        "bitwise_update": 1
+      },
+      "relationship_counts": {
+        "activates": 8,
+        "controls": 31,
+        "depends_on": 52,
+        "disables": 1,
+        "feeds": 1,
+        "sequences": 16,
+        "transitions_to": 9,
+        "triggers": 1,
+        "uses": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/TOOL_CHANGER.st",
+      "behaviors": [
+        {
+          "behavior_type": "STATE_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=4",
+            "state_variable=0",
+            "timer=0"
+          ],
+          "supporting_operations": [
+            "state_transition=4",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "transitions_to=6",
+            "sequences=6"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "comparison": 2,
+        "state_transition": 4
+      },
+      "operation_counts": {
+        "comparison_operation": 3,
+        "lookup_operation": 1,
+        "data_movement": 5,
+        "state_transition": 4
+      },
+      "relationship_counts": {
+        "sequences": 6,
+        "transitions_to": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/TRAFFIC_CTRL.st",
+      "behaviors": [
+        {
+          "behavior_type": "STATE_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=4",
+            "state_variable=0",
+            "timer=8"
+          ],
+          "supporting_operations": [
+            "state_transition=4",
+            "timer_invocation=8"
+          ],
+          "supporting_relationships": [
+            "transitions_to=8",
+            "sequences=17"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "timer": 8,
+        "state_transition": 4
+      },
+      "operation_counts": {
+        "comparison_operation": 11,
+        "data_movement": 19,
+        "lookup_operation": 1,
+        "timer_invocation": 8,
+        "state_transition": 4
+      },
+      "relationship_counts": {
+        "activates": 18,
+        "schedules": 2,
+        "sequences": 17,
+        "transitions_to": 8,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/robotic_sequence.st",
+      "behaviors": [
+        {
+          "behavior_type": "SEQUENTIAL_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=13",
+            "timer=0",
+            "counter=9",
+            "history_variable=0"
+          ],
+          "supporting_operations": [
+            "state_transition=13",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "sequences=38",
+            "transitions_to=24"
+          ]
+        },
+        {
+          "behavior_type": "COUNTER_PROCESSING",
+          "confidence": "high",
+          "supporting_evidence": [
+            "counter=9"
+          ],
+          "supporting_operations": [
+            "counter_update=9",
+            "counter_invocation=0"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "behavior_count": 2,
+      "evidence_counts": {
+        "comparison": 11,
+        "counter": 9,
+        "accumulator": 3,
+        "state_transition": 13
+      },
+      "operation_counts": {
+        "comparison_operation": 37,
+        "counter_update": 9,
+        "state_transition": 13,
+        "lookup_operation": 1,
+        "data_movement": 67
+      },
+      "relationship_counts": {
+        "depends_on": 23,
+        "sequences": 38,
+        "transitions_to": 24,
+        "triggers": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_2.st",
+      "behaviors": [
+        {
+          "behavior_type": "SEQUENTIAL_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=13",
+            "timer=0",
+            "counter=9",
+            "history_variable=0"
+          ],
+          "supporting_operations": [
+            "state_transition=13",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "sequences=38",
+            "transitions_to=24"
+          ]
+        },
+        {
+          "behavior_type": "COUNTER_PROCESSING",
+          "confidence": "high",
+          "supporting_evidence": [
+            "counter=9"
+          ],
+          "supporting_operations": [
+            "counter_update=9",
+            "counter_invocation=0"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "behavior_count": 2,
+      "evidence_counts": {
+        "comparison": 11,
+        "counter": 9,
+        "accumulator": 3,
+        "state_transition": 13
+      },
+      "operation_counts": {
+        "comparison_operation": 37,
+        "counter_update": 9,
+        "state_transition": 13,
+        "lookup_operation": 1,
+        "data_movement": 139
+      },
+      "relationship_counts": {
+        "depends_on": 23,
+        "sequences": 38,
+        "transitions_to": 24,
+        "triggers": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_3.st",
+      "behaviors": [
+        {
+          "behavior_type": "SEQUENTIAL_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=13",
+            "timer=0",
+            "counter=9",
+            "history_variable=0"
+          ],
+          "supporting_operations": [
+            "state_transition=13",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "sequences=38",
+            "transitions_to=24"
+          ]
+        },
+        {
+          "behavior_type": "COUNTER_PROCESSING",
+          "confidence": "high",
+          "supporting_evidence": [
+            "counter=9"
+          ],
+          "supporting_operations": [
+            "counter_update=9",
+            "counter_invocation=0"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "behavior_count": 2,
+      "evidence_counts": {
+        "comparison": 11,
+        "counter": 9,
+        "accumulator": 3,
+        "state_transition": 13
+      },
+      "operation_counts": {
+        "comparison_operation": 37,
+        "counter_update": 9,
+        "state_transition": 13,
+        "lookup_operation": 1,
+        "data_movement": 139
+      },
+      "relationship_counts": {
+        "depends_on": 23,
+        "sequences": 38,
+        "transitions_to": 24,
+        "triggers": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/Implementation_datasets/sampletext_4.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "bitwise_operation": 1
+      },
+      "operation_counts": {
+        "bitwise_update": 1
+      },
+      "relationship_counts": {
+        "uses": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/CRC_GEN_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "CHECKSUM_GENERATION",
+          "confidence": "high",
+          "supporting_evidence": [
+            "bitwise_operation=44",
+            "accumulator=18",
+            "xor_accumulator=yes"
+          ],
+          "supporting_operations": [
+            "bitwise_update=6",
+            "accumulator_update=18"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "CHECKSUM_GENERATION"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 44,
+        "comparison": 9,
+        "accumulator": 25,
+        "history_variable": 10,
+        "array_access": 10,
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 4
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 28,
+        "function_invocation": 33,
+        "comparison_operation": 18,
+        "accumulator_update": 18,
+        "data_movement": 14,
+        "measurement_calculation": 6,
+        "bitwise_update": 6,
+        "iterative_computation": 5,
+        "matrix_access": 2,
+        "history_update": 8,
+        "array_read": 1
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 8
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/CRC_GEN_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "CHECKSUM_GENERATION",
+          "confidence": "high",
+          "supporting_evidence": [
+            "bitwise_operation=44",
+            "accumulator=18",
+            "xor_accumulator=yes"
+          ],
+          "supporting_operations": [
+            "bitwise_update=6",
+            "accumulator_update=18"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "CHECKSUM_GENERATION"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 44,
+        "comparison": 9,
+        "accumulator": 25,
+        "history_variable": 10,
+        "array_access": 12,
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 3
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 28,
+        "function_invocation": 33,
+        "comparison_operation": 18,
+        "accumulator_update": 18,
+        "data_movement": 14,
+        "measurement_calculation": 6,
+        "bitwise_update": 6,
+        "iterative_computation": 5,
+        "matrix_access": 2,
+        "history_update": 8,
+        "array_read": 1
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 8
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/DEC_TO_HEX_FullTest.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {},
+      "operation_counts": {},
+      "relationship_counts": {},
+      "parse_ok": false
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "FLOW_MEASUREMENT",
+          "confidence": "high",
+          "supporting_evidence": [
+            "measurement_calculation=1",
+            "history_variable=17",
+            "counter=0"
+          ],
+          "supporting_operations": [
+            "process_calculation=11"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "FLOW_MEASUREMENT"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 8,
+        "accumulator": 25,
+        "history_variable": 17,
+        "fb_invocation": 13,
+        "process_calculation": 2,
+        "measurement_calculation": 1,
+        "timer": 12,
+        "state_transition": 6,
+        "array_access": 13
+      },
+      "operation_counts": {
+        "process_calculation": 11,
+        "bitwise_operation": 18,
+        "function_invocation": 27,
+        "comparison_operation": 18,
+        "accumulator_update": 10,
+        "data_movement": 21,
+        "measurement_calculation": 6,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 15,
+        "fb_invocation": 1,
+        "mathematical_solver": 1
+      },
+      "relationship_counts": {
+        "activates": 3,
+        "contains": 2,
+        "depends_on": 20,
+        "feeds": 12,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FLOW_METER_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "FLOW_MEASUREMENT",
+          "confidence": "high",
+          "supporting_evidence": [
+            "measurement_calculation=1",
+            "history_variable=17",
+            "counter=0"
+          ],
+          "supporting_operations": [
+            "process_calculation=11"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "FLOW_MEASUREMENT"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 8,
+        "accumulator": 23,
+        "history_variable": 17,
+        "fb_invocation": 11,
+        "process_calculation": 2,
+        "measurement_calculation": 1,
+        "timer": 10,
+        "state_transition": 5,
+        "array_access": 11
+      },
+      "operation_counts": {
+        "process_calculation": 11,
+        "bitwise_operation": 18,
+        "function_invocation": 27,
+        "comparison_operation": 18,
+        "accumulator_update": 10,
+        "data_movement": 21,
+        "measurement_calculation": 6,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 15,
+        "fb_invocation": 1,
+        "mathematical_solver": 1
+      },
+      "relationship_counts": {
+        "activates": 3,
+        "contains": 2,
+        "depends_on": 20,
+        "feeds": 12,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FT_PIDWL_FullTest (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 9,
+        "accumulator": 17,
+        "history_variable": 10,
+        "fb_invocation": 11,
+        "timer": 7,
+        "state_transition": 5,
+        "array_access": 5
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 18,
+        "function_invocation": 21,
+        "comparison_operation": 16,
+        "accumulator_update": 8,
+        "data_movement": 17,
+        "measurement_calculation": 6,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8,
+        "fb_invocation": 4
+      },
+      "relationship_counts": {
+        "activates": 4,
+        "contains": 2,
+        "coordinates": 1,
+        "depends_on": 12,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 5,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/FT_PIDWL_FullTest.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 9,
+        "accumulator": 18,
+        "history_variable": 10,
+        "fb_invocation": 12,
+        "timer": 8,
+        "state_transition": 4,
+        "array_access": 9
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 18,
+        "function_invocation": 21,
+        "comparison_operation": 16,
+        "accumulator_update": 8,
+        "data_movement": 17,
+        "measurement_calculation": 6,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8,
+        "fb_invocation": 4
+      },
+      "relationship_counts": {
+        "activates": 4,
+        "contains": 2,
+        "coordinates": 1,
+        "depends_on": 12,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_BIT_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "COUNTER_PROCESSING",
+          "confidence": "high",
+          "supporting_evidence": [
+            "counter=3"
+          ],
+          "supporting_operations": [
+            "counter_update=3",
+            "counter_invocation=0"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "COUNTER_PROCESSING"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 41,
+        "comparison": 10,
+        "accumulator": 18,
+        "history_variable": 10,
+        "counter": 3,
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 3,
+        "array_access": 7
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 26,
+        "function_invocation": 21,
+        "comparison_operation": 24,
+        "accumulator_update": 9,
+        "data_movement": 28,
+        "measurement_calculation": 5,
+        "bitwise_update": 13,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8,
+        "counter_update": 3
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "controls": 8,
+        "depends_on": 32,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 14
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "MATHEMATICAL_SOLVER",
+          "confidence": "high",
+          "supporting_evidence": [
+            "process_calculation=5"
+          ],
+          "supporting_operations": [
+            "mathematical_solver=3",
+            "iterative_computation=1",
+            "process_calculation=12"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 10,
+        "accumulator": 22,
+        "history_variable": 12,
+        "process_calculation": 5,
+        "timer": 9,
+        "fb_invocation": 9,
+        "state_transition": 6,
+        "array_access": 7
+      },
+      "operation_counts": {
+        "process_calculation": 12,
+        "bitwise_operation": 18,
+        "function_invocation": 26,
+        "comparison_operation": 17,
+        "accumulator_update": 10,
+        "data_movement": 15,
+        "measurement_calculation": 7,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 10,
+        "mathematical_solver": 3
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 13,
+        "feeds": 8,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest (2).st",
+      "behaviors": [
+        {
+          "behavior_type": "MATHEMATICAL_SOLVER",
+          "confidence": "high",
+          "supporting_evidence": [
+            "process_calculation=5"
+          ],
+          "supporting_operations": [
+            "mathematical_solver=3",
+            "iterative_computation=1",
+            "process_calculation=12"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 10,
+        "accumulator": 22,
+        "history_variable": 12,
+        "process_calculation": 5,
+        "timer": 9,
+        "fb_invocation": 9,
+        "state_transition": 6,
+        "array_access": 7
+      },
+      "operation_counts": {
+        "process_calculation": 12,
+        "bitwise_operation": 18,
+        "function_invocation": 26,
+        "comparison_operation": 17,
+        "accumulator_update": 10,
+        "data_movement": 15,
+        "measurement_calculation": 7,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 10,
+        "mathematical_solver": 3
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 13,
+        "feeds": 8,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/GEN_SIN_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "MATHEMATICAL_SOLVER",
+          "confidence": "high",
+          "supporting_evidence": [
+            "process_calculation=5"
+          ],
+          "supporting_operations": [
+            "mathematical_solver=3",
+            "iterative_computation=1",
+            "process_calculation=12"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 10,
+        "accumulator": 23,
+        "history_variable": 12,
+        "process_calculation": 5,
+        "timer": 10,
+        "fb_invocation": 10,
+        "state_transition": 5,
+        "array_access": 11
+      },
+      "operation_counts": {
+        "process_calculation": 12,
+        "bitwise_operation": 18,
+        "function_invocation": 26,
+        "comparison_operation": 17,
+        "accumulator_update": 10,
+        "data_movement": 15,
+        "measurement_calculation": 7,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 10,
+        "mathematical_solver": 3
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 13,
+        "feeds": 8,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/LAMBERT_W_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "MATHEMATICAL_SOLVER",
+          "confidence": "high",
+          "supporting_evidence": [
+            "process_calculation=8"
+          ],
+          "supporting_operations": [
+            "mathematical_solver=5",
+            "iterative_computation=2",
+            "process_calculation=10"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 25,
+        "comparison": 9,
+        "accumulator": 42,
+        "history_variable": 11,
+        "process_calculation": 8,
+        "timer": 30,
+        "fb_invocation": 30,
+        "state_transition": 15,
+        "array_access": 31
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 18,
+        "function_invocation": 23,
+        "comparison_operation": 15,
+        "accumulator_update": 9,
+        "data_movement": 15,
+        "measurement_calculation": 8,
+        "bitwise_update": 4,
+        "iterative_computation": 2,
+        "matrix_access": 2,
+        "history_update": 9,
+        "return": 1,
+        "mathematical_solver": 5
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 8,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/LAMBERT_W_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "MATHEMATICAL_SOLVER",
+          "confidence": "high",
+          "supporting_evidence": [
+            "process_calculation=8"
+          ],
+          "supporting_operations": [
+            "mathematical_solver=5",
+            "iterative_computation=2",
+            "process_calculation=10"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 25,
+        "comparison": 9,
+        "accumulator": 32,
+        "history_variable": 11,
+        "process_calculation": 8,
+        "timer": 20,
+        "fb_invocation": 20,
+        "state_transition": 10,
+        "array_access": 21
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 18,
+        "function_invocation": 23,
+        "comparison_operation": 15,
+        "accumulator_update": 9,
+        "data_movement": 15,
+        "measurement_calculation": 8,
+        "bitwise_update": 4,
+        "iterative_computation": 2,
+        "matrix_access": 2,
+        "history_update": 9,
+        "return": 1,
+        "mathematical_solver": 5
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 8,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/MATRIX_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "MATRIX_COMPUTATION",
+          "confidence": "medium",
+          "supporting_evidence": [
+            "matrix_access=0",
+            "array_access=14",
+            "bitwise_operation=83"
+          ],
+          "supporting_operations": [
+            "array_read=3",
+            "array_write=2",
+            "bitwise_update=18"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATRIX_COMPUTATION"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 83,
+        "comparison": 8,
+        "accumulator": 18,
+        "history_variable": 10,
+        "array_access": 19,
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 4
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 33,
+        "function_invocation": 31,
+        "comparison_operation": 16,
+        "accumulator_update": 10,
+        "data_movement": 19,
+        "measurement_calculation": 5,
+        "bitwise_update": 18,
+        "iterative_computation": 2,
+        "matrix_access": 2,
+        "history_update": 8,
+        "array_read": 3,
+        "array_write": 2
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 14
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/MATRIX_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "MATRIX_COMPUTATION",
+          "confidence": "medium",
+          "supporting_evidence": [
+            "matrix_access=0",
+            "array_access=14",
+            "bitwise_operation=83"
+          ],
+          "supporting_operations": [
+            "array_read=3",
+            "array_write=2",
+            "bitwise_update=18"
+          ],
+          "supporting_relationships": []
+        }
+      ],
+      "behavior_types": [
+        "MATRIX_COMPUTATION"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 83,
+        "comparison": 8,
+        "accumulator": 20,
+        "history_variable": 10,
+        "array_access": 23,
+        "timer": 8,
+        "fb_invocation": 8,
+        "state_transition": 4
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 33,
+        "function_invocation": 31,
+        "comparison_operation": 16,
+        "accumulator_update": 10,
+        "data_movement": 19,
+        "measurement_calculation": 5,
+        "bitwise_update": 18,
+        "iterative_computation": 2,
+        "matrix_access": 2,
+        "history_update": 8,
+        "array_read": 3,
+        "array_write": 2
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1,
+        "uses": 14
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "SEQUENTIAL_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=10",
+            "timer=0",
+            "counter=0",
+            "history_variable=27"
+          ],
+          "supporting_operations": [
+            "state_transition=1",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "sequences=19",
+            "transitions_to=10"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 25,
+        "comparison": 7,
+        "accumulator": 14,
+        "history_variable": 27,
+        "state_transition": 12,
+        "timer": 4,
+        "fb_invocation": 4,
+        "array_access": 5
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 18,
+        "function_invocation": 23,
+        "comparison_operation": 58,
+        "accumulator_update": 8,
+        "data_movement": 41,
+        "measurement_calculation": 5,
+        "bitwise_update": 5,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 17,
+        "state_transition": 1,
+        "return": 1
+      },
+      "relationship_counts": {
+        "activates": 10,
+        "contains": 2,
+        "controls": 31,
+        "depends_on": 63,
+        "disables": 1,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 19,
+        "transitions_to": 10,
+        "triggers": 2,
+        "uses": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/SEQUENCE_8_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "SEQUENTIAL_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=10",
+            "timer=0",
+            "counter=0",
+            "history_variable=27"
+          ],
+          "supporting_operations": [
+            "state_transition=1",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "sequences=19",
+            "transitions_to=10"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 25,
+        "comparison": 7,
+        "accumulator": 14,
+        "history_variable": 27,
+        "state_transition": 12,
+        "timer": 4,
+        "fb_invocation": 4,
+        "array_access": 5
+      },
+      "operation_counts": {
+        "process_calculation": 10,
+        "bitwise_operation": 18,
+        "function_invocation": 23,
+        "comparison_operation": 58,
+        "accumulator_update": 8,
+        "data_movement": 41,
+        "measurement_calculation": 5,
+        "bitwise_update": 5,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 17,
+        "state_transition": 1,
+        "return": 1
+      },
+      "relationship_counts": {
+        "activates": 10,
+        "contains": 2,
+        "controls": 31,
+        "depends_on": 63,
+        "disables": 1,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 19,
+        "transitions_to": 10,
+        "triggers": 2,
+        "uses": 6
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TOOL_CHANGER_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "STATE_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=4",
+            "state_variable=0",
+            "timer=0"
+          ],
+          "supporting_operations": [
+            "state_transition=4",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "transitions_to=7",
+            "sequences=11"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 9,
+        "accumulator": 22,
+        "history_variable": 10,
+        "state_transition": 13,
+        "timer": 12,
+        "fb_invocation": 12,
+        "array_access": 7
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 18,
+        "function_invocation": 21,
+        "comparison_operation": 16,
+        "accumulator_update": 8,
+        "data_movement": 18,
+        "measurement_calculation": 5,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8,
+        "lookup_operation": 1,
+        "state_transition": 4
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 11,
+        "transitions_to": 7,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TOOL_CHANGER_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "STATE_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=4",
+            "state_variable=0",
+            "timer=0"
+          ],
+          "supporting_operations": [
+            "state_transition=4",
+            "timer_invocation=0"
+          ],
+          "supporting_relationships": [
+            "transitions_to=7",
+            "sequences=9"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 9,
+        "accumulator": 20,
+        "history_variable": 10,
+        "state_transition": 9,
+        "timer": 10,
+        "fb_invocation": 10,
+        "array_access": 11
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 18,
+        "function_invocation": 21,
+        "comparison_operation": 16,
+        "accumulator_update": 8,
+        "data_movement": 18,
+        "measurement_calculation": 5,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8,
+        "lookup_operation": 1,
+        "state_transition": 4
+      },
+      "relationship_counts": {
+        "activates": 2,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 9,
+        "transitions_to": 7,
+        "triggers": 1,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest (1).st",
+      "behaviors": [
+        {
+          "behavior_type": "STATE_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=4",
+            "state_variable=0",
+            "timer=8"
+          ],
+          "supporting_operations": [
+            "state_transition=4",
+            "timer_invocation=8"
+          ],
+          "supporting_relationships": [
+            "transitions_to=9",
+            "sequences=21"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 7,
+        "accumulator": 16,
+        "history_variable": 10,
+        "timer": 14,
+        "state_transition": 8,
+        "fb_invocation": 6,
+        "array_access": 5
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 18,
+        "function_invocation": 21,
+        "comparison_operation": 24,
+        "accumulator_update": 8,
+        "data_movement": 32,
+        "measurement_calculation": 5,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8,
+        "lookup_operation": 1,
+        "timer_invocation": 8,
+        "state_transition": 4
+      },
+      "relationship_counts": {
+        "activates": 20,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 21,
+        "transitions_to": 9,
+        "triggers": 2,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/Full_test/TRAFFIC_CTRL_FullTest.st",
+      "behaviors": [
+        {
+          "behavior_type": "STATE_MACHINE_CONTROL",
+          "confidence": "high",
+          "supporting_evidence": [
+            "state_transition=4",
+            "state_variable=0",
+            "timer=8"
+          ],
+          "supporting_operations": [
+            "state_transition=4",
+            "timer_invocation=8"
+          ],
+          "supporting_relationships": [
+            "transitions_to=9",
+            "sequences=20"
+          ]
+        }
+      ],
+      "behavior_types": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "behavior_count": 1,
+      "evidence_counts": {
+        "bitwise_operation": 24,
+        "comparison": 7,
+        "accumulator": 18,
+        "history_variable": 10,
+        "timer": 16,
+        "state_transition": 8,
+        "fb_invocation": 8,
+        "array_access": 9
+      },
+      "operation_counts": {
+        "process_calculation": 9,
+        "bitwise_operation": 18,
+        "function_invocation": 21,
+        "comparison_operation": 24,
+        "accumulator_update": 8,
+        "data_movement": 32,
+        "measurement_calculation": 5,
+        "bitwise_update": 4,
+        "iterative_computation": 1,
+        "matrix_access": 2,
+        "history_update": 8,
+        "lookup_operation": 1,
+        "timer_invocation": 8,
+        "state_transition": 4
+      },
+      "relationship_counts": {
+        "activates": 20,
+        "contains": 2,
+        "depends_on": 11,
+        "feeds": 7,
+        "schedules": 2,
+        "sequences": 20,
+        "transitions_to": 9,
+        "triggers": 2,
+        "uses": 5
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/CRC_GEN_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 4,
+        "accumulator": 7,
+        "array_access": 5,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/CRC_GEN_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 3,
+        "accumulator": 7,
+        "array_access": 7,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/DEC_TO_HEX_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 36,
+        "fb_invocation": 36,
+        "state_transition": 18,
+        "accumulator": 37,
+        "array_access": 37,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/FLOW_METER_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 12,
+        "fb_invocation": 12,
+        "state_transition": 6,
+        "accumulator": 13,
+        "array_access": 13,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/FLOW_METER_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 10,
+        "fb_invocation": 10,
+        "state_transition": 5,
+        "accumulator": 11,
+        "array_access": 11,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/FT_PIDWL_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 7,
+        "fb_invocation": 7,
+        "state_transition": 5,
+        "accumulator": 8,
+        "array_access": 5,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 5,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/FT_PIDWL_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 8,
+        "fb_invocation": 8,
+        "state_transition": 4,
+        "accumulator": 9,
+        "array_access": 9,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/GEN_BIT_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 3,
+        "accumulator": 7,
+        "array_access": 7,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 9,
+        "fb_invocation": 9,
+        "state_transition": 6,
+        "accumulator": 10,
+        "array_access": 7,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/GEN_SIN_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 10,
+        "fb_invocation": 10,
+        "state_transition": 5,
+        "accumulator": 11,
+        "array_access": 11,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/LAMBERT_W_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 30,
+        "fb_invocation": 30,
+        "state_transition": 15,
+        "accumulator": 31,
+        "array_access": 31,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/LAMBERT_W_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 20,
+        "fb_invocation": 20,
+        "state_transition": 10,
+        "accumulator": 21,
+        "array_access": 21,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/MATRIX_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 4,
+        "accumulator": 7,
+        "array_access": 5,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/MATRIX_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 8,
+        "fb_invocation": 8,
+        "state_transition": 4,
+        "accumulator": 9,
+        "array_access": 9,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/SEQUENCE_8_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 4,
+        "fb_invocation": 4,
+        "state_transition": 2,
+        "accumulator": 5,
+        "array_access": 5,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/SEQUENCE_8_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 4,
+        "fb_invocation": 4,
+        "state_transition": 2,
+        "accumulator": 5,
+        "array_access": 5,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/TOOL_CHANGER_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 12,
+        "fb_invocation": 12,
+        "state_transition": 9,
+        "accumulator": 13,
+        "array_access": 7,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 5,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/TOOL_CHANGER_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 10,
+        "fb_invocation": 10,
+        "state_transition": 5,
+        "accumulator": 11,
+        "array_access": 11,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/TRAFFIC_CTRL_TestCases (1).st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 6,
+        "fb_invocation": 6,
+        "state_transition": 4,
+        "accumulator": 7,
+        "array_access": 5,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 4,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    },
+    {
+      "file": "datasets/Industrial_data/test_harness/test_case/TRAFFIC_CTRL_TestCases.st",
+      "behaviors": [],
+      "behavior_types": [],
+      "behavior_count": 0,
+      "evidence_counts": {
+        "timer": 8,
+        "fb_invocation": 8,
+        "state_transition": 4,
+        "accumulator": 9,
+        "array_access": 9,
+        "comparison": 1
+      },
+      "operation_counts": {},
+      "relationship_counts": {
+        "activates": 2,
+        "schedules": 2,
+        "sequences": 3,
+        "transitions_to": 1,
+        "triggers": 1
+      },
+      "parse_ok": true
+    }
+  ]
+}

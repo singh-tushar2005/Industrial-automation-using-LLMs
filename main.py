@@ -18,6 +18,8 @@ from semantic.type_checker import TypeChecker, build_demo_symbol_table
 from semantic.visitor import SemanticTraversalVisitor
 from semantic.context.test_detector import TestDetector
 from semantic.semantic_evidence_engine import SemanticEvidenceEngine
+from semantic.behavior_recognizer import BehaviorRecognizer
+from semantic.intent_reasoner import IntentReasoner
 
 
 SECTION_WIDTH = 78
@@ -76,7 +78,7 @@ def run_industrial_classification(ast, type_report, semantic_evidence=None):
     return classifier.classify(ast)
 
 
-def run_relationship_extraction(ast, semantic_context, type_report, test_detector=None, semantic_evidence=None, operations=None):
+def run_relationship_extraction(ast, semantic_context, type_report, test_detector=None, semantic_evidence=None, operations=None, behaviors=None):
     """Run semantic relationship extraction and return graph-ready edges."""
 
     extractor = RelationshipExtractor(
@@ -86,6 +88,7 @@ def run_relationship_extraction(ast, semantic_context, type_report, test_detecto
         test_detector=test_detector,
         semantic_evidence=semantic_evidence,
         operations=operations,
+        behaviors=behaviors,
     )
     return extractor.extract(ast)
 
@@ -116,6 +119,33 @@ def run_dependency_reasoning(graph):
 
     reasoner = DependencyReasoner(graph)
     return reasoner.get_reasoning_report()
+
+
+def run_behavior_recognition(semantic_evidence, semantic_context, operation_report, relationship_report):
+    """Run behavior recognition and return detected industrial behaviors."""
+
+    recognizer = BehaviorRecognizer(
+        evidence=semantic_evidence,
+        context=semantic_context,
+        operations=operation_report,
+        relationships=relationship_report,
+    )
+    recognizer.recognize()
+    return recognizer.get_results()
+
+
+def run_intent_reasoning(semantic_model=None, semantic_evidence=None, semantic_context=None, behavior_report=None, relationship_report=None, operation_report=None):
+    """Run domain-independent intent reasoning."""
+
+    reasoner = IntentReasoner(
+        semantic_model=semantic_model,
+        evidence=semantic_evidence,
+        context=semantic_context,
+        behaviors=(behavior_report or {}).get("behaviors", []),
+        relationships=relationship_report,
+        operations=operation_report,
+    )
+    return reasoner.reason().to_dict()
 
 
 def print_traversal_results(traversal_results):
@@ -365,6 +395,60 @@ def print_operation_report(report):
         print(f"    ... and {len(operations) - 10} more")
 
 
+def print_behavior_report(report):
+    """Print recognized industrial behaviors."""
+
+    if not report or not report.get("behaviors"):
+        print("  <no behaviors recognized>")
+        return
+
+    behaviors = report["behaviors"]
+    for behavior in behaviors:
+        print(f"  - {behavior['behavior_type']} [{behavior['confidence']}]")
+        if behavior.get("supporting_evidence"):
+            print("    Evidence:")
+            for ev in behavior["supporting_evidence"]:
+                print(f"      - {ev}")
+        if behavior.get("supporting_operations"):
+            print("    Operations:")
+            for op in behavior["supporting_operations"]:
+                print(f"      - {op}")
+        if behavior.get("supporting_relationships"):
+            print("    Relationships:")
+            for rel in behavior["supporting_relationships"]:
+                print(f"      - {rel}")
+
+
+def print_intent_report(report):
+    """Print inferred high-level software intents."""
+
+    if not report or not report.get("intents"):
+        print("  <no intents inferred>")
+        return
+
+    print(f"  Dominant intent: {report.get('dominant_intent')} [{report.get('intent_confidence')}]")
+    for intent in report["intents"]:
+        print(f"  - {intent['intent_type']} [{intent['confidence']}]")
+        if intent.get("supporting_behaviors"):
+            print("    Behaviors:")
+            for behavior in intent["supporting_behaviors"]:
+                print(f"      - {behavior}")
+        if intent.get("supporting_operations"):
+            print("    Operations:")
+            for operation in intent["supporting_operations"]:
+                print(f"      - {operation}")
+        if intent.get("supporting_relationships"):
+            print("    Relationships:")
+            for relationship in intent["supporting_relationships"]:
+                print(f"      - {relationship}")
+        if intent.get("supporting_evidence"):
+            print("    Evidence:")
+            for evidence in intent["supporting_evidence"]:
+                print(f"      - {evidence}")
+        if intent.get("explanation"):
+            print(f"    Reason: {intent['explanation']}")
+
+
 def print_visualization_paths(paths):
     """Print paths to generated graph visualization files."""
 
@@ -431,6 +515,12 @@ def analyze_st_file(file_path, visualize=False, reason=False):
     type_check_report = run_type_checking(ast)
     semantic_context = run_industrial_classification(ast, type_check_report, semantic_evidence=semantic_evidence)
     operation_report = run_operation_extraction(ast, semantic_context, test_detector, semantic_evidence=semantic_evidence)
+    behavior_report = run_behavior_recognition(
+        semantic_evidence,
+        semantic_context,
+        operation_report,
+        {},
+    )
     relationship_report = run_relationship_extraction(
         ast,
         semantic_context,
@@ -438,12 +528,24 @@ def analyze_st_file(file_path, visualize=False, reason=False):
         test_detector=test_detector,
         semantic_evidence=semantic_evidence,
         operations=operation_report,
+        behaviors=behavior_report.get("behaviors", []),
+    )
+    intent_report = run_intent_reasoning(
+        semantic_evidence=semantic_evidence,
+        semantic_context=semantic_context,
+        behavior_report=behavior_report,
+        relationship_report=relationship_report,
+        operation_report=operation_report,
     )
     semantic_model = SemanticModel(
         context=semantic_context,
         relationships=relationship_report,
         operations=operation_report,
         evidence=semantic_evidence.to_dict(),
+        behaviors=behavior_report.get("behaviors", []),
+        intents=intent_report.get("intents", []),
+        dominant_intent=intent_report.get("dominant_intent"),
+        intent_confidence=intent_report.get("intent_confidence", 0.0),
     )
     semantic_graph = run_graph_generation(relationship_report)
 
@@ -466,6 +568,8 @@ def analyze_st_file(file_path, visualize=False, reason=False):
         "relationships": relationship_report,
         "operations": operation_report,
         "semantic_model": semantic_model.to_dict(),
+        "behaviors": behavior_report,
+        "intents": intent_report,
         "graph": semantic_graph,
         "visualization_paths": visualization_paths,
         "reasoning": reasoning_report,
@@ -507,6 +611,14 @@ def print_high_level_report(result):
     if result.get("operations"):
         print_subsection("Operation Summary")
         print_operation_report(result["operations"])
+
+    if result.get("behaviors"):
+        print_subsection("Behavior Recognition")
+        print_behavior_report(result["behaviors"])
+
+    if result.get("intents"):
+        print_subsection("Intent Reasoning")
+        print_intent_report(result["intents"])
 
     if result.get("visualization_paths"):
         print_subsection("Graph Visualization")

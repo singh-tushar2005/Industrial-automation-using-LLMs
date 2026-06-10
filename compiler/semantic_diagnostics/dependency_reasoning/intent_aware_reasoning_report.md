@@ -1,0 +1,4714 @@
+# Intent-Aware Dependency Reasoning Report
+
+This report extends graph-level dependency reasoning with semantic impact analysis.
+It uses existing SemanticEvidence, Operations, Relationships, Behaviors, Intents, and graph reachability.
+No parser, extractor, recognizer, intent reasoner, relationship extractor, or dependency reasoner changes are required.
+
+## Summary
+
+- Files total: 57
+- Files parsed: 55
+- Files failed: 2
+
+## Affected Behavior Distribution
+
+- MATHEMATICAL_SOLVER: 256
+- SEQUENTIAL_MACHINE_CONTROL: 185
+- FLOW_MEASUREMENT: 138
+- CHECKSUM_GENERATION: 135
+- MATRIX_COMPUTATION: 123
+- COUNTER_PROCESSING: 65
+- STATE_MACHINE_CONTROL: 64
+
+## Affected Intent Distribution
+
+- DATA_TRANSFORMATION: 1369
+- BITWISE_DATA_PROCESSING: 1031
+- DATA_INTEGRITY_VERIFICATION: 1012
+- RATE_BASED_MEASUREMENT: 922
+- MATRIX_PROCESSING: 611
+- SEQUENTIAL_CONTROL: 332
+- STATE_BASED_CONTROL: 282
+- MULTI_ACTUATOR_COORDINATION: 267
+- MATHEMATICAL_COMPUTATION: 256
+- NUMERICAL_SOLVING: 256
+- PROCESS_AUTOMATION: 249
+- RESOURCE_COORDINATION: 249
+- RESOURCE_TRANSFER: 249
+- PROCESS_MONITORING: 203
+- EVENT_COUNTING: 65
+
+## Criticality Distribution
+
+- LOW: 1829
+- HIGH: 651
+- CRITICAL: 637
+- MEDIUM: 537
+
+## Special Analysis
+
+### CRC_GEN.st
+
+- Dataset group: implementation
+- Dominant intent: DATA_INTEGRITY_VERIFICATION
+
+Recognized behaviors:
+    - CHECKSUM_GENERATION [medium]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `BOOL_TO_DWORD`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: BOOL_TO_DWORD contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `BYTE_TO_DWORD`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: BYTE_TO_DWORD contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `DX`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: DX contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `PL`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: PL contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `PN`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: PN contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `REFLECT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: REFLECT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `REVERSE`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: REVERSE contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `SHL`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: SHL contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `SHR`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: SHR contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `UINT_TO_INT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: UINT_TO_INT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `XOR_OUT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: XOR_OUT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `_CRC_GEN`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: CRITICAL
+  - Reason: _CRC_GEN contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `bitwise_data`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: bitwise_data contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `dx`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: dx contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable.
+- `init`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: init contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `pos`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: pos contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `shift`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: shift contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `size`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: size contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+
+### FLOW_METER.st
+
+- Dataset group: implementation
+- Dominant intent: RATE_BASED_MEASUREMENT
+
+Recognized behaviors:
+    - FLOW_MEASUREMENT [medium]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `0.0`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: 0.0 contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `F`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: F contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `FLOOR`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: FLOOR contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `INT_TO_REAL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: INT_TO_REAL contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `INT_TO_UDINT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: INT_TO_UDINT contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `RST`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: RST contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `TIME_TO_REAL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: TIME_TO_REAL contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `T_PLC_MS`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: T_PLC_MS contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `UDINT#0`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: UDINT#0 contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_REAL contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `UDINT_TO_REAL(...) + X - x_last / TIME_TO_REAL(...) * 3.6E6`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: UDINT_TO_REAL(...) + X - x_last / TIME_TO_REAL(...) * 3.6E6 contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `UDINT_TO_TIME`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: UDINT_TO_TIME contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `X`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: X contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `Y`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: Y contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `_E`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: _E contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `e_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: e_last contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `init`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: init contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `int1`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: int1 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `int1.K`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: int1.K contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `int1.Y`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: int1.Y contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `tl`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: tl contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `tmp`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: tmp contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `tx`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: tx contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `x_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: x_last contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `y_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: y_last contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+
+### LAMBERT_W.st
+
+- Dataset group: implementation
+- Dominant intent: NUMERICAL_SOLVING
+
+Recognized behaviors:
+    - MATHEMATICAL_SOLVER [high]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `EXP`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: EXP contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `LN`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: LN contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `OUT`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: OUT contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `REAL_TO_DWORD`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: REAL_TO_DWORD contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `ewx`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: ewx contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `last`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: last contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `w`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: HIGH
+  - Reason: w contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `w1e`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: w1e contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `we`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: we contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `x`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: x contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+
+### MATRIX.st
+
+- Dataset group: implementation
+- Dominant intent: MATRIX_PROCESSING
+
+Recognized behaviors:
+    - MATRIX_COMPUTATION [medium]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<str>`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str> contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[i]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str>[i] contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[in_temp]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str>[in_temp] contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `BIT_LOAD_B`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: BIT_LOAD_B contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: BIT_OF_DWORD contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `BYTE_TO_DWORD`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: BYTE_TO_DWORD contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `INT_TO_BYTE`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: INT_TO_BYTE contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `LINE`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: LINE contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `L_temp`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: L_temp contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `SHL`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: SHL contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `X1`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: X1 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X2`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: X2 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X3`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: X3 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X4`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: X4 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X5`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: X5 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `Y1`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: Y1 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `Y2`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: Y2 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `Y3`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: Y3 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `Y4`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: Y4 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: _BYTE_TO_INT contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `_TP`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: _TP contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `array_read`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: array_read contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `array_write`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: array_write contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `bitwise_data`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: CRITICAL
+  - Reason: bitwise_data contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `code`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: code contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `i`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: i contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `in_temp`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: in_temp contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `line`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: line contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `temp`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: CRITICAL
+  - Reason: temp contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `temp2`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: temp2 contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `temp_bit`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: temp_bit contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+
+### SEQUENCE_8.st
+
+- Dataset group: implementation
+- Dominant intent: SEQUENTIAL_CONTROL
+
+Recognized behaviors:
+    - SEQUENTIAL_MACHINE_CONTROL [high]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `-1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: -1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `0`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 0 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `2`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 2 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `3`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 3 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `4`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 4 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `5`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 5 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `6`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 6 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `7`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 7 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q0`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q0 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q2`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q2 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q3`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q3 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q4`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q4 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q5`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q5 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q6`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q6 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q7`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q7 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `_step`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: _step contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `edge`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: edge contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in0`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in0 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in2`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in2 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in3`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in3 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in4`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in4 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in5`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in5 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in6`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in6 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in7`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in7 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `rst`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: rst contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `start`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: start contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+
+### TOOL_CHANGER.st
+
+- Dataset group: implementation
+- Dominant intent: STATE_BASED_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `0`
+  - Behavior: <none>
+  - Intent: SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: 0 contributes to no recognized behavior. Those behavior signals support SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: ordered control objective affected, state-based control objective affected.
+- `1`
+  - Behavior: <none>
+  - Intent: SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: 1 contributes to no recognized behavior. Those behavior signals support SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: ordered control objective affected, state-based control objective affected.
+- `2`
+  - Behavior: <none>
+  - Intent: SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: 2 contributes to no recognized behavior. Those behavior signals support SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: ordered control objective affected, state-based control objective affected.
+- `LockTool`
+  - Behavior: <none>
+  - Intent: SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: ordered control objective affected, state-based control objective affected
+  - Severity: MEDIUM
+  - Reason: LockTool contributes to no recognized behavior. Those behavior signals support SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: ordered control objective affected, state-based control objective affected.
+- `RotateCarousel`
+  - Behavior: <none>
+  - Intent: SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: ordered control objective affected, state-based control objective affected
+  - Severity: MEDIUM
+  - Reason: RotateCarousel contributes to no recognized behavior. Those behavior signals support SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: ordered control objective affected, state-based control objective affected.
+- `ToolChangeState`
+  - Behavior: <none>
+  - Intent: SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: ToolChangeState contributes to no recognized behavior. Those behavior signals support SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: ordered control objective affected, state-based control objective affected.
+
+### TRAFFIC_CTRL.st
+
+- Dataset group: implementation
+- Dominant intent: MULTI_ACTUATOR_COORDINATION
+
+Recognized behaviors:
+    - STATE_MACHINE_CONTROL [high]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `0`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 0 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `1`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 1 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `2`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 2 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `3`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 3 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `EastWestGreen`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: EastWestGreen contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `EastWestRed`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: EastWestRed contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `EastWestYellow`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: EastWestYellow contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `LightState`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: LightState contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `NorthSouthGreen`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: NorthSouthGreen contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `NorthSouthRed`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: NorthSouthRed contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `NorthSouthYellow`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: NorthSouthYellow contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianCrossing`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianCrossing contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianLight1`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianLight1 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianLight2`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianLight2 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianRequest1`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianRequest1 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianRequest2`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianRequest2 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `Timer`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: Timer contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `Timer.Q`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: Timer.Q contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+
+### CRC_GEN_FullTest.st
+
+- Dataset group: test_harness
+- Dominant intent: DATA_INTEGRITY_VERIFICATION
+
+Recognized behaviors:
+    - CHECKSUM_GENERATION [medium]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<str>`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str> contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[0]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[0] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[1]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[1] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[2]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[2] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[pos]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[pos] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `BIT_LOAD_B`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: BIT_LOAD_B contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BIT_OF_DWORD contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `BOOL_TO_DWORD`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: BOOL_TO_DWORD contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected.
+- `BYTE_TO_DWORD`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: BYTE_TO_DWORD contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected.
+- `BYTE_TO_USINT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BYTE_TO_USINT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `DI`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: DI contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `DINT_TO_REAL`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: DINT_TO_REAL contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `DWORD_TO_UDINT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: DWORD_TO_UDINT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `DX`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: DX contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected.
+- `FLOOR`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: FLOOR contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `FLOOR2`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: FLOOR2 contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `Failed`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Failed contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Finished`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Finished contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `IN`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: IN contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `INT_TO_REAL`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: INT_TO_REAL contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `KI`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: KI contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `KP`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KP contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `L`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: L contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `LIM`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: LIM contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `LIM_H`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: LIM_H contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `MODR`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: MODR contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `N`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: N contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `OFFSET`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: OFFSET contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `PL`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: PL contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `PN`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: PN contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `REAL_TO_DINT`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: REAL_TO_DINT contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `REAL_TO_INT`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: REAL_TO_INT contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `REFLECT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: REFLECT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `REVERSE`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: REVERSE contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected.
+- `ROL`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROL contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `ROR`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROR contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `RST`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: RST contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `SHL`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHL contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `SHR`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHR contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `SIGN_R`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: SIGN_R contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `STRING_TO_DWORD`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: STRING_TO_DWORD contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `T_PLC_MS`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_MS contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `T_PLC_US`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_US contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `T_PLC_US(...)`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: T_PLC_US(...) contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestBlock`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: TestBlock contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestRunnerProgram`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: TestRunnerProgram contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestState`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: TestState contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable.
+- `Test_0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: Test_0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_1`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: Test_1 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_2`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: Test_2 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `UDINT_TO_DWORD`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_DWORD contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_REAL contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `UINT_TO_INT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UINT_TO_INT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `USINT_TO_INT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: USINT_TO_INT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `X`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: X contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `XOR_OUT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: XOR_OUT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `X_last`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: X_last contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Y`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: Y contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: _BYTE_TO_INT contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `_CRC_GEN`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: _CRC_GEN contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `_d`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: _d contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `array_read`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: array_read contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `array_write`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: array_write contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `bitwise_data`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: CRITICAL
+  - Reason: bitwise_data contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `divi`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: divi contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `dx`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: dx contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable.
+- `floor`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: floor contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable.
+- `i`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: i contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `in`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `in_last`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in_last contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `init`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: HIGH
+  - Reason: init contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `instance0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: instance0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `last`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: last contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `old`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: old contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `out`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: out contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `p`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: p contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `passedTests`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: passedTests contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable.
+- `pos`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected
+  - Severity: CRITICAL
+  - Reason: pos contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected.
+- `reverse`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: reverse contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `shift`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: shift contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, rate-based measurement objective affected.
+- `size`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: size contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `t_last`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: t_last contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `tc`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tc contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `temp`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: temp contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `totalTests`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable
+  - Severity: MEDIUM
+  - Reason: totalTests contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, integrity verification unavailable.
+- `tx`
+  - Behavior: CHECKSUM_GENERATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tx contributes to CHECKSUM_GENERATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, integrity verification unavailable, matrix processing objective affected, rate-based measurement objective affected.
+
+### FLOW_METER_FullTest.st
+
+- Dataset group: test_harness
+- Dominant intent: RATE_BASED_MEASUREMENT
+
+Recognized behaviors:
+    - FLOW_MEASUREMENT [medium]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `0.0`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: 0.0 contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `<str>`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str> contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[0]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[0] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[1]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[1] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[2]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[2] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[3]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[3] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[4]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[4] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `BIT_LOAD_B`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: BIT_LOAD_B contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BIT_OF_DWORD contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `BOOL_TO_DWORD`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: BOOL_TO_DWORD contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `BYTE_TO_USINT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: BYTE_TO_USINT contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `DI`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: DI contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `DINT_TO_REAL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: DINT_TO_REAL contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `DWORD_TO_UDINT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: DWORD_TO_UDINT contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `F`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: F contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `FLOOR`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: FLOOR contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `FLOOR2`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: FLOOR2 contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `Failed`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Failed contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Finished`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Finished contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `IN`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: IN contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `INT_TO_REAL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: INT_TO_REAL contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `INT_TO_UDINT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: INT_TO_UDINT contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `KI`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: KI contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `KP`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: KP contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `L`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: L contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `LIM`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: LIM contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `LIM_H`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: LIM_H contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `MODR`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: MODR contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `N`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: N contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `OFFSET`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: OFFSET contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `REAL_TO_DINT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: REAL_TO_DINT contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `REAL_TO_INT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: REAL_TO_INT contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `REFLECT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: REFLECT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `ROL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROL contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `ROR`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROR contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `RST`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: RST contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `SHL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHL contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `SHR`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHR contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `SIGN_R`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: SIGN_R contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `TIME_TO_REAL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: TIME_TO_REAL contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `T_PLC_MS`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_MS contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `T_PLC_US`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_US contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `T_PLC_US(...)`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: T_PLC_US(...) contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `TestBlock`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: TestBlock contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestRunnerProgram`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: TestRunnerProgram contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestState`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: TestState contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `Test_0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_1`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_1 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_2`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_2 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_3`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_3 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_4`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_4 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `UDINT#0`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: UDINT#0 contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `UDINT_TO_DWORD`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: UDINT_TO_DWORD contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: UDINT_TO_REAL contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `UDINT_TO_REAL(...) + X - x_last / TIME_TO_REAL(...) * 3.6E6`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: UDINT_TO_REAL(...) + X - x_last / TIME_TO_REAL(...) * 3.6E6 contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `UDINT_TO_TIME`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: UDINT_TO_TIME contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `USINT_TO_INT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: USINT_TO_INT contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `X`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: X contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `X_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: X_last contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `Y`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: Y contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: _BYTE_TO_INT contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `_E`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: _E contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `_d`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: _d contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `array_write`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: array_write contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `bitwise_data`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: bitwise_data contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `divi`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: divi contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `e_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: e_last contributes to FLOW_MEASUREMENT. Those behavior signals support PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `floor`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: floor contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `i`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: i contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `in`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `in_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in_last contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `init`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: init contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `instance0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: instance0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `int1`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: int1 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `int1.K`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: int1.K contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `int1.Y`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: int1.Y contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: last contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `old`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: old contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `out`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: out contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `p`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: p contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `passedTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: passedTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `pos`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: pos contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `reverse`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: reverse contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `t_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: t_last contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `tc`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tc contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `temp`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: temp contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `tl`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: tl contributes to FLOW_MEASUREMENT. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `tmp`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tmp contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `totalTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: totalTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `tx`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tx contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `x_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: x_last contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+- `y_last`
+  - Behavior: FLOW_MEASUREMENT
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: y_last contributes to FLOW_MEASUREMENT. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, PROCESS_MONITORING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, process monitoring objective affected, rate measurement unavailable, rate-based measurement objective affected.
+
+### LAMBERT_W_FullTest.st
+
+- Dataset group: test_harness
+- Dominant intent: NUMERICAL_SOLVING
+
+Recognized behaviors:
+    - MATHEMATICAL_SOLVER [high]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<str>`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str> contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[0]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[0] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[1]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[1] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[2]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[2] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[3]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[3] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[4]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[4] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[5]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[5] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[6]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[6] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[7]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[7] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[8]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[8] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[9]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[9] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `BIT_LOAD_B`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: BIT_LOAD_B contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: BIT_OF_DWORD contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `BOOL_TO_DWORD`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: BOOL_TO_DWORD contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `BYTE_TO_USINT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BYTE_TO_USINT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `DI`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: DI contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `DINT_TO_REAL`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: DINT_TO_REAL contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `DWORD_TO_UDINT`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: DWORD_TO_UDINT contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `EXP`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: EXP contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `FLOOR`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: HIGH
+  - Reason: FLOOR contributes to MATHEMATICAL_SOLVER. Those behavior signals support DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `FLOOR2`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: FLOOR2 contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `Failed`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Failed contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Finished`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Finished contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `IN`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: IN contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `INT_TO_REAL`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: INT_TO_REAL contributes to MATHEMATICAL_SOLVER. Those behavior signals support DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `KI`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: KI contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `KP`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KP contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `L`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: L contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `LIM`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: LIM contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `LIM_H`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: LIM_H contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `LN`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: LN contributes to MATHEMATICAL_SOLVER. Those behavior signals support MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `MODR`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: MODR contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `N`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: N contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `OFFSET`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: OFFSET contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `OUT`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: OUT contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `REAL_TO_DINT`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: REAL_TO_DINT contributes to MATHEMATICAL_SOLVER. Those behavior signals support DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `REAL_TO_DWORD`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: REAL_TO_DWORD contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `REAL_TO_DWORD(...) AND DWORD#16#FFFF_FFFC`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: CRITICAL
+  - Reason: REAL_TO_DWORD(...) AND DWORD#16#FFFF_FFFC contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `REAL_TO_INT`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: REAL_TO_INT contributes to MATHEMATICAL_SOLVER. Those behavior signals support DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `REFLECT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: REFLECT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `ROL`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: ROL contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `ROR`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: ROR contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `RST`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: HIGH
+  - Reason: RST contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `SHL`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHL contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `SHR`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHR contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `SIGN_R`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SIGN_R contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `T_PLC_MS`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_MS contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `T_PLC_US`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_US contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `T_PLC_US(...)`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: T_PLC_US(...) contributes to MATHEMATICAL_SOLVER. Those behavior signals support DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `TestBlock`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: TestBlock contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestRunnerProgram`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: TestRunnerProgram contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestState`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: TestState contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `Test_0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_1`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_1 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_2`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_2 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_3`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_3 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_4`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_4 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_5`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_5 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_6`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_6 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_7`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_7 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_8`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_8 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_9`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_9 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `UDINT_TO_DWORD`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_DWORD contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: UDINT_TO_REAL contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `USINT_TO_INT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: USINT_TO_INT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `X`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: CRITICAL
+  - Reason: X contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `X_last`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: MEDIUM
+  - Reason: X_last contributes to MATHEMATICAL_SOLVER. Those behavior signals support DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `Y`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: Y contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: _BYTE_TO_INT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `_d`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: _d contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `array_write`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: array_write contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `bitwise_data`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected
+  - Severity: CRITICAL
+  - Reason: bitwise_data contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected.
+- `divi`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: divi contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `ewx`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: ewx contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `floor`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: floor contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `i`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: i contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `in`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `in_last`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in_last contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `init`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: init contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `instance0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: instance0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `last`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: last contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `old`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: old contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `out`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: out contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `p`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: p contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `passedTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: passedTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `pos`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: pos contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `reverse`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: reverse contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `t_last`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: t_last contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `tc`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tc contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `temp`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: temp contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `totalTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: totalTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `tx`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tx contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, MATRIX_PROCESSING, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, matrix processing objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `w`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: w contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `w1e`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: w1e contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `we`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: we contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+- `x`
+  - Behavior: MATHEMATICAL_SOLVER
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: x contributes to MATHEMATICAL_SOLVER. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATHEMATICAL_COMPUTATION, NUMERICAL_SOLVING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, mathematical computation objective affected, numerical solving capability unavailable, numerical solving objective affected, rate-based measurement objective affected.
+
+### MATRIX_FullTest.st
+
+- Dataset group: test_harness
+- Dominant intent: MATRIX_PROCESSING
+
+Recognized behaviors:
+    - MATRIX_COMPUTATION [medium]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<str>`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str> contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[0]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str>[0] contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[1]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str>[1] contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[2]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str>[2] contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[3]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: <str>[3] contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[i]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: <str>[i] contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `<str>[in_temp]`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: <str>[in_temp] contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `BIT_LOAD_B`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: BIT_LOAD_B contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: BIT_OF_DWORD contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `BOOL_TO_DWORD`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: BOOL_TO_DWORD contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `BYTE_TO_DWORD`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: BYTE_TO_DWORD contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `BYTE_TO_USINT`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BYTE_TO_USINT contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `DI`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: DI contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `DINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: DINT_TO_REAL contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `DWORD_TO_UDINT`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: DWORD_TO_UDINT contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `FLOOR`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: FLOOR contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `FLOOR2`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: FLOOR2 contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `Failed`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Failed contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Finished`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Finished contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `IN`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: IN contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `INT_TO_BYTE`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: INT_TO_BYTE contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `INT_TO_REAL`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: INT_TO_REAL contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `KI`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: KI contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `KP`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KP contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `L`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: L contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `LIM`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: LIM contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `LIM_H`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: LIM_H contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `LINE`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: LINE contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `L_temp`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: L_temp contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `MODR`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: MODR contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `N`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: N contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `OFFSET`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: OFFSET contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `REAL_TO_DINT`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: REAL_TO_DINT contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `REAL_TO_INT`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: REAL_TO_INT contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `REFLECT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: REFLECT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `ROL`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROL contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `ROR`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROR contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `RST`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: RST contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `SHL`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHL contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `SHR`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: SHR contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `SIGN_R`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: SIGN_R contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `T_PLC_MS`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_MS contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `T_PLC_US`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_US contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `T_PLC_US(...)`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: T_PLC_US(...) contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestBlock`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: TestBlock contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestRunnerProgram`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: TestRunnerProgram contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestState`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: TestState contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `Test_0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_1`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_1 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_2`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_2 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_3`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: Test_3 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `UDINT_TO_DWORD`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_DWORD contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_REAL contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `USINT_TO_INT`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: USINT_TO_INT contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `X`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: X contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `X1`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: X1 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X2`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: X2 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X3`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: X3 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X4`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: X4 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X5`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: X5 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `X_last`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: X_last contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Y`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: Y contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `Y1`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: Y1 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `Y2`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: Y2 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `Y3`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: Y3 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `Y4`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: Y4 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: _BYTE_TO_INT contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `_TP`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: _TP contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `_d`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: _d contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `array_read`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: array_read contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `array_write`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: MEDIUM
+  - Reason: array_write contributes to MATRIX_COMPUTATION. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `bitwise_data`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: CRITICAL
+  - Reason: bitwise_data contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `code`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: code contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `divi`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: divi contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `floor`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: floor contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `i`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: i contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `in`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `in_last`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in_last contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `in_temp`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: HIGH
+  - Reason: in_temp contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `init`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: init contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `instance0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: instance0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `last`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: last contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `line`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: CRITICAL
+  - Reason: line contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `old`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: old contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `out`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: out contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `p`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: p contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `passedTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: passedTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `pos`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: pos contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `reverse`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: reverse contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `t_last`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: t_last contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `tc`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tc contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `temp`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: temp contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `temp2`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: temp2 contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+- `temp_bit`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected
+  - Severity: CRITICAL
+  - Reason: temp_bit contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected.
+- `totalTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: totalTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `tx`
+  - Behavior: MATRIX_COMPUTATION
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tx contributes to MATRIX_COMPUTATION. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix or indexed data processing unavailable, matrix processing objective affected, rate-based measurement objective affected.
+
+### SEQUENCE_8_FullTest.st
+
+- Dataset group: test_harness
+- Dominant intent: SEQUENTIAL_CONTROL
+
+Recognized behaviors:
+    - SEQUENTIAL_MACHINE_CONTROL [high]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `-1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: -1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `0`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 0 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `2`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 2 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `3`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 3 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `4`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 4 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `5`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 5 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `6`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 6 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `7`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: 7 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `BIT_LOAD_B`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: BIT_LOAD_B contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: BIT_OF_DWORD contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `BYTE_TO_USINT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: BYTE_TO_USINT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `DINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: DINT_TO_REAL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `DWORD_TO_UDINT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: DWORD_TO_UDINT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `FLOOR2`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: FLOOR2 contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `Failed`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Failed contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Finished`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Finished contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `IN`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: IN contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `KI`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KI contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `KP`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KP contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `LIM_H`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: LIM_H contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `MODR`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: MODR contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `N`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: N contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `OFFSET`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: OFFSET contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `Q0`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q0 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q2`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q2 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q3`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q3 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q4`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q4 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q5`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q5 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q6`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q6 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Q7`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Q7 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `ROL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: ROL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `ROR`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: ROR contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `SHL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: SHL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `SHR`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: SHR contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `SIGN_R`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: SIGN_R contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `T_PLC_MS`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: T_PLC_MS contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `T_PLC_US`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: T_PLC_US contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `TestBlock`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: TestBlock contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `TestState`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: TestState contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `TestState + 1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: TestState + 1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Test_0`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: Test_0 contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `Test_1`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: Test_1 contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `Timer`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Timer contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `Timer.Q`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Timer.Q contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `UDINT_TO_DWORD`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: UDINT_TO_DWORD contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: UDINT_TO_REAL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `USINT_TO_INT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: USINT_TO_INT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `Y`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: Y contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: _BYTE_TO_INT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `_step`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: _step contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `divi`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: divi contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `edge`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: edge contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `fb_output`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: MEDIUM
+  - Reason: fb_output contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `i`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: i contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `in`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: in contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `in0`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in0 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in1`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in1 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in2`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in2 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in3`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in3 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in4`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in4 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in5`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in5 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in6`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in6 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in7`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: in7 contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `in_last`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: in_last contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `last`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: last contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `old`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: old contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `p`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: p contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `reverse`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: reverse contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `rst`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: rst contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `start`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: start contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `t_last`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: t_last contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `tc`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: tc contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `temp`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: temp contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `testState`
+  - Behavior: SEQUENTIAL_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: testState contributes to SEQUENTIAL_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, sequence progression unavailable, state-based control objective affected.
+- `tx`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: tx contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+
+### TOOL_CHANGER_FullTest.st
+
+- Dataset group: test_harness
+- Dominant intent: DATA_INTEGRITY_VERIFICATION
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `0`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: matrix processing objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: 0 contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: matrix processing objective affected, ordered control objective affected, state-based control objective affected.
+- `1`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: matrix processing objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: 1 contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: matrix processing objective affected, ordered control objective affected, state-based control objective affected.
+- `2`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: matrix processing objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: 2 contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: matrix processing objective affected, ordered control objective affected, state-based control objective affected.
+- `<str>`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str> contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[0]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[0] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[1]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[1] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[2]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[2] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[3]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[3] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `<str>[4]`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: <str>[4] contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `BIT_LOAD_B`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BIT_LOAD_B contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BIT_OF_DWORD contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `BOOL_TO_DWORD`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: BOOL_TO_DWORD contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `BYTE_TO_USINT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: BYTE_TO_USINT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `DI`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: DI contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `DINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: DINT_TO_REAL contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `DWORD_TO_UDINT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: DWORD_TO_UDINT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `FLOOR`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: FLOOR contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `FLOOR2`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: FLOOR2 contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `Failed`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: data transformation objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: Failed contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: data transformation objective affected, ordered control objective affected, state-based control objective affected.
+- `Finished`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: data transformation objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: MEDIUM
+  - Reason: Finished contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: data transformation objective affected, ordered control objective affected, state-based control objective affected.
+- `IN`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: IN contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `INT_TO_REAL`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: INT_TO_REAL contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `KI`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: KI contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `KP`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KP contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `L`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: L contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `LIM`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: LIM contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `LIM_H`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: LIM_H contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `LockTool`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: data transformation objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: MEDIUM
+  - Reason: LockTool contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: data transformation objective affected, ordered control objective affected, state-based control objective affected.
+- `MODR`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: MODR contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `N`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: N contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `OFFSET`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: OFFSET contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `REAL_TO_DINT`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: REAL_TO_DINT contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `REAL_TO_INT`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: REAL_TO_INT contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `REFLECT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: REFLECT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `ROL`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROL contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `ROR`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: ROR contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `RST`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: RST contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `RotateCarousel`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: data transformation objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: MEDIUM
+  - Reason: RotateCarousel contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: data transformation objective affected, ordered control objective affected, state-based control objective affected.
+- `SHL`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: SHL contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `SHR`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: SHR contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `SIGN_R`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: SIGN_R contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `T_PLC_MS`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_MS contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `T_PLC_US`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: T_PLC_US contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `T_PLC_US(...)`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: T_PLC_US(...) contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestBlock`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: TestBlock contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestRunnerProgram`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: TestRunnerProgram contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `TestState`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: TestState contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, ordered control objective affected, state-based control objective affected.
+- `TestState + 1`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: HIGH
+  - Reason: TestState + 1 contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, ordered control objective affected, state-based control objective affected.
+- `Test_0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: Test_0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_1`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: Test_1 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_2`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: Test_2 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_3`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: Test_3 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Test_4`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: Test_4 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Timer`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Timer contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, ordered control objective affected, state-based control objective affected.
+- `Timer.Q`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: Timer.Q contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, ordered control objective affected, state-based control objective affected.
+- `ToolChangeState`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: data transformation objective affected, matrix processing objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: ToolChangeState contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: data transformation objective affected, matrix processing objective affected, ordered control objective affected, state-based control objective affected.
+- `UDINT_TO_DWORD`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_DWORD contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: UDINT_TO_REAL contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `USINT_TO_INT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: USINT_TO_INT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `X`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: X contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `X_last`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: X_last contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `Y`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: Y contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: _BYTE_TO_INT contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `_d`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: _d contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `array_write`
+  - Behavior: <none>
+  - Intent: MATRIX_PROCESSING
+  - Capability: matrix processing objective affected
+  - Severity: LOW
+  - Reason: array_write contributes to no recognized behavior. Those behavior signals support MATRIX_PROCESSING. Capability loss: matrix processing objective affected.
+- `bitwise_data`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: HIGH
+  - Reason: bitwise_data contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `divi`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: divi contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `fb_output`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: fb_output contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `floor`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: floor contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `i`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: i contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `in`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: in contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `in_last`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: in_last contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `init`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: init contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `instance0`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: HIGH
+  - Reason: instance0 contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `last`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: last contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `old`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: old contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `out`
+  - Behavior: <none>
+  - Intent: DATA_TRANSFORMATION
+  - Capability: data transformation objective affected
+  - Severity: LOW
+  - Reason: out contributes to no recognized behavior. Those behavior signals support DATA_TRANSFORMATION. Capability loss: data transformation objective affected.
+- `p`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: p contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `passedTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected
+  - Severity: MEDIUM
+  - Reason: passedTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected.
+- `pos`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: MEDIUM
+  - Reason: pos contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `reverse`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: reverse contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, rate-based measurement objective affected.
+- `t_last`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: t_last contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `tc`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tc contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `temp`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: HIGH
+  - Reason: temp contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+- `testState`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, ordered control objective affected, state-based control objective affected
+  - Severity: CRITICAL
+  - Reason: testState contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, ordered control objective affected, state-based control objective affected.
+- `totalTests`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected
+  - Severity: LOW
+  - Reason: totalTests contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION. Capability loss: bitwise data processing objective affected, data integrity verification objective affected.
+- `tx`
+  - Behavior: <none>
+  - Intent: BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT
+  - Capability: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected
+  - Severity: CRITICAL
+  - Reason: tx contributes to no recognized behavior. Those behavior signals support BITWISE_DATA_PROCESSING, DATA_INTEGRITY_VERIFICATION, DATA_TRANSFORMATION, MATRIX_PROCESSING, RATE_BASED_MEASUREMENT. Capability loss: bitwise data processing objective affected, data integrity verification objective affected, data transformation objective affected, matrix processing objective affected, rate-based measurement objective affected.
+
+### TRAFFIC_CTRL_FullTest.st
+
+- Dataset group: test_harness
+- Dominant intent: MULTI_ACTUATOR_COORDINATION
+
+Recognized behaviors:
+    - STATE_MACHINE_CONTROL [high]
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `0`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 0 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `1`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 1 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `2`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 2 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `3`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: 3 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `BIT_LOAD_B`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: BIT_LOAD_B contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `BIT_OF_DWORD`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: BIT_OF_DWORD contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `BYTE_TO_USINT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: BYTE_TO_USINT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `DINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: DINT_TO_REAL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `DWORD_TO_UDINT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: DWORD_TO_UDINT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `EastWestGreen`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: EastWestGreen contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `EastWestRed`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: EastWestRed contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `EastWestYellow`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: EastWestYellow contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `FLOOR2`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: FLOOR2 contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `Failed`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: Failed contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `Finished`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: Finished contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `IN`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: IN contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `KI`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KI contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `KP`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: KP contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `LIM_H`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: LIM_H contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `LightState`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: LightState contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `MODR`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: MODR contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `N`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: N contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `NorthSouthGreen`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: NorthSouthGreen contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `NorthSouthRed`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: NorthSouthRed contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `NorthSouthYellow`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: NorthSouthYellow contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `OFFSET`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: OFFSET contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `PedestrianCrossing`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianCrossing contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianLight1`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianLight1 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianLight2`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianLight2 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianRequest1`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianRequest1 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `PedestrianRequest2`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: PedestrianRequest2 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `ROL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: ROL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `ROR`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: ROR contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `SHL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: SHL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `SHR`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: SHR contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `SIGN_R`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: SIGN_R contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `T_PLC_MS`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: T_PLC_MS contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `T_PLC_US`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: T_PLC_US contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `TestBlock`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: TestBlock contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `TestState`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: TestState contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `TestState + 1`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: TestState + 1 contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `Test_0`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: Test_0 contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `Test_1`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: Test_1 contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `Test_2`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: Test_2 contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `Test_3`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: LOW
+  - Reason: Test_3 contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `Timer`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: Timer contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `Timer.Q`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: Timer.Q contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `UDINT_TO_DWORD`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: UDINT_TO_DWORD contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `UDINT_TO_REAL`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: UDINT_TO_REAL contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `USINT_TO_INT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: USINT_TO_INT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `Y`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: Y contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `_BYTE_TO_INT`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: _BYTE_TO_INT contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `divi`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: divi contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `fb_output`
+  - Behavior: <none>
+  - Intent: MULTI_ACTUATOR_COORDINATION
+  - Capability: multi-target coordination objective affected
+  - Severity: MEDIUM
+  - Reason: fb_output contributes to no recognized behavior. Those behavior signals support MULTI_ACTUATOR_COORDINATION. Capability loss: multi-target coordination objective affected.
+- `i`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: i contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `in`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: in contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `in_last`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: in_last contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `last`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: last contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `old`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: old contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `p`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: p contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `reverse`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: LOW
+  - Reason: reverse contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `t_last`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: t_last contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `tc`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: tc contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `temp`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: temp contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+- `testState`
+  - Behavior: STATE_MACHINE_CONTROL
+  - Intent: MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL
+  - Capability: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted
+  - Severity: CRITICAL
+  - Reason: testState contributes to STATE_MACHINE_CONTROL. Those behavior signals support MULTI_ACTUATOR_COORDINATION, PROCESS_AUTOMATION, RESOURCE_COORDINATION, RESOURCE_TRANSFER, SEQUENTIAL_CONTROL, STATE_BASED_CONTROL. Capability loss: multi-target coordination objective affected, ordered control objective affected, process automation objective affected, resource coordination objective affected, resource transfer objective affected, state-based control objective affected, state-based control strategy impacted.
+- `tx`
+  - Behavior: <none>
+  - Intent: RATE_BASED_MEASUREMENT
+  - Capability: rate-based measurement objective affected
+  - Severity: MEDIUM
+  - Reason: tx contributes to no recognized behavior. Those behavior signals support RATE_BASED_MEASUREMENT. Capability loss: rate-based measurement objective affected.
+
+### CRC_GEN_TestCases.st
+
+- Dataset group: test_harness
+- Dominant intent: GENERAL_PROCESS_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<none>` -> `<none>` -> `<none>` -> graph-only impact
+
+### FLOW_METER_TestCases.st
+
+- Dataset group: test_harness
+- Dominant intent: GENERAL_PROCESS_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<none>` -> `<none>` -> `<none>` -> graph-only impact
+
+### LAMBERT_W_TestCases.st
+
+- Dataset group: test_harness
+- Dominant intent: GENERAL_PROCESS_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<none>` -> `<none>` -> `<none>` -> graph-only impact
+
+### MATRIX_TestCases.st
+
+- Dataset group: test_harness
+- Dominant intent: GENERAL_PROCESS_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<none>` -> `<none>` -> `<none>` -> graph-only impact
+
+### SEQUENCE_8_TestCases.st
+
+- Dataset group: test_harness
+- Dominant intent: GENERAL_PROCESS_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<none>` -> `<none>` -> `<none>` -> graph-only impact
+
+### TOOL_CHANGER_TestCases.st
+
+- Dataset group: test_harness
+- Dominant intent: GENERAL_PROCESS_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<none>` -> `<none>` -> `<none>` -> graph-only impact
+
+### TRAFFIC_CTRL_TestCases.st
+
+- Dataset group: test_harness
+- Dominant intent: GENERAL_PROCESS_CONTROL
+
+Recognized behaviors:
+    - <none>
+
+Node -> Behavior -> Intent -> Capability chains:
+
+- `<none>` -> `<none>` -> `<none>` -> graph-only impact
+
+
+## Parse Failures
+
+- DEC_TO_HEX.st: Expected Keyword 'END_FUNCTION_BLOCK', found 'VAR'  (at char 122), (line:8, col:3)
+- DEC_TO_HEX_FullTest.st: Expected end of text, found 'FUNCTION'  (at char 6740), (line:340, col:1)

@@ -1038,18 +1038,6 @@ class RelationshipExtractor(ASTVisitor):
                 "totalTests",
                 "TestBlock",
                 "Test_",
-                "TestState",
-                "testState",
-                "testResult",
-                "testOutcomeArray",
-                "Finished",
-                "TestRunner",
-                "test_runner",
-                "main_test",
-                "TEST_MAIN",
-                "assert",
-                "printf",
-                "FB_TEST",
             )
         )
 

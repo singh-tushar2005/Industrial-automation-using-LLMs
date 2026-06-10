@@ -95,6 +95,17 @@ class SemanticEvidenceEngine:
             return "INDUSTRIAL"
         return getattr(node, "semantic_scope", "INDUSTRIAL")
 
+    def _has_division(self, node):
+        """Recursively check if a node contains a division operator."""
+        if node is None:
+            return False
+        node_type = node.__class__.__name__
+        if node_type == "BinaryExpressionNode":
+            if node.operator == "/":
+                return True
+            return self._has_division(node.left) or self._has_division(node.right)
+        return False
+
     def _walk(self, node):
         if node is None or isinstance(node, (bool, int, float, str, bytes, tuple, list, dict, set)):
             return
@@ -124,8 +135,8 @@ class SemanticEvidenceEngine:
         if node_type == "ArrayIndexNode":
             self._collect_array_index(node, scope)
 
-        # VariableDeclNode evidence
-        if node_type == "VariableDeclNode":
+        # VariableDeclNode / VariableDeclarationNode evidence
+        if node_type in ("VariableDeclNode", "VariableDeclarationNode"):
             self._collect_variable_decl(node, scope)
 
         # Continue walking children
@@ -140,7 +151,11 @@ class SemanticEvidenceEngine:
                 continue
             if isinstance(child, list):
                 for item in child:
-                    self._walk(item)
+                    if isinstance(item, tuple):
+                        for tuple_item in item:
+                            self._walk(tuple_item)
+                    else:
+                        self._walk(item)
             else:
                 self._walk(child)
 
@@ -166,7 +181,7 @@ class SemanticEvidenceEngine:
                 {"target": target, "value": describe_node(value)}, {"semantic_scope": scope})
 
         # Accumulator update
-        if value_type == "BinaryExpressionNode":
+        if value_type in ("BinaryExpressionNode", "LogicalExpressionNode"):
             if value.operator in ("XOR", "OR", "AND"):
                 sources = extract_sources(value)
                 if target in sources:
@@ -190,7 +205,7 @@ class SemanticEvidenceEngine:
             if func_name in ("SHL", "SHR", "ROL", "ROR", "AND", "OR", "XOR", "NOT", "BIT_LOAD_B", "BIT_OF_DWORD"):
                 self.evidence.add("bitwise_operation", "high", node,
                     {"target": target, "function": func_name}, {"semantic_scope": scope})
-        if value_type == "BinaryExpressionNode" and value.operator in ("AND", "OR", "XOR"):
+        if value_type in ("BinaryExpressionNode", "LogicalExpressionNode") and value.operator in ("AND", "OR", "XOR"):
             self.evidence.add("bitwise_operation", "high", node,
                 {"target": target, "operator": value.operator}, {"semantic_scope": scope})
 
@@ -202,10 +217,16 @@ class SemanticEvidenceEngine:
                     {"target": target, "function": func_name}, {"semantic_scope": scope})
 
         # Measurement calculation
-        if value_type == "BinaryExpressionNode" and value.operator == "/":
+        if value_type == "BinaryExpressionNode" and self._has_division(value):
             if any(t in target for t in ("Flow", "flow", "Rate", "rate", "Speed", "speed", "Freq", "freq")):
                 self.evidence.add("measurement_calculation", "high", node,
                     {"target": target}, {"semantic_scope": scope})
+            else:
+                # Broader detection: division involving time conversion or time expressions
+                value_desc = describe_node(value)
+                if any(t in value_desc for t in ("TIME_TO_REAL", "REAL_TO_TIME", "UDINT_TO_TIME", "TIME")):
+                    self.evidence.add("measurement_calculation", "medium", node,
+                        {"target": target, "value": value_desc}, {"semantic_scope": scope})
 
         # Matrix access
         if value_type == "FunctionInvocationNode":

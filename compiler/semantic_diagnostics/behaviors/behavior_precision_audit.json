@@ -1,0 +1,1088 @@
+{
+  "audit_metadata": {
+    "scope": "datasets/Industrial_data (Implementation_datasets + test_harness)",
+    "files_total": 57,
+    "files_parsed": 55,
+    "audit_date": "2026-06-08",
+    "note": "No code changes performed during audit."
+  },
+  "rule_audit": {
+    "CHECKSUM_GENERATION": {
+      "behavior": "CHECKSUM_GENERATION",
+      "rule": "bitwise >= 3 AND accumulators >= 1",
+      "datasets_triggered": [
+        "CRC_GEN.st",
+        "GEN_BIT.st",
+        "INCLUDE.st",
+        "CRC_GEN_FullTest (1).st",
+        "CRC_GEN_FullTest.st",
+        "GEN_BIT_FullTest.st",
+        "FLOW_METER_FullTest (1).st",
+        "FLOW_METER_FullTest.st",
+        "FT_PIDWL_FullTest (1).st",
+        "FT_PIDWL_FullTest.st",
+        "GEN_SIN_FullTest (1).st",
+        "GEN_SIN_FullTest (2).st",
+        "GEN_SIN_FullTest.st",
+        "LAMBERT_W_FullTest (1).st",
+        "LAMBERT_W_FullTest.st",
+        "MATRIX_FullTest (1).st",
+        "MATRIX_FullTest.st",
+        "SEQUENCE_8_FullTest (1).st",
+        "SEQUENCE_8_FullTest.st",
+        "TOOL_CHANGER_FullTest (1).st",
+        "TOOL_CHANGER_FullTest.st",
+        "TRAFFIC_CTRL_FullTest (1).st",
+        "TRAFFIC_CTRL_FullTest.st"
+      ],
+      "total_fires": 23,
+      "correct": 4,
+      "weak": 2,
+      "incorrect": 17,
+      "precision": 0.174,
+      "correct_files": [
+        "CRC_GEN.st",
+        "CRC_GEN_FullTest (1).st",
+        "CRC_GEN_FullTest.st",
+        "GEN_BIT_FullTest.st"
+      ],
+      "weak_files": [
+        "GEN_BIT.st",
+        "INCLUDE.st"
+      ],
+      "incorrect_files": [
+        "FLOW_METER_FullTest (1).st",
+        "FLOW_METER_FullTest.st",
+        "FT_PIDWL_FullTest (1).st",
+        "FT_PIDWL_FullTest.st",
+        "GEN_SIN_FullTest (1).st",
+        "GEN_SIN_FullTest (2).st",
+        "GEN_SIN_FullTest.st",
+        "LAMBERT_W_FullTest (1).st",
+        "LAMBERT_W_FullTest.st",
+        "MATRIX_FullTest (1).st",
+        "MATRIX_FullTest.st",
+        "SEQUENCE_8_FullTest (1).st",
+        "SEQUENCE_8_FullTest.st",
+        "TOOL_CHANGER_FullTest (1).st",
+        "TOOL_CHANGER_FullTest.st",
+        "TRAFFIC_CTRL_FullTest (1).st",
+        "TRAFFIC_CTRL_FullTest.st"
+      ],
+      "root_causes": {
+        "test harness contamination": 17,
+        "accumulator overfiring": 2
+      }
+    },
+    "FLOW_MEASUREMENT": {
+      "behavior": "FLOW_MEASUREMENT",
+      "rule": "measurements >= 1 OR (history >= 2 AND process_calc >= 2 AND (timer >= 1 OR fb >= 1))",
+      "datasets_triggered": [
+        "FLOW_METER.st",
+        "FLOW_METER_FullTest (1).st",
+        "FLOW_METER_FullTest.st",
+        "FT_PIDWL_FullTest (1).st",
+        "FT_PIDWL_FullTest.st",
+        "TRAFFIC_CTRL_FullTest (1).st",
+        "TRAFFIC_CTRL_FullTest.st"
+      ],
+      "total_fires": 7,
+      "correct": 3,
+      "weak": 1,
+      "incorrect": 3,
+      "precision": 0.429,
+      "correct_files": [
+        "FLOW_METER.st",
+        "FLOW_METER_FullTest (1).st",
+        "FLOW_METER_FullTest.st"
+      ],
+      "weak_files": [
+        "FLOW_METER.st"
+      ],
+      "incorrect_files": [
+        "FT_PIDWL_FullTest (1).st",
+        "FT_PIDWL_FullTest.st",
+        "TRAFFIC_CTRL_FullTest (1).st",
+        "TRAFFIC_CTRL_FullTest.st"
+      ],
+      "root_causes": {
+        "test harness contamination": 4,
+        "history variable overfiring": 4
+      }
+    },
+    "STATE_MACHINE_CONTROL": {
+      "behavior": "STATE_MACHINE_CONTROL",
+      "rule": "(state_transitions >= 1 OR transitions_to >= 1) AND (timers >= 1 OR transitions_to >= 2)",
+      "datasets_triggered": [
+        "TRAFFIC_CTRL.st",
+        "TRAFFIC_CTRL_FullTest (1).st",
+        "TRAFFIC_CTRL_FullTest.st"
+      ],
+      "total_fires": 3,
+      "correct": 3,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0,
+      "correct_files": [
+        "TRAFFIC_CTRL.st",
+        "TRAFFIC_CTRL_FullTest (1).st",
+        "TRAFFIC_CTRL_FullTest.st"
+      ],
+      "weak_files": [],
+      "incorrect_files": [],
+      "root_causes": {}
+    },
+    "SEQUENTIAL_MACHINE_CONTROL": {
+      "behavior": "SEQUENTIAL_MACHINE_CONTROL",
+      "rule": "state_transitions >= 1 AND timers == 0 AND (actuator_sequences >= 2 OR state_transitions >= 5)",
+      "datasets_triggered": [
+        "SEQUENCE_8.st",
+        "TOOL_CHANGER.st",
+        "robotic_sequence.st",
+        "sampletext_2.st",
+        "sampletext_3.st",
+        "SEQUENCE_8_FullTest (1).st",
+        "SEQUENCE_8_FullTest.st",
+        "TOOL_CHANGER_FullTest (1).st",
+        "TOOL_CHANGER_FullTest.st"
+      ],
+      "total_fires": 9,
+      "correct": 6,
+      "weak": 3,
+      "incorrect": 0,
+      "precision": 0.667,
+      "correct_files": [
+        "SEQUENCE_8.st",
+        "robotic_sequence.st",
+        "sampletext_2.st",
+        "sampletext_3.st",
+        "SEQUENCE_8_FullTest (1).st",
+        "SEQUENCE_8_FullTest.st"
+      ],
+      "weak_files": [
+        "TOOL_CHANGER.st",
+        "TOOL_CHANGER_FullTest (1).st",
+        "TOOL_CHANGER_FullTest.st"
+      ],
+      "incorrect_files": [],
+      "root_causes": {
+        "state detection error": 3
+      }
+    },
+    "MATRIX_COMPUTATION": {
+      "behavior": "MATRIX_COMPUTATION",
+      "rule": "matrix_access >= 1 OR (array_access >= 3 AND bitwise >= 3 AND array_ops >= 2)",
+      "datasets_triggered": [
+        "MATRIX.st",
+        "MATRIX_FullTest (1).st",
+        "MATRIX_FullTest.st"
+      ],
+      "total_fires": 3,
+      "correct": 3,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0,
+      "correct_files": [
+        "MATRIX.st",
+        "MATRIX_FullTest (1).st",
+        "MATRIX_FullTest.st"
+      ],
+      "weak_files": [],
+      "incorrect_files": [],
+      "root_causes": {}
+    },
+    "MATHEMATICAL_SOLVER": {
+      "behavior": "MATHEMATICAL_SOLVER",
+      "rule": "math_ops >= 2 OR (math_ops >= 1 AND iterative >= 1)",
+      "datasets_triggered": [
+        "GEN_SIN.st",
+        "LAMBERT_W.st",
+        "GEN_SIN_FullTest (1).st",
+        "GEN_SIN_FullTest (2).st",
+        "GEN_SIN_FullTest.st",
+        "LAMBERT_W_FullTest (1).st",
+        "LAMBERT_W_FullTest.st",
+        "FLOW_METER_FullTest (1).st",
+        "FLOW_METER_FullTest.st"
+      ],
+      "total_fires": 9,
+      "correct": 7,
+      "weak": 0,
+      "incorrect": 2,
+      "precision": 0.778,
+      "correct_files": [
+        "GEN_SIN.st",
+        "LAMBERT_W.st",
+        "GEN_SIN_FullTest (1).st",
+        "GEN_SIN_FullTest (2).st",
+        "GEN_SIN_FullTest.st",
+        "LAMBERT_W_FullTest (1).st",
+        "LAMBERT_W_FullTest.st"
+      ],
+      "weak_files": [],
+      "incorrect_files": [
+        "FLOW_METER_FullTest (1).st",
+        "FLOW_METER_FullTest.st"
+      ],
+      "root_causes": {
+        "test harness contamination": 2,
+        "operation threshold too low": 2
+      }
+    },
+    "DATA_TRANSFORMATION": {
+      "behavior": "DATA_TRANSFORMATION",
+      "rule": "array_access >= 2 AND (process_calc >= 1 OR fb_invocations >= 1)",
+      "datasets_triggered": [],
+      "total_fires": 0,
+      "correct": 0,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": null,
+      "correct_files": [],
+      "weak_files": [],
+      "incorrect_files": [],
+      "root_causes": {}
+    },
+    "COUNTER_PROCESSING": {
+      "behavior": "COUNTER_PROCESSING",
+      "rule": "counters >= 1 OR counter_ops >= 1",
+      "datasets_triggered": [
+        "GEN_BIT.st",
+        "robotic_sequence.st",
+        "sampletext_2.st",
+        "sampletext_3.st",
+        "GEN_BIT_FullTest.st"
+      ],
+      "total_fires": 5,
+      "correct": 5,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0,
+      "correct_files": [
+        "GEN_BIT.st",
+        "robotic_sequence.st",
+        "sampletext_2.st",
+        "sampletext_3.st",
+        "GEN_BIT_FullTest.st"
+      ],
+      "weak_files": [],
+      "incorrect_files": [],
+      "root_causes": {}
+    }
+  },
+  "false_positive_analysis": {
+    "test harness contamination": {
+      "count": 23,
+      "description": "Helper functions (OSCAT library: BIT_OF_DWORD, SHL, SHR, REFLECT, FLOOR, etc.) in test harness files are industrial-scoped but trigger behaviors unrelated to the FB under test. The test detector marks FB_TEST_1 and TestRunnerProgram as test, but top-level helper functions remain industrial-scoped."
+    },
+    "accumulator overfiring": {
+      "count": 2,
+      "description": "GEN_BIT and INCLUDE contain loop counters (rx := rx + 1, cnt := cnt + 1) and REFLECT accumulation (REFLECT := SHL(REFLECT, 1) OR ...) that are detected as accumulators but are not checksum algorithms."
+    },
+    "history variable overfiring": {
+      "count": 4,
+      "description": "Test harness files contain timing variables (tx, last, tl) from helper functions (T_PLC_MS, GEN_SIN) that trigger history_variable evidence, causing FLOW_MEASUREMENT false positives in unrelated test harnesses."
+    },
+    "operation threshold too low": {
+      "count": 2,
+      "description": "FLOW_METER_FullTest has math_ops=1 (FLOOR helper function) and iterative=1 (FOR loop in helper function), which triggers MATHEMATICAL_SOLVER via the secondary rule (math_ops >= 1 AND iterative >= 1)."
+    },
+    "state detection error": {
+      "count": 3,
+      "description": "TOOL_CHANGER is a CASE-based state machine (3 states: Idle, RotatingCarousel, LockingTool) but is detected as SEQUENTIAL_MACHINE_CONTROL because it has no timer FBs and has actuator sequences=6."
+    },
+    "bitwise overfiring": {
+      "count": 0,
+      "description": "Bundled with test harness contamination."
+    },
+    "array access overfiring": {
+      "count": 0,
+      "description": "Not separately counted."
+    },
+    "timer overfiring": {
+      "count": 0,
+      "description": "Not separately counted."
+    },
+    "evidence threshold too low": {
+      "count": 0,
+      "description": "Not separately counted."
+    },
+    "evidence type too generic": {
+      "count": 0,
+      "description": "Not separately counted."
+    },
+    "relationship evidence ignored": {
+      "count": 0,
+      "description": "Not separately counted."
+    },
+    "relationship evidence missing": {
+      "count": 0,
+      "description": "Not separately counted."
+    },
+    "multiple behavior collision": {
+      "count": 0,
+      "description": "Not separately counted."
+    },
+    "other": {
+      "count": 0,
+      "description": "No uncategorized false positives."
+    }
+  },
+  "special_investigations": {
+    "FLOW_METER": {
+      "file": "FLOW_METER.st",
+      "expected_behavior": "FLOW_MEASUREMENT",
+      "detected_behavior": "FLOW_MEASUREMENT",
+      "classification": "WEAK",
+      "measurement_calculation_evidence": 0,
+      "actual_evidence_chain": {
+        "history_variable": 7,
+        "fb_invocation": 1,
+        "process_calculation": 2,
+        "accumulator": 3,
+        "comparison": 1
+      },
+      "actual_operation_chain": {
+        "process_calculation": 3,
+        "history_update": 7,
+        "fb_invocation": 1,
+        "accumulator_update": 2,
+        "mathematical_solver": 1
+      },
+      "actual_relationship_chain": {
+        "activates": 1,
+        "depends_on": 9,
+        "feeds": 5
+      },
+      "rule_fired": "Secondary signal: history >= 2 AND process_calc >= 2 AND (timer >= 1 OR fb >= 1)",
+      "why_measurement_calculation_is_zero": "The evidence engine detects measurement_calculation only when (a) target contains 'Flow/flow/Rate/rate/Speed/speed/Freq/freq' OR (b) the division value contains TIME_TO_REAL/UDINT_TO_TIME/TIME. In FLOW_METER, the target is 'F' (does not match pattern) and the value is a complex nested expression ((A + B) / TIME_TO_REAL(...) * 3.6E6) where the top-level operator is '*' with '/' nested inside. The broader time-based detection checks 'TIME_TO_REAL' in the top-level describe_node output, but the nested structure means the string may not contain the full function name at the top level.",
+      "classification_rationale": "FLOW_METER is indeed a flow measurement FB. The detection is semantically correct but the evidence chain is weak because it relies on the secondary signal rather than direct measurement_calculation evidence."
+    },
+    "CHECKSUM_GENERATION": {
+      "behavior_distribution": 23,
+      "true_checksum_files": [
+        "CRC_GEN.st",
+        "CRC_GEN_FullTest (1).st",
+        "CRC_GEN_FullTest.st"
+      ],
+      "false_positives": 20,
+      "precision": 0.13,
+      "evidence_causing_overfiring": {
+        "bitwise_operation": "OSCAT helper functions (BIT_OF_DWORD, SHL, SHR, ROL, ROR, AND, OR, XOR) are present in almost every test harness file. The evidence engine detects these as bitwise_operation regardless of context.",
+        "accumulator": "REFLECT function uses 'REFLECT := SHL(REFLECT, 1) OR ...' which is detected as accumulator because the target appears in the sources. Also loop counters (cnt := cnt + 1, rx := rx + 1) are detected as accumulators."
+      },
+      "root_cause": "The rule cannot distinguish between checksum algorithms and general utility functions that use bitwise operations and accumulation. The test harness files include the OSCAT library which contains many such functions. The test detector does not mark top-level helper functions as test because they are not inside a test-named node.",
+      "precision_breakdown": {
+        "implementation_datasets": {
+          "fired": 3,
+          "correct": 1,
+          "weak": 2,
+          "precision": 0.333
+        },
+        "test_harness": {
+          "fired": 20,
+          "correct": 3,
+          "incorrect": 17,
+          "precision": 0.15
+        }
+      }
+    },
+    "MATRIX": {
+      "file": "MATRIX.st",
+      "expected_behavior": "MATRIX_COMPUTATION",
+      "detected_behavior": "MATRIX_COMPUTATION",
+      "classification": "CORRECT",
+      "matrix_access_evidence": 0,
+      "actual_triggering_evidence": {
+        "array_access": 14,
+        "bitwise_operation": 56
+      },
+      "actual_triggering_operations": {
+        "array_read": 3,
+        "array_write": 2,
+        "bitwise_update": 13
+      },
+      "rule_fired": "array_access >= 3 AND bitwise >= 3 AND array_ops >= 2",
+      "explanation": "MATRIX.st is a matrix keypad scanner. It does not use matrix math functions (MATRIX_MUL, MATRIX_ADD, etc.), so matrix_access=0. The behavior is correctly detected via the fallback rule that requires array indexing combined with bitwise operations for bit packing/unpacking. The 56 bitwise_operation evidences come from BIT_LOAD_B, BIT_OF_DWORD, SHL, XOR, AND, OR operations used in the keypad scanning logic.",
+      "classification_rationale": "The detection is strongly supported by the program semantics. MATRIX.st performs array-based matrix scanning with extensive bitwise manipulation."
+    }
+  },
+  "behavior_coverage": {
+    "CRC_GEN.st": {
+      "expected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "detected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "FLOW_METER.st": {
+      "expected": [
+        "FLOW_MEASUREMENT"
+      ],
+      "detected": [
+        "FLOW_MEASUREMENT"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "SEQUENCE_8.st": {
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "TRAFFIC_CTRL.st": {
+      "expected": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "detected": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "MATRIX.st": {
+      "expected": [
+        "MATRIX_COMPUTATION"
+      ],
+      "detected": [
+        "MATRIX_COMPUTATION"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "LAMBERT_W.st": {
+      "expected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "detected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "DEC_TO_HEX.st": {
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": []
+    },
+    "FT_PIDWL.st": {
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": []
+    },
+    "GEN_BIT.st": {
+      "expected": [
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "CHECKSUM_GENERATION",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": [
+        "CHECKSUM_GENERATION"
+      ]
+    },
+    "GEN_SIN.st": {
+      "expected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "detected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "INCLUDE.st": {
+      "expected": [],
+      "detected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "missing": [],
+      "unexpected": [
+        "CHECKSUM_GENERATION"
+      ]
+    },
+    "robotic_sequence.st": {
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "sampletext_2.st": {
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "sampletext_3.st": {
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": []
+    },
+    "sampletext_4.st": {
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": []
+    },
+    "TOOL_CHANGER.st": {
+      "expected": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "missing": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "unexpected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ]
+    }
+  },
+  "per_file_detailed_audit": [
+    {
+      "file": "CRC_GEN.st",
+      "expected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "detected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "CHECKSUM_GENERATION is CORRECT: bitwise=12, accumulator=1 from _CRC_GEN accumulation."
+    },
+    {
+      "file": "DEC_TO_HEX.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "No behaviors detected. File is a small conversion utility."
+    },
+    {
+      "file": "FLOW_METER.st",
+      "expected": [
+        "FLOW_MEASUREMENT"
+      ],
+      "detected": [
+        "FLOW_MEASUREMENT"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "FLOW_MEASUREMENT is WEAK: triggered by secondary rule (history=7, process_calc=2, fb=1) because measurement_calculation=0."
+    },
+    {
+      "file": "FT_PIDWL.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "No behaviors detected. PID controller does not match any behavior pattern."
+    },
+    {
+      "file": "GEN_BIT.st",
+      "expected": [
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "CHECKSUM_GENERATION",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "notes": "CHECKSUM_GENERATION is WEAK: bitwise=16 and accumulator=2 from rx/cnt counters, but GEN_BIT is a bit generator, not checksum. COUNTER_PROCESSING is CORRECT."
+    },
+    {
+      "file": "GEN_SIN.st",
+      "expected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "detected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "MATHEMATICAL_SOLVER is CORRECT: uses SIN, MODR, and iterative time computation."
+    },
+    {
+      "file": "INCLUDE.st",
+      "expected": [],
+      "detected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "missing": [],
+      "unexpected": [
+        "CHECKSUM_GENERATION"
+      ],
+      "notes": "CHECKSUM_GENERATION is WEAK: utility library with REFLECT (accumulator) and bitwise helpers, not a checksum algorithm."
+    },
+    {
+      "file": "LAMBERT_W.st",
+      "expected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "detected": [
+        "MATHEMATICAL_SOLVER"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "MATHEMATICAL_SOLVER is CORRECT: uses LN, EXP, iterative FOR loop with convergence test."
+    },
+    {
+      "file": "MATRIX.st",
+      "expected": [
+        "MATRIX_COMPUTATION"
+      ],
+      "detected": [
+        "MATRIX_COMPUTATION"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "MATRIX_COMPUTATION is CORRECT: array_access=14, bitwise=56 from keypad scanning logic."
+    },
+    {
+      "file": "SEQUENCE_8.st",
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "SEQUENTIAL_MACHINE_CONTROL is CORRECT: state_transition=10, no timers, actuator sequences=16."
+    },
+    {
+      "file": "TOOL_CHANGER.st",
+      "expected": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "missing": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "unexpected": [
+        "SEQUENTIAL_MACHINE_CONTROL"
+      ],
+      "notes": "SEQUENTIAL_MACHINE_CONTROL is WEAK: TOOL_CHANGER is a CASE-based state machine (3 states) but detected as sequential because it has no timers and actuator sequences=6."
+    },
+    {
+      "file": "TRAFFIC_CTRL.st",
+      "expected": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "detected": [
+        "STATE_MACHINE_CONTROL"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "STATE_MACHINE_CONTROL is CORRECT: CASE LightState with timer-driven transitions (timer=8)."
+    },
+    {
+      "file": "robotic_sequence.st",
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Both behaviors CORRECT: CASE State with actuator sequences and T1_Cnt/T2_Cnt counters."
+    },
+    {
+      "file": "sampletext_2.st",
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Both behaviors CORRECT: same pattern as robotic_sequence."
+    },
+    {
+      "file": "sampletext_3.st",
+      "expected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "detected": [
+        "SEQUENTIAL_MACHINE_CONTROL",
+        "COUNTER_PROCESSING"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Both behaviors CORRECT: same pattern as robotic_sequence."
+    },
+    {
+      "file": "sampletext_4.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "No behaviors detected. Small alarm function."
+    },
+    {
+      "file": "CRC_GEN_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "CRC_GEN_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "FLOW_METER_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "FLOW_METER_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "FT_PIDWL_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "FT_PIDWL_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "GEN_BIT_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "GEN_BIT_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "GEN_SIN_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "GEN_SIN_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "LAMBERT_W_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "LAMBERT_W_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "MATRIX_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "MATRIX_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "SEQUENCE_8_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "SEQUENCE_8_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "TOOL_CHANGER_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "TOOL_CHANGER_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "TRAFFIC_CTRL_FullTest (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "TRAFFIC_CTRL_FullTest.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test harness file. Behavior precision depends on whether helper functions or actual FB under test triggered the behavior."
+    },
+    {
+      "file": "CRC_GEN_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "CRC_GEN_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "FLOW_METER_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "FLOW_METER_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "FT_PIDWL_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "FT_PIDWL_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "GEN_BIT_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "GEN_BIT_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "GEN_SIN_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "GEN_SIN_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "LAMBERT_W_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "LAMBERT_W_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "MATRIX_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "MATRIX_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "SEQUENCE_8_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "SEQUENCE_8_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "TOOL_CHANGER_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "TOOL_CHANGER_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "TRAFFIC_CTRL_TestCases (1).st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    },
+    {
+      "file": "TRAFFIC_CTRL_TestCases.st",
+      "expected": [],
+      "detected": [],
+      "missing": [],
+      "unexpected": [],
+      "notes": "Test case file. No behaviors detected."
+    }
+  ]
+}

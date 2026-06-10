@@ -1,0 +1,154 @@
+{
+  "before": {
+    "CHECKSUM_GENERATION": {
+      "fires": 23,
+      "correct": 4,
+      "weak": 2,
+      "incorrect": 17,
+      "precision": 0.174
+    },
+    "FLOW_MEASUREMENT": {
+      "fires": 7,
+      "correct": 3,
+      "weak": 1,
+      "incorrect": 3,
+      "precision": 0.429
+    },
+    "STATE_MACHINE_CONTROL": {
+      "fires": 3,
+      "correct": 3,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "SEQUENTIAL_MACHINE_CONTROL": {
+      "fires": 9,
+      "correct": 6,
+      "weak": 3,
+      "incorrect": 0,
+      "precision": 0.667
+    },
+    "MATRIX_COMPUTATION": {
+      "fires": 3,
+      "correct": 3,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "MATHEMATICAL_SOLVER": {
+      "fires": 9,
+      "correct": 7,
+      "weak": 0,
+      "incorrect": 2,
+      "precision": 0.778
+    },
+    "DATA_TRANSFORMATION": {
+      "fires": 0,
+      "correct": 0,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": null
+    },
+    "COUNTER_PROCESSING": {
+      "fires": 5,
+      "correct": 5,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    }
+  },
+  "after": {
+    "CHECKSUM_GENERATION": {
+      "fires": 3,
+      "correct": 3,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "FLOW_MEASUREMENT": {
+      "fires": 3,
+      "correct": 3,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "STATE_MACHINE_CONTROL": {
+      "fires": 6,
+      "correct": 6,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "SEQUENTIAL_MACHINE_CONTROL": {
+      "fires": 6,
+      "correct": 6,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "MATRIX_COMPUTATION": {
+      "fires": 3,
+      "correct": 3,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "MATHEMATICAL_SOLVER": {
+      "fires": 7,
+      "correct": 7,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    },
+    "DATA_TRANSFORMATION": {
+      "fires": 0,
+      "correct": 0,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": null
+    },
+    "COUNTER_PROCESSING": {
+      "fires": 5,
+      "correct": 5,
+      "weak": 0,
+      "incorrect": 0,
+      "precision": 1.0
+    }
+  },
+  "changes": {
+    "CHECKSUM_GENERATION": {
+      "rule_change": "Added XOR accumulator requirement, bitwise_update >= 2, accumulator_update >= 5",
+      "precision_change": "17.4% \u2192 100.0%",
+      "false_positives_eliminated": 19
+    },
+    "FLOW_MEASUREMENT": {
+      "rule_change": "Removed secondary rule; now direct-evidence only (measurement_calculation >= 1)",
+      "precision_change": "42.9% \u2192 100.0%",
+      "false_positives_eliminated": 4
+    },
+    "STATE_MACHINE_CONTROL": {
+      "rule_change": "Added CASE-statement post-processing for TOOL_CHANGER",
+      "precision_change": "100.0% \u2192 100.0%",
+      "false_positives_eliminated": 0
+    },
+    "SEQUENTIAL_MACHINE_CONTROL": {
+      "rule_change": "Increased state_transition threshold to >= 5, refined timing check",
+      "precision_change": "66.7% \u2192 100.0%",
+      "false_positives_eliminated": 3
+    },
+    "MATHEMATICAL_SOLVER": {
+      "rule_change": "Removed secondary rule (math_ops >= 1 AND iterative >= 1); now math_ops >= 2 only",
+      "precision_change": "77.8% \u2192 100.0%",
+      "false_positives_eliminated": 2
+    }
+  },
+  "evidence_engine_changes": [
+    "Fixed LogicalExpressionNode handling for accumulator and bitwise_operation detection",
+    "Added nested division detection for measurement_calculation (TIME_TO_REAL expressions)"
+  ],
+  "test_harness_impact": {
+    "false_positives_before": 23,
+    "false_positives_after": 0,
+    "notes": "CHECKSUM_GENERATION false positives from OSCAT helper functions eliminated. FLOW_MEASUREMENT false positives from test harness history variables eliminated. MATHEMATICAL_SOLVER false positives from helper function FLOOR eliminated."
+  }
+}

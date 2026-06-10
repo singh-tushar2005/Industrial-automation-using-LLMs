@@ -21,14 +21,13 @@ class RelationshipExtractor(ASTVisitor):
     relationship edges that are compatible with future graph construction.
     """
 
-    def __init__(self, classification_report=None, type_report=None, context=None, test_detector=None, semantic_evidence=None, operations=None, behaviors=None):
+    def __init__(self, classification_report=None, type_report=None, context=None, test_detector=None, semantic_evidence=None, operations=None):
         self.classification_report = classification_report or {}
         self.type_report = type_report or {}
         self.context = context
         self.test_detector = test_detector or TestDetector()
         self.semantic_evidence = semantic_evidence
         self.operations = operations or []
-        self.behaviors = behaviors or []
         self.relationships = []
         self.condition_stack = []
         self.case_stack = []
@@ -90,25 +89,6 @@ class RelationshipExtractor(ASTVisitor):
         for r in test:
             test_counts[r.relation] = test_counts.get(r.relation, 0) + 1
 
-        # Confidence distribution (Phase 6)
-        confidence_distribution = {}
-        for r in self.relationships:
-            conf = r.metadata.get("relationship_confidence", "unknown")
-            confidence_distribution[conf] = confidence_distribution.get(conf, 0) + 1
-
-        # Source distribution (Phase 1)
-        source_distribution = {}
-        for r in self.relationships:
-            src = r.metadata.get("source", "AST_RULE")
-            source_distribution[src] = source_distribution.get(src, 0) + 1
-
-        # Behavior support distribution
-        behavior_support = {}
-        for r in self.relationships:
-            behaviors = r.metadata.get("supporting_behaviors", [])
-            for bt in behaviors:
-                behavior_support[bt] = behavior_support.get(bt, 0) + 1
-
         return {
             "relationships": relationship_data,
             "relationship_count": len(relationship_data),
@@ -122,215 +102,21 @@ class RelationshipExtractor(ASTVisitor):
             "test_relationships": test_data,
             "test_relationship_count": len(test_data),
             "test_relation_counts": dict(sorted(test_counts.items())),
-            "confidence_distribution": dict(sorted(confidence_distribution.items())),
-            "source_distribution": dict(sorted(source_distribution.items())),
-            "behavior_support_distribution": dict(sorted(behavior_support.items())),
         }
-
-    # ------------------------------------------------------------------
-    # Behavior-aware relationship methods
-    # ------------------------------------------------------------------
-
-    def _behavior_types(self):
-        """Return set of detected behavior types for quick lookup."""
-        return set(
-            b.get("behavior_type", b) if isinstance(b, dict) else b.value if hasattr(b, "value") else str(b)
-            for b in self.behaviors
-        )
-
-    def _behavior_supports_relation(self, relation):
-        """Check if current detected behaviors support a given relationship type.
-
-        Rules:
-        - CHECKSUM_GENERATION: supports feeds, depends_on; discourages controls
-        - FLOW_MEASUREMENT: supports depends_on, feeds; discourages controls
-        - STATE_MACHINE_CONTROL: supports controls, activates, transitions_to, sequences
-        - SEQUENTIAL_MACHINE_CONTROL: supports controls, activates, sequences, transitions_to
-        """
-        behavior_types = self._behavior_types()
-        if not behavior_types:
-            return True  # No behaviors → no restriction
-
-        allowed = {
-            "CHECKSUM_GENERATION": {"feeds", "depends_on", "uses", "schedules", "coordinates", "contains"},
-            "FLOW_MEASUREMENT": {"depends_on", "feeds", "uses", "schedules", "contains"},
-            "STATE_MACHINE_CONTROL": {"controls", "activates", "transitions_to", "sequences", "triggers", "enables", "disables"},
-            "SEQUENTIAL_MACHINE_CONTROL": {"controls", "activates", "sequences", "transitions_to", "triggers", "enables", "disables"},
-            "MATRIX_COMPUTATION": {"feeds", "depends_on", "uses"},
-            "MATHEMATICAL_SOLVER": {"feeds", "depends_on", "uses"},
-            "DATA_TRANSFORMATION": {"feeds", "depends_on", "uses"},
-            "COUNTER_PROCESSING": {"increments", "depends_on", "triggers", "sequences"},
-        }
-
-        # Collect all allowed relations across detected behaviors
-        all_allowed = set()
-        for bt in behavior_types:
-            all_allowed.update(allowed.get(bt, set()))
-
-        if relation in all_allowed:
-            return True
-
-        # Discouraged relations for specific behaviors
-        discouraged = {
-            "CHECKSUM_GENERATION": {"controls", "activates", "sequences", "transitions_to", "triggers", "enables", "disables"},
-            "FLOW_MEASUREMENT": {"controls", "activates", "sequences", "transitions_to", "triggers", "enables", "disables"},
-        }
-        for bt in behavior_types:
-            if relation in discouraged.get(bt, set()):
-                return False
-
-        # If behaviors are detected and relation is not explicitly allowed, suppress it
-        return False
-
-    def _score_relationship(self, source, relation, target, metadata):
-        """Score relationship confidence based on evidence, operation, and behavior support.
-
-        high: behavior + operation + evidence
-        medium: operation + evidence OR behavior + evidence
-        low: syntax only (no evidence or operation support)
-        """
-        has_behavior = False
-        has_evidence = False
-        has_operation = False
-
-        # Check behavior support
-        if self._behavior_supports_relation(relation):
-            behavior_types = self._behavior_types()
-            if behavior_types:
-                has_behavior = True
-
-        # Check evidence support
-        if metadata and metadata.get("source") in ("EVIDENCE_RULE",):
-            has_evidence = True
-        if metadata and metadata.get("evidence_type"):
-            has_evidence = True
-
-        # Check operation support
-        if metadata and metadata.get("source") in ("OPERATION_RULE",):
-            has_operation = True
-        if metadata and metadata.get("operation_type"):
-            has_operation = True
-
-        # Check for low-value depends_on patterns
-        if relation == "depends_on":
-            source_lower = source.lower()
-            target_lower = target.lower()
-            # Suppress bookkeeping variable dependencies
-            low_value_terms = ("tmp", "temp", "last", "previous", "old", "init", "i", "j", "k", "idx")
-            if any(t in source_lower or t in target_lower for t in low_value_terms):
-                return "low"
-            # Suppress mode variable dependencies
-            mode_terms = ("mode", "manual", "auto", "run", "ready")
-            if any(t in source_lower or t in target_lower for t in mode_terms):
-                return "low"
-
-        if has_behavior and has_operation and has_evidence:
-            return "high"
-        if (has_behavior and has_evidence) or (has_operation and has_evidence):
-            return "medium"
-        if has_behavior or has_evidence:
-            return "medium"
-        return "low"
-
-    def _is_low_value_depends_on(self, source, target, relation):
-        """Suppress low-value depends_on edges from bookkeeping/history/temp variables."""
-        if relation != "depends_on":
-            return False
-        source_lower = source.lower()
-        target_lower = target.lower()
-        # Suppress bookkeeping variable dependencies
-        low_value_terms = ("tmp", "temp", "last", "previous", "old", "init", "i", "j", "k", "idx", "step", "loop")
-        if any(t in source_lower or t in target_lower for t in low_value_terms):
-            return True
-        # Suppress mode variable dependencies
-        mode_terms = ("mode", "manual", "auto", "run", "ready", "enable")
-        if any(t in source_lower or t in target_lower for t in mode_terms):
-            return True
-        return False
-
-    def _is_weak_controls(self, source, target, relation):
-        """Suppress weak controls edges without actuator target or behavior support."""
-        if relation != "controls":
-            return False
-        if self.is_actuator_target(target):
-            return False
-        if self._behavior_supports_relation("controls"):
-            return False
-        return True
-
-    def _is_weak_feeds(self, source, target, relation):
-        """Suppress weak feeds edges without measurement/accumulator/process support."""
-        if relation != "feeds":
-            return False
-        if not self.behaviors:
-            return False
-        behavior_types = self._behavior_types()
-        if not behavior_types:
-            return False
-        # Allow feeds for measurement, accumulator, process, data transformation
-        allowed_feeds = {
-            "FLOW_MEASUREMENT", "CHECKSUM_GENERATION", "MATRIX_COMPUTATION",
-            "MATHEMATICAL_SOLVER", "DATA_TRANSFORMATION", "COUNTER_PROCESSING",
-        }
-        if any(bt in allowed_feeds for bt in behavior_types):
-            return False
-        return True
 
     def add_relationship(self, source, relation, target, metadata=None):
-        """Add one behavior-aware semantic edge if it has not already been recorded.
+        """Add one semantic edge if it has not already been recorded."""
 
-        Behavior-aware filtering:
-        - Checks behavior support before emitting
-        - Scores relationship confidence
-        - Suppresses low-value depends_on, weak controls, weak feeds
-        """
         if source == target:
             return
-
-        metadata = metadata or {}
 
         # Determine semantic scope: if either end is test-related, mark as TEST
         semantic_scope = "INDUSTRIAL"
         if self.is_test_harness_entity(source) or self.is_test_harness_entity(target):
             semantic_scope = "TEST"
+
+        metadata = metadata or {}
         metadata["semantic_scope"] = semantic_scope
-
-        # Determine relationship source (Phase 1: traceability)
-        if metadata.get("source") is None:
-            metadata["source"] = "AST_RULE"
-
-        # Phase 3: suppress low-value depends_on
-        if self._is_low_value_depends_on(source, target, relation):
-            metadata["relationship_confidence"] = "low"
-            metadata["suppressed_reason"] = "low_value_dependency"
-            return
-
-        # Phase 4: suppress weak controls
-        if self._is_weak_controls(source, target, relation):
-            metadata["relationship_confidence"] = "low"
-            metadata["suppressed_reason"] = "weak_controls"
-            return
-
-        # Phase 5: suppress weak feeds
-        if self._is_weak_feeds(source, target, relation):
-            metadata["relationship_confidence"] = "low"
-            metadata["suppressed_reason"] = "weak_feeds"
-            return
-
-        # Phase 2: behavior support validation
-        if not self._behavior_supports_relation(relation):
-            metadata["relationship_confidence"] = "low"
-            metadata["suppressed_reason"] = "behavior_mismatch"
-            return
-
-        # Phase 6: edge scoring
-        confidence = self._score_relationship(source, relation, target, metadata)
-        metadata["relationship_confidence"] = confidence
-
-        # Build supporting evidence / operations / behaviors
-        metadata["supporting_evidence"] = metadata.get("supporting_evidence", [])
-        metadata["supporting_operations"] = metadata.get("supporting_operations", [])
-        metadata["supporting_behaviors"] = sorted(self._behavior_types())
 
         relationship = Relationship(source, relation, target, metadata)
 
@@ -1038,18 +824,6 @@ class RelationshipExtractor(ASTVisitor):
                 "totalTests",
                 "TestBlock",
                 "Test_",
-                "TestState",
-                "testState",
-                "testResult",
-                "testOutcomeArray",
-                "Finished",
-                "TestRunner",
-                "test_runner",
-                "main_test",
-                "TEST_MAIN",
-                "assert",
-                "printf",
-                "FB_TEST",
             )
         )
 

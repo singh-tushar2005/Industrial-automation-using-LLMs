@@ -101,7 +101,7 @@ class TestDetector:
         node_type = node.__class__.__name__
 
         # Test function blocks and programs
-        if node_type in ("FunctionBlockNode", "ProgramNode"):
+        if node_type in ("FunctionBlockNode", "ProgramNode", "CompilationUnitNode"):
             name = getattr(node, "name", "")
             if name and any(name.startswith(p) or p in name for p in TEST_FB_PREFIXES):
                 return True
@@ -115,7 +115,7 @@ class TestDetector:
                 return True
 
         # Test variable declarations
-        if node_type == "VariableDeclNode":
+        if node_type in ("VariableDeclNode", "VariableDeclarationNode"):
             name = getattr(node, "name", "")
             if name and self._is_test_name(name):
                 return True

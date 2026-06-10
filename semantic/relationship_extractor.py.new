@@ -172,15 +172,14 @@ class RelationshipExtractor(ASTVisitor):
 
         # Discouraged relations for specific behaviors
         discouraged = {
-            "CHECKSUM_GENERATION": {"controls", "activates", "sequences", "transitions_to", "triggers", "enables", "disables"},
-            "FLOW_MEASUREMENT": {"controls", "activates", "sequences", "transitions_to", "triggers", "enables", "disables"},
+            "CHECKSUM_GENERATION": {"controls", "activates", "sequences", "transitions_to"},
+            "FLOW_MEASUREMENT": {"controls", "activates", "sequences", "transitions_to"},
         }
         for bt in behavior_types:
             if relation in discouraged.get(bt, set()):
                 return False
 
-        # If behaviors are detected and relation is not explicitly allowed, suppress it
-        return False
+        return True
 
     def _score_relationship(self, source, relation, target, metadata):
         """Score relationship confidence based on evidence, operation, and behavior support.
@@ -1038,18 +1037,6 @@ class RelationshipExtractor(ASTVisitor):
                 "totalTests",
                 "TestBlock",
                 "Test_",
-                "TestState",
-                "testState",
-                "testResult",
-                "testOutcomeArray",
-                "Finished",
-                "TestRunner",
-                "test_runner",
-                "main_test",
-                "TEST_MAIN",
-                "assert",
-                "printf",
-                "FB_TEST",
             )
         )
 

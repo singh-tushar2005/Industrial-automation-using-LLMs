@@ -1,0 +1,1069 @@
+{
+  "summary": {
+    "files_analyzed": 55,
+    "total_industrial_relationships_before": 1344,
+    "total_industrial_relationships_after": 992,
+    "delta": -352,
+    "percentage_change": -26.19
+  },
+  "before_after_by_relation": {
+    "activates": {
+      "before": 158,
+      "after": 84,
+      "delta": -74,
+      "suppressed": 40,
+      "new_edges": 6
+    },
+    "contains": {
+      "before": 40,
+      "after": 16,
+      "delta": -24,
+      "suppressed": 24,
+      "new_edges": 0
+    },
+    "controls": {
+      "before": 127,
+      "after": 93,
+      "delta": -34,
+      "suppressed": 26,
+      "new_edges": 0
+    },
+    "coordinates": {
+      "before": 0,
+      "after": 3,
+      "delta": 3,
+      "suppressed": 0,
+      "new_edges": 3
+    },
+    "depends_on": {
+      "before": 525,
+      "after": 60,
+      "delta": -465,
+      "suppressed": 362,
+      "new_edges": 0
+    },
+    "disables": {
+      "before": 3,
+      "after": 3,
+      "delta": 0,
+      "suppressed": 0,
+      "new_edges": 0
+    },
+    "feeds": {
+      "before": 0,
+      "after": 135,
+      "delta": 135,
+      "suppressed": 0,
+      "new_edges": 135
+    },
+    "schedules": {
+      "before": 0,
+      "after": 56,
+      "delta": 56,
+      "suppressed": 0,
+      "new_edges": 28
+    },
+    "sequences": {
+      "before": 368,
+      "after": 273,
+      "delta": -95,
+      "suppressed": 95,
+      "new_edges": 0
+    },
+    "transitions_to": {
+      "before": 57,
+      "after": 141,
+      "delta": 84,
+      "suppressed": 0,
+      "new_edges": 84
+    },
+    "triggers": {
+      "before": 46,
+      "after": 24,
+      "delta": -22,
+      "suppressed": 40,
+      "new_edges": 18
+    },
+    "uses": {
+      "before": 20,
+      "after": 104,
+      "delta": 84,
+      "suppressed": 20,
+      "new_edges": 104
+    }
+  },
+  "suppressed_edges_by_relation": {
+    "depends_on": 362,
+    "controls": 26,
+    "uses": 20,
+    "sequences": 95,
+    "activates": 40,
+    "triggers": 40,
+    "contains": 24
+  },
+  "new_edges_by_relation": {
+    "uses": 104,
+    "feeds": 135,
+    "activates": 6,
+    "coordinates": 3,
+    "transitions_to": 84,
+    "triggers": 18,
+    "schedules": 28
+  },
+  "confidence_distribution": {
+    "medium": 1154,
+    "low": 554
+  },
+  "source_distribution": {
+    "EVIDENCE_RULE": 503,
+    "AST_RULE": 1019,
+    "OPERATION_RULE": 186
+  },
+  "behavior_support_distribution": {
+    "CHECKSUM_GENERATION": 53,
+    "FLOW_MEASUREMENT": 69,
+    "COUNTER_PROCESSING": 244,
+    "MATHEMATICAL_SOLVER": 112,
+    "MATRIX_COMPUTATION": 59,
+    "SEQUENTIAL_MACHINE_CONTROL": 428,
+    "STATE_MACHINE_CONTROL": 161
+  },
+  "sequence_8_investigation": {
+    "Implementation_datasets/SEQUENCE_8.st": {
+      "old_count": 109,
+      "new_count": 66,
+      "delta": -43,
+      "old_relations": {
+        "depends_on": 52,
+        "disables": 1,
+        "controls": 31,
+        "triggers": 1,
+        "activates": 8,
+        "sequences": 16
+      },
+      "new_relations": {
+        "disables": 1,
+        "controls": 31,
+        "triggers": 1,
+        "activates": 8,
+        "sequences": 16,
+        "transitions_to": 9
+      },
+      "suppressed_edges": [
+        [
+          "_step",
+          "depends_on",
+          "status"
+        ],
+        [
+          "start",
+          "depends_on",
+          "run"
+        ],
+        [
+          "in2",
+          "depends_on",
+          "last"
+        ],
+        [
+          "init",
+          "depends_on",
+          "status"
+        ],
+        [
+          "in0",
+          "depends_on",
+          "last"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q4"
+        ],
+        [
+          "in1",
+          "depends_on",
+          "last"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "run"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q6"
+        ],
+        [
+          "start",
+          "depends_on",
+          "status"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q2"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "last"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "status"
+        ],
+        [
+          "rst",
+          "depends_on",
+          "run"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q0"
+        ],
+        [
+          "in4",
+          "depends_on",
+          "last"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q3"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q5"
+        ],
+        [
+          "init",
+          "depends_on",
+          "last"
+        ],
+        [
+          "rst",
+          "depends_on",
+          "status"
+        ],
+        [
+          "in7",
+          "depends_on",
+          "last"
+        ],
+        [
+          "in3",
+          "depends_on",
+          "last"
+        ],
+        [
+          "start",
+          "depends_on",
+          "last"
+        ],
+        [
+          "in5",
+          "depends_on",
+          "last"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "last"
+        ],
+        [
+          "start",
+          "depends_on",
+          "_step"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "run"
+        ],
+        [
+          "in6",
+          "depends_on",
+          "last"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q1"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "Run"
+        ]
+      ],
+      "new_edges": [
+        [
+          "_step",
+          "transitions_to",
+          "-1"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "7"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "4"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "5"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "1"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "2"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "0"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "6"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "3"
+        ]
+      ]
+    },
+    "test_harness/Full_test/SEQUENCE_8_FullTest (1).st": {
+      "old_count": 129,
+      "new_count": 67,
+      "delta": -62,
+      "old_relations": {
+        "depends_on": 63,
+        "disables": 1,
+        "controls": 31,
+        "triggers": 2,
+        "activates": 10,
+        "sequences": 19,
+        "contains": 2,
+        "uses": 1
+      },
+      "new_relations": {
+        "disables": 1,
+        "controls": 31,
+        "triggers": 1,
+        "activates": 8,
+        "sequences": 17,
+        "transitions_to": 9
+      },
+      "suppressed_edges": [
+        [
+          "_step",
+          "depends_on",
+          "status"
+        ],
+        [
+          "init",
+          "depends_on",
+          "X_last"
+        ],
+        [
+          "instance0",
+          "uses",
+          "TestRunnerProgram"
+        ],
+        [
+          "testState",
+          "sequences",
+          "TestState"
+        ],
+        [
+          "start",
+          "depends_on",
+          "run"
+        ],
+        [
+          "in2",
+          "depends_on",
+          "last"
+        ],
+        [
+          "testState",
+          "sequences",
+          "Finished"
+        ],
+        [
+          "init",
+          "depends_on",
+          "tc"
+        ],
+        [
+          "init",
+          "depends_on",
+          "status"
+        ],
+        [
+          "in0",
+          "depends_on",
+          "last"
+        ],
+        [
+          "Timer",
+          "triggers",
+          "testState"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q4"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "tc"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "run"
+        ],
+        [
+          "in1",
+          "depends_on",
+          "last"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q6"
+        ],
+        [
+          "start",
+          "depends_on",
+          "status"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q2"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "last"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "status"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "in_last"
+        ],
+        [
+          "init",
+          "depends_on",
+          "in_last"
+        ],
+        [
+          "rst",
+          "depends_on",
+          "run"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q0"
+        ],
+        [
+          "in4",
+          "depends_on",
+          "last"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q3"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q5"
+        ],
+        [
+          "init",
+          "depends_on",
+          "last"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "i"
+        ],
+        [
+          "init",
+          "depends_on",
+          "i"
+        ],
+        [
+          "rst",
+          "depends_on",
+          "status"
+        ],
+        [
+          "in7",
+          "depends_on",
+          "last"
+        ],
+        [
+          "in3",
+          "depends_on",
+          "last"
+        ],
+        [
+          "start",
+          "depends_on",
+          "last"
+        ],
+        [
+          "init",
+          "depends_on",
+          "t_last"
+        ],
+        [
+          "in5",
+          "depends_on",
+          "last"
+        ],
+        [
+          "Res0",
+          "contains",
+          "task0"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "t_last"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "last"
+        ],
+        [
+          "start",
+          "depends_on",
+          "_step"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "run"
+        ],
+        [
+          "init",
+          "depends_on",
+          "old"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "init"
+        ],
+        [
+          "in6",
+          "depends_on",
+          "last"
+        ],
+        [
+          "Config0",
+          "contains",
+          "Res0"
+        ],
+        [
+          "Timer.Q",
+          "activates",
+          "TestState"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q1"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "Run"
+        ]
+      ],
+      "new_edges": [
+        [
+          "_step",
+          "transitions_to",
+          "-1"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "7"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "4"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "5"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "1"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "2"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "0"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "6"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "3"
+        ]
+      ]
+    },
+    "test_harness/Full_test/SEQUENCE_8_FullTest.st": {
+      "old_count": 129,
+      "new_count": 67,
+      "delta": -62,
+      "old_relations": {
+        "depends_on": 63,
+        "disables": 1,
+        "controls": 31,
+        "triggers": 2,
+        "activates": 10,
+        "sequences": 19,
+        "contains": 2,
+        "uses": 1
+      },
+      "new_relations": {
+        "disables": 1,
+        "controls": 31,
+        "triggers": 1,
+        "activates": 8,
+        "sequences": 17,
+        "transitions_to": 9
+      },
+      "suppressed_edges": [
+        [
+          "_step",
+          "depends_on",
+          "status"
+        ],
+        [
+          "init",
+          "depends_on",
+          "X_last"
+        ],
+        [
+          "instance0",
+          "uses",
+          "TestRunnerProgram"
+        ],
+        [
+          "testState",
+          "sequences",
+          "TestState"
+        ],
+        [
+          "start",
+          "depends_on",
+          "run"
+        ],
+        [
+          "in2",
+          "depends_on",
+          "last"
+        ],
+        [
+          "testState",
+          "sequences",
+          "Finished"
+        ],
+        [
+          "init",
+          "depends_on",
+          "tc"
+        ],
+        [
+          "init",
+          "depends_on",
+          "status"
+        ],
+        [
+          "in0",
+          "depends_on",
+          "last"
+        ],
+        [
+          "Timer",
+          "triggers",
+          "testState"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q4"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "tc"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "run"
+        ],
+        [
+          "in1",
+          "depends_on",
+          "last"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q6"
+        ],
+        [
+          "start",
+          "depends_on",
+          "status"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q2"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "last"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "status"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "in_last"
+        ],
+        [
+          "init",
+          "depends_on",
+          "in_last"
+        ],
+        [
+          "rst",
+          "depends_on",
+          "run"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q0"
+        ],
+        [
+          "in4",
+          "depends_on",
+          "last"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q3"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q5"
+        ],
+        [
+          "init",
+          "depends_on",
+          "last"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "i"
+        ],
+        [
+          "init",
+          "depends_on",
+          "i"
+        ],
+        [
+          "rst",
+          "depends_on",
+          "status"
+        ],
+        [
+          "in7",
+          "depends_on",
+          "last"
+        ],
+        [
+          "in3",
+          "depends_on",
+          "last"
+        ],
+        [
+          "start",
+          "depends_on",
+          "last"
+        ],
+        [
+          "init",
+          "depends_on",
+          "t_last"
+        ],
+        [
+          "in5",
+          "depends_on",
+          "last"
+        ],
+        [
+          "Res0",
+          "contains",
+          "task0"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "t_last"
+        ],
+        [
+          "edge",
+          "depends_on",
+          "last"
+        ],
+        [
+          "start",
+          "depends_on",
+          "_step"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "run"
+        ],
+        [
+          "init",
+          "depends_on",
+          "old"
+        ],
+        [
+          "RST",
+          "depends_on",
+          "init"
+        ],
+        [
+          "in6",
+          "depends_on",
+          "last"
+        ],
+        [
+          "Config0",
+          "contains",
+          "Res0"
+        ],
+        [
+          "Timer.Q",
+          "activates",
+          "TestState"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "q1"
+        ],
+        [
+          "_step",
+          "depends_on",
+          "Run"
+        ]
+      ],
+      "new_edges": [
+        [
+          "_step",
+          "transitions_to",
+          "-1"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "7"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "4"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "5"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "1"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "2"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "0"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "6"
+        ],
+        [
+          "_step",
+          "transitions_to",
+          "3"
+        ]
+      ]
+    },
+    "test_harness/test_case/SEQUENCE_8_TestCases (1).st": {
+      "old_count": 6,
+      "new_count": 3,
+      "delta": -3,
+      "old_relations": {
+        "activates": 2,
+        "sequences": 3,
+        "triggers": 1
+      },
+      "new_relations": {
+        "sequences": 1,
+        "schedules": 2
+      },
+      "suppressed_edges": [
+        [
+          "Timer.Q",
+          "activates",
+          "TestState"
+        ],
+        [
+          "Timer",
+          "triggers",
+          "testState"
+        ],
+        [
+          "testState",
+          "sequences",
+          "Finished"
+        ],
+        [
+          "testState",
+          "sequences",
+          "TestState"
+        ]
+      ],
+      "new_edges": [
+        [
+          "Timer",
+          "schedules",
+          "time_event"
+        ]
+      ]
+    },
+    "test_harness/test_case/SEQUENCE_8_TestCases.st": {
+      "old_count": 6,
+      "new_count": 3,
+      "delta": -3,
+      "old_relations": {
+        "activates": 2,
+        "sequences": 3,
+        "triggers": 1
+      },
+      "new_relations": {
+        "sequences": 1,
+        "schedules": 2
+      },
+      "suppressed_edges": [
+        [
+          "Timer.Q",
+          "activates",
+          "TestState"
+        ],
+        [
+          "Timer",
+          "triggers",
+          "testState"
+        ],
+        [
+          "testState",
+          "sequences",
+          "Finished"
+        ],
+        [
+          "testState",
+          "sequences",
+          "TestState"
+        ]
+      ],
+      "new_edges": [
+        [
+          "Timer",
+          "schedules",
+          "time_event"
+        ]
+      ]
+    }
+  },
+  "control_path_explosion_check": {
+    "max_controls_in_single_file": 31,
+    "max_controls_file": "Implementation_datasets/SEQUENCE_8.st",
+    "control_path_explosion_detected": false,
+    "threshold": 100
+  }
+}

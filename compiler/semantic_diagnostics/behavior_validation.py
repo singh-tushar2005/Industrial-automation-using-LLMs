@@ -1,0 +1,169 @@
+"""Behavior recognition validation for Industrial_data datasets.
+
+Runs the full semantic pipeline across all Industrial_data files,
+extracts recognized behaviors, and writes:
+  - behavior_recognition_report.md (human-readable)
+  - behavior_metrics.json (machine-readable)
+"""
+
+import json
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from main import analyze_st_file
+from parser.st_parser import find_dataset_files
+
+
+DATASET_DIRS = [
+    "datasets/Industrial_data/Implementation_datasets",
+    "datasets/Industrial_data/test_harness",
+]
+
+OUTPUT_DIR = Path("compiler/semantic_diagnostics/behaviors")
+
+
+def run_validation():
+    """Run behavior recognition across all industrial datasets."""
+    all_files = []
+    for dataset_dir in DATASET_DIRS:
+        all_files.extend(find_dataset_files(dataset_dir))
+    all_files = sorted(set(all_files))
+
+    per_file_results = []
+    global_behavior_counter = Counter()
+    global_evidence_counter = Counter()
+    global_operation_counter = Counter()
+    global_relationship_counter = Counter()
+
+    for file_path in all_files:
+        result = analyze_st_file(file_path)
+        behaviors = result.get("behaviors", {})
+        behavior_list = behaviors.get("behaviors", [])
+        behavior_types = behaviors.get("behavior_types", [])
+
+        evidence = result.get("semantic_model", {}).get("evidence", {})
+        evidence_counts = evidence.get("counts", {})
+
+        operations = result.get("operations", {})
+        op_counts = operations.get("industrial_operation_counts", {})
+
+        relationships = result.get("relationships", {})
+        rel_counts = relationships.get("industrial_relation_counts", {})
+
+        for b in behavior_types:
+            global_behavior_counter[b] += 1
+        for k, v in evidence_counts.items():
+            global_evidence_counter[k] += v
+        for k, v in op_counts.items():
+            global_operation_counter[k] += v
+        for k, v in rel_counts.items():
+            global_relationship_counter[k] += v
+
+        per_file_results.append({
+            "file": str(file_path),
+            "behaviors": behavior_list,
+            "behavior_types": behavior_types,
+            "behavior_count": len(behavior_list),
+            "evidence_counts": evidence_counts,
+            "operation_counts": op_counts,
+            "relationship_counts": rel_counts,
+            "parse_ok": result.get("parse_ok", False),
+        })
+
+    overall = {
+        "files_total": len(all_files),
+        "files_parsed": sum(1 for r in per_file_results if r["parse_ok"]),
+        "behavior_distribution": dict(global_behavior_counter.most_common()),
+        "evidence_distribution": dict(global_evidence_counter.most_common()),
+        "operation_distribution": dict(global_operation_counter.most_common()),
+        "relationship_distribution": dict(global_relationship_counter.most_common()),
+        "per_file_results": per_file_results,
+    }
+    return overall
+
+
+def generate_markdown_report(overall):
+    """Produce a human-readable behavior recognition report."""
+    lines = [
+        "# Behavior Recognition Report",
+        "",
+        "## Overview",
+        "",
+        f"- **Files total**: {overall['files_total']}",
+        f"- **Files parsed**: {overall['files_parsed']}",
+        "",
+        "## Detected Behaviors",
+        "",
+    ]
+
+    for behavior_type, count in overall["behavior_distribution"].items():
+        lines.append(f"- **{behavior_type}**: {count} file(s)")
+
+    lines.extend(["", "## Per-File Behavior Details", ""])
+
+    for report in overall["per_file_results"]:
+        fname = Path(report["file"]).name
+        lines.append(f"### {fname}")
+        lines.append("")
+        if not report["parse_ok"]:
+            lines.append("- Parse: **FAILED**")
+            lines.append("")
+            continue
+
+        behaviors = report["behaviors"]
+        if behaviors:
+            lines.append("**Detected behaviors:**")
+            for b in behaviors:
+                lines.append(f"- `{b['behavior_type']}` — confidence: **{b['confidence']}**")
+                if b.get("supporting_evidence"):
+                    lines.append("  - Evidence:")
+                    for ev in b["supporting_evidence"]:
+                        lines.append(f"    - `{ev}`")
+                if b.get("supporting_operations"):
+                    lines.append("  - Operations:")
+                    for op in b["supporting_operations"]:
+                        lines.append(f"    - `{op}`")
+                if b.get("supporting_relationships"):
+                    lines.append("  - Relationships:")
+                    for rel in b["supporting_relationships"]:
+                        lines.append(f"    - `{rel}`")
+        else:
+            lines.append("**No behaviors detected.**")
+        lines.append("")
+
+    lines.extend(["", "---", "", "*Generated by behavior validation pipeline.*", ""])
+    return "\n".join(lines)
+
+
+def main():
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    print("Running behavior validation across Industrial_data datasets...")
+    overall = run_validation()
+
+    # Write JSON metrics
+    metrics_path = OUTPUT_DIR / "behavior_metrics.json"
+    with open(metrics_path, "w", encoding="utf-8") as f:
+        json.dump(overall, f, indent=2)
+    print(f"Wrote {metrics_path}")
+
+    # Write markdown report
+    report_path = OUTPUT_DIR / "behavior_recognition_report.md"
+    report_text = generate_markdown_report(overall)
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write(report_text)
+    print(f"Wrote {report_path}")
+
+    # Print summary
+    print("\nBehavior Detection Summary:")
+    for behavior_type, count in overall["behavior_distribution"].items():
+        print(f"  {behavior_type:<30} {count:>3} file(s)")
+
+    return overall
+
+
+if __name__ == "__main__":
+    main()
